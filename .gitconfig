@@ -1,12 +1,12 @@
 [user]
-	name = Larry Lv
-	email = larrylv1990@gmail.com
+    name = Larry Lv
+    email = larrylv1990@gmail.com
 [core]
     excludesfile = /Users/larry/.gitignore
     pager = less -+FRSX -FRX
     editor = vim
-	autocrlf = input
-	safecrlf = true
+    autocrlf = input
+    safecrlf = true
 [alias]
     st = status
     ci = commit
@@ -19,7 +19,7 @@
     wdiff = diff --word-diff
     changes = diff --name-status -r
     unstage = reset HEAD --
-	glog = log --graph
+    glog = log --graph
     hist = log --pretty=format:\"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset\" --graph --date=short
     type = cat-file -t
     dump = cat-file -p
@@ -29,6 +29,6 @@
 [rerere]
     enabled = true
 [push]
-	default = tracking
+    default = tracking
 [color]
-	ui = true
+    ui = true
