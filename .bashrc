@@ -10,7 +10,12 @@ if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
 fi
 
-set completion-ignore-case On
+# set completion-ignore-case On # this won't work on OS X 10.7
+bind 'set completion-ignore-case On' # this works fine
+# single tab press to show a list
+set show-all-if-ambiguous on
+# Completion applied similar insensitivity between hyphens and underscores
+set completion-map-case on
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
