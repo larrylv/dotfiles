@@ -1,0 +1,34 @@
+[user]
+	name = Larry Lv
+	email = larrylv1990@gmail.com
+[core]
+    excludesfile = /Users/larry/.gitignore
+    pager = less -+FRSX -FRX
+    editor = vim
+	autocrlf = input
+	safecrlf = true
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    sb = show-branch
+    lg = log --stat
+    last = log --stat -1
+    diffstat = diff --stat -r
+    wdiff = diff --word-diff
+    changes = diff --name-status -r
+    unstage = reset HEAD --
+	glog = log --graph
+    hist = log --pretty=format:\"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+[merge]
+    conflictstyle = diff3
+    tool = vimdiff
+[rerere]
+    enabled = true
+[push]
+	default = tracking
+[color]
+	ui = true
