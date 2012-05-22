@@ -15,20 +15,18 @@ set bs=2
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" configure indent {{{
+" configure indent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
 set cindent
-"}}}
 
-" configure search {{{
+" configure search
 set ignorecase
 set smartcase
 set hlsearch
-"}}}
 
 " Highlight trailing whitespace in red
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -38,8 +36,11 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+" Remove trailing whitespaces
+:nnoremap <silent> <F1> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
 " configure shortcut for jsbeauty plugin
-nnoremap <silent> <F3> :call g:Jsbeautify()<cr>
+nnoremap <silent> <F2> :call g:Jsbeautify()<cr>
 
 " configure Tlist plugin
 let Tlist_Show_One_File=1
@@ -51,12 +52,11 @@ map <F6> :Tlist<CR>
 let NERDTreeWinSize = 22
 map <F5> :NERDTree<CR>
 
-" configure ctags {{{
+" configure ctags
 map <F4> :!/usr/local/bin/ctags -R --exclude=.git --exclude=vendor/bundle --exclude=log --exclude=*.js * --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
 set tags=./tags;
-" }}}
 
 " configure a.vim
 nnoremap <silent> <F10> :A<CR>
