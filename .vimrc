@@ -76,8 +76,8 @@ filetype plugin indent on
 set completeopt=longest,menu
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
-
-inoremap <expr> <Esc>   pumvisible() ? "\<C-E>" : "\<Esc>"
+" map <ESC> will get arrow keys not working
+" inoremap <expr> <Esc>   pumvisible() ? "\<C-E>" : "\<Esc>"
 inoremap <expr> <C-J>   pumvisible() ? "\<C-N>" : "\<C-X><C-O>"
 inoremap <expr> <C-K>   pumvisible() ? "\<C-P>" : "\<C-K>"
 inoremap <expr> <C-U>   pumvisible() ? "\<C-E>" : "\<C-U>"

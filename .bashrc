@@ -17,8 +17,8 @@ set show-all-if-ambiguous on
 # Completion applied similar insensitivity between hyphens and underscores
 set completion-map-case on
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+if [ -f /usr/local/etc/bash_completion ]; then
+    . /usr/local/etc/bash_completion
 fi
 
 function parse_git_branch {
