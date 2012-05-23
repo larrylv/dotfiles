@@ -1,3 +1,8 @@
+"
+" author:    Lv Zhandong <larrylv1990@gmail.com>
+" modified at:    2012 May 24
+"
+
 set nocompatible
 
 set t_Co=256
@@ -9,7 +14,6 @@ set nu
 set ruler
 set nobackup
 set fdm=marker
-set nocp
 set bs=2
 
 " allow backspacing over everything in insert mode
@@ -67,6 +71,42 @@ if executable("ack")
 endif
 
 filetype plugin indent on
+
+" configure Omni Completion"{{{
+set completeopt=longest,menu
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
+
+inoremap <expr> <Esc>   pumvisible() ? "\<C-E>" : "\<Esc>"
+inoremap <expr> <C-J>   pumvisible() ? "\<C-N>" : "\<C-X><C-O>"
+inoremap <expr> <C-K>   pumvisible() ? "\<C-P>" : "\<C-K>"
+inoremap <expr> <C-U>   pumvisible() ? "\<C-E>" : "\<C-U>"
+
+" ruby's completion
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+" rails environment can lead to a mess, so disable on rails
+" prefer to look up API on apidock.com
+" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
+autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
+
+" other files' completion
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript inoremap . .<C-X><C-O>
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+" Automatic omni-completion suggestions
+" sometime it's really annoying every dot pops up a menu
+" so, disable this, and press tab to pop one when u really need
+" inoremap . .<C-X><C-O>
+"}}}
+
+" configure SuperTab
+let g:SuperTabRetainCompletionType = 2
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 " configure indent for ruby files
 au BufNewFile,BufRead *.rb set softtabstop=2 | set shiftwidth=2
