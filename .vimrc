@@ -20,9 +20,9 @@ set bs=2
 set backspace=indent,eol,start
 
 " configure indent
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set autoindent
 set cindent
@@ -40,30 +40,27 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" Remove trailing whitespaces
-:nnoremap <silent> <F1> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-
-" configure shortcut for jsbeauty plugin
-nnoremap <silent> <F2> :call g:Jsbeautify()<cr>
+" configure NERDTree plugin
+let NERDTreeWinSize = 22
+map <F1> :NERDTree<CR>
 
 " configure Tlist plugin
 let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1
 let Tlist_Exit_OnlyWindow=1
-map <F6> :Tlist<CR>
+map <F2> :Tlist<CR>
 
-" configure NERDTree plugin
-let NERDTreeWinSize = 22
-map <F5> :NERDTree<CR>
+" Remove trailing whitespaces
+:nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " configure ctags
-map <F4> :!/usr/local/bin/ctags -R --exclude=.git --exclude=vendor/bundle --exclude=log --exclude=*.js * --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F5> :!/usr/local/bin/ctags -R --exclude=.git --exclude=vendor/bundle --exclude=log --exclude=*.js * --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
 set tags=./tags;
 
 " configure a.vim
-nnoremap <silent> <F10> :A<CR>
+nnoremap <silent> <F6> :A<CR>
 
 " configure ack.vim
 if executable("ack")
@@ -94,7 +91,8 @@ autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
 
 " other files' completion
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript inoremap . .<C-X><C-O>
+" again, very annoying
+" autocmd FileType javascript inoremap . .<C-X><C-O>
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
@@ -107,10 +105,6 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " configure SuperTab
 let g:SuperTabRetainCompletionType = 2
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-
-" configure indent for ruby files
-au BufNewFile,BufRead *.rb set softtabstop=2 | set shiftwidth=2
-au FileType ruby set softtabstop=2 | set shiftwidth=2
 
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
 " autocmd BufRead *.erb set filetype=html

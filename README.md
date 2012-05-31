@@ -6,6 +6,7 @@ These are config files to set up a system the way I like it.
 
 ```
 git clone git://github.com/LarryLv/dotfiles.git
+cd dotfiles
 cp -r .bashrc .git-completion.bash .gitconfig .tmux.conf .vim .vimrc ~/
 source ~/.bashrc
 ```
