@@ -69,6 +69,11 @@ endif
 
 filetype plugin indent on
 
+" vim-javascript plugin configuration
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+
 " configure Omni Completion"{{{
 set completeopt=longest,menu
 "improve autocomplete menu color
