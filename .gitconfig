@@ -29,6 +29,6 @@
 [rerere]
     enabled = true
 [push]
-    default = tracking
+    default = upstream
 [color]
     ui = true
