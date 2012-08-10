@@ -15,6 +15,11 @@ source ~/.bashrc
 
 I am running on Mac OS X, but it will likely work on Linux as well.
 
+* vim (7.3) built with Ruby 1.8.7 support
+* ack (1.9.6)
+* ack-grep (1.9.2)
+* ctags (5.9)
+
 ### Vim Plugins
 
 * [Command-T](https://github.com/wincent/Command-T): Vim should be compiled with Ruby support

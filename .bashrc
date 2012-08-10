@@ -1,6 +1,7 @@
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 
-alias ls='ls -G'
+alias ls='ls -G' # for Mac OS X
+# alias ls='ls --color' # for Linux
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -17,8 +18,8 @@ set show-all-if-ambiguous on
 # Completion applied similar insensitivity between hyphens and underscores
 set completion-map-case on
 
-if [ -f /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
 fi
 
 function parse_git_branch {

@@ -68,7 +68,7 @@ nnoremap <silent> <F6> :A<CR>
 
 " configure ack.vim
 if executable("ack")
-    let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=vendor/bundle --ignore-dir=tmp/cache --ignore-dir=app/assets/images"
+    let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir=vendor/bundle --ignore-dir=tmp/cache --ignore-dir=app/assets/images"
 endif
 
 filetype plugin indent on
