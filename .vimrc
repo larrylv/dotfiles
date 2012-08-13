@@ -1,6 +1,6 @@
 "
 " author:    Lv Zhandong <larrylv1990@gmail.com>
-" modified at:    2012 May 24
+" modified at:    2012 Aug 13
 "
 
 set nocompatible
@@ -58,7 +58,7 @@ map <F2> :Tlist<CR>
 :nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " configure ctags
-map <F5> :!/usr/local/bin/ctags -R --exclude=.git --exclude=vendor/bundle --exclude=log --exclude=*.js * --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F5> :!ctags -R --exclude=.git --exclude=vendor/bundle --exclude=log --exclude=*.js * --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
 set tags=./tags;
@@ -68,7 +68,7 @@ nnoremap <silent> <F6> :A<CR>
 
 " configure ack.vim
 if executable("ack")
-    let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir=vendor/bundle --ignore-dir=tmp/cache --ignore-dir=app/assets/images"
+    let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir=vendor/bundle --ignore-dir=tmp --ignore-dir=app/assets/images"
 endif
 
 filetype plugin indent on
@@ -78,44 +78,16 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-" configure Omni Completion"{{{
 set completeopt=longest,menu
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
-" map <ESC> will get arrow keys not working
-" inoremap <expr> <Esc>   pumvisible() ? "\<C-E>" : "\<Esc>"
-inoremap <expr> <C-J>   pumvisible() ? "\<C-N>" : "\<C-X><C-O>"
-inoremap <expr> <C-K>   pumvisible() ? "\<C-P>" : "\<C-K>"
-inoremap <expr> <C-U>   pumvisible() ? "\<C-E>" : "\<C-U>"
-
-" ruby's completion
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-" rails environment can lead to a mess, so disable on rails
-" prefer to look up API on apidock.com
-" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
-autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
-
-" other files' completion
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-" again, very annoying
-" autocmd FileType javascript inoremap . .<C-X><C-O>
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-" Automatic omni-completion suggestions
-" sometime it's really annoying every dot pops up a menu
-" so, disable this, and press tab to pop one when u really need
-" inoremap . .<C-X><C-O>
-"}}}
 
 " configure SuperTab
 let g:SuperTabRetainCompletionType = 2
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:SuperTabDefaultCompletionType = "<C-X><C-P>"
 
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+autocmd BufNewFile,BufRead Capfile set filetype=ruby
 " autocmd BufRead *.erb set filetype=html
 augroup mkd
     autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
