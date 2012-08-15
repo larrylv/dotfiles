@@ -87,9 +87,6 @@ if executable("ack")
     let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir=vendor/bundle --ignore-dir=tmp --ignore-dir=app/assets/images"
 endif"}}}
 
-" BufExplorer.vim configuration"{{{
-nnoremap <silent><C-M> :BufExplorer<CR>"}}}
-
 " vim-javascript plugin configuration"{{{
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
