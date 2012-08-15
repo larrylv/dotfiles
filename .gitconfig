@@ -1,8 +1,8 @@
 [user]
-    name = Larry Lv
-    email = larrylv1990@gmail.com
+    name = lvzhandong
+    email = lvzhandong@umeng.com
 [core]
-    excludesfile = /Users/larry/.gitignore
+    excludesfile = /home/larry/.gitignore
     pager = less -+FRSX -FRX
     editor = vim
     autocrlf = input
@@ -32,3 +32,6 @@
     default = upstream
 [color]
     ui = true
+[i18n]
+	commitEncoding = utf8
+	logOutputEncoding = utf8

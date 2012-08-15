@@ -65,9 +65,9 @@ let g:CommandTAcceptSelectionSplitMap=['<C-f>']
 " }}}
 
 " NERDTree plugin configuration"{{{
-let NERDTreeWinSize = 22
+let NERDTreeWinSize = 28
 let NERDTreeAutoCenter=1
-map <F1> :NERDTree<CR>"}}}
+map <F1> :NERDTreeToggle<CR>"}}}
 
 " ctags/Tlist plugin configuration"{{{
 map <F2> :Tlist<CR>
