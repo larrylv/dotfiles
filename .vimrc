@@ -38,6 +38,10 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&
 set completeopt=longest,menu
 highlight Pmenu ctermbg=238 gui=bold
 
+" SelectBuf.vim configuration
+nmap <unique> <silent> <C-M> <Plug>SelectBuf 
+let g:selBufAlwaysShowHidden = 1
+
 " use comma as <Leader> key instead of backslash
 let mapleader=","
 
@@ -45,12 +49,12 @@ let mapleader=","
 :nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Highlight trailing whitespace"{{{
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()"}}}
+" highlight ExtraWhitespace ctermbg=red guibg=red
+" match ExtraWhitespace /\s\+$/
+" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+" autocmd BufWinLeave * call clearmatches()"}}}
 
 " CommandT plugin configuration {{{
 " double percentage sign in command mode is expanded
