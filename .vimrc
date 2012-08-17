@@ -61,7 +61,7 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 nnoremap <leader><leader> <c-^>
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 let g:CommandTAcceptSelectionSplitMap=['<C-f>']
-:set wildignore+=*.o,*.obj,.git,vendor/bundle/**,app/assets/images/**,tmp/cache/** " exclude files from listings
+:set wildignore+=*.o,*.obj,.git,app/assets/images,vendor/bundle,vendor/cache,tmp,public/download,public/images " exclude files from listings
 " }}}
 
 " NERDTree plugin configuration"{{{
