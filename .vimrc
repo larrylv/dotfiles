@@ -38,10 +38,6 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&
 set completeopt=longest,menu
 highlight Pmenu ctermbg=238 gui=bold
 
-" SelectBuf.vim configuration
-nmap <unique> <silent> <C-M> <Plug>SelectBuf 
-let g:selBufAlwaysShowHidden = 1
-
 " use comma as <Leader> key instead of backslash
 let mapleader=","
 
