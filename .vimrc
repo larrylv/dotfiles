@@ -84,7 +84,7 @@ nnoremap <silent> <F6> :A<CR>"}}}
 
 " ack.vim configuration"{{{
 if executable("ack")
-    let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir=vendor/bundle --ignore-dir=tmp --ignore-dir=app/assets/images"
+    let g:ackprg="ack -H --nocolor --nogroup --column --nojs --ignore-dir=vendor/bundle --ignore-dir=tmp --ignore-dir=app/assets/images"
 endif"}}}
 
 " vim-javascript plugin configuration"{{{
