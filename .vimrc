@@ -38,6 +38,15 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&
 set completeopt=longest,menu
 highlight Pmenu ctermbg=238 gui=bold
 
+" Map ctrl-movement keys to window switching
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
+
+" Tab triggers buffer-name auto-completion
+set wildchar=<Tab> wildmenu wildmode=full
+
 " use comma as <Leader> key instead of backslash
 let mapleader=","
 
@@ -58,6 +67,8 @@ let mapleader=","
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+map <Leader>a :bprev<Return>
+map <Leader>s :bnext<Return>
 nnoremap <leader><leader> <c-^>
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 let g:CommandTAcceptSelectionSplitMap=['<C-f>']
