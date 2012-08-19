@@ -3,3 +3,15 @@ tags
 .svn
 *~
 .*.swp
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+/db/*.sqlite3
+/public/system/*
+/spec/tmp/*
