@@ -34,7 +34,7 @@ set hlsearch
 set laststatus=2
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %c:%l/%L%)
 
-" autocomplete configuration
+" Autocomplete configuration
 set completeopt=longest,menu
 highlight Pmenu ctermbg=238 gui=bold
 
@@ -54,12 +54,12 @@ let mapleader=","
 :nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Highlight trailing whitespace"{{{
-" highlight ExtraWhitespace ctermbg=red guibg=red
-" match ExtraWhitespace /\s\+$/
-" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-" autocmd BufWinLeave * call clearmatches()"}}}
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()"}}}
 
 " CommandT plugin configuration {{{
 " double percentage sign in command mode is expanded
@@ -76,7 +76,7 @@ let g:CommandTAcceptSelectionSplitMap=['<C-f>']
 " }}}
 
 " NERDTree plugin configuration"{{{
-let NERDTreeWinSize = 28
+let NERDTreeWinSize = 26
 let NERDTreeAutoCenter=1
 map <F1> :NERDTreeToggle<CR>"}}}
 
