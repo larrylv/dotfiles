@@ -368,7 +368,7 @@ function! s:DefineVariables()
                 \ 'AutoCloseProtectedRegions': ["Comment", "String", "Character"],
                 \ 'AutoCloseSmartQuote': 1,
                 \ 'AutoCloseOn': 1,
-                \ 'AutoCloseSelectionWrapPrefix': '<LEADER>q',
+                \ 'AutoCloseSelectionWrapPrefix': '<LEADER>a',
                 \ 'AutoClosePumvisible': {"ENTER": "\<C-Y>", "ESC": "\<C-E>"},
                 \ 'AutoCloseExpandEnterOn': "{",
                 \ 'AutoCloseExpandSpace': 1,
