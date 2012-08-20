@@ -85,7 +85,7 @@ map <F2> :Tlist<CR>
 let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1
 let Tlist_Exit_OnlyWindow=1
-map <F5> :!ctags -R --exclude=.git --exclude=vendor/bundle --exclude=log --exclude=*.js * --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F5> :!ctags -R --exclude=.git --exclude=vendor/bundle --exclude=log --exclude=*.js --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
 set tags=./tags;"}}}
@@ -95,7 +95,7 @@ nnoremap <silent> <F6> :A<CR>"}}}
 
 " ack.vim configuration"{{{
 if executable("ack")
-    let g:ackprg="ack -H --nocolor --nogroup --column --nojs --nocss --ignore-dir=vendor/bundle --ignore-dir=tmp --ignore-dir=app/assets/images"
+    let g:ackprg="ack -H --nocolor --nogroup --column --nojs --nocss --ignore-dir=vendor/bundle --ignore-dir=bundler_stubs --ignore-dir=bin --ignore-dir=tmp"
 endif"}}}
 
 " vim-javascript plugin configuration"{{{
