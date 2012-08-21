@@ -34,7 +34,11 @@ set hlsearch
 set laststatus=2
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %c:%l/%L%)
 
+" Map ESC
+imap jj <ESC>
+
 " Autocomplete configuration
+set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 highlight Pmenu ctermbg=238 gui=bold
 
@@ -71,12 +75,10 @@ autocmd BufWinLeave * call clearmatches()"}}}
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-map <Leader>a :bprev<Return>
-map <Leader>s :bnext<Return>
 nnoremap <leader><leader> <c-^>
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 let g:CommandTAcceptSelectionSplitMap=['<C-f>']
-:set wildignore+=*.o,*.obj,.git,app/assets/images,vendor/bundle,vendor/cache,tmp,public/download,public/images " exclude files from listings
+:set wildignore+=*.o,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
 " }}}
 
 " NERDTree plugin configuration"{{{
@@ -89,7 +91,7 @@ map <F2> :Tlist<CR>
 let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1
 let Tlist_Exit_OnlyWindow=1
-map <F5> :!ctags -R --exclude=.git --exclude=vendor/bundle --exclude=log --exclude=*.js --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
 set tags=./tags;"}}}
@@ -99,6 +101,8 @@ nnoremap <silent> <F6> :A<CR>"}}}
 
 " ack.vim configuration"{{{
 if executable("ack")
+    " ,a to Ack (search in files)
+    nnoremap <leader>a :Ack 
     let g:ackprg="ack -H --nocolor --nogroup --column --nojs --nocss --ignore-dir=vendor/bundle --ignore-dir=bundler_stubs --ignore-dir=bin --ignore-dir=tmp"
 endif"}}}
 
