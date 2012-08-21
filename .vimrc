@@ -53,6 +53,10 @@ let mapleader=","
 " Remove trailing whitespaces
 :nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+" scrollfix.vim shortcut for open/close scrollfix
+" FIXOFF    :let g:scrollfix=-1
+" FIXON     :let g:scrollfix=60
+
 " Highlight trailing whitespace"{{{
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
