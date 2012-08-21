@@ -3,11 +3,11 @@ snippet #!
 	#
 	#  Copyright (c) 2012. Larry Lv <larrylv1990@gmail.com>
 	#  All Rights Reserved.
-	# 
+	#
 	${3}
 # @brief
 snippet bri
-	@brief: 
+	@brief:
 # has_many
 snippet hm
 	has_many :${1}
@@ -23,16 +23,11 @@ snippet em
 # embedded_in
 snippet ei
 	embedded_in :${1}
-# field
-snippet fi
-	field :${1}
 # New Block
 snippet =b
 	=begin rdoc
 		${1}
 	=end
-snippet y
-	:yields: ${1:arguments}
 snippet rb
 	#!/usr/bin/env ruby -wKU
 
@@ -154,12 +149,6 @@ snippet mod module .. ClassMethods .. end
 			receiver.send :include, InstanceMethods
 		end
 	end
-# attr_reader
-snippet r
-	attr_reader :${1:attr_names}
-# attr_writer
-snippet w
-	attr_writer :${1:attr_names}
 # attr_accessor
 snippet rw
 	attr_accessor :${1:attr_names}

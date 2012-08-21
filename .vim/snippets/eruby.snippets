@@ -199,18 +199,16 @@ snippet #!
 	#
 	#  Copyright (c) 2012. Larry Lv <larrylv1990@gmail.com>
 	#  All Rights Reserved.
-	# 
+	#
 	${3}
 # @brief
 snippet bri
-	@brief: 
+	@brief:
 # New Block
 snippet =b
 	=begin rdoc
 		${1}
 	=end
-snippet y
-	:yields: ${1:arguments}
 snippet rb
 	#!/usr/bin/env ruby -wKU
 
@@ -332,15 +330,12 @@ snippet mod module .. ClassMethods .. end
 			receiver.send :include, InstanceMethods
 		end
 	end
-# attr_reader
-snippet r
-	attr_reader :${1:attr_names}
-# attr_writer
-snippet w
-	attr_writer :${1:attr_names}
 # attr_accessor
 snippet rw
 	attr_accessor :${1:attr_names}
+# attr_accessible
+snippet ac
+	attr_accessible :${1:attr_names}
 # include Enumerable
 snippet Enum
 	include Enumerable
