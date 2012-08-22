@@ -37,17 +37,6 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&
 " Map ESC
 imap jj <ESC>
 
-" Autocomplete configuration
-set complete=.,w,b,u,t,i
-set completeopt=longest,menu
-highlight Pmenu ctermbg=238 gui=bold
-
-let g:neocomplcache_enable_at_startup = 1
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
@@ -66,6 +55,19 @@ let mapleader=","
 " scrollfix.vim shortcut for open/close scrollfix
 " FIXOFF    :let g:scrollfix=-1
 " FIXON     :let g:scrollfix=60
+
+" Autocomplete configuration"{{{
+set complete=.,w,b,u,t,i
+set completeopt=longest,menu
+highlight Pmenu ctermbg=238 gui=bold
+let g:neocomplcache_enable_at_startup = 1
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>""}}}
 
 " Highlight trailing whitespace"{{{
 highlight ExtraWhitespace ctermbg=red guibg=red
