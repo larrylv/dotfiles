@@ -42,6 +42,12 @@ set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 highlight Pmenu ctermbg=238 gui=bold
 
+let g:neocomplcache_enable_at_startup = 1
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
