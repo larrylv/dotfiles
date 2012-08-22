@@ -49,6 +49,13 @@ set wildchar=<Tab> wildmenu wildmode=full
 " use comma as <Leader> key instead of backslash
 let mapleader=","
 
+" Map shortcuts for rails.vim
+map <leader>c :Rcontroller<cr>
+map <leader>v :Rview<cr>
+map <leader>m :Rmodel<cr>
+map <leader>u :Runittest<cr>
+map <leader>s :Rfunctionaltest<cr>
+
 " Remove trailing whitespaces
 :nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
@@ -65,8 +72,10 @@ let g:neocomplcache_enable_at_startup = 1
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-j> neocomplcache#smart_close_popup()
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>""}}}
 
 " Highlight trailing whitespace"{{{
@@ -99,6 +108,7 @@ map <F2> :Tlist<CR>
 let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1
 let Tlist_Exit_OnlyWindow=1
+let Tlist_WinWidth = 40
 map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
