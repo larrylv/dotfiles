@@ -63,12 +63,30 @@ map <leader>s :Rfunctionaltest<cr>
 " FIXOFF    :let g:scrollfix=-1
 " FIXON     :let g:scrollfix=60
 
+" Syntastic settings"{{{
+set statusline+=\ %#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'passive_filetypes': ['tex'] }"}}}
+
 " Autocomplete configuration"{{{
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 highlight Pmenu ctermbg=238 gui=bold
 let g:neocomplcache_enable_at_startup = 1
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
 " Enable omni completion.
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
