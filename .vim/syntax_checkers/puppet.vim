@@ -27,25 +27,43 @@ if !executable("puppet-lint")
     let g:syntastic_puppet_lint_disable = 1
 endif
 
-function! s:PuppetExtractVersion()
-    let output = system("puppet --version")
-    let output = substitute(output, '\n$', '', '')
-    return split(output, '\.')
+function! s:PuppetVersion()
+    if !exists("s:puppet_version")
+        let output = system("puppet --version 2>/dev/null")
+        let output = substitute(output, '\n$', '', '')
+        let s:puppet_version = split(output, '\.')
+    endif
+    return s:puppet_version
 endfunction
 
-function! s:PuppetLintExtractVersion()
-    let output = system("puppet-lint --version")
-    let output = substitute(output, '\n$', '', '')
-    let output = substitute(output, '^puppet-lint ', '', 'i')
-    return split(output, '\.')
+function! s:PuppetLintVersion()
+    if !exists("s:puppet_lint_version")
+        let output = system("puppet-lint --version 2>/dev/null")
+        let output = substitute(output, '\n$', '', '')
+        let output = substitute(output, '^puppet-lint ', '', 'i')
+        let s:puppet_lint_version = split(output, '\.')
+    endif
+    return s:puppet_lint_version
 endfunction
 
-let s:puppetVersion = s:PuppetExtractVersion()
-let s:lintVersion = s:PuppetLintExtractVersion()
+"the args must be arrays of the form [major, minor, macro]
+function s:IsVersionAtLeast(installed, required)
+    if a:installed[0] != a:required[0]
+        return a:installed[0] > a:required[0]
+    endif
 
-if !(s:lintVersion[0] >= '0' && s:lintVersion[1] >= '1' && s:lintVersion[2] >= '10')
-    let g:syntastic_puppet_lint_disable = 1
-endif
+    if a:installed[1] != a:required[1]
+        return a:installed[1] > a:required[1]
+    endif
+
+    return a:installed[2] >= a:required[2]
+endfunction
+
+if !g:syntastic_puppet_lint_disable
+    if !s:IsVersionAtLeast(s:PuppetLintVersion(), [0,1,10])
+        let g:syntastic_puppet_lint_disable = 1
+    endif
+end
 
 function! s:getPuppetLintErrors()
     if !exists("g:syntastic_puppet_lint_arguments")
@@ -57,15 +75,15 @@ function! s:getPuppetLintErrors()
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat, 'subtype': 'Style' })
 endfunction
 
-function! s:getPuppetMakeprg() 
+function! s:getPuppetMakeprg()
     "If puppet is >= version 2.7 then use the new executable
-    if s:puppetVersion[0] >= '2' && s:puppetVersion[1] >= '7'
+    if s:IsVersionAtLeast(s:PuppetVersion(), [2,7,0])
         let makeprg = 'puppet parser validate ' .
                     \ shellescape(expand('%')) .
                     \ ' --color=false'
 
         "add --ignoreimport for versions < 2.7.10
-        if s:puppetVersion[2] < '10'
+        if s:PuppetVersion()[2] < '10'
             let makeprg .= ' --ignoreimport'
         endif
 
@@ -85,7 +103,7 @@ function! SyntaxCheckers_puppet_GetLocList()
     let errorformat .= 'err: Could not parse for environment %*[a-z]: %m at %f:%l'
 
     let errors = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
- 
+
     if !g:syntastic_puppet_lint_disable
         let errors = errors + s:getPuppetLintErrors()
     endif

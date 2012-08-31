@@ -19,9 +19,7 @@
     wdiff = diff --word-diff
     changes = diff --name-status -r
     unstage = reset HEAD --
-    glog = log --graph
-    gl = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr,%an)%Creset' --abbrev-commit --date=relative
-    hist = log --pretty=format:\"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset\" --graph --date=short
+    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr,%an)%Creset' --abbrev-commit --date=relative
     type = cat-file -t
     dump = cat-file -p
 [merge]

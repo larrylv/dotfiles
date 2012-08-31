@@ -49,7 +49,7 @@ function proml {
     #  $BLUE[$RED\u@\h:\w$GREEN\$(parse_git_branch)$BLUE]\
     # $GREEN\$ "
 PS1="\[\033[G\]${TITLEBAR}\
-$BLUE[$RED\u@\h:$LIGHT_GREEN\W$BLUE]\
+$BLUE[$RED\u@\h:$LIGHT_GREEN\w$BLUE]\
 $GREEN\$(parse_git_branch)\
 $GREEN\$ $DEFAULT"
 PS2='> '
