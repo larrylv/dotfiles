@@ -6,6 +6,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias grep='grep --color=auto'
+alias rm='trash'
 
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
