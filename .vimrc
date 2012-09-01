@@ -15,6 +15,7 @@ set nobackup
 set fdm=marker
 set bs=2
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set diffopt+=iwhite
 
 " tab/indent configuration
 set tabstop=2
