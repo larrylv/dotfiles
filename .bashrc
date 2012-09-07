@@ -1,6 +1,7 @@
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 
 alias ls='ls --color'
+# for Mac: alias ls='ls -G'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -22,10 +23,6 @@ set completion-map-case on
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-
-function sudo {
-  [[ $1 == vim ]] && shift && sudoedit "$@" || command sudo "$@";
-}
 
 function parse_git_branch {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'

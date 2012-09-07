@@ -19,10 +19,6 @@ let g:loaded_syntastic_plugin = 1
 
 let s:running_windows = has("win16") || has("win32")
 
-if !s:running_windows
-    let s:uname = system('uname')
-endif
-
 if !exists("g:syntastic_enable_signs")
     let g:syntastic_enable_signs = 1
 endif
