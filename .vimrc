@@ -96,8 +96,8 @@ smap <silent><C-l> <Plug>(neocomplcache_snippets_force_expand)
 imap <silent><C-j> <Plug>(neocomplcache_snippets_force_jump)
 smap <silent><C-j> <Plug>(neocomplcache_snippets_force_jump)
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-e>  neocomplcache#close_popup()
+inoremap <expr><C-y>  neocomplcache#cancel_popup()
 inoremap <expr><C-h> neocomplcache#smart_close_popup()
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>""}}}
 
