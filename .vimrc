@@ -33,7 +33,7 @@ set hlsearch
 
 " status line configuration
 set laststatus=2
-set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %c:%l/%L%)
+set statusline=\ %<%t[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %c:%l\ \(%p%%\)%)
 
 " Map ESC
 imap jj <ESC>
