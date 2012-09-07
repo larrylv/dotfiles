@@ -64,6 +64,18 @@ map <leader>s :Rfunctionaltest<cr>
 " FIXOFF    :let g:scrollfix=-1
 " FIXON     :let g:scrollfix=60
 
+" Marks settings"{{{
+let showmarks_enable = 1
+let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+" Ignore help, quickfix, non-modifiable buffers
+let showmarks_ignore_type = "hqm"
+" Hilight lower & upper marks
+let showmarks_hlline_lower = 1
+let showmarks_hlline_upper = 1
+hi ShowMarksHLl ctermbg=Yellow  ctermfg=Black guibg=#FFDB72 guifg=Black
+hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black
+if !hasmapto( '<Plug>ShowmarksClearMark'       ) | map <silent> <unique> <leader>mq :ShowMarksClearMark<cr>| endif"}}}
+
 " Syntastic settings"{{{
 set statusline+=\ %#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
