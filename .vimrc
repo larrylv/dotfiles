@@ -15,7 +15,7 @@ set nobackup
 set fdm=marker
 set bs=2
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
-set diffopt+=iwhite
+set diffopt+=iwhite " ignore whitespaces with vimdiff
 
 " tab/indent configuration
 set tabstop=2
@@ -70,7 +70,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
+let g:syntastic_auto_jump=0
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['tex'] }"}}}
 
