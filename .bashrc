@@ -1,12 +1,12 @@
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 
-alias ls='ls -G' # for Mac OS X
-# alias ls='ls --color' # for Linux
+alias ls='ls --color'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias grep='grep --color=auto'
 alias rm='trash'
+alias tigs='tig status'
 
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
@@ -62,3 +62,5 @@ PS4='+ '
 }
 proml
 
+export PATH=/home/larry/Shit/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export EDITOR=vim
