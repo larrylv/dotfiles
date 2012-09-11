@@ -20,7 +20,7 @@
     wdiff = diff --word-diff
     changes = diff --name-status -r
     unstage = reset HEAD --
-    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr,%an)%Creset' --abbrev-commit --date=relative
+    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad,%an)%Creset' --abbrev-commit --date=short
     type = cat-file -t
     dump = cat-file -p
 [merge]
