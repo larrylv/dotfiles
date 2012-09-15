@@ -1,8 +1,8 @@
 [user]
-    name = lvzhandong
-    email = lvzhandong@umeng.com
+    name = Larry Lv
+    email = larrylv1990@gmail.com
 [core]
-    excludesfile = /home/larry/.gitignore
+    excludesfile = /Users/larry/.gitignore
     pager = less -+FRSX -FRX
     editor = vim
     autocrlf = input
@@ -26,8 +26,6 @@
 [merge]
     conflictstyle = diff3
     tool = vimdiff
-[rerere]
-    enabled = true
 [push]
     default = upstream
 [color]
