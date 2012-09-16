@@ -15,5 +15,5 @@ capybara-*.html
 /db/*.sqlite3
 /public/system/*
 /spec/tmp/*
-/bin
+/.binstubs
 tags
