@@ -65,6 +65,7 @@ map <leader>s :Rfunctionaltest<cr>
 " FIXON     :let g:scrollfix=60
 
 " Marks settings"{{{
+map <leader>g :marks<cr>
 let showmarks_enable = 1
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 " Ignore help, quickfix, non-modifiable buffers
