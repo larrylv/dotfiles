@@ -2,7 +2,7 @@
 
 These are config files to set up a system the way I like it.
 
-Most of it is based on Ryan Bates dot files, who I’m really thankful. You can see more information here: github.com/ryanb/dotfiles
+Most of it is based on Ryan Bates dot files, who I’m really thankful. You can see more information here: [github.com/ryanb/dotfiles](http://github.com/ryanb/dotfiles)
 
 ### Installation
 
