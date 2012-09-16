@@ -1,7 +1,12 @@
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 
-alias ls='ls --color'
-# for Mac: alias ls='ls -G'
+if [ `uname` == 'Darwin' ]
+then
+  alias ls='ls -G'
+else
+  alias ls='ls --color'
+fi
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
