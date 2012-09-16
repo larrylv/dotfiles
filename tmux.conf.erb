@@ -1,7 +1,7 @@
 #
 # author:         Xu Xiaodong <xxdlhy@gmail.com>
 # modified by:    Lv Zhandong <larrylv1990@gmail.com>
-# modified at:    2012 Feb 14
+# modified at:    2012 Sep 16
 #
 
 #-- base --#
@@ -70,7 +70,7 @@ setw -g mode-keys vi
 
 set -g status-justify centre
 set -g status-bg default
-set -g status-left "#[fg=cyan]:#[fg=blue]: #[fg=red][ #[fg=green]LarryLv-iMac #[fg=red]]#[default]"
+set -g status-left "#[fg=cyan]:#[fg=blue]: #[fg=red][ #[fg=green]<%= print("Your Computer's Name: "); STDOUT.flush; STDIN.gets.chomp %> #[fg=red]]#[default]"
 set -g status-left-length 20
 set -g status-right-length 25
 set -g status-right "#[fg=red][ #[fg=green]%H:%M #[fg=magenta]%a %m-%d #[fg=red]] #[fg=blue]:#[fg=cyan]:#[default]"

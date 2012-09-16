@@ -1,9 +1,9 @@
-tags
 .DS_Store
 .svn
 *~
-.*.swp
+*.sw~
 *.rbc
+*.rvmrc
 *.sassc
 .sass-cache
 capybara-*.html
@@ -16,3 +16,4 @@ capybara-*.html
 /public/system/*
 /spec/tmp/*
 /bin
+tags

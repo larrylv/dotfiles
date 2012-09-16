@@ -59,5 +59,5 @@ PS4='+ '
 }
 proml
 
-export PATH=/home/larry/Shit/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export EDITOR=vim

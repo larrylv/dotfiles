@@ -1,6 +1,6 @@
 "
 " author:    Lv Zhandong <larrylv1990@gmail.com>
-" modified at:    2012 Aug 15
+" modified at:    2012 Sep 15
 "
 
 set t_Co=256
