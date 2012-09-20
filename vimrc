@@ -35,37 +35,81 @@ set hlsearch
 set laststatus=2
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %c:%l\ \(%p%%\)%)
 
-" Map ESC
-imap jj <ESC>
+" Tab triggers buffer-name auto-completion
+set wildchar=<Tab> wildmenu wildmode=full
 
-" Map ctrl-movement keys to window switching
+" Misc Key Maps
+imap <c-c> <ESC>
+imap jj <ESC>
+" Move around splits with <c-hjkl>
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
-
-" Tab triggers buffer-name auto-completion
-set wildchar=<Tab> wildmenu wildmode=full
+" Clear the search buffer when hitting return
+function! MapCR()
+  nnoremap <cr> :nohlsearch<cr>
+endfunction
+call MapCR()
+" Remove trailing whitespaces
+:nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " use comma as <Leader> key instead of backslash
 let mapleader=","
 
-" Map shortcuts for rails.vim
-map <leader>c :Rcontroller<cr>
-map <leader>v :Rview<cr>
-map <leader>m :Rmodel<cr>
-map <leader>u :Runittest<cr>
-map <leader>s :Rfunctionaltest<cr>
-
-" Remove trailing whitespaces
-:nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+" Rename current file
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>
 
 " scrollfix.vim shortcut for open/close scrollfix
 " FIXOFF    :let g:scrollfix=-1
 " FIXON     :let g:scrollfix=60
 
+" Insert the current time
+command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
+
+" Map shortcuts for rails.vim"{{{
+map <leader>c :Rcontroller<cr>
+map <leader>v :Rview<cr>
+map <leader>m :Rmodel<cr>
+function! OpenTestAlternate()
+  let new_file = AlternateForCurrentFile()
+  exec ':e ' . new_file
+endfunction
+function! AlternateForCurrentFile()
+  let current_file = expand("%")
+  let new_file = current_file
+  let in_spec = match(current_file, '^spec/') != -1
+  let going_to_spec = !in_spec
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') || match(current_file, '\<helpers\>') != -1
+  if going_to_spec
+    if in_app
+      let new_file = substitute(new_file, '^app/', '', '')
+    end
+    let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
+    let new_file = 'spec/' . new_file
+  else
+    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+    let new_file = substitute(new_file, '^spec/', '', '')
+    if in_app
+      let new_file = 'app/' . new_file
+    end
+  endif
+  return new_file
+endfunction
+nnoremap <leader>. :call OpenTestAlternate()<cr>
+"map <leader>u :Runittest<cr>
+"map <leader>s :Rfunctionaltest<cr>"}}}
+
 " Marks settings"{{{
-map <leader>g :marks<cr>
 let showmarks_enable = 1
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 " Ignore help, quickfix, non-modifiable buffers
@@ -132,6 +176,33 @@ nnoremap <leader><leader> <c-^>
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 let g:CommandTAcceptSelectionSplitMap=['<C-f>']
 :set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
+
+function! ShowRoutes()
+  " Requires 'scratch' plugin
+  :topleft :split __Routes__
+  " Make sure Vim doesn't write __Routes__ as a file
+  :set buftype=nofile
+  " Delete everything
+  :normal 1GdG
+  " Put routes output in buffer
+  :0r! rake -s routes
+  " Size window to number of lines (1 plus rake output length)
+  " :exec ":normal " . line("$") . "_ "
+  " Move cursor to bottom
+  :normal 1GG
+  " Delete empty trailing line
+  :normal dd
+endfunction
+map <leader>gR :call ShowRoutes()<cr>
+map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets/sass<cr>
+map <leader>gg :topleft :vsplit Gemfile<cr>
+map <leader>gr :topleft :vsplit config/routes.rb<cr>
 " }}}
 
 " NERDTree plugin configuration"{{{
