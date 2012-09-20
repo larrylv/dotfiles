@@ -33,7 +33,7 @@ set hlsearch
 
 " status line configuration
 set laststatus=2
-set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %c:%l\ \(%p%%\)%)
+set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %l:%c\ \(%p%%\)%)
 
 " Tab triggers buffer-name auto-completion
 set wildchar=<Tab> wildmenu wildmode=full
@@ -48,7 +48,7 @@ map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 " Clear the search buffer when hitting return
 function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>
+  nnoremap <c-n> :nohlsearch<cr>
 endfunction
 call MapCR()
 " Remove trailing whitespaces
@@ -228,7 +228,7 @@ nnoremap <silent> <F6> :A<CR>"}}}
 if executable("ack")
     " ,a to Ack (search in files)
     nnoremap <leader>a :Ack 
-    let g:ackprg="ack -H --nocolor --nogroup --column --nojs --nocss --ignore-dir=vendor/bundle --ignore-dir=bundler_stubs --ignore-dir=bin --ignore-dir=tmp"
+    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=vendor/bundle --ignore-dir=./binstubs --ignore-dir=bin --ignore-dir=log --ignore-dir=tmp"
 endif"}}}
 
 " vim-javascript plugin configuration"{{{
