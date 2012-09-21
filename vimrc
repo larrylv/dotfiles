@@ -4,7 +4,7 @@
 "
 
 set t_Co=256
-:colorscheme wombat256mod
+colorscheme wombat256mod
 
 " basic configuration
 syntax on

@@ -1741,6 +1741,33 @@ _git_push ()
 	__git_complete_remote_or_refspec
 }
 
+_git_rbs ()
+{
+	local dir="$(__gitdir)"
+	if [ -d "$dir"/rebase-apply ] || [ -d "$dir"/rebase-merge ]; then
+		__gitcomp "--continue --skip --abort"
+		return
+	fi
+	__git_complete_strategy && return
+	case "$cur" in
+	--whitespace=*)
+		__gitcomp "$__git_whitespacelist" "" "${cur##--whitespace=}"
+		return
+		;;
+	--*)
+		__gitcomp "
+			--onto --merge --strategy --interactive
+			--preserve-merges --stat --no-stat
+			--committer-date-is-author-date --ignore-date
+			--ignore-whitespace --whitespace=
+			--autosquash
+			"
+
+		return
+	esac
+	__gitcomp "$(__git_refs)"
+}
+
 _git_rebase ()
 {
 	local dir="$(__gitdir)"
