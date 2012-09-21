@@ -41,6 +41,8 @@ set wildchar=<Tab> wildmenu wildmode=full
 " Misc Key Maps
 imap <c-c> <ESC>
 imap jj <ESC>
+" Insert a hash rocket with <c-l>
+imap <c-h> <space>=><space>
 " Move around splits with <c-hjkl>
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
@@ -155,7 +157,7 @@ smap <silent><C-j> <Plug>(neocomplcache_snippets_force_jump)
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-e>  neocomplcache#close_popup()
 inoremap <expr><C-y>  neocomplcache#cancel_popup()
-inoremap <expr><C-h> neocomplcache#smart_close_popup()
+"inoremap <expr><C-h> neocomplcache#smart_close_popup()
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>""}}}
 
 " Highlight trailing whitespace"{{{
