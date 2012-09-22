@@ -243,6 +243,8 @@ let g:SuperTabRetainCompletionType = 2
 let g:SuperTabDefaultCompletionType = "<C-X><C-P>""}}}
 
 " filetype detection"{{{
+autocmd BufNewFile,BufRead Thorfile set filetype=ruby
+autocmd BufNewFile,BufRead *.thor set filetype=ruby
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
 autocmd BufNewFile,BufRead Capfile set filetype=ruby
 " autocmd BufRead *.erb set filetype=html
