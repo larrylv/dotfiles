@@ -10,9 +10,15 @@ snippet bri
 	@brief:
 # add comments of class
 snippet cm
-	# @brief : ${1}
-	# @params: ${2}
-  # @return: ${3}
+	# @brief
+  #   ${1}
+  # @params
+	#   ${2}: [${3}]
+  # @return
+  #   ${4}
+# param snippet
+snippet prm
+	${1}: [${2}]
 # has_many
 snippet hm
 	has_many :${1}
