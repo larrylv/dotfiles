@@ -20,14 +20,14 @@ set diffopt+=iwhite " ignore whitespaces with vimdiff
 " tab/indent configuration
 set tabstop=2
 set shiftwidth=2
-set softtabstop=2
 set expandtab
+set softtabstop=2
 set autoindent
 set cindent
+
 filetype plugin indent on
 
 " search configuration
-set ignorecase
 set smartcase
 set hlsearch
 
