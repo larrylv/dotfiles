@@ -54,7 +54,7 @@ function! MapCR()
 endfunction
 call MapCR()
 " Remove trailing whitespaces
-:nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " use comma as <Leader> key instead of backslash
 let mapleader=","
@@ -177,7 +177,7 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 nnoremap <leader><leader> <c-^>
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 let g:CommandTAcceptSelectionSplitMap=['<C-f>']
-:set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
+set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
 
 function! ShowRoutes()
   " Requires 'scratch' plugin
