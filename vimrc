@@ -41,8 +41,6 @@ set wildchar=<Tab> wildmenu wildmode=full
 " Misc Key Maps
 imap <c-c> <ESC>
 imap jj <ESC>
-" Insert a hash rocket with <c-l>
-imap <c-h> <space>=><space>
 " Move around splits with <c-hjkl>
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
@@ -72,6 +70,8 @@ endfunction
 map <leader>n :call RenameFile()<cr>
 
 " scrollfix.vim shortcut for open/close scrollfix
+map <leader>on :FIXON<cr>
+map <leader>of :FIXOFF<cr>
 " FIXOFF    :let g:scrollfix=-1
 " FIXON     :let g:scrollfix=60
 
