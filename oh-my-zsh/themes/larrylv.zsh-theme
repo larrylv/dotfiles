@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-setopt prompt_subst
 autoload colors
 colors
 autoload -U add-zsh-hook
@@ -33,5 +32,5 @@ function git_prompt_info() {
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$(parse_git_stash)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-PROMPT='$red%n@%m $blue➜ [ $red%~ $green$(git_prompt_info)$yellow$(rvm_prompt_info)$blue ]$reset_color
-$light_green\$$reset_color '
+PROMPT="%{$red%}%n@%m %{$blue%}➜ [ %{$red%}%~ %{$green%}%{$(git_prompt_info)%}%{$yellow$(rvm_prompt_info)%}%{$blue%} ]%{$reset_color%}
+%{$light_green%}\$%{$reset_color%} "

@@ -63,8 +63,6 @@ set -g status-interval 1
 #set -g visual-activity on
 #setw -g monitor-activity on
 
-setw -g automatic-rename off
-
 set -g status-keys vi
 setw -g mode-keys vi
 
@@ -78,7 +76,9 @@ setw -g window-status-format '#[fg=blue,bold]#I #W#[default] '
 setw -g window-status-current-format '#[fg=blue,bold,reverse]#I #W#[default] '
 #setw -g window-status-alert-fg red
 #
+
 set-option -g set-titles on
+set-option -g set-titles-string '#W(#P) - #T'
 set-window-option -g automatic-rename on
 
 #-- apps --#
