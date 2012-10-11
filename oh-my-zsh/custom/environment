@@ -1,0 +1,9 @@
+# zsh
+unsetopt correct_all
+
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=HISTSIZE
+
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export EDITOR=vim
