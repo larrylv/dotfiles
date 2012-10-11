@@ -38,3 +38,4 @@ source $ZSH/oh-my-zsh.sh
 . ~/.oh-my-zsh/custom/aliases
 . ~/.oh-my-zsh/custom/environment
 . ~/.oh-my-zsh/custom/rvm
+. ~/.oh-my-zsh/custom/git-completion
