@@ -83,6 +83,7 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 map <leader>c :Rcontroller<cr>
 map <leader>v :Rview<cr>
 map <leader>m :Rmodel<cr>
+map <leader>h :Rhelper<cr>
 function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
   exec ':e ' . new_file
