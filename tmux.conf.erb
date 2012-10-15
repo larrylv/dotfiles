@@ -35,15 +35,13 @@ bind ^l resizep -R 10
 bind ^u swapp -U
 bind ^d swapp -D
 
+bind u choose-session
+bind o choose-window
 bind ^e last
 bind q killp
 
 bind '~' splitw htop
-bind ! splitw ncmpcpp
 bind m command-prompt "splitw 'exec man %%'"
-bind @ command-prompt "splitw 'exec perldoc -t -f %%'"
-bind * command-prompt "splitw 'exec perldoc -t -v %%'"
-bind % command-prompt "splitw 'exec perldoc -t %%'"
 bind / command-prompt "splitw 'exec ri -T %% | less'"
 
 bind r source-file ~/.tmux.conf
