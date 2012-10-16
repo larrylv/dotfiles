@@ -30,6 +30,7 @@ filetype plugin indent on
 " search configuration
 set smartcase
 set hlsearch
+set incsearch
 
 " status line configuration
 set laststatus=2
