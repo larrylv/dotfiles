@@ -5,5 +5,5 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=HISTSIZE
 
-export PATH=/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=/opt/local/bin:/usr/local/bin:$PATH:$HOME/.rvm/bin
 export EDITOR=vim
