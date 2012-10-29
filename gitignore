@@ -2,6 +2,7 @@
 .svn
 *~
 *.swp
+*.swo
 *.rbc
 *.rvmrc
 *.sassc
