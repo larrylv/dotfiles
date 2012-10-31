@@ -40,3 +40,4 @@ source $ZSH/oh-my-zsh.sh
 . ~/.oh-my-zsh/custom/environment
 . ~/.oh-my-zsh/custom/rvm
 . ~/.oh-my-zsh/custom/git-completion
+. ~/.oh-my-zsh/custom/set_iterm_title
