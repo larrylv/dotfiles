@@ -32,7 +32,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew bundler fasd gem git github git-flow heroku history-substring-search node npm osx pow powder rails rails3 ruby rvm zsh-syntax-highlighting)
+plugins=(brew bundler cap gem git github git-flow heroku history-substring-search node npm osx pow powder rails rails3 ruby rvm thor zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
