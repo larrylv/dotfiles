@@ -1,4 +1,4 @@
-#!bash
+#/bin/zsh
 #
 # bash/zsh completion support for core Git.
 #
