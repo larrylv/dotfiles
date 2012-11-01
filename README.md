@@ -2,15 +2,14 @@
 
 These are config files to set up a system the way I like it.
 
-Most of it is based on Ryan Bates dot files, who I’m really thankful. You can see more information here: [github.com/ryanb/dotfiles](http://github.com/ryanb/dotfiles)
-
 ### Installation
 
 ```
 git clone git://github.com/LarryLv/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-rake install
 ```
+
+Then install dotfiles through *rake*:`rake install` or *thor*:`thor dotfiles:install`.
 
 ### Environment
 
@@ -20,6 +19,7 @@ I am running on Mac OS X, but it will likely work on Linux as well.
 * ack (1.9.6)
 * ack-grep (1.9.2)
 * ctags (5.9)
+* bash/zsh are both ok
 
 ### Vim Plugins
 
@@ -30,4 +30,5 @@ I am running on Mac OS X, but it will likely work on Linux as well.
 * [rails.vim](https://github.com/tpope/vim-rails): Ruby on Rails power tools
 * [snipMate.vim](https://github.com/msanders/snipmate.vim): A concise vim script that implements some of TextMate's snippets features in Vim
 * [neocomplcache.vim](https://github.com/Shougo/neocomplcache): A **real** auto complete vim plugin
+* [syntastic](https://github.com/scrooloose/syntastic): Syntax checking hacks for vim
 * etc.
