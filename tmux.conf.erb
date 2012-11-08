@@ -42,9 +42,9 @@ bind q killp
 
 bind Space copy-mode -u
 
-bind '~' splitw htop
+bind ` splitw htop
 bind m command-prompt "splitw 'exec man %%'"
-bind / command-prompt "splitw 'exec ri -T %% | less'"
+bind / command-prompt "splitw '%%'"
 
 bind r source-file ~/.tmux.conf
 
