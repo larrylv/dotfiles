@@ -52,6 +52,10 @@ function! MapCR()
   nnoremap <c-n> :nohlsearch<cr>
 endfunction
 call MapCR()
+" Paste with <F3>
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
+
 " Remove trailing whitespaces
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
