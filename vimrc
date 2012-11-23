@@ -155,7 +155,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 " Enable omni completion.
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 imap <silent><C-l> <Plug>(neocomplcache_snippets_force_expand)
 smap <silent><C-l> <Plug>(neocomplcache_snippets_force_expand)
