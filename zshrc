@@ -35,11 +35,12 @@ DISABLE_AUTO_TITLE="true"
 plugins=(brew bundler cap gem git github git-flow heroku history-substring-search node npm osx pow powder rails rails3 ruby rvm ssh-agent zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-. ~/.oh-my-zsh/custom/aliases.zsh
-. ~/.oh-my-zsh/custom/environment.zsh
-. ~/.oh-my-zsh/custom/rvm.zsh
-. ~/.oh-my-zsh/custom/git-completion.zsh
-. ~/.oh-my-zsh/custom/set_iterm_title.zsh
-. ~/.oh-my-zsh/custom/edit-command-line.zsh
-. ~/.oh-my-zsh/custom/ssh-completion.zsh
+# Customize to your needs, just add a zsh file in custom/ directory.
+
+# . ~/.oh-my-zsh/custom/aliases.zsh
+# . ~/.oh-my-zsh/custom/environment.zsh
+# . ~/.oh-my-zsh/custom/rvm.zsh
+# . ~/.oh-my-zsh/custom/git-completion.zsh
+# . ~/.oh-my-zsh/custom/set-iterm-title.zsh
+# . ~/.oh-my-zsh/custom/edit-command-line.zsh
+# . ~/.oh-my-zsh/custom/ssh-completion.zsh
