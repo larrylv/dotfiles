@@ -10,6 +10,8 @@ ZSH_THEME="larrylv"
 setopt prompt_subst
 setopt no_nomatch
 
+zstyle ':completion:*' special-dirs true
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
