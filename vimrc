@@ -222,7 +222,7 @@ nnoremap <silent> <F6> :A<CR>"}}}
 if executable("ack")
     " ,a to Ack (search in files)
     nnoremap <leader>a :Ack 
-    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=bin --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp"
+    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=log --ignore-dir=tmp"
 endif"}}}
 
 " vim-javascript plugin configuration"{{{
