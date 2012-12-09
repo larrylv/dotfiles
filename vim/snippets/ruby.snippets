@@ -4,20 +4,16 @@ snippet #!
 	# encoding: utf-8
 
 	${1}
-# @brief
-snippet bri
-	@brief:
-# add comments of class
+# Code Comments
 snippet cm
-	# @brief
-  #   ${1}
-  # @params
-	#   ${2}: <${3}>
-  # @return
-  #   <${4}>
+  # ${1}
+  #
+  # ==== Parameters
+  #   ${2}<${3}>:: ${4}
+  #
 # param snippet
 snippet prm
-	${1}: <${2}>
+	${1}<${2}>:: ${3}
 # has_many
 snippet hm
 	has_many :${1}
