@@ -5,6 +5,8 @@
 *.swo
 *.rbc
 *.rvmrc
+*.rbenv-version
+*.rbenv-gemsets
 *.sassc
 .sass-cache
 capybara-*.html
