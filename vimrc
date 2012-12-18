@@ -1,6 +1,6 @@
 "
 " author:    Lv Zhandong <larrylv1990@gmail.com>
-" modified at:    2012 Sep 15
+" modified at:    2012 Dec 18
 "
 
 set t_Co=256
@@ -59,6 +59,9 @@ set pastetoggle=<F3>
 
 " Remove trailing whitespaces
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" Lazy reload instant markdown
+" let g:instant_markdown_slow = 1
 
 " use comma as <Leader> key instead of backslash
 let mapleader=","
