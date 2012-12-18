@@ -1,8 +1,51 @@
 "
 " author:    Lv Zhandong <larrylv1990@gmail.com>
-" modified at:    2012 Dec 18
+" modified at:    2012 Dec 19
 "
 
+filetype off " required by vundle
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+" non GitHub repos
+Bundle 'git://git.wincent.com/command-t.git'
+
+" vim-scripts repos
+Bundle 'a.vim'
+Bundle 'ack.vim'
+Bundle 'bufexplorer.zip'
+Bundle 'genutils'
+Bundle 'matchit.zip'
+Bundle 'scratch.vim'
+Bundle 'scrollfix'
+Bundle 'snipMate'
+Bundle 'sudo.vim'
+Bundle 'taglist.vim'
+Bundle 'tComment'
+
+" original repos on GitHub
+Bundle 'larrylv/ShowMarks'
+Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+Bundle 'docunext/closetag.vim'
+Bundle 'Shougo/neocomplcache'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+Bundle 'flazz/vim-colorschemes'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'depuracao/vim-rdoc'
+Bundle 'pangloss/vim-javascript'
+
+" set colorscheme
 set t_Co=256
 colorscheme wombat256mod
 
