@@ -26,6 +26,7 @@ Bundle 'taglist.vim'
 Bundle 'tComment'
 
 " original repos on GitHub
+Bundle 'larrylv/AutoClose'
 Bundle 'larrylv/ShowMarks'
 Bundle 'larrylv/snipMate'
 Bundle 'tpope/vim-ragtag'
@@ -123,10 +124,8 @@ endfunction
 map <leader>n :call RenameFile()<cr>
 
 " scrollfix.vim shortcut for open/close scrollfix
-map <leader>on :FIXON<cr>
-map <leader>of :FIXOFF<cr>
-" FIXOFF    :let g:scrollfix=-1
-" FIXON     :let g:scrollfix=60
+map <leader>on   :let g:scrollfix=60<cr>
+map <leader>off  :let g:scrollfix=-1<cr>
 
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
