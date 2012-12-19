@@ -3,6 +3,7 @@
 *~
 *.swp
 *.swo
+*.netrwhist
 *.rbc
 *.rvmrc
 *.rbenv-version

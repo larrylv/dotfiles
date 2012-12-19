@@ -224,12 +224,12 @@ autocmd BufWinLeave * call clearmatches()"}}}
 " CommandT plugin configuration {{{
 " double percentage sign in command mode is expanded
 " to directory of current file - http://vimcasts.org/e/14
+let g:CommandTCancelMap=['<Esc>', '<C-c>']
+let g:CommandTAcceptSelectionSplitMap=['<C-f>']
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 nnoremap <leader><leader> <c-^>
-let g:CommandTCancelMap=['<Esc>', '<C-c>']
-let g:CommandTAcceptSelectionSplitMap=['<C-f>']
 set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
 
 map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
