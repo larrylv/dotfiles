@@ -26,7 +26,6 @@ Bundle 'taglist.vim'
 Bundle 'tComment'
 
 " original repos on GitHub
-Bundle 'larrylv/AutoClose'
 Bundle 'larrylv/ShowMarks'
 Bundle 'larrylv/snipMate'
 Bundle 'tpope/vim-ragtag'
@@ -46,6 +45,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'docunext/closetag.vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
+Bundle 'Townk/vim-autoclose'
 
 " set colorscheme
 set t_Co=256
