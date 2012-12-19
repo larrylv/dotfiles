@@ -10,7 +10,13 @@ cd ~/.dotfiles
 rake install
 ```
 
-Also, you can install dotfiles with *thor*:`thor dotfiles:install`.
+Also, you could use *thor* instead of *rake*:`thor dotfiles:install`.
+
+Now all plugins are managed by Vundle, so we should set `Vundle` first, then install plugins.
+
+`git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+
+Launch `vim`, run `:BundleInstall`.
 
 ### Environment
 
@@ -20,7 +26,7 @@ I am running on Mac OS X, but it will likely work on Linux as well.
 * ack (1.9.6)
 * ack-grep (1.9.2)
 * ctags (5.9)
-* bash/zsh are both ok
+* zsh
 
 ### Vim Plugins
 
@@ -33,5 +39,4 @@ I am running on Mac OS X, but it will likely work on Linux as well.
 * [neocomplcache.vim](https://github.com/Shougo/neocomplcache): A **real** auto complete vim plugin
 * [syntastic](https://github.com/scrooloose/syntastic): Syntax checking hacks for vim
 * [showmarks.vim](http://www.vim.org/scripts/script.php?script_id=152): ShowMarks provides a visual representation of the location marks.
-* [vim-instant-markdown](https://github.com/suan/vim-instant-markdown): Instant Markdown previews from Vim!(Need node.js installed.)
 * etc.
