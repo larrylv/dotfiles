@@ -130,6 +130,10 @@ map <leader>off  :let g:scrollfix=-1<cr>
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
+" Set snips_author & snips_email for snipMate.vim
+let g:snips_author="Larry Lv"
+let g:snips_email="larrylv1990@gmail.com"
+
 " Map shortcuts for rails.vim"{{{
 map <leader>c :Rcontroller<cr>
 map <leader>v :Rview<cr>
