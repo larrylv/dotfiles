@@ -1,6 +1,6 @@
 "
-" author:    Lv Zhandong <larrylv1990@gmail.com>
-" modified at:    2012 Dec 19
+" Author:         Lv Zhandong <larrylv1990@gmail.com>
+" Last Modified:  27 Dec 2012
 "
 
 filetype off " required by vundle
@@ -46,6 +46,7 @@ Bundle 'docunext/closetag.vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'Townk/vim-autoclose'
+Bundle 'tudorprodan/html_annoyance.vim'
 
 " set colorscheme
 set t_Co=256
