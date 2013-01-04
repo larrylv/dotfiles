@@ -6,6 +6,7 @@
 *.netrwhist
 *.rbc
 *.rvmrc
+*.ruby-version
 *.rbenv-version
 *.rbenv-gemsets
 *.sassc
