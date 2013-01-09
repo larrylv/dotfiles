@@ -128,6 +128,9 @@ map <leader>n :call RenameFile()<cr>
 map <leader>on   :let g:scrollfix=60<cr>
 map <leader>off  :let g:scrollfix=-1<cr>
 
+" close quickfix window
+map <leader>cc :ccl<cr>
+
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
