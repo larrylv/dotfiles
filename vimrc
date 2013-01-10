@@ -1,6 +1,6 @@
 "
 " Author:         Lv Zhandong <larrylv1990@gmail.com>
-" Last Modified:  27 Dec 2012
+" Last Modified:  2013-01-11
 "
 
 filetype off " required by vundle
@@ -112,6 +112,9 @@ nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " use comma as <Leader> key instead of backslash
 let mapleader=","
 
+" source vimrc
+map <leader>so :source ~/.vimrc<cr>
+
 " Rename current file
 function! RenameFile()
     let old_name = expand('%')
@@ -182,7 +185,6 @@ let showmarks_hlline_lower = 1
 let showmarks_hlline_upper = 1
 hi ShowMarksHLl ctermbg=Yellow  ctermfg=Black guibg=#FFDB72 guifg=Black
 hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black
-if !hasmapto( '<Plug>ShowmarksClearMark'       ) | map <silent> <unique> <leader>mq :ShowMarksClearMark<cr>| endif"}}}
 
 " Syntastic settings"{{{
 set statusline+=\ %#warningmsg#
