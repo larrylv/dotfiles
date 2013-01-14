@@ -134,6 +134,9 @@ map <leader>off  :let g:scrollfix=-1<cr>
 " close quickfix window
 map <leader>cc :ccl<cr>
 
+" shortcut for increasing number
+map <c-i> <c-a>
+
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
@@ -280,6 +283,8 @@ if executable("ack")
     nnoremap <leader>a :Ack 
     let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp"
 endif"}}}
+map <leader>cn :cn<cr>
+map <leader>cp :cp<cr>
 
 " vim-javascript plugin configuration"{{{
 let g:html_indent_inctags = "html,body,head,tbody"
