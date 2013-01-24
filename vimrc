@@ -70,6 +70,7 @@ set expandtab
 set softtabstop=2
 set autoindent
 set cindent
+autocmd FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 filetype plugin indent on
 
@@ -187,7 +188,7 @@ let showmarks_ignore_type = "hqm"
 let showmarks_hlline_lower = 1
 let showmarks_hlline_upper = 1
 hi ShowMarksHLl ctermbg=Yellow  ctermfg=Black guibg=#FFDB72 guifg=Black
-hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black
+hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black"}}}
 
 " Syntastic settings"{{{
 set statusline+=\ %#warningmsg#
@@ -282,9 +283,9 @@ if executable("ack")
     " ,a to Ack (search in files)
     nnoremap <leader>a :Ack 
     let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp"
-endif"}}}
+endif
 map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>
+map <leader>cp :cp<cr>"}}}
 
 " vim-javascript plugin configuration"{{{
 let g:html_indent_inctags = "html,body,head,tbody"
