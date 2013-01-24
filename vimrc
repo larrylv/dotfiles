@@ -70,7 +70,7 @@ set expandtab
 set softtabstop=2
 set autoindent
 set cindent
-autocmd FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 
 filetype plugin indent on
 
