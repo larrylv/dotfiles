@@ -47,6 +47,7 @@ Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'Townk/vim-autoclose'
 Bundle 'tudorprodan/html_annoyance.vim'
+Bundle 'majutsushi/tagbar'
 
 " set colorscheme
 set t_Co=256
@@ -264,12 +265,8 @@ let NERDTreeWinSize = 26
 let NERDTreeAutoCenter=1
 map <F1> :NERDTreeToggle<CR>"}}}
 
-" ctags/Tlist plugin configuration"{{{
-map <F2> :Tlist<CR>
-let Tlist_Show_One_File=1
-let Tlist_Use_Right_Window=1
-let Tlist_Exit_OnlyWindow=1
-let Tlist_WinWidth = 40
+" ctags/Tagbar plugin configuration"{{{
+nmap <F2> :TagbarToggle<CR>
 map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
