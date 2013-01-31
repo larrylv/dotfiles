@@ -24,6 +24,7 @@ Bundle 'scrollfix'
 Bundle 'sudo.vim'
 Bundle 'taglist.vim'
 Bundle 'tComment'
+Bundle 'Better-CSS-Syntax-for-Vim'
 
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
@@ -48,6 +49,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'Townk/vim-autoclose'
 Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
+Bundle 'ap/vim-css-color'
 
 " set colorscheme
 set t_Co=256
