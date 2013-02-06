@@ -137,8 +137,11 @@ map <leader>off  :let g:scrollfix=-1<cr>
 " close quickfix window
 map <leader>cc :ccl<cr>
 
-" shortcut for increasing number
+" increase number, <c-a> is prefix for tmux.
 map <c-i> <c-a>
+
+" close current window
+map <leader>w :wq<cr>
 
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
