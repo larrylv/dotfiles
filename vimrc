@@ -24,7 +24,6 @@ Bundle 'scrollfix'
 Bundle 'sudo.vim'
 Bundle 'taglist.vim'
 Bundle 'tComment'
-Bundle 'Better-CSS-Syntax-for-Vim'
 
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
@@ -34,6 +33,9 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-speeddating'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'scrooloose/nerdtree'
@@ -49,6 +51,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'Townk/vim-autoclose'
 Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
+Bundle 'hail2u/vim-css3-syntax'
 
 " set colorscheme
 set t_Co=256
