@@ -1,6 +1,6 @@
 "
-" Author:         Lv Zhandong <larrylv1990@gmail.com>
-" Last Modified:  2013-01-11
+" Author:         Larry Lv <larrylv1990@gmail.com>
+" Last Modified:  2013-02-12
 "
 
 filetype off " required by vundle
@@ -15,7 +15,6 @@ Bundle 'git://git.wincent.com/command-t.git'
 
 " vim-scripts repos
 Bundle 'a.vim'
-Bundle 'ack.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'genutils'
 Bundle 'matchit.zip'
@@ -40,6 +39,7 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'mileszs/ack.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'vim-ruby/vim-ruby'
@@ -290,7 +290,8 @@ nnoremap <silent> <F6> :A<CR>"}}}
 if executable("ack")
     " ,a to Ack (search in files)
     nnoremap <leader>a :Ack 
-    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp"
+    let g:ackprg="ack -H --smart-case --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp"
+    let g:ackhighlight=1
 endif
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>"}}}
