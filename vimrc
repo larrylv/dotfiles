@@ -139,6 +139,10 @@ map <leader>off  :let g:scrollfix=-1<cr>
 
 " close quickfix window
 map <leader>cc :ccl<cr>
+au FileType qf call AdjustWindowHeight(3, 10)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
 
 " increase number, <c-a> is prefix for tmux.
 map <c-i> <c-a>
