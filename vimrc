@@ -5,7 +5,7 @@
 
 filetype off " required by vundle
 
-set rtp+=~/.vundle
+set rtp+=~/.gmarik-vundle
 call vundle#rc()
 
 " non GitHub repos
