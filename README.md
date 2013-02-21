@@ -6,26 +6,28 @@ These are config files to set up a system the way I like it.
 
 ```
 git clone git://github.com/LarryLv/dotfiles.git ~/.dotfiles
+```
+
+Now all vim plugins are managed by Vundle, so we should install `Vundle` first.
+
+```
 cd ~/.dotfiles
+git submodule init
+git submodule update
 rake install
 ```
 
-Also, you could use *thor* instead of *rake*:`thor dotfiles:install`.
+Also, you could use *thor* instead of *rake*: `thor dotfiles:install`.
 
-Now all plugins are managed by Vundle, so we should set `Vundle` first, then install plugins.
-
-`git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
-
-Launch `vim`, run `:BundleInstall`.
+At last, launch `vim`, run `:BundleInstall`.
 
 ### Environment
 
 I am running on Mac OS X, but it will likely work on Linux as well.
 
 * vim (7.3) built with Ruby 1.8.7 support
-* ack (1.9.6)
-* ack-grep (1.9.2)
-* ctags (5.9)
+* ack-grep
+* ctags
 * zsh
 
 ### Vim Plugins
