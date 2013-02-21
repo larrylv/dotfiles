@@ -8,8 +8,6 @@ filetype off " required by vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-
 " non GitHub repos
 Bundle 'git://git.wincent.com/command-t.git'
 
