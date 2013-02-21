@@ -5,7 +5,7 @@
 
 filetype off " required by vundle
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vundle
 call vundle#rc()
 
 " non GitHub repos
