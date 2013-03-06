@@ -112,9 +112,6 @@ set pastetoggle=<F3>
 " Remove trailing whitespaces
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
-" Lazy reload instant markdown
-" let g:instant_markdown_slow = 1
-
 " use comma as <Leader> key instead of backslash
 let mapleader=","
 

@@ -13,7 +13,7 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
   if Rails.version[0..0] == "2"
     require 'console_app'
     require 'console_with_helpers'
-  elsif Rails.version[0..0] == "3"
+  elsif %w(3 4).include? Rails.version[0..0]
     require 'rails/console/app'
     require 'rails/console/helpers'
   else
