@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  2013-02-12
+" Last Modified:  06 Mar 2013
 "
 
 filetype off " required by vundle
@@ -51,6 +51,7 @@ Bundle 'Townk/vim-autoclose'
 Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'hail2u/vim-css3-syntax'
+Bundle 'airblade/vim-gitgutter'
 
 " set colorscheme
 set t_Co=256
@@ -155,6 +156,10 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 " Set snips_author & snips_email for snipMate.vim
 let g:snips_author="Larry Lv"
 let g:snips_email="larrylv1990@gmail.com"
+
+" Shortcuts for vim-gitgutter
+map <leader>ggn :GitGutterNextHunk<cr>
+map <leader>ggp :GitGutterPrevHunk<cr> 
 
 " Map shortcuts for rails.vim"{{{
 map <leader>c :Rcontroller<cr>
