@@ -240,13 +240,13 @@ inoremap <expr><C-y>  neocomplcache#cancel_popup()
 "inoremap <expr><C-h> neocomplcache#smart_close_popup()
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>""}}}
 
-" " Highlight trailing whitespace"{{{
-" highlight ExtraWhitespace ctermbg=red guibg=red
-" match ExtraWhitespace /\s\+$/
-" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-" autocmd BufWinLeave * call clearmatches()"}}}
+" Highlight trailing whitespace"{{{
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()"}}}
 
 " CommandT plugin configuration {{{
 " double percentage sign in command mode is expanded
