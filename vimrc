@@ -313,6 +313,7 @@ autocmd BufNewFile,BufRead Gemfile set filetype=ruby
 autocmd BufNewFile,BufRead Capfile set filetype=ruby
 autocmd BufNewFile,BufRead pryrc set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
+autocmd BufNewFile,BufRead *.god set filetype=ruby
 " autocmd BufRead *.erb set filetype=html
 autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 "autocmd BufNewFile,BufRead *.mkd set wrap nonumber"}}}
