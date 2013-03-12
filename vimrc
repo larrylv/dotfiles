@@ -218,6 +218,7 @@ set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 highlight Pmenu ctermbg=238 gui=bold
 let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_force_overwrite_completefunc = 1
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
