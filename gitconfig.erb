@@ -16,6 +16,7 @@
     co      = checkout
     dc      = diff --cached
     delete  = !git ls-files -z --deleted | xargs -0 git rm
+    diff    = diff --ignore-space-change
     dt      = difftool
     l       = "!git log --graph --pretty='tformat:%C(yellow)%h{%C(green)%ar{%C(bold blue)%an{%C(red)%d%C(reset) %s' $* | column -t -s '{' | less -FXRS"
     last    = log --stat -1
