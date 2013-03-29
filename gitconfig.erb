@@ -28,6 +28,8 @@
     oneline = log --graph --decorate --pretty=oneline --abbrev-commit --all
     pb      = pull --rebase
     pick    = cherry-pick
+    pl      = pull
+    ps      = push
     rbs     = !sh -c 'git co $1 && git pull && git co @{-1} && git rebase -i $1' -
     sb      = show-branch
     st      = status
