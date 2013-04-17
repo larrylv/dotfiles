@@ -157,7 +157,7 @@ let g:snips_email="larrylv1990@gmail.com"
 
 " Shortcuts for vim-gitgutter
 map <leader>ggn :GitGutterNextHunk<cr>
-map <leader>ggp :GitGutterPrevHunk<cr> 
+map <leader>ggp :GitGutterPrevHunk<cr>
 
 " Map shortcuts for rails.vim"{{{
 map <leader>c :Rcontroller<cr>
