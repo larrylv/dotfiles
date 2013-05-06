@@ -317,7 +317,7 @@ autocmd BufNewFile,BufRead pryrc set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
-autocmd Filetype gitcommit setlocal spell textwidth=72"}}}
+autocmd Filetype gitcommit setlocal textwidth=72"}}}
 
 " encoding configuration {{{
 set encoding=utf-8
