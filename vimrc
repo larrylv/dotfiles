@@ -24,7 +24,6 @@ Bundle 'tComment'
 
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
-Bundle 'larrylv/snipMate'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-markdown'
@@ -52,6 +51,7 @@ Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'ervandew/supertab'
 
 " set colorscheme
 set t_Co=256
@@ -157,6 +157,8 @@ let g:snips_email="larrylv1990@gmail.com"
 " Shortcuts for vim-gitgutter
 map <leader>ggn :GitGutterNextHunk<cr>
 map <leader>ggp :GitGutterPrevHunk<cr>
+
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Map shortcuts for rails.vim"{{{
 map <leader>c :Rcontroller<cr>
