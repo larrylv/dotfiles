@@ -46,7 +46,6 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'depuracao/vim-rdoc'
 Bundle 'pangloss/vim-javascript'
 Bundle 'docunext/closetag.vim'
-Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'Townk/vim-autoclose'
 Bundle 'tudorprodan/html_annoyance.vim'
@@ -217,7 +216,10 @@ let g:syntastic_mode_map = { 'mode': 'active',
 " Autocomplete configuration"{{{
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 highlight Pmenu ctermbg=238 gui=bold
+
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_force_overwrite_completefunc = 1
 if !exists('g:neocomplcache_omni_patterns')
@@ -227,11 +229,16 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
+
 " Enable omni completion.
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
 imap <silent><C-l> <Plug>(neocomplcache_snippets_force_expand)
 smap <silent><C-l> <Plug>(neocomplcache_snippets_force_expand)
 imap <silent><C-j> <Plug>(neocomplcache_snippets_force_jump)
@@ -303,10 +310,6 @@ map <leader>cp :cp<cr>"}}}
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc""}}}
-
-" SuperTab plugin configuration"{{{
-let g:SuperTabRetainCompletionType = 2
-let g:SuperTabDefaultCompletionType = "<C-X><C-P>""}}}
 
 " filetype detection"{{{
 autocmd BufNewFile,BufRead Thorfile set filetype=ruby
