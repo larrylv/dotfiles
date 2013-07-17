@@ -36,6 +36,7 @@ Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-dispatch'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
+Bundle 'honza/vim-snippets'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'mileszs/ack.vim'
@@ -150,10 +151,6 @@ map <leader>w :wq<cr>
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
-" Set snips_author & snips_email for snipMate.vim
-let g:snips_author="Larry Lv"
-let g:snips_email="larrylv1990@gmail.com"
-
 " Shortcuts for vim-gitgutter
 map <leader>ggn :GitGutterNextHunk<cr>
 map <leader>ggp :GitGutterPrevHunk<cr>
@@ -223,14 +220,14 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 highlight Pmenu ctermbg=238 gui=bold
 
 let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_force_overwrite_completefunc = 1
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
 
 " Enable omni completion.
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
@@ -241,10 +238,16 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
-imap <silent><C-l> <Plug>(neocomplcache_snippets_force_expand)
-smap <silent><C-l> <Plug>(neocomplcache_snippets_force_expand)
-imap <silent><C-j> <Plug>(neocomplcache_snippets_force_jump)
-smap <silent><C-j> <Plug>(neocomplcache_snippets_force_jump)
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+imap <silent><C-l> <Plug>(neosnippet_expand)
+smap <silent><C-l> <Plug>(neosnippet_expand)
+imap <silent><C-j> <Plug>(neosnippet_jump)
+smap <silent><C-j> <Plug>(neosnippet_jump)
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-e>  neocomplcache#close_popup()
 inoremap <expr><C-y>  neocomplcache#cancel_popup()
