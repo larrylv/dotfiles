@@ -24,6 +24,7 @@ Bundle 'tComment'
 
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
+Bundle 'larrylv/vim-snippets'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-markdown'
@@ -36,7 +37,6 @@ Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-dispatch'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
-Bundle 'honza/vim-snippets'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'mileszs/ack.vim'
@@ -243,6 +243,10 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+" Set snips_author & snips_email for snipMate.vim
+let g:snips_author="Larry Lv"
+let g:snips_email="larrylv1990@gmail.com""
 
 imap <silent><C-l> <Plug>(neosnippet_expand)
 smap <silent><C-l> <Plug>(neosnippet_expand)
