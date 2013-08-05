@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  06 Mar 2013
+" Last Modified:  August 05, 2013
 "
 
 filetype off " required by vundle
@@ -53,6 +53,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
+Bundle 'michaeljsmith/vim-indent-object'
 
 " set colorscheme
 set t_Co=256
@@ -92,6 +93,15 @@ set laststatus=2
 
 " Tab triggers buffer-name auto-completion
 set wildchar=<Tab> wildmenu wildmode=full
+
+" Undo file settings
+set undodir=~/.vim/.undo
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+" System wide copy paste
+set clipboard=unnamedplus
 
 " Misc Key Maps
 imap <c-c> <ESC>
@@ -147,6 +157,9 @@ map <c-i> <c-a>
 
 " close current window
 map <leader>w :wq<cr>
+
+" force write and save
+cmap w!! %!sudo tee > /dev/null %
 
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
