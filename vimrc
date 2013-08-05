@@ -100,9 +100,6 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-" System wide copy paste
-set clipboard=unnamedplus
-
 " Misc Key Maps
 imap <c-c> <ESC>
 imap jj <ESC>
