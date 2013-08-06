@@ -198,6 +198,7 @@ function! AlternateForCurrentFile()
   return new_file
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
+nnoremap <leader>s :call OpenTestAlternate()<cr>
 "map <leader>u :Runittest<cr>
 "map <leader>s :Rfunctionaltest<cr>"}}}
 
