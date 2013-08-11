@@ -266,6 +266,7 @@ smap <silent><C-j> <Plug>(neosnippet_jump)
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-e>  neocomplcache#close_popup()
 inoremap <expr><C-y>  neocomplcache#cancel_popup()
+inoremap <expr><C-c>  neocomplcache#cancel_popup()
 "inoremap <expr><C-h> neocomplcache#smart_close_popup()
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>""}}}
 
@@ -281,7 +282,7 @@ autocmd BufWinLeave * call clearmatches()"}}}
 " double percentage sign in command mode is expanded
 " to directory of current file - http://vimcasts.org/e/14
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
-let g:CommandTAcceptSelectionSplitMap=['<C-f>']
+let g:CommandTAcceptSelectionSplitMap=['<C-e>', '<C-f>']
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
