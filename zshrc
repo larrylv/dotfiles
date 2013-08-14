@@ -37,6 +37,9 @@ DISABLE_AUTO_TITLE="true"
 plugins=(brew bundler cap gem git github git-flow heroku history-substring-search node npm osx pow powder rails rails3 ruby rbenv zsh-syntax-highlighting forklift)
 source $ZSH/oh-my-zsh.sh
 
+# Autojump configuration
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh ]]
+
 # Customize to your needs, just add a zsh file in custom/ directory.
 
 # . ~/.oh-my-zsh/custom/aliases.zsh
