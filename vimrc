@@ -17,7 +17,6 @@ Bundle 'bufexplorer.zip'
 Bundle 'genutils'
 Bundle 'matchit.zip'
 Bundle 'scratch.vim'
-Bundle 'scrollfix'
 Bundle 'sudo.vim'
 Bundle 'taglist.vim'
 Bundle 'tComment'
@@ -137,10 +136,6 @@ function! RenameFile()
     endif
 endfunction
 map <leader>n :call RenameFile()<cr>
-
-" scrollfix.vim shortcut for open/close scrollfix
-map <leader>on   :let g:scrollfix=60<cr>
-map <leader>off  :let g:scrollfix=-1<cr>
 
 " close quickfix window
 map <leader>cc :ccl<cr>
