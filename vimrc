@@ -8,9 +8,6 @@ filetype off " required by vundle
 set rtp+=~/.gmarik-vundle
 call vundle#rc()
 
-" non GitHub repos
-Bundle 'git://git.wincent.com/command-t.git'
-
 " vim-scripts repos
 Bundle 'a.vim'
 Bundle 'bufexplorer.zip'
@@ -24,6 +21,7 @@ Bundle 'tComment'
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
 Bundle 'larrylv/vim-snippets'
+Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-markdown'
@@ -107,10 +105,6 @@ map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
-map <C-d> <C-d>zz
-map <C-u> <C-u>zz
-map <C-f> <C-f>zz
-map <C-b> <C-b>zz
 " Clear the search buffer when hitting return
 function! MapCR()
   nnoremap <c-n> :nohlsearch<cr>
