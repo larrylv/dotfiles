@@ -9,7 +9,6 @@ set rtp+=~/.gmarik-vundle
 call vundle#rc()
 
 " vim-scripts repos
-Bundle 'a.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'genutils'
 Bundle 'matchit.zip'
@@ -51,10 +50,20 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
 Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'altercation/vim-colors-solarized'
 
-" set colorscheme
 set t_Co=256
+
+" set wombat256 colorscheme
 colorscheme wombat256mod
+
+" set solarized theme
+" set background=dark
+" let g:solarized_termtrans = 1
+" let g:solarized_termcolors = 256
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" colorscheme solarized
 
 " basic configuration
 syntax on
@@ -306,9 +315,6 @@ map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --field
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
 set tags=./tags;"}}}
-
-" a.vim configuration"{{{
-nnoremap <silent> <F6> :A<CR>"}}}
 
 " ack.vim configuration"{{{
 if executable("ack")
