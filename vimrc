@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  August 05, 2013
+" Last Modified:  August 25, 2013
 "
 
 filetype off " required by vundle
@@ -73,9 +73,11 @@ set ruler
 set nobackup
 set fdm=marker
 set bs=2
-set backspace=indent,eol,start " allow backspacing over everything in insert mode
-set diffopt+=iwhite " ignore whitespaces with vimdiff
+set backspace=indent,eol,start " Allow backspacing over everything in insert mode
+set diffopt+=iwhite            " Ignore whitespaces with vimdiff
 set cursorline
+set autoread                   " Reload files changed outside automatically
+set scrolloff=5                " Always shows 5 lines above/below the cursor
 
 " tab/indent configuration
 set tabstop=2
@@ -84,6 +86,11 @@ set expandtab
 set softtabstop=2
 set autoindent
 set cindent
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,ucs-bom,chinese
+set formatoptions+=mM
+" set ambiwidth=double
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 
 filetype plugin indent on
@@ -92,6 +99,7 @@ filetype plugin indent on
 set smartcase
 set hlsearch
 set incsearch
+set ignorecase
 
 " status line configuration
 let g:Powerline_symbols = 'fancy'
@@ -122,6 +130,20 @@ call MapCR()
 " Paste with <F3>
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
+nmap <F2> :TagbarToggle<CR>
+map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
+map <F7> :tprevious<CR>
+map <F8> :tnext<CR>
+set tags=./tags;
+
+" increase number, <c-a> is prefix for tmux.
+map <c-i> <c-a>
+
+" close current window
+map <leader>w :wq<cr>
+
+" force write and save
+cmap w!! %!sudo tee > /dev/null %
 
 " Remove trailing whitespaces
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -129,8 +151,13 @@ nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " use comma as <Leader> key instead of backslash
 let mapleader=","
 
-" source vimrc
-map <leader>so :source ~/.vimrc<cr>
+" Open .vimrc for quick-edit.
+map <Leader>ev :edit $MYVIMRC<CR>
+map <leader>so :source $MYVIMRC<cr>
+
+" remember last location when open a file
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+      \| exe "normal g'\"" | endif
 
 " Rename current file
 function! RenameFile()
@@ -151,31 +178,23 @@ function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 
-" increase number, <c-a> is prefix for tmux.
-map <c-i> <c-a>
-
-" close current window
-map <leader>w :wq<cr>
-
-" force write and save
-cmap w!! %!sudo tee > /dev/null %
-
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
-" Shortcuts for vim-gitgutter
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+
+" vim-gitgutter configurations
 map <leader>ggn :GitGutterNextHunk<cr>
 map <leader>ggp :GitGutterPrevHunk<cr>
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
 
-" Syntastic
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_style_error_symbol = '✠'
-let g:syntastic_warning_symbol = '∆'
-let g:syntastic_style_warning_symbol = '≈'
+" bufExplorer configurations
+let g:bufExplorerShowTabBuffer=1    " BufExplorer: show only buffers relative to this tab
+let g:bufExplorerShowRelativePath=1 " BufExplorer: show relative paths
 
-" Map shortcuts for rails.vim"{{{
+
+" rails.vim configurations
 map <leader>c :Rcontroller<cr>
 map <leader>v :Rview<cr>
 map <leader>m :Rmodel<cr>
@@ -208,9 +227,10 @@ endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
 nnoremap <leader>s :call OpenTestAlternate()<cr>
 "map <leader>u :Runittest<cr>
-"map <leader>s :Rfunctionaltest<cr>"}}}
+"map <leader>s :Rfunctionaltest<cr>
 
-" Marks settings"{{{
+
+" ShowMarks configurations
 let showmarks_enable = 1
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 " Ignore help, quickfix, non-modifiable buffers
@@ -219,9 +239,10 @@ let showmarks_ignore_type = "hqm"
 let showmarks_hlline_lower = 1
 let showmarks_hlline_upper = 1
 hi ShowMarksHLl ctermbg=Yellow  ctermfg=Black guibg=#FFDB72 guifg=Black
-hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black"}}}
+hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black
 
-" Syntastic settings"{{{
+
+" Syntastic settings
 set statusline+=\ %#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -229,9 +250,14 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=0
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'passive_filetypes': ['tex'] }"}}}
+                           \ 'passive_filetypes': ['tex'] }
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_style_error_symbol = '✠'
+let g:syntastic_warning_symbol = '∆'
+let g:syntastic_style_warning_symbol = '≈'
 
-" Autocomplete configuration"{{{
+
+" neocomplcache configurations
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 " <TAB>: completion.
@@ -247,26 +273,21 @@ if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
 " Enable omni completion.
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
-
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
 " Set snips_author & snips_email for snipMate.vim
 let g:snips_author="Larry Lv"
 let g:snips_email="larrylv1990@gmail.com""
-
+" Mapping Keys
 imap <silent><C-l> <Plug>(neosnippet_expand)
 smap <silent><C-l> <Plug>(neosnippet_expand)
 imap <silent><C-j> <Plug>(neosnippet_jump)
@@ -276,19 +297,18 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 inoremap <expr><C-y>  neocomplcache#cancel_popup()
 inoremap <expr><C-c>  neocomplcache#cancel_popup()
 "inoremap <expr><C-h> neocomplcache#smart_close_popup()
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>""}}}
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
-" Highlight trailing whitespace"{{{
+
+" Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()"}}}
+autocmd BufWinLeave * call clearmatches()
 
-" CommandT plugin configuration {{{
-" double percentage sign in command mode is expanded
-" to directory of current file - http://vimcasts.org/e/14
+" CommandT plugin configuration
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 let g:CommandTAcceptSelectionSplitMap=['<C-e>', '<C-f>']
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -296,7 +316,6 @@ map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 nnoremap <leader><leader> <c-^>
 set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
-
 map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
 map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
@@ -308,21 +327,17 @@ map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
 map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
 map <leader>gg :topleft :vsplit Gemfile<cr>
 map <leader>gr :topleft :vsplit config/routes.rb<cr>
-" }}}
 
-" NERDTree plugin configuration"{{{
+
+" NERDTree plugin configuration
 let NERDTreeWinSize = 26
 let NERDTreeAutoCenter=1
-map <F1> :NERDTreeToggle<CR>"}}}
+let NERDTreeChDirMode=2
+let g:NERDTreeMinimalUI=1
+map <F1> :NERDTreeToggle<CR>
 
-" ctags/Tagbar plugin configuration"{{{
-nmap <F2> :TagbarToggle<CR>
-map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
-map <F7> :tprevious<CR>
-map <F8> :tnext<CR>
-set tags=./tags;"}}}
 
-" ack.vim configuration"{{{
+" ack.vim configuration
 if executable("ack")
     " ,a to Ack (search in files)
     nnoremap <leader>a :Ack 
@@ -330,14 +345,16 @@ if executable("ack")
     let g:ackhighlight=1
 endif
 map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>"}}}
+map <leader>cp :cp<cr>
 
-" vim-javascript plugin configuration"{{{
+
+" vim-javascript configuration
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc""}}}
+let g:html_indent_style1 = "inc"
 
-" filetype detection"{{{
+
+" filetype detection
 autocmd BufNewFile,BufRead Thorfile set filetype=ruby
 autocmd BufNewFile,BufRead *.thor set filetype=ruby
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
@@ -346,20 +363,5 @@ autocmd BufNewFile,BufRead pryrc set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
-autocmd Filetype gitcommit setlocal textwidth=72"}}}
+autocmd Filetype gitcommit setlocal textwidth=72
 
-" encoding configuration {{{
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,ucs-bom,chinese
-set formatoptions+=mM
-set ambiwidth=double
-"}}}
-
-" gb2312 encoding configuration {{{
-"set encoding=gb2312
-"set fileencoding=chinese
-"set fileencodings=chinese,ucs-bom,utf-8
-"set formatoptions+=mM
-"set ambiwidth=double
-"}}}
