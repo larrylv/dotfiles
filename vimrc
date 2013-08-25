@@ -21,6 +21,7 @@ Bundle 'tComment'
 Bundle 'larrylv/ShowMarks'
 Bundle 'larrylv/vim-snippets'
 Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-markdown'
@@ -139,9 +140,6 @@ set tags=./tags;
 " increase number, <c-a> is prefix for tmux.
 map <c-i> <c-a>
 
-" close current window
-map <leader>w :wq<cr>
-
 " force write and save
 cmap w!! %!sudo tee > /dev/null %
 
@@ -150,6 +148,10 @@ nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " use comma as <Leader> key instead of backslash
 let mapleader=","
+nnoremap <leader><leader> <c-^>
+
+" close current window
+map <leader>w :wq<cr>
 
 " Open .vimrc for quick-edit.
 map <Leader>ev :edit $MYVIMRC<CR>
@@ -308,14 +310,16 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
+
 " CommandT plugin configuration
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 let g:CommandTAcceptSelectionSplitMap=['<C-e>', '<C-f>']
+let g:CommandTMaxHeight=16
+silent! nnoremap <unique> <silent> <Leader>bb :CommandTBuffer<CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-nnoremap <leader><leader> <c-^>
-set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
 map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
 map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
@@ -327,6 +331,30 @@ map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
 map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
 map <leader>gg :topleft :vsplit Gemfile<cr>
 map <leader>gr :topleft :vsplit config/routes.rb<cr>
+
+
+" CtrlP.vim configurations
+silent! nnoremap <unique> <silent> <Leader>t :CtrlPTag<CR>
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
+let g:ctrlp_map = '<\-t>'
+let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_extensions = [ 'ctrlp-filetpe' ]
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_mruf_relative = 1
+" silent! nnoremap <unique> <silent> <Leader>f :CtrlP<CR>
+" silent! nnoremap <unique> <silent> <Leader>bb :CtrlPBuffer<CR>
+" map <leader>ga :CtrlP app/assets<cr>
+" map <leader>gc :CtrlP app/controllers<cr>
+" map <leader>gh :CtrlP app/helpers<cr>
+" map <leader>gm :CtrlP apa/models<cr>
+" map <leader>gv :CtrlP app/views<cr>
+" map <leader>gf :CtrlP config<cr>
+" map <leader>gl :CtrlP lib<cr>
+" map <leader>gp :CtrlP public<cr>
+" map <leader>gs :CtrlP spec<cr>
+" map <leader>gg :topleft :vsplit Gemfile<cr>
+" map <leader>gr :topleft :vsplit config/routes.rb<cr>
 
 
 " NERDTree plugin configuration
