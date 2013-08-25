@@ -57,7 +57,7 @@ set t_Co=256
 " set wombat256 colorscheme
 colorscheme wombat256mod
 
-" set solarized theme
+" " set solarized theme
 " set background=dark
 " let g:solarized_termtrans = 1
 " let g:solarized_termcolors = 256
@@ -75,6 +75,7 @@ set fdm=marker
 set bs=2
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set diffopt+=iwhite " ignore whitespaces with vimdiff
+set cursorline
 
 " tab/indent configuration
 set tabstop=2
@@ -95,7 +96,6 @@ set incsearch
 " status line configuration
 let g:Powerline_symbols = 'fancy'
 set laststatus=2
-" set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %l:%c\ \(%p%%\)%)
 
 " Tab triggers buffer-name auto-completion
 set wildchar=<Tab> wildmenu wildmode=full
@@ -168,6 +168,12 @@ map <leader>ggn :GitGutterNextHunk<cr>
 map <leader>ggp :GitGutterPrevHunk<cr>
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Syntastic
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_style_error_symbol = '✠'
+let g:syntastic_warning_symbol = '∆'
+let g:syntastic_style_warning_symbol = '≈'
 
 " Map shortcuts for rails.vim"{{{
 map <leader>c :Rcontroller<cr>
