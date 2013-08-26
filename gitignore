@@ -12,6 +12,7 @@
 /.binstubs
 /.bundle
 /vendor/bundle
+/tmux.sh
 tags
 
 # Rails .gitignore
