@@ -54,12 +54,12 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'altercation/vim-colors-solarized'
 
 set t_Co=256
+set background=dark
 
 " set wombat256 colorscheme
 colorscheme wombat256mod
 
 " " set solarized theme
-" set background=dark
 " let g:solarized_termtrans = 1
 " let g:solarized_termcolors = 256
 " let g:solarized_visibility = "high"
@@ -78,7 +78,13 @@ set backspace=indent,eol,start " Allow backspacing over everything in insert mod
 set diffopt+=iwhite            " Ignore whitespaces with vimdiff
 set cursorline
 set autoread                   " Reload files changed outside automatically
-set scrolloff=5                " Always shows 5 lines above/below the cursor
+set scrolloff=3                " Always shows 5 lines above/below the cursor
+set showcmd                    " display incomplete commands
+set tags=./tags;
+" Fix slow O inserts
+set timeout timeoutlen=1000 ttimeoutlen=100
+set complete=.,w,b,u,t,i
+set completeopt=longest,menu
 
 " tab/indent configuration
 set tabstop=2
@@ -115,7 +121,9 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-" Misc Key Maps
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MISC KEY MAPS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap <c-c> <ESC>
 imap jj <ESC>
 " Move around splits with <c-hjkl>
@@ -126,16 +134,17 @@ map <C-h> <C-w><Left>
 " Clear the search buffer when hitting return
 function! MapCR()
   nnoremap <c-n> :nohlsearch<cr>
+nnoremap <cr> :nohlsearch<cr>
 endfunction
 call MapCR()
-" Paste with <F3>
+
+nmap <F2> :TagbarToggle<CR>
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
-nmap <F2> :TagbarToggle<CR>
+nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
-set tags=./tags;
 
 " increase number, <c-a> is prefix for tmux.
 map <c-i> <c-a>
@@ -143,14 +152,9 @@ map <c-i> <c-a>
 " force write and save
 cmap w!! %!sudo tee > /dev/null %
 
-" Remove trailing whitespaces
-nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-
-" use comma as <Leader> key instead of backslash
 let mapleader=","
 nnoremap <leader><leader> <c-^>
-
-" close current window
+map <leader>y "*y
 map <leader>w :wq<cr>
 
 " Open .vimrc for quick-edit.
@@ -161,7 +165,14 @@ map <leader>so :source $MYVIMRC<cr>
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
       \| exe "normal g'\"" | endif
 
-" Rename current file
+command! GdiffInTab tabedit %|vsplit|Gdiff
+nnoremap <leader>d :GdiffInTab<cr>
+nnoremap <leader>D :tabclose<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RENAME CURRENT FILE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! RenameFile()
     let old_name = expand('%')
     let new_name = input('New file name: ', expand('%'), 'file')
@@ -173,7 +184,10 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-" close quickfix window
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CLOSE QUICKFIX WINDOW
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>cc :ccl<cr>
 au FileType qf call AdjustWindowHeight(3, 10)
 function! AdjustWindowHeight(minheight, maxheight)
@@ -201,6 +215,10 @@ map <leader>c :Rcontroller<cr>
 map <leader>v :Rview<cr>
 map <leader>m :Rmodel<cr>
 map <leader>h :Rhelper<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SWITCH BETWEEN TEST AND PRODUCTION CODE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
   exec ':e ' . new_file
@@ -228,8 +246,6 @@ function! AlternateForCurrentFile()
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
 nnoremap <leader>s :call OpenTestAlternate()<cr>
-"map <leader>u :Runittest<cr>
-"map <leader>s :Rfunctionaltest<cr>
 
 
 " ShowMarks configurations
@@ -259,10 +275,9 @@ let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
 
 
-" neocomplcache configurations
-set complete=.,w,b,u,t,i
-set completeopt=longest,menu
-" <TAB>: completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NEOCOMPLCACHE CONFIGURATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 highlight Pmenu ctermbg=238 gui=bold
 
@@ -298,7 +313,6 @@ inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-e>  neocomplcache#close_popup()
 inoremap <expr><C-y>  neocomplcache#cancel_popup()
 inoremap <expr><C-c>  neocomplcache#cancel_popup()
-"inoremap <expr><C-h> neocomplcache#smart_close_popup()
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
 
@@ -312,10 +326,12 @@ autocmd BufWinLeave * call clearmatches()
 
 set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
 
-" CommandT plugin configuration
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 let g:CommandTAcceptSelectionSplitMap=['<C-e>', '<C-f>']
-let g:CommandTMaxHeight=16
 silent! nnoremap <unique> <silent> <Leader>bb :CommandTBuffer<CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
@@ -328,12 +344,33 @@ map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
 map <leader>gf :CommandTFlush<cr>\|:CommandT config<cr>
 map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
 map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+map <leader>gj :CommandTFlush<cr>\|:CommandT public/javascripts<cr>
 map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
-map <leader>gg :topleft :vsplit Gemfile<cr>
-map <leader>gr :topleft :vsplit config/routes.rb<cr>
+map <leader>gg :topleft 100 :split Gemfile<cr>
+map <leader>gr :topleft :split config/routes.rb<cr>
+function! ShowRoutes()
+" Requires 'scratch' plugin
+  :topleft 100 :split __Routes__
+" Make sure Vim doesn't write __Routes__ as a file
+  :set buftype=nofile
+" Delete everything
+  :normal 1GdG
+" Put routes output in buffer
+  :0r! zeus rake -s routes
+" Size window to number of lines (1 plus rake output length)
+  :exec ":normal " . line("$") . "_ "
+" Move cursor to bottom
+  :normal 1GG
+" Delete empty trailing line
+  :normal dd
+endfunction
+map <leader>gR :call ShowRoutes()<cr>
 
 
-" CtrlP.vim configurations
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CTRLP.vim CONFIGURATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 silent! nnoremap <unique> <silent> <Leader>t :CtrlPTag<CR>
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
 let g:ctrlp_map = '<\-t>'
