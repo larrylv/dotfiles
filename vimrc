@@ -110,6 +110,7 @@ set ignorecase
 
 " status line configuration
 let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'filename'
 set laststatus=2
 
 " Tab triggers buffer-name auto-completion
@@ -157,6 +158,7 @@ let mapleader=","
 nnoremap <leader><leader> <c-^>
 map <leader>y "*y
 map <leader>w :wq<cr>
+map <leader>p :echo @%<cr>
 
 " Open .vimrc for quick-edit.
 map <Leader>ev :edit $MYVIMRC<CR>
