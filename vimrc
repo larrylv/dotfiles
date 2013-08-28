@@ -85,6 +85,7 @@ set tags=./tags;
 set timeout timeoutlen=1000 ttimeoutlen=100
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
+set laststatus=2
 
 " tab/indent configuration
 set tabstop=2
@@ -111,7 +112,6 @@ set ignorecase
 " status line configuration
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
-set laststatus=2
 
 " Tab triggers buffer-name auto-completion
 set wildchar=<Tab> wildmenu wildmode=full
