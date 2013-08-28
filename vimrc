@@ -354,8 +354,8 @@ map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
 map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
 map <leader>gj :CommandTFlush<cr>\|:CommandT public/javascripts<cr>
 map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
-map <leader>gr :topleft :split config/routes.rb<cr>
+map <leader>gg :topleft :vsplit Gemfile<cr>
+map <leader>gr :topleft :vsplit config/routes.rb<cr>
 function! ShowRoutes()
 " Requires 'scratch' plugin
   :topleft 100 :split __Routes__
