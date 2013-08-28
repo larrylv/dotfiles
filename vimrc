@@ -136,7 +136,6 @@ map <C-h> <C-w><Left>
 " Clear the search buffer when hitting return
 function! MapCR()
   nnoremap <c-n> :nohlsearch<cr>
-nnoremap <cr> :nohlsearch<cr>
 endfunction
 call MapCR()
 
