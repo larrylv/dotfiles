@@ -128,6 +128,8 @@ set undoreload=10000
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap <c-c> <ESC>
 imap jj <ESC>
+" Insert a hash rocket with <c-l>
+imap <c-h> <space>=><space>
 " Move around splits with <c-hjkl>
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
