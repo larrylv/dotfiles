@@ -20,7 +20,6 @@ Bundle 'tComment'
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
 Bundle 'larrylv/vim-snippets'
-Bundle 'wincent/Command-T'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
@@ -333,7 +332,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
+set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,*/vendor/bundle,*/vendor/cache,*/tmp/*,*/public/download " exclude files from listings
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -363,23 +362,23 @@ map <leader>gR :call ShowRoutes()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command-T CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:CommandTCancelMap=['<Esc>', '<C-c>']
-let g:CommandTAcceptSelectionSplitMap=['<C-e>', '<C-f>']
-let g:CommandTMaxHeight = 16
-silent! nnoremap <unique> <silent> <Leader>bb :CommandTBuffer<CR>
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT config<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gj :CommandTFlush<cr>\|:CommandT public/javascripts<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
+" let g:CommandTCancelMap=['<Esc>', '<C-c>']
+" let g:CommandTAcceptSelectionSplitMap=['<C-e>', '<C-f>']
+" let g:CommandTMaxHeight = 16
+" silent! nnoremap <unique> <silent> <Leader>bb :CommandTBuffer<CR>
+" cnoremap %% <C-R>=expand('%:h').'/'<cr>
+" map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+" map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+" map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
+" map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+" map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+" map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+" map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+" map <leader>gf :CommandTFlush<cr>\|:CommandT config<cr>
+" map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+" map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+" map <leader>gj :CommandTFlush<cr>\|:CommandT public/javascripts<cr>
+" map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -388,28 +387,30 @@ map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
 silent! nnoremap <unique> <silent> <Leader>t :CtrlPTag<CR>
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:16,results:16'
 let g:ctrlp_map = '<\-t>'
-let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_max_files = 0
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_extensions = [ 'ctrlp-filetpe' ]
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_mruf_max = 0
 let g:ctrlp_mruf_relative = 1
+let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-e>']
     \}
-" silent! nnoremap <unique> <silent> <Leader>f :CtrlP<CR>
-" silent! nnoremap <unique> <silent> <Leader>bb :CtrlPBuffer<CR>
-" map <leader>ga :CtrlP app/assets<cr>
-" map <leader>gc :CtrlP app/controllers<cr>
-" map <leader>gh :CtrlP app/helpers<cr>
-" map <leader>gm :CtrlP app/models<cr>
-" map <leader>gv :CtrlP app/views<cr>
-" map <leader>gf :CtrlP config<cr>
-" map <leader>gl :CtrlP lib<cr>
-" map <leader>gp :CtrlP public<cr>
-" map <leader>gs :CtrlP spec<cr>
-" map <leader>gg :topleft :vsplit Gemfile<cr>
-" map <leader>gr :topleft :vsplit config/routes.rb<cr>
+silent! nnoremap <unique> <silent> <Leader>f :CtrlP<CR>
+silent! nnoremap <unique> <silent> <Leader>bb :CtrlPBuffer<CR>
+map <leader>ga :CtrlP app/assets<cr>
+map <leader>gc :CtrlP app/controllers<cr>
+map <leader>gh :CtrlP app/helpers<cr>
+map <leader>gm :CtrlP app/models<cr>
+map <leader>gv :CtrlP app/views<cr>
+map <leader>gf :CtrlP config<cr>
+map <leader>gl :CtrlP lib<cr>
+map <leader>gp :CtrlP public<cr>
+map <leader>gs :CtrlP spec<cr>
+map <leader>gg :topleft :vsplit Gemfile<cr>
+map <leader>gr :topleft :vsplit config/routes.rb<cr>
 
 
 " NERDTree plugin configuration
