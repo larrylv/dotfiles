@@ -25,20 +25,16 @@ At last, launch `vim`, run `:BundleInstall`.
 
 I am running on Mac OS X, but it will likely work on Linux as well.
 
-* vim (7.3) built with Ruby 1.8.7 support
-* ack-grep
-* ctags
-* zsh
-
 ### Vim Plugins
 
-* [Command-T](https://github.com/wincent/Command-T): Vim should be compiled with Ruby support
-* [NERDTree](https://github.com/scrooloose/nerdtree): A tree explorer plugin for vim
-* [tabular](https://github.com/godlygeek/tabular): A script for text filtering and alignment
-* [ack.vim](https://github.com/mileszs/ack.vim): Ack can be used as a replacement for 99% of the uses of grep
-* [rails.vim](https://github.com/tpope/vim-rails): Ruby on Rails power tools
-* [snipMate.vim](https://github.com/msanders/snipmate.vim): A concise vim script that implements some of TextMate's snippets features in Vim
-* [neocomplcache.vim](https://github.com/Shougo/neocomplcache): A **real** auto complete vim plugin
-* [syntastic](https://github.com/scrooloose/syntastic): Syntax checking hacks for vim
+* [Powerline](https://github.com/Lokaltog/vim-powerline): The ultimate vim statusline utility.
+* [ctrlp.vim](https://github.com/kien/ctrlp.vim): Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+* [NERDTree](https://github.com/scrooloose/nerdtree): A tree explorer plugin for vim.
+* [tabular](https://github.com/godlygeek/tabular): A script for text filtering and alignment.
+* [ack.vim](https://github.com/mileszs/ack.vim): Ack can be used as a replacement for 99% of the uses of grep.
+* [rails.vim](https://github.com/tpope/vim-rails): Ruby on Rails power tools.
+* [vim-surround](https://github.com/tpope/vim-surround): The plugin provides mappings to easily delete, change and add such surroundings in pairs.
+* [neocomplcache.vim](https://github.com/Shougo/neocomplcache): A **real** auto complete vim plugin.
+* [syntastic](https://github.com/scrooloose/syntastic): Syntax checking hacks for vim.
 * [showmarks.vim](http://www.vim.org/scripts/script.php?script_id=152): ShowMarks provides a visual representation of the location marks.
 * etc.
