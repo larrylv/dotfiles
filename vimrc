@@ -51,6 +51,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'ecomba/vim-ruby-refactoring'
 
 set t_Co=256
 set background=dark
@@ -417,6 +418,20 @@ map <leader>gp :CtrlP public<cr>
 map <leader>gs :CtrlP spec<cr>
 map <leader>gg :topleft :vsplit Gemfile<cr>
 map <leader>gr :topleft :vsplit config/routes.rb<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim-Ruby-Refactoring CONFIGURATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>rap  :RAddParameter<cr>
+nnoremap <leader>rcpc :RConvertPostConditional<cr>
+nnoremap <leader>rel  :RExtractLet<cr>
+vnoremap <leader>rec  :RExtractConstant<cr>
+vnoremap <leader>relv :RExtractLocalVariable<cr>
+nnoremap <leader>rit  :RInlineTemp<cr>
+vnoremap <leader>rrlv :RRenameLocalVariable<cr>
+vnoremap <leader>rriv :RRenameInstanceVariable<cr>
+vnoremap <leader>rem  :RExtractMethod<cr>
 
 
 " NERDTree plugin configuration
