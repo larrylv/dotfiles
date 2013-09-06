@@ -12,6 +12,8 @@ setopt no_nomatch
 
 zstyle ':completion:*' special-dirs true
 
+stty -ixon
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"

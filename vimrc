@@ -151,6 +151,13 @@ map <F8> :tnext<CR>
 " increase number, <c-a> is prefix for tmux.
 map <c-i> <c-a>
 
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
+" quick move under insert mode.
+imap <c-f> <c-o>w
+imap <c-b> <c-o>b
+
 " force write and save
 cmap w!! %!sudo tee > /dev/null %
 
