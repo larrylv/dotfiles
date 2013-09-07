@@ -46,7 +46,14 @@ bind ` splitw htop
 bind m command-prompt "splitw 'exec man %%'"
 bind / command-prompt "splitw '%%'"
 
-bind r source-file ~/.tmux.conf
+bind r source-file ~/.tmux.conf \; display-message "  Config reloaded..".
+
+# Set Copy-Mode settings
+bind [ copy-mode
+bind -t vi-copy v begin-selection
+bind -t vi-copy y copy-selection
+bind -t vi-copy V rectangle-toggle
+bind ] paste-buffer
 
 #-- statusbar --#
 
