@@ -513,5 +513,6 @@ autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 autocmd Filetype gitcommit setlocal textwidth=78
+autocmd FileType gitcommit highlight clear LineNr
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
