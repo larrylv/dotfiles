@@ -89,11 +89,11 @@ set autoread                     " Reload files changed outside automatically
 set scrolloff=3                  " Always shows 5 lines above/below the cursor
 set showcmd                      " display incomplete commands
 set tags=./tags;
-" Fix slow O inserts
-set timeout timeoutlen=1000 ttimeoutlen=100
+set timeout timeoutlen=1000 ttimeoutlen=100 " Fix slow 0 inserts
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 set laststatus=2
+set splitright                   " Puts new vsplit windows to the right of the current
 
 " tab/indent configuration
 set tabstop=2
