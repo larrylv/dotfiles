@@ -459,8 +459,8 @@ map <leader>gf :CtrlP config<cr>
 map <leader>gl :CtrlP lib<cr>
 map <leader>gp :CtrlP public<cr>
 map <leader>gs :CtrlP spec<cr>
-map <leader>gg :topleft :vsplit Gemfile<cr>
-map <leader>gr :topleft :vsplit config/routes.rb<cr>
+map <leader>gg :vsplit Gemfile<cr>
+map <leader>gr :vsplit config/routes.rb<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
