@@ -411,7 +411,6 @@ map <leader>gR :call ShowRoutes()<cr>
 " let g:CommandTAcceptSelectionSplitMap=['<C-e>', '<C-f>']
 " let g:CommandTMaxHeight = 16
 " silent! nnoremap <unique> <silent> <Leader>bb :CommandTBuffer<CR>
-" cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 " map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 " map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
@@ -424,6 +423,14 @@ map <leader>gR :call ShowRoutes()<cr>
 " map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
 " map <leader>gj :CommandTFlush<cr>\|:CommandT public/javascripts<cr>
 " map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
+
+
+" Some helpers to edit mode
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
