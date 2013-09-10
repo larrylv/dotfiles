@@ -52,6 +52,8 @@ Bundle 'ervandew/supertab'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
 
 set t_Co=256
 set background=dark
@@ -226,6 +228,12 @@ map <leader>c :Rcontroller<cr>
 map <leader>v :Rview<cr>
 map <leader>m :Rmodel<cr>
 map <leader>h :Rhelper<cr>
+
+" gist-vim configurations
+let g:gist_post_private = 1
+let g:gist_show_privates = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_detect_filetype = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
