@@ -59,14 +59,14 @@ set t_Co=256
 set background=dark
 
 " set wombat256 colorscheme
-colorscheme wombat256mod
+" colorscheme wombat256mod
 
 " " set solarized theme
-" let g:solarized_termtrans = 1
-" let g:solarized_termcolors = 256
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
-" colorscheme solarized
+let g:solarized_termtrans = 1
+let g:solarized_termcolors = 256
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+colorscheme solarized
 
 " basic configuration
 syntax on
