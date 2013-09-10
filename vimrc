@@ -180,6 +180,13 @@ map <leader>p :echo @%<cr>
 map <Leader>ev :edit $MYVIMRC<CR>
 map <leader>so :source $MYVIMRC<cr>
 
+" Some helpers to edit mode
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
 " remember last location when open a file
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
       \| exe "normal g'\"" | endif
@@ -423,14 +430,6 @@ map <leader>gR :call ShowRoutes()<cr>
 " map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
 " map <leader>gj :CommandTFlush<cr>\|:CommandT public/javascripts<cr>
 " map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
-
-
-" Some helpers to edit mode
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
