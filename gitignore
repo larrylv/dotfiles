@@ -13,6 +13,7 @@
 /.bundle
 /vendor/bundle
 /.tmux.sh
+Session.vim
 tags
 
 # Rails .gitignore

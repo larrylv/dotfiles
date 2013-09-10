@@ -31,6 +31,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-obsession'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'scrooloose/nerdtree'
@@ -76,12 +77,17 @@ set ruler
 set nobackup
 set fdm=marker
 set bs=2
-set backspace=indent,eol,start " Allow backspacing over everything in insert mode
-set diffopt+=iwhite            " Ignore whitespaces with vimdiff
-set cursorline
-set autoread                   " Reload files changed outside automatically
-set scrolloff=3                " Always shows 5 lines above/below the cursor
-set showcmd                    " display incomplete commands
+set backspace=indent,eol,start   " Allow backspacing over everything in insert mode
+set diffopt+=iwhite              " Ignore whitespaces with vimdiff
+set cursorline                   " Highlight current line
+highlight clear SignColumn       " SignColumn should match background for things
+                                 " like vim-gitgutter
+" highlight clear LineNr           " Current line number row will have same
+                                 " background color in relative mode.
+set nojoinspaces                 " Prevents inserting two spaces after punctuation on a join (J)
+set autoread                     " Reload files changed outside automatically
+set scrolloff=3                  " Always shows 5 lines above/below the cursor
+set showcmd                      " display incomplete commands
 set tags=./tags;
 " Fix slow O inserts
 set timeout timeoutlen=1000 ttimeoutlen=100
@@ -300,16 +306,38 @@ let g:syntastic_style_warning_symbol = '≈'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tabularize.vim CONFIGURATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader>a& :Tabularize /&<CR>
+vmap <Leader>a& :Tabularize /&<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NEOCOMPLCACHE CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-highlight Pmenu ctermbg=238 gui=bold
+" highlight Pmenu ctermbg=238 gui=bold
+highlight Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+highlight PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+highlight PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_auto_delimiter = 1
 let g:neocomplcache_force_overwrite_completefunc = 1
+
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
@@ -321,6 +349,7 @@ autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 " Tell Neosnippet about the other snippets
@@ -453,7 +482,7 @@ map <F1> :NERDTreeToggle<CR>
 " ack.vim configuration
 if executable("ack")
     " ,a to Ack (search in files)
-    nnoremap <leader>a :Ack 
+    nnoremap <leader>A :Ack 
     let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp"
     let g:ackhighlight=1
 endif
