@@ -79,11 +79,6 @@ set fdm=marker
 set bs=2
 set backspace=indent,eol,start   " Allow backspacing over everything in insert mode
 set diffopt+=iwhite              " Ignore whitespaces with vimdiff
-set cursorline                   " Highlight current line
-highlight clear SignColumn       " SignColumn should match background for things
-                                 " like vim-gitgutter
-" highlight clear LineNr           " Current line number row will have same
-                                 " background color in relative mode.
 set nojoinspaces                 " Prevents inserting two spaces after punctuation on a join (J)
 set autoread                     " Reload files changed outside automatically
 set scrolloff=3                  " Always shows 5 lines above/below the cursor
@@ -94,6 +89,12 @@ set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 set laststatus=2
 set splitright                   " Puts new vsplit windows to the right of the current
+
+set cursorline                   " Highlight current line
+highlight clear SignColumn       " SignColumn should match background for things
+                                 " like vim-gitgutter
+highlight clear LineNr
+highlight LineNr ctermfg=10
 
 " tab/indent configuration
 set tabstop=2
@@ -513,6 +514,5 @@ autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 autocmd Filetype gitcommit setlocal textwidth=78
-autocmd FileType gitcommit highlight clear LineNr
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
