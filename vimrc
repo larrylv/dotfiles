@@ -88,7 +88,6 @@ set timeout timeoutlen=1000 ttimeoutlen=100 " Fix slow 0 inserts
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 set laststatus=2
-set splitright                   " Puts new vsplit windows to the right of the current
 
 set cursorline                   " Highlight current line
 highlight clear SignColumn       " SignColumn should match background for things
@@ -392,8 +391,6 @@ set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,*/vendor/bundle,*/vendor/
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Rails Development CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>gg :topleft :vsplit Gemfile<cr>
-map <leader>gr :topleft :vsplit config/routes.rb<cr>
 function! ShowRoutes()
 " Requires 'scratch' plugin
   :topleft 100 :split __Routes__
