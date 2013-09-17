@@ -96,10 +96,10 @@ highlight clear LineNr
 highlight LineNr ctermfg=10
 
 " tab/indent configuration
-set tabstop=2
-set shiftwidth=2
 set expandtab
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set autoindent
 set cindent
 set encoding=utf-8
@@ -107,7 +107,9 @@ set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,chinese
 set formatoptions+=mM
 " set ambiwidth=double
-autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
+
+ "for ruby, autoindent with two spaces, always expand tabs
+autocmd FileType ruby,haml,eruby,yaml,html,javascript,coffee,sass,css,cucumber set ai ts=2 sw=2 sts=2 et
 
 filetype plugin indent on
 
@@ -510,6 +512,7 @@ autocmd BufNewFile,BufRead pryrc set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd Filetype gitcommit setlocal textwidth=78
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
