@@ -33,6 +33,7 @@
     pick    = cherry-pick
     pl      = pull
     ps      = push
+    pushall = push --recurse-submodules=on-demand
     rbs     = !sh -c 'git co $1 && git pull && git co @{-1} && git rebase -i $1' -
     sb      = show-branch
     st      = status
