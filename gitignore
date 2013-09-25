@@ -9,10 +9,10 @@
 *.ruby-version
 *.rbenv-version
 *.rbenv-gemsets
-/.binstubs
-/.bundle
-/vendor/bundle
-/.tmux.sh
+.binstubs
+.bundle
+*/vendor/bundle/
+.tmux.sh
 Session.vim
 tags
 
