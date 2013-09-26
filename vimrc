@@ -439,7 +439,7 @@ map <leader>gR :call ShowRoutes()<cr>
 " CTRLP.vim CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:16,results:16'
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
 let g:ctrlp_map = '<\-t>'
 let g:ctrlp_max_files = 0
 let g:ctrlp_working_path_mode = 0
