@@ -97,9 +97,9 @@ highlight LineNr ctermfg=10
 
 " tab/indent configuration
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set cindent
 set encoding=utf-8
@@ -107,9 +107,6 @@ set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,chinese
 set formatoptions+=mM
 " set ambiwidth=double
-
- "for ruby, autoindent with two spaces, always expand tabs
-autocmd FileType ruby,haml,eruby,yaml,html,javascript,coffee,sass,css,cucumber set ai ts=2 sw=2 sts=2 et
 
 filetype plugin indent on
 
