@@ -55,6 +55,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'elixir-lang/vim-elixir'
 
 set t_Co=256
 set background=dark
