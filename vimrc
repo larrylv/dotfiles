@@ -421,7 +421,6 @@ map <leader>gr :vsplit config/routes.rb<cr>
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 let g:CommandTAcceptSelectionSplitMap=['<C-e>', '<C-f>']
 let g:CommandTMaxHeight=20
-let g:CommandTMinHeight=2
 silent! nnoremap <unique> <silent> <Leader>bb :CommandTBuffer<CR>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
