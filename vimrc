@@ -443,7 +443,7 @@ map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
 silent! nnoremap <unique> <silent> <Leader>gt :CtrlPTag<CR>
 " silent! nnoremap <unique> <silent> <Leader>f :CtrlP<CR>
 " silent! nnoremap <unique> <silent> <Leader>bb :CtrlPBuffer<CR>
-" let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
 " let g:ctrlp_map = '<\-t>'
 " let g:ctrlp_max_files = 0
 " let g:ctrlp_working_path_mode = 0
