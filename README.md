@@ -28,7 +28,8 @@ I am running on Mac OS X, but it will likely work on Linux as well.
 ### Vim Plugins
 
 * [Powerline](https://github.com/Lokaltog/vim-powerline): The ultimate vim statusline utility.
-* [ctrlp.vim](https://github.com/kien/ctrlp.vim): Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+* [Command-T](https://github.com/wincent/Command-T): Vim should be compiled with Ruby support.
+* [ctrlp.vim](https://github.com/kien/ctrlp.vim): I only use this for tag matcher.
 * [NERDTree](https://github.com/scrooloose/nerdtree): A tree explorer plugin for vim.
 * [tabular](https://github.com/godlygeek/tabular): A script for text filtering and alignment.
 * [ack.vim](https://github.com/mileszs/ack.vim): Ack can be used as a replacement for 99% of the uses of grep.
