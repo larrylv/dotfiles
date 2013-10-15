@@ -178,7 +178,6 @@ map <leader>w :wq<cr>
 map <leader>p :echo @%<cr>
 
 " Open .vimrc for quick-edit.
-map <Leader>ev :edit $MYVIMRC<CR>
 map <leader>so :source $MYVIMRC<cr>
 map <leader>ss :source ./Session.vim<cr>
 
