@@ -174,7 +174,8 @@ cmap w!! %!sudo tee > /dev/null %
 let mapleader=","
 nnoremap <leader><leader> <c-^>
 map <leader>y "*y
-map <leader>w :wq<cr>
+map <leader>w <esc>:w<CR>
+imap <leader>w <esc>:w<CR>
 map <leader>p :echo @%<cr>
 
 " Open .vimrc for quick-edit.
