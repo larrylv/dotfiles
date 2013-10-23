@@ -120,7 +120,7 @@ set ignorecase
 
 " status line configuration
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'filename'
+" let g:Powerline_stl_path_style = 'filename'
 
 " Tab triggers buffer-name auto-completion
 set wildchar=<Tab> wildmenu wildmode=full
