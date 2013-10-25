@@ -138,7 +138,7 @@ set undoreload=10000
 imap <c-c> <ESC>
 imap jj <ESC>
 " Insert a hash rocket with <c-h>
-imap <c-h> <space>=><space>
+imap <c-h> =><space>
 " Move around splits with <c-hjkl>
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
@@ -491,7 +491,7 @@ map <F1> :NERDTreeToggle<CR>
 if executable("ack")
     " ,a to Ack (search in files)
     nnoremap <leader>a :Ack 
-    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp"
+    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
     let g:ackhighlight=1
 endif
 map <leader>cn :cn<cr>
