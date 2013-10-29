@@ -57,6 +57,7 @@ Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'benmills/vimux'
 
 set t_Co=256
 set background=dark
@@ -477,6 +478,25 @@ nnoremap <leader>rit  :RInlineTemp<cr>
 vnoremap <leader>rrlv :RRenameLocalVariable<cr>
 vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 vnoremap <leader>rem  :RExtractMethod<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vimux CONFIGURATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Run the current file with rspec
+map <Leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+" Prompt for a command to run map
+map <Leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+" Inspect runner pane map
+map <Leader>vi :VimuxInspectRunner<CR>
+" Close vim tmux runner opened by VimuxRunCommand
+map <Leader>vc :VimuxCloseRunner<CR>
+" Interrupt any command running in the runner pane map
+map <Leader>vx :VimuxInterruptRunner<CR>
+" Clear the tmux history of the runner pane
+" map <Leader>vc :VimuxClearRunnerHistory<CR>
 
 
 " NERDTree plugin configuration
