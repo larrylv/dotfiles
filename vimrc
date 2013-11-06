@@ -484,7 +484,7 @@ vnoremap <leader>rem  :RExtractMethod<cr>
 " Vimux CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Run the current file with rspec
-map <Leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+map <Leader>rs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
 " Prompt for a command to run map
 map <Leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
