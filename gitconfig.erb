@@ -21,6 +21,7 @@
     delete  = !git ls-files -z --deleted | xargs -0 git rm
     diff    = diff --ignore-space-change
     dt      = difftool
+    fa      = fetch --all
     l       = "!git log --graph --pretty='tformat:%C(yellow)%h{%C(green)%ar{%C(bold blue)%an{%C(red)%d%C(reset) %s' $* | column -t -s '{' | less -FXRS"
     lo      = log --graph --decorate --pretty=oneline --abbrev-commit --all --name-status
     last    = log --stat -1
