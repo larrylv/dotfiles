@@ -93,6 +93,7 @@ set timeout timeoutlen=1000 ttimeoutlen=100 " Fix slow 0 inserts
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 set laststatus=2
+set modeline
 
 set cursorline                   " Highlight current line
 highlight clear SignColumn       " SignColumn should match background for things
