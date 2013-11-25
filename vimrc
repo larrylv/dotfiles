@@ -124,6 +124,7 @@ set ignorecase
 " status line configuration
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
+call Pl#Theme#RemoveSegment('fugitive:branch')
 " let g:Powerline_stl_path_style = 'filename'
 
 " Tab triggers buffer-name auto-completion
