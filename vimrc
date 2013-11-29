@@ -41,6 +41,7 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'ktvoelker/sbt-vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'depuracao/vim-rdoc'
@@ -181,8 +182,6 @@ cmap w!! %!sudo tee > /dev/null %
 let mapleader=","
 nnoremap <leader><leader> <c-^>
 map <leader>y "*y
-map <leader>w <esc>:w<CR>
-imap <leader>w <esc>:w<CR>
 map <leader>p :echo @%<cr>
 
 " Open .vimrc for quick-edit.
@@ -256,6 +255,9 @@ let g:gist_post_private = 1
 let g:gist_show_privates = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_detect_filetype = 1
+
+" vim-easymotion configurations
+let g:EasyMotion_leader_key = '<Leader>t'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
