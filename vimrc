@@ -33,14 +33,15 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-obsession'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'mileszs/ack.vim'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'bling/vim-airline'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'depuracao/vim-rdoc'
@@ -122,12 +123,27 @@ set hlsearch
 set incsearch
 set ignorecase
 
-" status line configuration
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_colorscheme = 'solarized256'
-call Pl#Theme#RemoveSegment('fugitive:branch')
-call Pl#Theme#RemoveSegment('fileformat')
+" vim-powerline configurations
+" let g:Powerline_symbols = 'fancy'
+" let g:Powerline_colorscheme = 'solarized256'
+" call Pl#Theme#RemoveSegment('fugitive:branch')
+" call Pl#Theme#RemoveSegment('fileformat')
 " let g:Powerline_stl_path_style = 'filename'
+
+" vim-airline configurations
+let g:airline_theme='powerlineish'
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols = {}
+let g:airline_symbols.space = ' '
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
 
 " Tab triggers buffer-name auto-completion
 set wildchar=<Tab> wildmenu wildmode=full
