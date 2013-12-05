@@ -90,7 +90,7 @@ set autoread                     " Reload files changed outside automatically
 set scrolloff=3                  " Always shows 5 lines above/below the cursor
 set showcmd                      " display incomplete commands
 set tags=./tags;
-set timeout timeoutlen=1000 ttimeoutlen=100 " Fix slow 0 inserts
+set timeout timeoutlen=1000 ttimeoutlen=50 " Fix slow 0 inserts
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 set laststatus=2
@@ -113,7 +113,8 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,chinese
 set formatoptions+=mM
-" set ambiwidth=double
+set ambiwidth=double
+set noshowmode
 
 filetype plugin indent on
 
@@ -132,6 +133,7 @@ set ignorecase
 
 " vim-airline configurations
 let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
