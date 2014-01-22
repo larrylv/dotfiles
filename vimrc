@@ -10,26 +10,22 @@ call vundle#rc()
 
 " vim-scripts repos
 Bundle 'bufexplorer.zip'
-Bundle 'genutils'
 Bundle 'matchit.zip'
-Bundle 'scratch.vim'
-Bundle 'sudo.vim'
-Bundle 'taglist.vim'
 
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
 Bundle 'wincent/Command-T'
-Bundle 'kien/ctrlp.vim'
+" Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-haml'
+" Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-dispatch'
+" Bundle 'tpope/vim-abolish'
+" Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'Shougo/neocomplcache'
@@ -40,18 +36,18 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'honza/vim-snippets'
 Bundle 'mileszs/ack.vim'
-Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bling/vim-airline'
-Bundle 'flazz/vim-colorschemes'
+" Bundle 'flazz/vim-colorschemes'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'depuracao/vim-rdoc'
+" Bundle 'depuracao/vim-rdoc'
 Bundle 'pangloss/vim-javascript'
 Bundle 'docunext/closetag.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'Townk/vim-autoclose'
 Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
-Bundle 'hail2u/vim-css3-syntax'
+" Bundle 'hail2u/vim-css3-syntax'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
 Bundle 'michaeljsmith/vim-indent-object'
@@ -59,7 +55,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
-Bundle 'elixir-lang/vim-elixir'
+" Bundle 'elixir-lang/vim-elixir'
 Bundle 'benmills/vimux'
 
 set t_Co=256
@@ -465,10 +461,10 @@ map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP.vim CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-silent! nnoremap <unique> <silent> <Leader>gt :CtrlPTag<CR>
+" silent! nnoremap <unique> <silent> <Leader>gt :CtrlPTag<CR>
 " silent! nnoremap <unique> <silent> <Leader>f :CtrlP<CR>
 " silent! nnoremap <unique> <silent> <Leader>bb :CtrlPBuffer<CR>
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
+" let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
 " let g:ctrlp_map = '<\-t>'
 " let g:ctrlp_max_files = 0
 " let g:ctrlp_working_path_mode = 0
