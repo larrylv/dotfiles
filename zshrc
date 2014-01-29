@@ -40,3 +40,6 @@ plugins=(rbenv autojump brew bundler cap colored-man copydir copyfile forklift g
 
 source $ZSH/oh-my-zsh.sh
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
