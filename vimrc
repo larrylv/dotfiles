@@ -57,6 +57,7 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 " Bundle 'elixir-lang/vim-elixir'
 Bundle 'benmills/vimux'
+Bundle 'groenewege/vim-less'
 
 set t_Co=256
 set background=dark
