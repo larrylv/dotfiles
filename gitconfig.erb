@@ -22,10 +22,10 @@
     diff    = diff --ignore-space-change
     dt      = difftool
     fa      = fetch --all
-    l       = "!git log --graph --pretty='tformat:%C(yellow)%h{%C(green)%ar{%C(bold blue)%an{%C(red)%d%C(reset) %s' $* | column -t -s '{' | less -FXRS"
-    lo      = log --graph --decorate --pretty=oneline --abbrev-commit --all --name-status
     last    = log --stat -1
-    lg      = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    l       = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -10
+    lg      = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -10
+    lo      = log --graph --decorate --pretty=oneline --abbrev-commit --all --name-status
     ls-ignored = ls-files --exclude-standard --ignored --others
     mf      = merge --no-ff
     news    = log -p HEAD@{1}..HEAD@{0}
