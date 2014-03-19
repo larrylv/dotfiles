@@ -40,7 +40,7 @@ plugins=(rbenv autojump brew bundler cap colored-man copydir copyfile forklift g
 
 source $ZSH/oh-my-zsh.sh
 
-export GOPATH=$HOME/Code/Go
+export GOPATH=$HOME/Code/GoPath
 export PATH=$PATH:/usr/local/Cellar/go/1.2/libexec/bin:$GOPATH/bin
 
 [[ -s "/usr/local/bin" ]] && export PATH=/usr/local/bin:$PATH

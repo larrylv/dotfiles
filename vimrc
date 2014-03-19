@@ -5,7 +5,9 @@
 
 filetype off " required by vundle
 
-set rtp+=~/.gmarik-vundle
+set runtimepath+=~/.gmarik-vundle
+set runtimepath+=$GOROOT/misc/vim
+
 call vundle#rc()
 
 " vim-scripts repos
@@ -40,7 +42,6 @@ Bundle 'mileszs/ack.vim'
 Bundle 'bling/vim-airline'
 " Bundle 'flazz/vim-colorschemes'
 Bundle 'vim-ruby/vim-ruby'
-" Bundle 'depuracao/vim-rdoc'
 Bundle 'pangloss/vim-javascript'
 Bundle 'docunext/closetag.vim'
 Bundle 'godlygeek/tabular'
@@ -55,9 +56,9 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
-" Bundle 'elixir-lang/vim-elixir'
 Bundle 'benmills/vimux'
 Bundle 'groenewege/vim-less'
+Bundle 'jnwhiteh/vim-golang'
 
 set t_Co=256
 set background=dark
@@ -558,4 +559,6 @@ autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd Filetype gitcommit setlocal textwidth=78
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+autocmd FileType go,c,python set ts=4 sw=4 sts=4 et
 
