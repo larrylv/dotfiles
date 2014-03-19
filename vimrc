@@ -59,6 +59,7 @@ Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
 Bundle 'groenewege/vim-less'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'wting/rust.vim'
 
 set t_Co=256
 set background=dark
@@ -560,5 +561,5 @@ autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd Filetype gitcommit setlocal textwidth=78
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
-autocmd FileType go,c,python set ts=4 sw=4 sts=4 et
+autocmd FileType go,c,rust set ts=4 sw=4 sts=4 et
 
