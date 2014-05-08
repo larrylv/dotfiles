@@ -38,6 +38,8 @@ DISABLE_AUTO_TITLE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(rbenv autojump brew bundler cap colored-man copydir copyfile forklift gem git github git-flow go heroku history-substring-search node npm osx pow powder postgres rails ruby tmux urltools vagrant)
 
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 source $ZSH/oh-my-zsh.sh
 
 export GOPATH=$HOME/Code/GoPath
