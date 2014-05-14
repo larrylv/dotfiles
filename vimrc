@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  August 25, 2013
+" Last Modified:  May 14, 2014
 "
 
 filetype off " required by vundle
@@ -23,7 +23,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-" Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 " Bundle 'tpope/vim-abolish'
@@ -48,7 +48,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'Townk/vim-autoclose'
 Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
-" Bundle 'hail2u/vim-css3-syntax'
+Bundle 'hail2u/vim-css3-syntax'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
 Bundle 'michaeljsmith/vim-indent-object'
