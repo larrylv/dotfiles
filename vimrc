@@ -332,11 +332,14 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=0
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'passive_filetypes': ['tex'] }
+                           \ 'passive_filetypes': ['tex', 'scss', 'slim'] }
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_enable_highlighting = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
