@@ -255,6 +255,35 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 map <leader>ggn :GitGutterNextHunk<cr>
 map <leader>ggp :GitGutterPrevHunk<cr>
 
+" tagbar configurations for Go support.
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
 
 " bufExplorer configurations
 let g:bufExplorerShowTabBuffer=1    " BufExplorer: show only buffers relative to this tab
