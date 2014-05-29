@@ -281,7 +281,7 @@ let g:tagbar_type_go = {
         \ 'ntype' : 'n'
     \ },
     \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
+    \ 'ctagsargs' : '-sort -silent -R'
 \ }
 
 
