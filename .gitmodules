@@ -1,6 +1,6 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
-	url = git://github.com/larrylv/oh-my-zsh.git
+	url = git@github.com:larrylv/oh-my-zsh.git
 [submodule "gmarik-vundle"]
 	path = gmarik-vundle
-	url = git://github.com/gmarik/vundle.git
+	url = git@github.com:gmarik/vundle.git
