@@ -4,7 +4,7 @@ tmux new-session -d -s hacks/example
 
 tmux new-window -t hacks/example:2 -n code
 
-tmux new-window -t hacks/example:3
+tmux new-window -t hacks/example:3 -n test
 
 tmux select-window -t 2
 
