@@ -25,7 +25,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-speeddating'
+" Bundle 'tpope/vim-speeddating'
 " Bundle 'tpope/vim-abolish'
 " Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-obsession'
@@ -39,18 +39,18 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'honza/vim-snippets'
 Bundle 'mileszs/ack.vim'
-" Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bling/vim-airline'
-" Bundle 'flazz/vim-colorschemes'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'jnwhiteh/vim-golang'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'groenewege/vim-less'
+Bundle 'hail2u/vim-css3-syntax'
 Bundle 'docunext/closetag.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'Townk/vim-autoclose'
 Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
-Bundle 'hail2u/vim-css3-syntax'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
 Bundle 'michaeljsmith/vim-indent-object'
@@ -59,8 +59,6 @@ Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
-Bundle 'groenewege/vim-less'
-Bundle 'jnwhiteh/vim-golang'
 Bundle 'wting/rust.vim'
 
 set t_Co=256
@@ -69,7 +67,7 @@ set background=dark
 " set wombat256 colorscheme
 " colorscheme wombat256mod
 
-" " set solarized theme
+" set solarized theme
 let g:solarized_termtrans = 1
 let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
