@@ -94,6 +94,7 @@ set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 set laststatus=2
 set modeline
+set relativenumber
 
 set cursorline                   " Highlight current line
 highlight clear SignColumn       " SignColumn should match background for things
