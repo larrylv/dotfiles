@@ -91,7 +91,7 @@ set autoread                     " Reload files changed outside automatically
 set scrolloff=3                  " Always shows 5 lines above/below the cursor
 set showcmd                      " display incomplete commands
 set tags=./tags;
-set timeout timeoutlen=500 ttimeoutlen=50 " Fix slow 0 inserts
+set timeout timeoutlen=1000 ttimeoutlen=50 " Fix slow 0 inserts
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 set laststatus=2
@@ -126,13 +126,6 @@ set hlsearch
 set incsearch
 set ignorecase
 
-" vim-powerline configurations
-" let g:Powerline_symbols = 'fancy'
-" let g:Powerline_colorscheme = 'solarized256'
-" call Pl#Theme#RemoveSegment('fugitive:branch')
-" call Pl#Theme#RemoveSegment('fileformat')
-" let g:Powerline_stl_path_style = 'filename'
-
 " vim-airline configurations
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
@@ -158,10 +151,26 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
+" force write and save
+cmap w!! %!sudo tee > /dev/null %
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nmap <F2> :TagbarToggle<CR>
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
+nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .<CR>
+map <F7> :tprevious<CR>
+map <F8> :tnext<CR>
+
 imap <c-c> <ESC>
 imap jj <ESC>
 " Insert a hash rocket with <c-h>
@@ -171,16 +180,6 @@ map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
-" Clear the search buffer when hitting return
-nmap <leader>h :nohlsearch
-
-nmap <F2> :TagbarToggle<CR>
-nnoremap <F3> :set invpaste paste?<CR>
-set pastetoggle=<F3>
-nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .<CR>
-map <F7> :tprevious<CR>
-map <F8> :tnext<CR>
 
 " increase number, <c-a> is prefix for tmux.
 map <c-i> <c-a>
@@ -192,36 +191,138 @@ imap <C-s> <esc>:w<CR>
 imap <c-f> <c-o>w
 imap <c-b> <c-o>b
 
-" force write and save
-cmap w!! %!sudo tee > /dev/null %
+map <C-n> :cn<CR>
+map <C-p> :cp<CR>
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
 
 let mapleader=","
+
 nnoremap <leader><leader> <c-^>
-map <leader>y "*y
-map <leader>p :echo @%<cr>
-
-" Open .vimrc for quick-edit.
-map <leader>so :source $MYVIMRC<cr>
-map <leader>ss :source ./Session.vim<cr>
-
-" Some helpers to edit mode
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+command! GdiffInTab tabedit %|vsplit|Gdiff
+
+silent! nnoremap <unique> <silent> <leader>bb :CommandTBuffer<CR>
+map <leader>c :Rcontroller<cr>
+map <leader>cc :ccl<cr>
+nnoremap  <leader>d :GdiffInTab<cr>
+nnoremap  <leader>D :tabclose<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
+map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
+map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+map <leader>gf :CommandTFlush<cr>\|:CommandT config<cr>
+map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+map <leader>gj :CommandTFlush<cr>\|:CommandT app/assets/javascripts<cr>
+map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
+map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+map <leader>ggn :GitGutterNextHunk<cr>
+map <leader>ggp :GitGutterPrevHunk<cr>
+nmap <leader>h :nohlsearch<cr>
+map <leader>m :Rmodel<cr>
+map <leader>n :call RenameFile()<cr>
+map <leader>p :echo @%<cr>
+map <leader>sc :sp db/schema.rb<cr>
+map <leader>sg :sp Gemfile<cr>
+map <leader>so :source $MYVIMRC<cr>
+map <leader>sr :sp config/routes.rb<cr>
+map <leader>ss :source ./Session.vim<cr>
+nnoremap <leader>sf :call OpenTestAlternate()<cr>
+" Both rspec and minitest will work.
+map <leader>ts :w<cr>:call RunCurrentTest()<CR>
+" Only work with rspec.
+map <Leader>tl :w<cr>:call RunCurrentLineInTest()<CR>
+" Only work with minitest.
+map <Leader>tn :!ruby -Itest % -n "//"<left><left>
+nmap <leader>ta :Tabularize /
+nmap <leader>t= :Tabularize /=<CR>
+nmap <leader>t# :Tabularize /#<CR>
+map <leader>v :Rview<cr>
+map <Leader>vc :RVcontroller<cr>
+map <Leader>vf :RVfunctional<cr>
+map <Leader>vi :tabe ~/.vimrc<CR>
+map <Leader>vm :RVmodel<cr>
+map <Leader>vu :RVunittest<CR>
+map <Leader>vv :RVview<cr>
 
-" remember last location when open a file
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-      \| exe "normal g'\"" | endif
+" Vim-Ruby-Refactoring CONFIGURATIONS
+nnoremap <leader>rap  :RAddParameter<cr>
+nnoremap <leader>rcpc :RConvertPostConditional<cr>
+vnoremap <leader>rec  :RExtractConstant<cr>
+nnoremap <leader>rel  :RExtractLet<cr>
+vnoremap <leader>rem  :RExtractMethod<cr>
+vnoremap <leader>relv :RExtractLocalVariable<cr>
+nnoremap <leader>rit  :RInlineTemp<cr>
+vnoremap <leader>rrlv :RRenameLocalVariable<cr>
+vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 
-command! GdiffInTab tabedit %|vsplit|Gdiff
-nnoremap <leader>d :GdiffInTab<cr>
-nnoremap <leader>D :tabclose<cr>
+" Run the current file with rspec
+map <leader>rs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+" Prompt for a command to run map
+map <leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map <leader>vl :VimuxRunLastCommand<CR>
+" Inspect runner pane map
+map <leader>vi :VimuxInspectRunner<CR>
+" Close vim tmux runner opened by VimuxRunCommand
+map <leader>vc :VimuxCloseRunner<CR>
+" Interrupt any command running in the runner pane map
+map <leader>vx :VimuxInterruptRunner<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Test-running stuff
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vroom_use_vimux=1
+
+function! RunCurrentTest()
+  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
+  if in_test_file
+    call SetTestFile()
+
+    if match(expand('%'), '\.feature$') != -1
+      call SetTestRunner("!cucumber")
+      exec g:bjo_test_runner g:bjo_test_file
+    elseif match(expand('%'), '_spec\.rb$') != -1
+      call SetTestRunner("!rspec")
+      exec g:bjo_test_runner g:bjo_test_file
+    else
+      call SetTestRunner("!ruby -Itest")
+      exec g:bjo_test_runner g:bjo_test_file
+    endif
+  else
+    exec g:bjo_test_runner g:bjo_test_file
+  endif
+endfunction
+
+function! SetTestRunner(runner)
+  let g:bjo_test_runner=a:runner
+endfunction
+
+function! RunCurrentLineInTest()
+  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
+  if in_test_file
+    call SetTestFileWithLine()
+  end
+
+  exec "!rspec" g:bjo_test_file . ":" . g:bjo_test_file_line
+endfunction
+
+function! SetTestFile()
+  let g:bjo_test_file=@%
+endfunction
+
+function! SetTestFileWithLine()
+  let g:bjo_test_file=@%
+  let g:bjo_test_file_line=line(".")
+endfunction
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -236,13 +337,11 @@ function! RenameFile()
         redraw!
     endif
 endfunction
-map <leader>n :call RenameFile()<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CLOSE QUICKFIX WINDOW
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>cc :ccl<cr>
 au FileType qf call AdjustWindowHeight(3, 10)
 function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
@@ -253,10 +352,6 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-
-" vim-gitgutter configurations
-map <leader>ggn :GitGutterNextHunk<cr>
-map <leader>ggp :GitGutterPrevHunk<cr>
 
 " tagbar configurations for Go support.
 let g:tagbar_type_go = {
@@ -293,20 +388,11 @@ let g:bufExplorerShowTabBuffer=1    " BufExplorer: show only buffers relative to
 let g:bufExplorerShowRelativePath=1 " BufExplorer: show relative paths
 
 
-" rails.vim configurations
-map <leader>c :Rcontroller<cr>
-map <leader>v :Rview<cr>
-map <leader>m :Rmodel<cr>
-" map <leader>h :Rhelper<cr>
-
 " gist-vim configurations
 let g:gist_post_private = 1
 let g:gist_show_privates = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_detect_filetype = 1
-
-" vim-easymotion configurations
-let g:EasyMotion_leader_key = '<Leader>t'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -337,8 +423,6 @@ function! AlternateForCurrentFile()
   endif
   return new_file
 endfunction
-nnoremap <leader>. :call OpenTestAlternate()<cr>
-nnoremap <leader>s :call OpenTestAlternate()<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -371,24 +455,6 @@ let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tabularize.vim CONFIGURATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader>t& :Tabularize /&<CR>
-vmap <Leader>t& :Tabularize /&<CR>
-nmap <Leader>t= :Tabularize /=<CR>
-vmap <Leader>t= :Tabularize /=<CR>
-nmap <Leader>t# :Tabularize /#<CR>
-vmap <Leader>t# :Tabularize /#<CR>
-nmap <Leader>t: :Tabularize /:<CR>
-vmap <Leader>t: :Tabularize /:<CR>
-nmap <Leader>t:: :Tabularize /:\zs<CR>
-vmap <Leader>t:: :Tabularize /:\zs<CR>
-nmap <Leader>t, :Tabularize /,<CR>
-vmap <Leader>t, :Tabularize /,<CR>
-nmap <Leader>t<Bar> :Tabularize /<Bar><CR>
-vmap <Leader>t<Bar> :Tabularize /<Bar><CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -468,10 +534,7 @@ function! ShowRoutes()
 " Delete empty trailing line
   :normal dd
 endfunction
-map <leader>gR :call ShowRoutes()<cr>
 
-map <leader>gg :vsplit Gemfile<cr>
-map <leader>gr :vsplit config/routes.rb<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command-T CONFIGURATIONS
@@ -479,27 +542,14 @@ map <leader>gr :vsplit config/routes.rb<cr>
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 let g:CommandTAcceptSelectionSplitMap=['<C-e>', '<C-f>']
 let g:CommandTMaxHeight=20
-silent! nnoremap <unique> <silent> <Leader>bb :CommandTBuffer<CR>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT config<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gj :CommandTFlush<cr>\|:CommandT public/javascripts<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP.vim CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" silent! nnoremap <unique> <silent> <Leader>gt :CtrlPTag<CR>
-" silent! nnoremap <unique> <silent> <Leader>f :CtrlP<CR>
-" silent! nnoremap <unique> <silent> <Leader>bb :CtrlPBuffer<CR>
+" silent! nnoremap <unique> <silent> <leader>gt :CtrlPTag<CR>
+" silent! nnoremap <unique> <silent> <leader>f :CtrlP<CR>
+" silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
 " let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
 " let g:ctrlp_map = '<\-t>'
 " let g:ctrlp_max_files = 0
@@ -523,39 +573,6 @@ map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
 " map <leader>gs :CtrlP spec<cr>
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim-Ruby-Refactoring CONFIGURATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>rap  :RAddParameter<cr>
-nnoremap <leader>rcpc :RConvertPostConditional<cr>
-nnoremap <leader>rel  :RExtractLet<cr>
-vnoremap <leader>rec  :RExtractConstant<cr>
-vnoremap <leader>relv :RExtractLocalVariable<cr>
-nnoremap <leader>rit  :RInlineTemp<cr>
-vnoremap <leader>rrlv :RRenameLocalVariable<cr>
-vnoremap <leader>rriv :RRenameInstanceVariable<cr>
-vnoremap <leader>rem  :RExtractMethod<cr>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vimux CONFIGURATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Run the current file with rspec
-map <Leader>rs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
-" Prompt for a command to run map
-map <Leader>vp :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
-" Inspect runner pane map
-map <Leader>vi :VimuxInspectRunner<CR>
-" Close vim tmux runner opened by VimuxRunCommand
-map <Leader>vc :VimuxCloseRunner<CR>
-" Interrupt any command running in the runner pane map
-map <Leader>vx :VimuxInterruptRunner<CR>
-" Clear the tmux history of the runner pane
-" map <Leader>vc :VimuxClearRunnerHistory<CR>
-
-
 " NERDTree plugin configuration
 let NERDTreeWinSize = 26
 let NERDTreeAutoCenter=1
@@ -571,8 +588,6 @@ if executable("ack")
     let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
     let g:ackhighlight=1
 endif
-map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>
 
 
 let g:html_indent_inctags = "html,body,head,tbody"
@@ -597,3 +612,6 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd FileType go,c,rust set ts=4 sw=4 sts=4 et
 
+" Remember last location when open a file
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+      \| exe "normal g'\"" | endif
