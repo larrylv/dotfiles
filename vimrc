@@ -89,7 +89,7 @@ set autoread                     " Reload files changed outside automatically
 set scrolloff=3                  " Always shows 5 lines above/below the cursor
 set showcmd                      " display incomplete commands
 set tags=./tags;
-set timeout timeoutlen=1000 ttimeoutlen=50 " Fix slow 0 inserts
+set timeout timeoutlen=500 ttimeoutlen=50 " Fix slow 0 inserts
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 set laststatus=2
