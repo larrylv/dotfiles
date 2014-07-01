@@ -195,6 +195,10 @@ imap <c-b> <c-o>b
 " force write and save
 cmap w!! %!sudo tee > /dev/null %
 
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
 let mapleader=","
 nnoremap <leader><leader> <c-^>
 map <leader>y "*y
@@ -571,10 +575,11 @@ map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
 
 
-" vim-javascript configuration
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+let g:html_indent_style1  = "inc"
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags    = "li\|p"
 
 
 " filetype detection
