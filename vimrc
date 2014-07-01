@@ -170,10 +170,7 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 " Clear the search buffer when hitting return
-function! MapCR()
-  nnoremap <c-n> :nohlsearch<cr>
-endfunction
-call MapCR()
+nmap <leader>h :nohlsearch
 
 nmap <F2> :TagbarToggle<CR>
 nnoremap <F3> :set invpaste paste?<CR>
@@ -298,7 +295,7 @@ let g:bufExplorerShowRelativePath=1 " BufExplorer: show relative paths
 map <leader>c :Rcontroller<cr>
 map <leader>v :Rview<cr>
 map <leader>m :Rmodel<cr>
-map <leader>h :Rhelper<cr>
+" map <leader>h :Rhelper<cr>
 
 " gist-vim configurations
 let g:gist_post_private = 1
