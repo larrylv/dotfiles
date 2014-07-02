@@ -237,19 +237,19 @@ nnoremap <leader>sf :call OpenTestAlternate()<cr>
 " Both rspec and minitest will work.
 map <leader>ts :w<cr>:call RunCurrentTest()<CR>
 " Only work with rspec.
-map <Leader>tl :w<cr>:call RunCurrentLineInTest()<CR>
+map <leader>tl :w<cr>:call RunCurrentLineInTest()<CR>
 " Only work with minitest.
-map <Leader>tn :!ruby -Itest % -n "//"<left><left>
+map <leader>tn :!ruby -Itest % -n "//"<left><left>
 nmap <leader>ta :Tabularize /
 nmap <leader>t= :Tabularize /=<CR>
 nmap <leader>t# :Tabularize /#<CR>
 map <leader>v :Rview<cr>
-map <Leader>vc :RVcontroller<cr>
-map <Leader>vf :RVfunctional<cr>
-map <Leader>vi :tabe ~/.vimrc<CR>
-map <Leader>vm :RVmodel<cr>
-map <Leader>vu :RVunittest<CR>
-map <Leader>vv :RVview<cr>
+" map <leader>vc :RVcontroller<cr>
+" map <leader>vf :RVfunctional<cr>
+" map <leader>vi :tabe ~/.vimrc<CR>
+" map <leader>vm :RVmodel<cr>
+map <leader>vu :RVunittest<CR>
+map <leader>vv :RVview<cr>
 
 " Vim-Ruby-Refactoring CONFIGURATIONS
 nnoremap <leader>rap  :RAddParameter<cr>
