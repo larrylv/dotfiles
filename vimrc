@@ -249,16 +249,11 @@ nmap <leader>ta :Tabularize /
 nmap <leader>t= :Tabularize /=<CR>
 nmap <leader>t# :Tabularize /#<CR>
 map <leader>v :Rview<cr>
-" map <leader>vc :RVcontroller<cr>
-" map <leader>vf :RVfunctional<cr>
-" map <leader>vi :tabe ~/.vimrc<CR>
-" map <leader>vm :RVmodel<cr>
-map <leader>vu :RVunittest<CR>
-map <leader>vv :RVview<cr>
+map <leader>vr :tabe ~/.vimrc<CR>
 
 " Vim-Ruby-Refactoring CONFIGURATIONS
 nnoremap <leader>rap  :RAddParameter<cr>
-nnoremap <leader>rcpc :RConvertPostConditional<cr>
+" nnoremap <leader>rcpc :RConvertPostConditional<cr>
 vnoremap <leader>rec  :RExtractConstant<cr>
 nnoremap <leader>rel  :RExtractLet<cr>
 vnoremap <leader>rem  :RExtractMethod<cr>
