@@ -228,6 +228,11 @@ nmap <leader>h :nohlsearch<cr>
 map <leader>m :Rmodel<cr>
 map <leader>n :call RenameFile()<cr>
 map <leader>p :echo @%<cr>
+map <leader>rc :RVcontroller<cr>
+map <leader>rf :RVfunctional<cr>
+map <leader>rm :RVmodel<cr>
+map <leader>ru :RVunittest<CR>
+map <leader>rv :RVview<cr>
 map <leader>sc :sp db/schema.rb<cr>
 map <leader>sg :sp Gemfile<cr>
 map <leader>so :source $MYVIMRC<cr>
