@@ -246,8 +246,11 @@ map <leader>tl :w<cr>:call RunCurrentLineInTest()<CR>
 " Only work with minitest.
 map <leader>tn :!ruby -Itest % -n "//"<left><left>
 nmap <leader>ta :Tabularize /
+vmap <leader>ta :Tabularize /
 nmap <leader>t= :Tabularize /=<CR>
+vmap <leader>t= :Tabularize /=<CR>
 nmap <leader>t# :Tabularize /#<CR>
+vmap <leader>t# :Tabularize /#<CR>
 map <leader>v :Rview<cr>
 map <leader>vr :tabe ~/.vimrc<CR>
 
