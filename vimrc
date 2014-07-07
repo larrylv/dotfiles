@@ -191,8 +191,7 @@ imap <C-s> <esc>:w<CR>
 imap <c-f> <c-o>w
 imap <c-b> <c-o>b
 
-map <C-n> :cn<CR>
-map <C-p> :cp<CR>
+map <C-n> :nohlsearch<CR>
 
 
 let mapleader=","
@@ -204,6 +203,8 @@ command! GdiffInTab tabedit %|vsplit|Gdiff
 silent! nnoremap <unique> <silent> <leader>bb :CommandTBuffer<CR>
 map <leader>c :Rcontroller<cr>
 map <leader>cc :ccl<cr>
+map <leader>cn :cn<cr>
+map <leader>cp :cp<cr>
 nnoremap  <leader>d :GdiffInTab<cr>
 nnoremap  <leader>D :tabclose<cr>
 map <leader>ew :e %%
