@@ -543,7 +543,7 @@ endfunction
 " Command-T CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
-let g:CommandTAcceptSelectionSplitMap=['<C-e>', '<C-f>']
+let g:CommandTAcceptSelectionSplitMap=['<C-d>', '<C-f>']
 let g:CommandTMaxHeight=20
 
 
