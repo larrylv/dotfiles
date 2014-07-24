@@ -62,6 +62,7 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
 Bundle 'wting/rust.vim'
+Bundle 'othree/html5.vim'
 
 set t_Co=256
 set background=dark
@@ -458,6 +459,19 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
+let g:syntastic_html_tidy_ignore_errors = [
+                        \ 'trimming empty <i>',
+                        \ 'trimming empty <span>',
+                        \ '<input> proprietary attribute \"autocomplete\"',
+                        \ 'proprietary attribute \"role\"',
+                        \ 'proprietary attribute \"hidden\"',
+                        \ 'proprietary attribute \"ng-',
+                        \ '<svg> is not recognized!',
+                        \ 'discarding unexpected <svg>',
+                        \ 'discarding unexpected </svg>',
+                        \ '<rect> is not recognized!',
+                        \ 'discarding unexpected <rect>'
+                        \ ]
 
 
 
