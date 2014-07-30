@@ -255,6 +255,8 @@ nmap <leader>t# :Tabularize /#<CR>
 vmap <leader>t# :Tabularize /#<CR>
 map <leader>v :Rview<cr>
 map <leader>vr :tabe ~/.vimrc<CR>
+" System Yank: will copy into the system clipboard on OS X
+vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
 
 " Vim-Ruby-Refactoring CONFIGURATIONS
 nnoremap <leader>rap  :RAddParameter<cr>
