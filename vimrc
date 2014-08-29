@@ -61,8 +61,8 @@ Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
-Bundle 'wting/rust.vim'
 Bundle 'othree/html5.vim'
+Bundle 'dag/vim2hs'
 
 set t_Co=256
 set background=dark
