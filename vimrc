@@ -62,8 +62,10 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
 Bundle 'othree/html5.vim'
+" Clojure
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
+Bundle 'kien/rainbow_parentheses.vim'
 
 
 set t_Co=256
