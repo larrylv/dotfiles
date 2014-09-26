@@ -36,7 +36,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rbenv autojump bower brew bundler cap colored-man copydir copyfile forklift gem git github git-flow go heroku history-substring-search node npm osx pow powder postgres rails ruby tmux urltools vagrant)
+plugins=(rbenv autojump bower brew bundler cap colored-man copydir copyfile forklift gem git github git-flow go heroku history-substring-search lein node npm osx pow powder postgres rails ruby tmux urltools vagrant)
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
