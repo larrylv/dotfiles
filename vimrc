@@ -457,6 +457,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_check_on_open = 0
 let g:syntastic_cursor_column = 0
+let g:syntastic_enable_highlighting = 0
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_jump = 0
 let g:syntastic_mode_map = { 'mode': 'active',
