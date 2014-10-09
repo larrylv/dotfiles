@@ -53,7 +53,6 @@ Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
-Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'altercation/vim-colors-solarized'
@@ -456,9 +455,10 @@ hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black
 set statusline+=\ %#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=0
+let g:syntastic_check_on_open = 0
+let g:syntastic_cursor_column = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_jump = 0
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['tex', 'scss', 'slim'] }
 let g:syntastic_error_symbol = '✗'
