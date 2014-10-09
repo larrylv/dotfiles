@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Sep 14, 2014
+" Last Modified:  Oct 9, 2014
 "
 
 filetype off " required by vundle
@@ -20,18 +20,17 @@ Bundle 'wincent/Command-T'
 " Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-rbenv'
-" Bundle 'tpope/vim-speeddating'
-" Bundle 'tpope/vim-abolish'
-" Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-haml'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/neosnippet-snippets'
@@ -50,7 +49,6 @@ Bundle 'groenewege/vim-less'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'docunext/closetag.vim'
 Bundle 'godlygeek/tabular'
-Bundle 'Townk/vim-autoclose'
 Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'airblade/vim-gitgutter'
@@ -66,7 +64,6 @@ Bundle 'othree/html5.vim'
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
 Bundle 'kien/rainbow_parentheses.vim'
-
 
 set t_Co=256
 set background=dark
@@ -134,6 +131,7 @@ set ignorecase
 " vim-airline configurations
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
