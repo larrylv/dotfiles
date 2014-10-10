@@ -648,6 +648,20 @@ let g:html_indent_style1  = "inc"
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags    = "li\|p"
 
+" Remember last location when open a file
+" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+
 
 " filetype detection
 autocmd BufNewFile,BufRead Thorfile set filetype=ruby
@@ -664,6 +678,3 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd FileType go,c,rust set ts=4 sw=4 sts=4 et
 
-" Remember last location when open a file
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-      \| exe "normal g'\"" | endif
