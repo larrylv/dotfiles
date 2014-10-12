@@ -654,7 +654,8 @@ let g:html_indent_tags    = "li\|p"
 " Remember last location when open a file
 " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 function! ResCur()
-  if line("'\"") <= line("$")
+  let filetype = &ft
+  if (line("'\"") <= line("$") && filetype != 'gitcommit')
     normal! g`"
     return 1
   endif
@@ -677,7 +678,6 @@ autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd Filetype gitcommit setlocal textwidth=78
-autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd FileType go,c,rust set ts=4 sw=4 sts=4 et
 
