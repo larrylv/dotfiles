@@ -244,12 +244,18 @@ map <leader>so :source $MYVIMRC<cr>
 map <leader>sr :sp config/routes.rb<cr>
 map <leader>ss :source ./Session.vim<cr>
 nnoremap <leader>sf :call OpenTestAlternate()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Test-running Map Keys
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Both rspec and minitest will work.
 map <leader>ts :w<cr>:call RunCurrentTest()<CR>
-" Only work with rspec.
+" Inline Test: Only work with rspec.
 map <leader>tl :w<cr>:call RunCurrentLineInTest()<CR>
-" Only work with minitest.
+" Inline Test: Only work with minitest.
 map <leader>tn :!ruby -Itest % -n "//"<left><left>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 nmap <leader>ta :Tabularize /
 vmap <leader>ta :Tabularize /
 nmap <leader>t= :Tabularize /=<CR>
@@ -290,6 +296,7 @@ map <leader>vx :VimuxInterruptRunner<CR>
 " Test-running stuff
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vroom_use_vimux=1
+let g:vroom_map_keys=0
 
 function! RunCurrentTest()
   let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
