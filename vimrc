@@ -245,17 +245,6 @@ map <leader>sr :sp config/routes.rb<cr>
 map <leader>ss :source ./Session.vim<cr>
 nnoremap <leader>sf :call OpenTestAlternate()<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Test-running Map Keys
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Both rspec and minitest will work.
-map <leader>ts :w<cr>:call RunCurrentTest()<CR>
-" Inline Test: Only work with rspec.
-map <leader>tl :w<cr>:call RunCurrentLineInTest()<CR>
-" Inline Test: Only work with minitest.
-map <leader>tn :!ruby -Itest % -n "//"<left><left>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 nmap <leader>ta :Tabularize /
 vmap <leader>ta :Tabularize /
 nmap <leader>t= :Tabularize /=<CR>
@@ -278,25 +267,32 @@ nnoremap <leader>rit  :RInlineTemp<cr>
 vnoremap <leader>rrlv :RRenameLocalVariable<cr>
 vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Test-running stuff
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Both rspec and minitest will work.
+map <leader>ts :w<cr>:call RunCurrentTest()<CR>
+" Inline Test: Only work with rspec.
+map <leader>tl :w<cr>:call RunCurrentLineInTest()<CR>
+" Inline Test: Only work with minitest.
+map <leader>tn :!ruby -Itest % -n "//"<left><left>
+
+let g:vroom_use_vimux=1
+let g:vroom_map_keys=0
+
 " Run the current file with rspec
-map <leader>rs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+map <leader>vs :VroomRunTestFile<CR>
 " Prompt for a command to run map
 map <leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-map <leader>vl :VimuxRunLastCommand<CR>
+map <leader>vl :VroomRunLastTest<CR>
 " Inspect runner pane map
 map <leader>vi :VimuxInspectRunner<CR>
 " Close vim tmux runner opened by VimuxRunCommand
 map <leader>vc :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane map
 map <leader>vx :VimuxInterruptRunner<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Test-running stuff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vroom_use_vimux=1
-let g:vroom_map_keys=0
 
 function! RunCurrentTest()
   let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
