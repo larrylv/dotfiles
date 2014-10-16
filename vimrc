@@ -72,6 +72,7 @@ Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
 Bundle 'othree/html5.vim'
 Bundle 'eapache/rainbow_parentheses.vim'
+Bundle 'terryma/vim-multiple-cursors'
 " Clojure
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
@@ -425,6 +426,17 @@ map <leader>vi :VimuxInspectRunner<CR>
 map <leader>vc :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane map
 map <leader>vx :VimuxInterruptRunner<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-multiple-cursors
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-m>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<C-c>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
