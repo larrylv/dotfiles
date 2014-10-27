@@ -11,7 +11,7 @@
 *.rbenv-gemsets
 .binstubs
 .bundle
-vendor/bundle/
+**/*/vendor/bundle/
 .tmux.sh
 Session.vim
 tags
