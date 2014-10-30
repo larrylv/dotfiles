@@ -206,7 +206,7 @@ nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 command! GdiffInTab tabedit %|vsplit|Gdiff
 
-map <leader>c :Rcontroller<cr>
+" map <leader>c :Rcontroller<cr>
 map <leader>cc :ccl<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
@@ -219,7 +219,7 @@ map <leader>et :tabe %%
 map <leader>ggn :GitGutterNextHunk<cr>
 map <leader>ggp :GitGutterPrevHunk<cr>
 nmap <leader>h :nohlsearch<cr>
-map <leader>m :Rmodel<cr>
+" map <leader>m :Rmodel<cr>
 map <leader>n :call RenameFile()<cr>
 map <leader>p :echo @%<cr>
 map <leader>rc :RVcontroller<cr>
@@ -240,7 +240,7 @@ nmap <leader>t= :Tabularize /=<CR>
 vmap <leader>t= :Tabularize /=<CR>
 nmap <leader>t# :Tabularize /#<CR>
 vmap <leader>t# :Tabularize /#<CR>
-map <leader>v :Rview<cr>
+" map <leader>v :Rview<cr>
 map <leader>vr :tabe ~/.vimrc<CR>
 " System Yank: will copy into the system clipboard on OS X
 vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
