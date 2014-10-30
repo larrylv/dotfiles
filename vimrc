@@ -593,6 +593,7 @@ silent! nnoremap <unique> <silent> <leader>f :CtrlP<CR>
 silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
 silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_by_filename = 1
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
 let g:ctrlp_map = '<\-t>'
 let g:ctrlp_max_files = 0
@@ -603,7 +604,8 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_mruf_max = 0
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("h")': ['<c-d>', '<c-cr>', '<c-e>']
+    \ 'AcceptSelection("h")': ['<c-d>', '<c-cr>', '<c-e>'],
+    \ 'ToggleByFname()':      ['<c-f>'],
     \}
 map <leader>ga :CtrlP app/assets<cr>
 map <leader>gc :CtrlP app/controllers<cr>
