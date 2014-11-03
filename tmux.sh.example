@@ -4,7 +4,9 @@ tmux new-session -d -s example
 
 tmux new-window -t example:2 -n code
 
-tmux new-window -t example:3 -n test
+tmux new-window -t example:3 -n server
+
+tmux new-window -t example:4 -n console
 
 tmux select-window -t 2
 
