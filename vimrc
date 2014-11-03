@@ -232,8 +232,6 @@ map <leader>sg :sp Gemfile<cr>
 map <leader>so :source $MYVIMRC<cr>
 map <leader>sr :sp config/routes.rb<cr>
 map <leader>ss :source ./Session.vim<cr>
-" Only work for rspec. Please use keys of rails.vim instead.
-nnoremap <leader>sf :call OpenTestAlternate()<cr>
 nmap <leader>ta :Tabularize /
 vmap <leader>ta :Tabularize /
 nmap <leader>t= :Tabularize /=<CR>
@@ -260,6 +258,8 @@ vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Test-running stuff
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Only work for rspec. Please use keys of rails.vim instead.
+nnoremap <leader>sf :call OpenTestAlternate()<cr>
 " Both rspec and minitest will work.
 map <leader>ts :w<cr>:call RunCurrentTest()<CR>
 " Inline Test: Only work with rspec.
