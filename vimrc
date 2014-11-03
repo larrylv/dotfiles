@@ -62,7 +62,7 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
 Bundle 'othree/html5.vim'
-Bundle 'terryma/vim-multiple-cursors'
+" Bundle 'terryma/vim-multiple-cursors'
 " Clojure
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
@@ -330,11 +330,11 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-multiple-cursors
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-m>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<C-c>'
+" let g:multi_cursor_use_default_mapping=0
+" let g:multi_cursor_next_key='<C-m>'
+" let g:multi_cursor_prev_key='<C-p>'
+" let g:multi_cursor_skip_key='<C-x>'
+" let g:multi_cursor_quit_key='<C-c>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
