@@ -18,6 +18,7 @@ Bundle 'matchit.zip'
 Bundle 'larrylv/ShowMarks'
 " Bundle 'wincent/Command-T'
 Bundle 'kien/ctrlp.vim'
+Bundle 'ivalkeen/vim-ctrlp-tjump'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
@@ -616,6 +617,9 @@ map <leader>gf :CtrlP config<cr>
 map <leader>gl :CtrlP lib<cr>
 map <leader>gp :CtrlP public<cr>
 map <leader>gs :CtrlP spec<cr>
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
+let g:ctrlp_tjump_only_silent = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Better Rainbow Parentheses
