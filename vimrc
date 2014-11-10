@@ -461,7 +461,8 @@ hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black
 set statusline+=\ %#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_ruby_checkers       = [ 'rubylint', 'rubocop', 'mri' ]
+" let g:syntastic_ruby_checkers       = [ 'rubylint', 'rubocop', 'mri' ]
+let g:syntastic_ruby_checkers       = [ 'rubocop', 'mri' ]
 let g:syntastic_javascript_checkers = [ 'jshint' ]
 let g:syntastic_coffee_checkers     = [ 'coffeelint' ]
 let g:syntastic_html_checkers       = [ 'jshint' ]
