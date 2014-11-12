@@ -11,7 +11,7 @@
     safecrlf     = true
     whitespace   = cr-at-eol
 [alias]
-    alias   = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
+    al      = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
     br      = branch
     changes = diff --stat -r
     ci      = commit
