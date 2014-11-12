@@ -11,39 +11,47 @@
     safecrlf     = true
     whitespace   = cr-at-eol
 [alias]
-    al      = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
-    br      = branch
-    changes = diff --stat -r
-    ci      = commit
-    cia     = commit --amend
-    co      = checkout
-    dc      = diff --cached
-    delete  = !git ls-files -z --deleted | xargs -0 git rm
-    diff    = diff --ignore-space-change
-    dt      = difftool
-    fa      = fetch --all
-    hist    = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    l       = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -20
-    last    = log --stat -1
-    lg      = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -20
-    lo      = log --graph --decorate --pretty=oneline --abbrev-commit --all --name-status
+    al         = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
+    b          = branch -avv --color
+    bd         = branch -D
+    bn         = branch -avv --color --no-merged
+    bm         = branch -avv --color --merged
+    br         = branch
+    changes    = diff --stat -r
+    ci         = commit
+    cia        = commit --amend
+    co         = checkout
+    dc         = diff --cached
+    delete     = !git ls-files -z --deleted | xargs -0 git rm
+    df         = diff
+    diff       = diff --ignore-space-change --color
+    dt         = difftool
+    fa         = fetch --all
+    hist       = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    l          = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -20
+    last       = log -n 1 -p --color
+    lg         = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -20
+    lo         = log --graph --decorate --pretty=oneline --abbrev-commit --all --name-status
     ls-ignored = ls-files --exclude-standard --ignored --others
-    mf      = merge --no-ff
-    news    = log -p HEAD@{1}..HEAD@{0}
-    oneline = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    pb      = pull --rebase
-    pick    = cherry-pick
-    pl      = pull
-    ps      = push
-    pushall = push --recurse-submodules=on-demand
-    rbs     = !sh -c 'git co $1 && git pull && git co @{-1} && git rebase -i $1' -
-    sb      = show-branch
-    st      = status
-    svn-pb   = svn rebase
-    svn-pull = svn fetch
-    svn-push = svn dcommit
-    unstage = reset HEAD --
-    wdiff   = diff --word-diff
+    mf         = merge --no-ff
+    news       = log -p HEAD@{1}..HEAD@{0}
+    oneline    = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    pb         = pull --rebase
+    pick       = cherry-pick
+    pl         = pull
+    ps         = push
+    pushall    = push --recurse-submodules=on-demand
+    rbs        = !sh -c 'git co $1 && git pull && git co @{-1} && git rebase -i $1' -
+    sb         = show-branch
+    ss         = stash save
+    sl         = stash list -p --color
+    sp         = stash pop
+    st         = status
+    svn-pb     = svn rebase
+    svn-pull   = svn fetch
+    svn-push   = svn dcommit
+    unstage    = reset HEAD --
+    wdiff      = diff --word-diff
 [merge]
     tool = vimdiff
     conflictstyle = diff3
