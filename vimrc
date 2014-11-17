@@ -105,9 +105,14 @@ set laststatus=2
 set modeline
 set relativenumber
 
-set cursorline                   " Highlight current line
-highlight clear SignColumn       " SignColumn should match background for things
-                                 " like vim-gitgutter
+" Highlight current line
+set cursorline
+
+" Sign Column made by solarized color is strange, clear it.
+highlight clear SignColumn
+" vim-gitgutter will use Sign Column to set its color, reload it.
+call gitgutter#highlight#define_highlights()
+
 highlight clear LineNr
 highlight LineNr ctermfg=10
 
