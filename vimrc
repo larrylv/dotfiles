@@ -557,7 +557,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,**/vendor/bundle,**/tmp/cache,vendor/cache,**/tags " exclude files from listings
+set wildignore+=*.o,*.obj,.git,*.jpg,*.png,*.gif,**/vendor/bundle,**/tmp/cache,vendor/cache,**/tags " exclude files from listings
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -666,7 +666,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " NERDTree plugin configuration
-let NERDTreeWinSize = 26
+let NERDTreeWinSize = 42
 let NERDTreeAutoCenter=1
 let NERDTreeChDirMode=2
 let g:NERDTreeMinimalUI=1
