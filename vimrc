@@ -467,8 +467,7 @@ hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black
 set statusline+=\ %#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-" let g:syntastic_ruby_checkers       = [ 'rubylint', 'mri' ]
-let g:syntastic_ruby_checkers       = [ 'mri' ]
+let g:syntastic_ruby_checkers       = [ 'rubocop', 'mri' ]
 let g:syntastic_javascript_checkers = [ 'jshint' ]
 let g:syntastic_coffee_checkers     = [ 'coffeelint' ]
 let g:syntastic_html_checkers       = [ 'jshint' ]
@@ -486,7 +485,8 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
-let g:syntastic_style_warning_symbol = '≈'
+" let g:syntastic_style_warning_symbol = '≈'
+let g:syntastic_style_warning_symbol = '∆'
 let g:syntastic_html_tidy_ignore_errors = [
                         \ 'trimming empty <i>',
                         \ 'trimming empty <span>',
