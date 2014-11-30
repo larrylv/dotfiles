@@ -667,7 +667,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " NERDTree plugin configuration
-let NERDTreeWinSize = 42
+let NERDTreeWinSize = 30
 let NERDTreeAutoCenter=1
 let NERDTreeChDirMode=2
 let g:NERDTreeMinimalUI=1
