@@ -68,7 +68,7 @@ Bundle 'Townk/vim-autoclose'
 " Clojure
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
-Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'eapache/rainbow_parentheses.vim'
 
 set t_Co=256
 set background=dark
