@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Nov 17, 2014
+" Last Modified:  Dec 1, 2014
 "
 
 filetype off " required by vundle
@@ -63,7 +63,7 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
 Bundle 'othree/html5.vim'
-Bundle 'Townk/vim-autoclose'
+Bundle 'jiangmiao/auto-pairs'
 " Bundle 'terryma/vim-multiple-cursors'
 " Clojure
 Bundle 'guns/vim-clojure-static'
