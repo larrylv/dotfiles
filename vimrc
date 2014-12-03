@@ -63,7 +63,6 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
 Bundle 'othree/html5.vim'
-" Bundle 'terryma/vim-multiple-cursors'
 " Clojure
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
@@ -71,9 +70,6 @@ Bundle 'eapache/rainbow_parentheses.vim'
 
 set t_Co=256
 set background=dark
-
-" set wombat256 colorscheme
-" colorscheme wombat256mod
 
 " set solarized theme
 let g:solarized_termtrans = 1
@@ -109,6 +105,7 @@ set cursorline
 
 " Sign Column made by solarized color is strange, clear it.
 highlight clear SignColumn
+
 " vim-gitgutter will use Sign Column to set its color, reload it.
 call gitgutter#highlight#define_highlights()
 let g:gitgutter_max_signs = 1024
@@ -333,17 +330,6 @@ function! SetTestFileWithLine()
   let g:bjo_test_file=@%
   let g:bjo_test_file_line=line(".")
 endfunction
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-multiple-cursors
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:multi_cursor_use_default_mapping=0
-" let g:multi_cursor_next_key='<C-m>'
-" let g:multi_cursor_prev_key='<C-p>'
-" let g:multi_cursor_skip_key='<C-x>'
-" let g:multi_cursor_quit_key='<C-c>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -617,6 +603,7 @@ map <leader>gs :CtrlP spec<cr>
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
 let g:ctrlp_tjump_only_silent = 1
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Better Rainbow Parentheses
