@@ -12,15 +12,6 @@ AllCops:
 ## Source Code Layout ##
 
 
-Style/Encoding:
-  Description: Use UTF-8 as the source file encoding.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#utf-8
-  Enabled: true
-  EnforcedStyle: always
-  SupportedStyles:
-  - when_needed
-  - always
-
 Style/IndentationWidth:
   Description: Use 2 spaces for indentation.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#spaces-indentation
@@ -174,12 +165,6 @@ Style/OneLineConditional:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#ternary-operator
   Enabled: true
 
-Style/GuardClause:
-  Description: Check for conditionals that can be replaced with guard clauses
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-nested-conditionals
-  Enabled: true
-  MinBodyLength: 1
-
 Style/IfWithSemicolon:
   Description: Do not use if x; .... Use the ternary operator instead.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-semicolon-ifs
@@ -299,16 +284,6 @@ Style/LambdaCall:
   SupportedStyles:
   - call
   - braces
-
-Lint/UnusedBlockArgument:
-  Description: Checks for unused block arguments.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars
-  Enabled: true
-
-Lint/UnusedMethodArgument:
-  Description: Checks for unused method arguments.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars
-  Enabled: true
 
 Lint/UselessAssignment:
   Description: Checks for useless assignment to a local variable.
@@ -471,13 +446,6 @@ Style/EmptyLiteral:
   Description: Prefer literals to Array.new/Hash.new/String.new.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#literal-array-hash
   Enabled: true
-
-Style/WordArray:
-  Description: Use %w or %W for arrays of words.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-w
-  Enabled: true
-  MinSize: 3
-  WordRegex: !ruby/regexp /\A[\p{Word}]+\z/
 
 Style/TrailingComma:
   Description: Checks for trailing comma in parameter lists and literals.
@@ -802,6 +770,24 @@ Style/UnneededCapitalW:
 
 ## Disabled ##
 
+Style/Encoding:
+  Description: Use UTF-8 as the source file encoding.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#utf-8
+  Enabled: false
+  EnforcedStyle: always
+  SupportedStyles:
+  - when_needed
+  - always
+
+Lint/UnusedBlockArgument:
+  Description: Checks for unused block arguments.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Description: Checks for unused method arguments.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars
+  Enabled: false
 
 Style/WhileUntilModifier:
   Description: Favor modifier while/until usage when you have a single-line body.
@@ -1186,6 +1172,19 @@ Style/SymbolArray:
   Description: Use %i or %I for arrays of symbols.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-i
   Enabled: false
+
+Style/GuardClause:
+  Description: Check for conditionals that can be replaced with guard clauses
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-nested-conditionals
+  Enabled: false
+  MinBodyLength: 1
+
+Style/WordArray:
+  Description: Use %w or %W for arrays of words.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-w
+  Enabled: false
+  MinSize: 3
+  WordRegex: !ruby/regexp /\A[\p{Word}]+\z/
 
 Style/TrivialAccessors:
   Description: Prefer attr_* methods to trivial readers/writers.
