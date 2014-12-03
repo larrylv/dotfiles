@@ -112,6 +112,7 @@ set cursorline
 highlight clear SignColumn
 " vim-gitgutter will use Sign Column to set its color, reload it.
 call gitgutter#highlight#define_highlights()
+let g:gitgutter_max_signs = 1024
 
 highlight clear LineNr
 highlight LineNr ctermfg=10
