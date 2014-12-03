@@ -16,6 +16,7 @@ Bundle 'matchit.zip'
 
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
+Bundle 'larrylv/auto-pairs'
 " Bundle 'wincent/Command-T'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ivalkeen/vim-ctrlp-tjump'
@@ -63,7 +64,6 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
 Bundle 'othree/html5.vim'
-Bundle 'jiangmiao/auto-pairs'
 " Bundle 'terryma/vim-multiple-cursors'
 " Clojure
 Bundle 'guns/vim-clojure-static'
@@ -345,6 +345,13 @@ endfunction
 " let g:multi_cursor_prev_key='<C-p>'
 " let g:multi_cursor_skip_key='<C-x>'
 " let g:multi_cursor_quit_key='<C-c>'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" auto-pairs
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:AutoPairsFlyMode = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
