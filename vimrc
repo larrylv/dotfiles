@@ -17,7 +17,6 @@ Bundle 'matchit.zip'
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
 Bundle 'larrylv/auto-pairs'
-" Bundle 'wincent/Command-T'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ivalkeen/vim-ctrlp-tjump'
 Bundle 'tpope/vim-ragtag'
@@ -582,27 +581,6 @@ function! ShowRoutes()
 " Delete empty trailing line
   :normal dd
 endfunction
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Command-T CONFIGURATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:CommandTCancelMap=['<Esc>', '<C-c>']
-" let g:CommandTAcceptSelectionSplitMap=['<C-d>', '<C-f>']
-" let g:CommandTMaxHeight=20
-" silent! nnoremap <unique> <silent> <leader>bb :CommandTBuffer<CR>
-" map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-" map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-" map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
-" map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-" map <leader>gf :CommandTFlush<cr>\|:CommandT config<cr>
-" map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-" map <leader>gj :CommandTFlush<cr>\|:CommandT app/assets/javascripts<cr>
-" map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-" map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-" map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-" map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
-" map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
