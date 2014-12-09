@@ -684,5 +684,5 @@ autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd Filetype gitcommit setlocal textwidth=78
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
-autocmd FileType go,c,rust set ts=4 sw=4 sts=4 et
+autocmd FileType go,c,cpp,rust set ts=4 sw=4 sts=4 et
 
