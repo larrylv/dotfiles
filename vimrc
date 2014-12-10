@@ -16,7 +16,7 @@ Bundle 'matchit.zip'
 
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
-Bundle 'kien/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'ivalkeen/vim-ctrlp-tjump'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
@@ -62,10 +62,10 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
 Bundle 'othree/html5.vim'
+Bundle 'eapache/rainbow_parentheses.vim'
 " Clojure
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
-Bundle 'eapache/rainbow_parentheses.vim'
 
 set t_Co=256
 set background=dark
