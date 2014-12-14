@@ -7,6 +7,7 @@
 *.rbc
 *.rvmrc
 *.ruby-version
+*.ruby-gemset
 *.rbenv-version
 *.rbenv-gemsets
 .binstubs
