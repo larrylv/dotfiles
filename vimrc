@@ -32,6 +32,7 @@ Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-sensible'
+Bundle 'tpope/vim-vinegar'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/neosnippet-snippets'
@@ -640,6 +641,7 @@ let NERDTreeWinSize = 30
 let NERDTreeAutoCenter=1
 let NERDTreeChDirMode=2
 let g:NERDTreeMinimalUI=1
+let g:NERDTreeHijackNetrw=0
 map <F1> :NERDTreeToggle<CR>
 
 
