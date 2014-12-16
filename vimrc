@@ -48,6 +48,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'groenewege/vim-less'
 Bundle 'hail2u/vim-css3-syntax'
+Bundle 'sjl/gundo.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
@@ -178,8 +179,9 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .<CR>
-map <F7> :tprevious<CR>
-map <F8> :tnext<CR>
+
+nnoremap <F8> :GundoToggle<CR>
+let g:gundo_width = 60
 
 imap <c-c> <ESC>
 imap jj <ESC>
