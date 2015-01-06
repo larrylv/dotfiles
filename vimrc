@@ -239,14 +239,14 @@ map <leader>sg :sp Gemfile<cr>
 map <leader>so :source $MYVIMRC<cr>
 map <leader>sr :sp config/routes.rb<cr>
 map <leader>ss :source ./Session.vim<cr>
+map  <leader>sj :stjump 
+map  <leader>st :stselect 
 nmap <leader>ta :Tabularize /
 vmap <leader>ta :Tabularize /
 nmap <leader>t= :Tabularize /=<CR>
 vmap <leader>t= :Tabularize /=<CR>
 nmap <leader>t# :Tabularize /#<CR>
 vmap <leader>t# :Tabularize /#<CR>
-map  <leader>tj :stjump 
-map  <leader>ts :stselect 
 " map <leader>v :Rview<cr>
 map <leader>vr :tabe ~/.vimrc<CR>
 " System Yank: will copy into the system clipboard on OS X
