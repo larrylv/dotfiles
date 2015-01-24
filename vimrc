@@ -42,6 +42,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'skalnik/vim-vroom'
 Bundle 'honza/vim-snippets'
+Bundle 'janko-m/vim-test'
 Bundle 'mileszs/ack.vim'
 Bundle 'bling/vim-airline'
 Bundle 'vim-ruby/vim-ruby'
@@ -140,6 +141,7 @@ set ignorecase
 " vim-airline configurations
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
+let g:airline_detect_whitespace=0
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
@@ -266,19 +268,14 @@ vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Test-running stuff
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Only work for rspec. Please use keys of rails.vim instead.
-nnoremap <leader>sf :call OpenTestAlternate()<cr>
-" Both rspec and minitest will work.
-map <leader>ts :w<cr>:call RunCurrentTest()<CR>
-" Inline Test: Only work with rspec.
-map <leader>tl :w<cr>:call RunCurrentLineInTest()<CR>
-" Inline Test: Only work with minitest.
-map <leader>tn :!ruby -Itest % -n "//"<left><left>
+nmap <silent> <leader>ts :TestFile<CR>
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tl :TestLast<CR>
 
 let g:vroom_use_vimux=1
 let g:vroom_map_keys=0
 
-" Run the current file with rspec
+" Run the current file with vroom
 map <leader>vs :VroomRunTestFile<CR>
 " Prompt for a command to run map
 map <leader>vp :VimuxPromptCommand<CR>
@@ -290,48 +287,6 @@ map <leader>vi :VimuxInspectRunner<CR>
 map <leader>vc :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane map
 map <leader>vx :VimuxInterruptRunner<CR>
-
-function! RunCurrentTest()
-  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-  if in_test_file
-    call SetTestFile()
-
-    if match(expand('%'), '\.feature$') != -1
-      call SetTestRunner("!cucumber")
-      exec g:bjo_test_runner g:bjo_test_file
-    elseif match(expand('%'), '_spec\.rb$') != -1
-      call SetTestRunner("!rspec")
-      exec g:bjo_test_runner g:bjo_test_file
-    else
-      call SetTestRunner("!ruby -Itest")
-      exec g:bjo_test_runner g:bjo_test_file
-    endif
-  else
-    exec g:bjo_test_runner g:bjo_test_file
-  endif
-endfunction
-
-function! SetTestRunner(runner)
-  let g:bjo_test_runner=a:runner
-endfunction
-
-function! RunCurrentLineInTest()
-  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-  if in_test_file
-    call SetTestFileWithLine()
-  end
-
-  exec "!rspec" g:bjo_test_file . ":" . g:bjo_test_file_line
-endfunction
-
-function! SetTestFile()
-  let g:bjo_test_file=@%
-endfunction
-
-function! SetTestFileWithLine()
-  let g:bjo_test_file=@%
-  let g:bjo_test_file_line=line(".")
-endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
