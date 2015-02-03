@@ -161,7 +161,11 @@ set ignorecase
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+      \   'left': [
+      \     [ 'mode', 'paste' ],
+      \     [ 'filename' ],
+      \     ['ctrlpmark']
+      \   ],
       \   'right': [
       \     [ 'syntastic', 'lineinfo' ], ['percent'],
       \     [ 'filetype' ],
