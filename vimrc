@@ -162,7 +162,10 @@ let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'right': [
+      \     [ 'syntastic', 'lineinfo' ], ['percent'],
+      \     [ 'filetype' ],
+      \   ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
