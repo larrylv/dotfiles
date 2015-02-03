@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Jan 07, 2015
+" Last Modified:  Feb 03, 2015
 "
 
 filetype off " required by vundle
@@ -279,6 +279,8 @@ function! s:syntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
+
+command! LightlineRefresh call lightline#update()
 
 
 " Tab triggers buffer-name auto-completion
