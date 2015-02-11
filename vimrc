@@ -730,7 +730,7 @@ let NERDTreeWinSize = 30
 let NERDTreeAutoCenter=1
 let NERDTreeChDirMode=2
 let g:NERDTreeMinimalUI=1
-let g:NERDTreeHijackNetrw=0
+let g:NERDTreeHijackNetrw=1
 map <F1> :NERDTreeToggle<CR>
 
 
