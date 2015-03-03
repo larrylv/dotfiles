@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Feb 03, 2015
+" Last Modified:  Mar 04, 2015
 "
 
 filetype off " required by vundle
@@ -34,6 +34,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-vinegar'
 Bundle 'tpope/vim-rbenv'
+Bundle 'tpope/vim-endwise'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/neosnippet-snippets'
@@ -622,11 +623,10 @@ imap <silent><C-l> <Plug>(neosnippet_expand)
 smap <silent><C-l> <Plug>(neosnippet_expand)
 imap <silent><C-j> <Plug>(neosnippet_jump)
 smap <silent><C-j> <Plug>(neosnippet_jump)
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-e>  neocomplcache#close_popup()
 inoremap <expr><C-y>  neocomplcache#cancel_popup()
 inoremap <expr><C-c>  neocomplcache#cancel_popup()
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
 
 " Highlight trailing whitespace
