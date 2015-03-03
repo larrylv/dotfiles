@@ -637,7 +637,9 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-set wildignore+=*.o,*.obj,.git,*.jpg,*.png,*.gif,**/vendor/bundle,**/tmp/cache,vendor/cache,**/tags,**/public/** " exclude files from listings
+set wildignore=*.o,*.obj,*.git
+set wildignore+=*.jpg,*.png,*.gif
+set wildignore+=**/vendor/bundle,**/tmp/cache,**/vendor/cache,**/tags,**/public/**
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
