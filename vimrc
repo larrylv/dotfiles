@@ -65,7 +65,8 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'Townk/vim-autoclose'
+" Bundle 'Townk/vim-autoclose'
+Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
@@ -309,7 +310,7 @@ cmap w!! %!sudo tee > /dev/null %
 set splitbelow
 set splitright
 
-let g:AutoCloseExpandSpace = 0
+" let g:AutoCloseExpandSpace = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
