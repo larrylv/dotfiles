@@ -585,31 +585,37 @@ let g:syntastic_html_tidy_ignore_errors = [
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NEOCOMPLCACHE CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" highlight Pmenu ctermbg=238 gui=bold
 highlight Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
 highlight PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 highlight PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_enable_auto_delimiter = 1
 let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
+" Enable omni completion.
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-" Enable omni completion.
-autocmd FileType ruby setlocal omnifunc=rubycomplete#CompleteRuby
+autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#CompleteRuby
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+inoremap <expr><C-g>  neocomplcache#undo_completion()
+inoremap <expr><C-l>  neocomplcache#complete_common_string()
+inoremap <expr><C-e>  neocomplcache#close_popup()
+inoremap <expr><C-y>  neocomplcache#cancel_popup()
+inoremap <expr><C-c>  neocomplcache#cancel_popup()
+inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
 
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
@@ -619,14 +625,10 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 let g:snips_author="Larry Lv"
 let g:snips_email="larrylv1990@gmail.com""
 " Mapping Keys
-imap <silent><C-l> <Plug>(neosnippet_expand)
-smap <silent><C-l> <Plug>(neosnippet_expand)
-imap <silent><C-j> <Plug>(neosnippet_jump)
-smap <silent><C-j> <Plug>(neosnippet_jump)
-inoremap <expr><C-e>  neocomplcache#close_popup()
-inoremap <expr><C-y>  neocomplcache#cancel_popup()
-inoremap <expr><C-c>  neocomplcache#cancel_popup()
-" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+imap <silent><C-l> <Plug>(neosnippet_expand_or_jump)
+smap <silent><C-l> <Plug>(neosnippet_expand_or_jump)
+imap <silent><C-j> <Plug>(neosnippet_jump_or_expand)
+smap <silent><C-j> <Plug>(neosnippet_jump_or_expand)
 
 
 " Highlight trailing whitespace
