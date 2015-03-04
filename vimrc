@@ -610,10 +610,11 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
+" <C-e>: Close popup and switch to normal mode
+inoremap <C-e>  <esc>l
 inoremap <expr><C-g>  neocomplcache#undo_completion()
 inoremap <expr><C-l>  neocomplcache#complete_common_string()
-inoremap <expr><C-e>  neocomplcache#close_popup()
-inoremap <expr><C-y>  neocomplcache#cancel_popup()
+inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-c>  neocomplcache#cancel_popup()
 inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
 
