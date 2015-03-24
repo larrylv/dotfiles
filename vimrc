@@ -513,6 +513,7 @@ let g:gist_detect_filetype = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>sf :call OpenTestAlternate()<cr>
 function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
   exec ':e ' . new_file
