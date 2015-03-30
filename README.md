@@ -15,11 +15,8 @@ cd ~/.dotfiles
 git submodule init
 git submodule update
 rake install
+vim +BundleInstall +qall
 ```
-
-Also, you could use *thor* instead of *rake*: `thor dotfiles:install`.
-
-At last, launch `vim`, run `:BundleInstall`.
 
 ### Environment
 
@@ -35,7 +32,7 @@ I am running on Mac OS X, but it will likely work on Linux as well.
 * [rails.vim](https://github.com/tpope/vim-rails): Ruby on Rails power tools.
 * [vim-surround](https://github.com/tpope/vim-surround): Provides mappings to easily delete, change and add surroundings in pairs.
 * [vim-obsession](https://github.com/tpope/vim-obsession): Continuously updated session files.
-* [neocomplcache.vim](https://github.com/Shougo/neocomplcache): A **real** auto complete vim plugin.
+* [YouCompleteMe](https://github.com/Valloric/YouCompleteMe): A code-completion engine for Vim
 * [syntastic](https://github.com/scrooloose/syntastic): Syntax checking hacks for vim.
 * [showmarks.vim](http://www.vim.org/scripts/script.php?script_id=152): ShowMarks provides a visual representation of the location marks.
 * etc.
