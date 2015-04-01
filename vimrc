@@ -610,7 +610,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe & UltiSnips CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <C-e>  <esc>l
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
@@ -670,6 +669,8 @@ set wildignore=*.o,*.obj,*.git
 set wildignore+=*.jpg,*.png,*.gif
 set wildignore+=**/vendor/bundle,**/tmp/cache,**/vendor/cache,**/public/**
 
+
+inoremap <C-e>  <esc>l
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP.vim CONFIGURATIONS
