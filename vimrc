@@ -108,6 +108,7 @@ set completeopt=longest,menu
 set laststatus=2
 set modeline
 set relativenumber
+set lazyredraw
 
 " Highlight current line
 set cursorline
