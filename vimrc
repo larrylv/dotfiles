@@ -668,7 +668,7 @@ autocmd BufWinLeave * call clearmatches()
 
 set wildignore=*.o,*.obj,*.git
 set wildignore+=*.jpg,*.png,*.gif
-set wildignore+=**/vendor/bundle,**/tmp/cache,**/vendor/cache,**/public/**
+set wildignore+=**/vendor/bundle,**/vendor/ruby,**/tmp/cache,**/vendor/cache,**/public/**
 
 
 inoremap <C-e>  <esc>l
