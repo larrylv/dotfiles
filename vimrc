@@ -145,6 +145,8 @@ set hlsearch
 set incsearch
 set ignorecase
 
+let g:ruby_path = system('echo $HOME/.rbenv/shims')
+
 " vim-airline configurations
 " let g:airline_theme='powerlineish'
 " let g:airline_powerline_fonts = 1
