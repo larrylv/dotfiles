@@ -50,6 +50,7 @@ export PATH=$PATH:$GOPATH/bin
 
 [[ -s "/usr/local/bin" ]] && export PATH=/usr/local/bin:$PATH
 [[ -s "/usr/local/sbin" ]] && export PATH=/usr/local/sbin:$PATH
+[[ -s "~/.tig-completion.sh" ]] && source ~/.tig-completion.sh
 
 export PATH=.binstubs:$PATH
 
