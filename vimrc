@@ -458,7 +458,7 @@ endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CLOSE QUICKFIX WINDOW
+" ADJUST QUICKFIX WINDOW HEIGHT
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au FileType qf call AdjustWindowHeight(3, 10)
 function! AdjustWindowHeight(minheight, maxheight)
