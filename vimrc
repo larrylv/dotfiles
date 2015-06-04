@@ -35,9 +35,6 @@ Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-vinegar'
 Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-endwise'
-" Bundle 'Shougo/neocomplcache'
-" Bundle 'Shougo/neosnippet'
-" Bundle 'Shougo/neosnippet-snippets'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
 Bundle 'scrooloose/nerdtree'
@@ -47,7 +44,6 @@ Bundle 'skalnik/vim-vroom'
 Bundle 'honza/vim-snippets'
 Bundle 'janko-m/vim-test'
 Bundle 'mileszs/ack.vim'
-" Bundle 'bling/vim-airline'
 Bundle 'itchyny/lightline.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'jnwhiteh/vim-golang'
@@ -55,7 +51,6 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'groenewege/vim-less'
 Bundle 'hail2u/vim-css3-syntax'
-" Bundle 'sjl/gundo.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
@@ -65,7 +60,6 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'ecomba/vim-ruby-refactoring'
-" Bundle 'Townk/vim-autoclose'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
@@ -146,24 +140,6 @@ set incsearch
 set ignorecase
 
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
-
-" vim-airline configurations
-" let g:airline_theme='powerlineish'
-" let g:airline_powerline_fonts = 1
-" let g:airline_detect_whitespace=0
-" let g:airline#extensions#branch#enabled = 0
-" let g:airline#extensions#hunks#enabled = 0
-" let g:airline#extensions#whitespace#enabled = 0
-" let g:airline_powerline_fonts = 1
-" let g:airline_left_sep = '⮀'
-" let g:airline_left_alt_sep = '⮁'
-" let g:airline_right_sep = '⮂'
-" let g:airline_right_alt_sep = '⮃'
-" let g:airline_symbols = {}
-" let g:airline_symbols.space = ' '
-" let g:airline_symbols.branch = '⭠'
-" let g:airline_symbols.readonly = '⭤'
-" let g:airline_symbols.linenr = '⭡'
 
 " lightline.vim configurations
 let g:lightline = {
@@ -314,7 +290,6 @@ cmap w!! %!sudo tee > /dev/null %
 set splitbelow
 set splitright
 
-" let g:AutoCloseExpandSpace = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
@@ -511,37 +486,6 @@ let g:gist_post_private = 1
 let g:gist_show_privates = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_detect_filetype = 1
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SWITCH BETWEEN TEST AND PRODUCTION CODE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>sf :call OpenTestAlternate()<cr>
-function! OpenTestAlternate()
-  let new_file = AlternateForCurrentFile()
-  exec ':e ' . new_file
-endfunction
-function! AlternateForCurrentFile()
-  let current_file = expand("%")
-  let new_file = current_file
-  let in_spec = match(current_file, '^spec/') != -1
-  let going_to_spec = !in_spec
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') || match(current_file, '\<helpers\>') != -1
-  if going_to_spec
-    if in_app
-      let new_file = substitute(new_file, '^app/', '', '')
-    end
-    let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
-    let new_file = 'spec/' . new_file
-  else
-    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
-    let new_file = substitute(new_file, '^spec/', '', '')
-    if in_app
-      let new_file = 'app/' . new_file
-    end
-  endif
-  return new_file
-endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
