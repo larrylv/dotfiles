@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Mar 04, 2015
+" Last Modified:  Jun 04, 2015
 "
 
 filetype off " required by vundle
@@ -333,25 +333,39 @@ nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 command! GdiffInTab tabedit %|vsplit|Gdiff
 
-" map <leader>c :Rcontroller<cr>
 map <leader>cc :ccl<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
+map <leader>da :CtrlP app/assets<cr>
+map <leader>dc :CtrlP app/controllers<cr>
+map <leader>dh :CtrlP app/helpers<cr>
+map <leader>dm :CtrlP app/models<cr>
+map <leader>dv :CtrlP app/views<cr>
+map <leader>df :CtrlP config<cr>
+map <leader>dl :CtrlP lib<cr>
+map <leader>ds :CtrlP spec<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
-map <leader>ggn :GitGutterNextHunk<cr>
-map <leader>ggp :GitGutterPrevHunk<cr>
+map <leader>ga :GitGutterStageHunk<cr>
+map <leader>gn :GitGutterNextHunk<cr>
+map <leader>gp :GitGutterPrevHunk<cr>
+map <leader>gr :GitGutterRevertHunk<cr>
+map <leader>gv :GitGutterPreviewHunk<cr>
 nmap <leader>h :nohlsearch<cr>
-" map <leader>m :Rmodel<cr>
 map <leader>n :call RenameFile()<cr>
 map <leader>p :echo @%<cr>
-map <leader>rc :RVcontroller<cr>
-map <leader>rf :RVfunctional<cr>
-map <leader>rm :RVmodel<cr>
-map <leader>ru :RVunittest<CR>
-map <leader>rv :RVview<cr>
+map <leader>rc :Econtroller<cr>
+map <leader>rf :Efixtures<cr>
+map <leader>rh :Ehelper<cr>
+map <leader>rl :Elayout<cr>
+map <leader>rj :Ejavascript<cr>
+map <leader>rm :Emodel<cr>
+map <leader>rs :Eschema<cr>
+map <leader>rt :A<cr>
+map <leader>ru :Eunittest<CR>
+map <leader>rv :Eview<cr>
 map <leader>sc :sp db/schema.rb<cr>
 map <leader>sg :sp Gemfile<cr>
 map <leader>so :source $MYVIMRC<cr>
@@ -625,10 +639,10 @@ inoremap <C-e>  <esc>l
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP.vim CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-silent! nnoremap <unique> <silent> <leader>gt :CtrlPTag<CR>
-silent! nnoremap <unique> <silent> <leader>f :CtrlP<CR>
-silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
 silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
+silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
+silent! nnoremap <unique> <silent> <leader>dt :CtrlPTag<CR>
+silent! nnoremap <unique> <silent> <leader>f :CtrlP<CR>
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_by_filename = 0
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
@@ -644,15 +658,6 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("h")': ['<c-d>', '<c-cr>', '<c-e>'],
     \ 'ToggleByFname()':      ['<c-f>'],
     \}
-map <leader>ga :CtrlP app/assets<cr>
-map <leader>gc :CtrlP app/controllers<cr>
-map <leader>gh :CtrlP app/helpers<cr>
-map <leader>gm :CtrlP app/models<cr>
-map <leader>gv :CtrlP app/views<cr>
-map <leader>gf :CtrlP config<cr>
-map <leader>gl :CtrlP lib<cr>
-map <leader>gp :CtrlP public<cr>
-map <leader>gs :CtrlP spec<cr>
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
 let g:ctrlp_tjump_only_silent = 1
@@ -678,7 +683,7 @@ endfunction
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>d :call SelectaCommand("git ls-files", "", ":e")<cr>
+nnoremap <leader>sc :call SelectaCommand("git ls-files", "", ":e")<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Better Rainbow Parentheses
