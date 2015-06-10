@@ -50,6 +50,9 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
+# Configure elixir
+export PATH="$PATH:/usr/local/opt/elixir/bin"
+
 [[ -s "/usr/local/bin" ]] && export PATH=/usr/local/bin:$PATH
 [[ -s "/usr/local/sbin" ]] && export PATH=/usr/local/sbin:$PATH
 [[ -s "~/.tig-completion.sh" ]] && source ~/.tig-completion.sh
