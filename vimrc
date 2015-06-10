@@ -6,15 +6,20 @@
 filetype off " required by vundle
 
 set runtimepath+=~/.gmarik-vundle
-set runtimepath+=$GOROOT/misc/vim
 
 call vundle#rc()
 
-" vim-scripts repos
-Bundle 'bufexplorer.zip'
-Bundle 'matchit.zip'
+" Language Support - syntax, indent, etc.
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'fatih/vim-go'
+Bundle 'othree/html5.vim'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'groenewege/vim-less'
+Bundle 'guns/vim-clojure-static'
 
-" original repos on GitHub
 Bundle 'larrylv/ShowMarks'
 Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'ivalkeen/vim-ctrlp-tjump'
@@ -45,12 +50,6 @@ Bundle 'honza/vim-snippets'
 Bundle 'janko-m/vim-test'
 Bundle 'mileszs/ack.vim'
 Bundle 'itchyny/lightline.vim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'groenewege/vim-less'
-Bundle 'hail2u/vim-css3-syntax'
 Bundle 'godlygeek/tabular'
 Bundle 'tudorprodan/html_annoyance.vim'
 Bundle 'majutsushi/tagbar'
@@ -64,12 +63,10 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'benmills/vimux'
-Bundle 'othree/html5.vim'
 Bundle 'eapache/rainbow_parentheses.vim'
-" Bundle 'terryma/vim-multiple-cursors'
-" Clojure
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-fireplace'
+Bundle 'vim-scripts/bufexplorer.zip'
+Bundle 'vim-scripts/matchit.zip'
+
 
 set t_Co=256
 set background=dark

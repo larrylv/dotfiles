@@ -46,7 +46,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Configure golang
 export GOPATH=$HOME/Code/Other/go-path
+export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 [[ -s "/usr/local/bin" ]] && export PATH=/usr/local/bin:$PATH
 [[ -s "/usr/local/sbin" ]] && export PATH=/usr/local/sbin:$PATH
