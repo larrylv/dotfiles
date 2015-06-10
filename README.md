@@ -15,7 +15,7 @@ cd ~/.dotfiles
 git submodule init
 git submodule update
 rake install
-vim +BundleInstall +qall
+vim +PluginInstall +qall
 ```
 
 ### Environment
