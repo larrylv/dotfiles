@@ -530,6 +530,7 @@ let g:syntastic_html_checkers       = [ 'jshint' ]
 let g:syntastic_haml_checkers       = [ 'haml_lint' ]
 let g:syntastic_css_checkers        = [ 'csslint' ]
 let g:syntastic_json_checkers       = [ 'jsonlint' ]
+let g:syntastic_elixir_checkers     = [ '' ]
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_cursor_column = 0
