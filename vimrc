@@ -629,7 +629,7 @@ autocmd BufWinLeave * call clearmatches()
 
 set wildignore=*.o,*.obj,*.git
 set wildignore+=*.jpg,*.png,*.gif
-set wildignore+=**/vendor/bundle,**/vendor/ruby,**/tmp/cache,**/vendor/cache,**/public/**
+set wildignore+=**/vendor/bundle,**/vendor/ruby,**/tmp/cache,**/vendor/cache,**/public/**,_build,deps
 
 
 inoremap <C-e>  <esc>l
@@ -658,7 +658,7 @@ let g:ctrlp_prompt_mappings = {
     \}
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
-let g:ctrlp_tjump_only_silent = 1
+" let g:ctrlp_tjump_only_silent = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -724,7 +724,7 @@ map <F1> :NERDTreeToggle<CR>
 if executable("ack")
     " ,a to Ack (search in files)
     nnoremap <leader>a :Ack 
-    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
+    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=_build --ignore-dir=deps --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
     let g:ackhighlight=1
 endif
 
