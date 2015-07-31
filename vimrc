@@ -87,30 +87,88 @@ let g:solarized_contrast = "high"
 colorscheme solarized
 " }}}
 
-" basic configuration
-set nocompatible
-set nu
-set ruler
-set nobackup
-set fdm=marker
-set bs=2
-set backspace=indent,eol,start   " Allow backspacing over everything in insert mode
-set diffopt+=iwhite              " Ignore whitespaces with vimdiff
-set nojoinspaces                 " Prevents inserting two spaces after punctuation on a join (J)
-set autoread                     " Reload files changed outside automatically
-set scrolloff=3                  " Always shows 5 lines above/below the cursor
-set showcmd                      " display incomplete commands
-set tags=./tags;
-set timeout timeoutlen=1000 ttimeoutlen=50 " Fix slow 0 inserts
+" Set some junk"{{{
+set ambiwidth=double
+set autoindent                             " Copy indent from last line when starting new line
+set autoread                               " Reload files changed outside automatically
+set backspace=indent,eol,start             " Allow backspacing over everything in insert mode
+set cindent
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
-set laststatus=2
+set cursorline                             " Highlight current line
+set diffopt+=iwhite                        " Ignore whitespaces with vimdiff
+set diffopt=filler                         " Add vertical spaces to keep right and left aligned
+set encoding=utf-8 nobomb                  " BOM often causes trouble
+set expandtab                              " Expand tabs to spaces
+set fileencoding=utf-8
+set fileencodings=utf-8,ucs-bom,chinese
+set foldcolumn=0                           " Column to show folds
+set foldenable                             " Enable folding
+set foldlevel=0                            " Close all folds by default
+set foldmethod=marker                      " Syntax are used to specify folds
+set foldminlines=0                         " Allow folding single lines
+set foldnestmax=5                          " Set max fold nesting level
+set formatoptions=
+set formatoptions+=1                       " Break before 1-letter words
+set formatoptions+=2                       " Use indent from 2nd line of a paragraph
+set formatoptions+=c                       " Format comments
+set formatoptions+=l                       " Don't break lines that are already long
+set formatoptions+=n                       " Recognize numbered lists
+set formatoptions+=o                       " Make comment when using o or O from comment line
+set formatoptions+=q                       " Format comments with gq
+set formatoptions+=r                       " Continue comments by default
+set gdefault                               " By default add g flag to search/replace. Add g to toggle
+set hidden                                 " When a buffer is brought to foreground, remember undo history and marks
+set history=1000                           " Increase history from 20 default to 1000
+set hlsearch                               " Highlight searches
+set ignorecase                             " Ignore case of searches
+set incsearch                              " Highlight dynamically as pattern is typed
+set laststatus=2                           " Always show status line
+set lazyredraw                             " Don't redraw when we don't have to
+set magic                                  " Enable extended regexes
 set modeline
+set nobackup
+set noerrorbells                           " Disable error bells
+set nojoinspaces                           " Only insert single space after a '.', '?' and '!' with a join command
+set noshowmode                             " Don't show the current mode (airline.vim takes care of us)
+set nostartofline                          " Don't reset cursor to start of line when moving around
+set nowrap                                 " Do not wrap lines
+set nu                                     " Enable line numbers
+set omnifunc=syntaxcomplete#Complete       " Set omni-completion method
 set relativenumber
-set lazyredraw
+set ruler                                  " Show the cursor position
+set scrolloff=3                            " Start scrolling three lines before horizontal border of window
+set shiftwidth=2                           " The # of spaces for indenting
+set shortmess=atI                          " Don't show the intro message when starting vim
+set showcmd                                " display incomplete commands
+set smartcase                              " Ignore 'ignorecase' if search patter contains uppercase characters
+set smarttab                               " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
+set softtabstop=2                          " Tab key results in 2 spaces
+set splitbelow                             " New window goes below
+set splitright                             " New windows goes right
+set tabstop=2
+set tags=./tags;
+set timeout timeoutlen=1000 ttimeoutlen=50 " Fix slow 0 inserts
+set title                                  " Show the filename in the window titlebar
+set ttyfast                                " Send more characters at a given time
+set undodir=~/.vim/.undo
+set undofile                               " Persistent Undo
+set undolevels=1000
+set undoreload=10000
+set wildchar=<Tab>                         " Character for CLI expansion (TAB-completion)
+set wildmenu                               " Hitting TAB in command mode will show possible completions above command line
+set wildmode=list:longest                  " Complete only until point of ambiguity
+set wrapscan                               " Searches wrap around end of file
 
-" Highlight current line
-set cursorline
+set wildignore+=**/vendor/bundle,**/vendor/ruby,**/tmp/cache,**/vendor/cache,**/public/**,_build,deps
+set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
+set wildignore+=*/bower_components/*,*/node_modules/*
+set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
+"}}}
+
+" Configuration -------------------------------------------------------
+
+filetype plugin indent on
 
 " Sign Column made by solarized color is strange, clear it.
 highlight clear SignColumn
@@ -122,27 +180,6 @@ let g:gitgutter_max_signs = 1024
 highlight clear LineNr
 highlight LineNr ctermfg=10
 
-" tab/indent configuration
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set autoindent
-set cindent
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,ucs-bom,chinese
-set formatoptions+=mM
-set ambiwidth=double
-set noshowmode
-
-filetype plugin indent on
-
-" search configuration
-set smartcase
-set hlsearch
-set incsearch
-set ignorecase
 
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
 
@@ -279,21 +316,8 @@ endfunction
 command! LightlineRefresh call lightline#update()
 
 
-" Tab triggers buffer-name auto-completion
-set wildchar=<Tab> wildmenu wildmode=full
-
-" Undo file settings
-set undodir=~/.vim/.undo
-set undofile
-set undolevels=1000
-set undoreload=10000
-
 " force write and save
 cmap w!! %!sudo tee > /dev/null %
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -635,9 +659,6 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-set wildignore=*.o,*.obj,*.git
-set wildignore+=*.jpg,*.png,*.gif
-set wildignore+=**/vendor/bundle,**/vendor/ruby,**/tmp/cache,**/vendor/cache,**/public/**,_build,deps
 
 
 inoremap <C-e>  <esc>l
