@@ -1,7 +1,11 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Jun 04, 2015
+" Last Modified:  Jul 31, 2015
 "
+
+" Plugins -------------------------------------------------------------
+
+" Load plugins {{{
 
 filetype off " required by vundle
 
@@ -9,7 +13,6 @@ set runtimepath+=~/.gmarik-vundle
 
 call vundle#rc()
 
-" Language Support - syntax, indent, etc.
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'pangloss/vim-javascript'
@@ -19,7 +22,6 @@ Plugin 'othree/html5.vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
 Plugin 'guns/vim-clojure-static'
-
 Plugin 'larrylv/ShowMarks'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ivalkeen/vim-ctrlp-tjump'
@@ -66,20 +68,26 @@ Plugin 'benmills/vimux'
 Plugin 'eapache/rainbow_parentheses.vim'
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'vim-scripts/matchit.zip'
+" }}}
 
+" Settings ------------------------------------------------------------
 
+" Make vim more useful {{{
+set nocompatible
+" }}}
+
+" Syntax highlighting {{{
 set t_Co=256
 set background=dark
-
-" set solarized theme
+syntax on
 let g:solarized_termtrans = 1
 let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 colorscheme solarized
+" }}}
 
 " basic configuration
-syntax on
 set nocompatible
 set nu
 set ruler
