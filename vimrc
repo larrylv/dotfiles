@@ -66,7 +66,7 @@ Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'benmills/vimux'
 Plugin 'eapache/rainbow_parentheses.vim'
-Plugin 'vim-scripts/bufexplorer.zip'
+Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/matchit.zip'
 " }}}
 
@@ -170,9 +170,72 @@ set wildignore+=*/bower_components/*,*/node_modules/*
 set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
 "}}}
 
-" Configuration -------------------------------------------------------
+" Configurations ------------------------------------------------------
 
-filetype plugin indent on
+" Leader Shortcuts"{{{
+nnoremap <leader><leader> <c-^>
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>cc :ccl<cr>
+map <leader>cn :cn<cr>
+map <leader>cp :cp<cr>
+map <leader>da :CtrlP app/assets<cr>
+map <leader>dc :CtrlP app/controllers<cr>
+map <leader>dh :CtrlP app/helpers<cr>
+map <leader>dm :CtrlP app/models<cr>
+map <leader>dv :CtrlP app/views<cr>
+map <leader>df :CtrlP config<cr>
+map <leader>dl :CtrlP lib<cr>
+map <leader>ds :CtrlP spec<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+map <leader>ga :GitGutterStageHunk<cr>
+map <leader>gn :GitGutterNextHunk<cr>
+map <leader>gp :GitGutterPrevHunk<cr>
+map <leader>gr :GitGutterRevertHunk<cr>
+map <leader>gv :GitGutterPreviewHunk<cr>
+map <leader>n :call RenameFile()<cr>
+map <leader>p :echo @%<cr>
+map <leader>rc :Econtroller<cr>
+map <leader>rf :Efixtures<cr>
+map <leader>rh :Ehelper<cr>
+map <leader>rl :Elayout<cr>
+map <leader>rj :Ejavascript<cr>
+map <leader>rm :Emodel<cr>
+map <leader>rs :Eschema<cr>
+map <leader>rt :A<cr>
+map <leader>ru :Eunittest<CR>
+map <leader>rv :Eview<cr>
+map <leader>sc :sp db/schema.rb<cr>
+map <leader>sg :sp Gemfile<cr>
+map <leader>so :source $MYVIMRC<cr>
+map <leader>sr :sp config/routes.rb<cr>
+map <leader>ss :source ./Session.vim<cr>
+map  <leader>sj :stjump 
+map  <leader>st :stselect 
+nmap <leader>ta :Tabularize /
+vmap <leader>ta :Tabularize /
+nmap <leader>t= :Tabularize /=<CR>
+vmap <leader>t= :Tabularize /=<CR>
+nmap <leader>t# :Tabularize /#<CR>
+vmap <leader>t# :Tabularize /#<CR>
+map <leader>vr :tabe ~/.vimrc<CR>
+" system yank: will copy into the system clipboard on OS X
+vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
+" vim-ruby-refactoring
+nnoremap <leader>rap  :RAddParameter<cr>
+vnoremap <leader>rec  :RExtractConstant<cr>
+nnoremap <leader>rel  :RExtractLet<cr>
+vnoremap <leader>rem  :RExtractMethod<cr>
+vnoremap <leader>relv :RExtractLocalVariable<cr>
+nnoremap <leader>rit  :RInlineTemp<cr>
+vnoremap <leader>rrlv :RRenameLocalVariable<cr>
+vnoremap <leader>rriv :RRenameInstanceVariable<cr>
+" Search and replace word under cursor (,*)
+nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
+vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
+"}}}
 
 " General"{{{
 augroup general_config
@@ -189,7 +252,7 @@ augroup general_config
   cmap w!! %!sudo tee > /dev/null %
   " }}}
 
-  " Clear last search (C-n) {{{
+  " Clear last search (Ctrl-n, ,h) {{{
   map <silent> <C-n> <Esc>:nohlsearch<CR>
   " }}}
 
@@ -206,40 +269,90 @@ augroup general_config
   nnoremap Y y$
   " }}}
 
-  " Search and replace word under cursor (,*) {{{
-  nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
-  vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
-  " }}}
-
   " Strip trailing whitespace (<F4>) {{{
   nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
   " }}}
 
-  " Toggle folds (<Space>) {{{
-  nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' : 'zc')<CR>
-  " }}}
+  " Show git diff in tab"{{{
+  command! GdiffInTab tabedit %|vsplit|Gdiff
+  "}}}
 
   " Generate ctags (<F5>)"{{{
   map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .<CR>
   "}}}
 
-  " Remap <ESC> (jj) (C-c)"{{{
+  " Remap <ESC> (jj) (Ctrl-c)"{{{
   imap <c-c> <ESC>
   imap jj <ESC>
   "}}}
 
-  " Insert hash rocket (C-h)"{{{
+  " Insert hash rocket (Ctrl-h)"{{{
   imap <c-h> =><space>
   "}}}
 
-  " Remap increase number (C-i)"{{{
+  " Remap increase number (Ctrl-i)"{{{
   " <c-a> is prefix for tmux
   map <c-i> <c-a>
   "}}}
 
-  " Quick move under insert mode (C-f, C-b)"{{{
+  " Quick move under insert mode (Ctrl-f, Ctrl-b)"{{{
   imap <c-f> <c-o>w
   imap <c-b> <c-o>b
+  "}}}
+
+  " Rename File (,n)"{{{
+  function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+      exec ':saveas ' . new_name
+      exec ':silent !rm ' . old_name
+      redraw!
+    endif
+  endfunction
+  "}}}
+
+  " Adjust window height"{{{
+  au FileType qf call AdjustWindowHeight(3, 10)
+  function! AdjustWindowHeight(minheight, maxheight)
+    exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+  endfunction
+  "}}}
+
+  " Insert the current time (InsertTime)"{{{
+  command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
+  "}}}
+
+  " Highlight trailing whitespace"{{{
+  highlight ExtraWhitespace ctermbg=red guibg=red
+  match ExtraWhitespace /\s\+$/
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+  autocmd BufWinLeave * call clearmatches()
+  "}}}
+
+  " Remember last location when open a file"{{{
+  " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+  function! ResCur()
+    let filetype = &ft
+    if (line("'\"") <= line("$") && filetype != 'gitcommit')
+      normal! g`"
+      return 1
+    endif
+  endfunction
+
+  augroup resCur
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
+  augroup END
+  "}}}
+
+  " Set local omnifunc"{{{
+  autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   "}}}
 
 augroup END
@@ -247,10 +360,38 @@ augroup END
 
 " Tagbar"{{{
 nmap <F2> :TagbarToggle<CR>
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent -R'
+\ }
 "}}}
 
 " Supertab"{{{
 let g:SuperTabDefaultCompletionType = "<c-n>"
+" <C-e>: stop completion and go back to the originally typed text
 "}}}
 
 " vim-gitgutter"{{{
@@ -402,82 +543,13 @@ endfunction
 command! LightlineRefresh call lightline#update()
 "}}}
 
-
-
-nnoremap <leader><leader> <c-^>
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-command! GdiffInTab tabedit %|vsplit|Gdiff
-
-map <leader>cc :ccl<cr>
-map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>
-map <leader>da :CtrlP app/assets<cr>
-map <leader>dc :CtrlP app/controllers<cr>
-map <leader>dh :CtrlP app/helpers<cr>
-map <leader>dm :CtrlP app/models<cr>
-map <leader>dv :CtrlP app/views<cr>
-map <leader>df :CtrlP config<cr>
-map <leader>dl :CtrlP lib<cr>
-map <leader>ds :CtrlP spec<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
-map <leader>ga :GitGutterStageHunk<cr>
-map <leader>gn :GitGutterNextHunk<cr>
-map <leader>gp :GitGutterPrevHunk<cr>
-map <leader>gr :GitGutterRevertHunk<cr>
-map <leader>gv :GitGutterPreviewHunk<cr>
-nmap <leader>h :nohlsearch<cr>
-map <leader>n :call RenameFile()<cr>
-map <leader>p :echo @%<cr>
-map <leader>rc :Econtroller<cr>
-map <leader>rf :Efixtures<cr>
-map <leader>rh :Ehelper<cr>
-map <leader>rl :Elayout<cr>
-map <leader>rj :Ejavascript<cr>
-map <leader>rm :Emodel<cr>
-map <leader>rs :Eschema<cr>
-map <leader>rt :A<cr>
-map <leader>ru :Eunittest<CR>
-map <leader>rv :Eview<cr>
-map <leader>sc :sp db/schema.rb<cr>
-map <leader>sg :sp Gemfile<cr>
-map <leader>so :source $MYVIMRC<cr>
-map <leader>sr :sp config/routes.rb<cr>
-map <leader>ss :source ./Session.vim<cr>
-map  <leader>sj :stjump 
-map  <leader>st :stselect 
-nmap <leader>ta :Tabularize /
-vmap <leader>ta :Tabularize /
-nmap <leader>t= :Tabularize /=<CR>
-vmap <leader>t= :Tabularize /=<CR>
-nmap <leader>t# :Tabularize /#<CR>
-vmap <leader>t# :Tabularize /#<CR>
-" map <leader>v :Rview<cr>
-map <leader>vr :tabe ~/.vimrc<CR>
-" System Yank: will copy into the system clipboard on OS X
-vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
-
-" Vim-Ruby-Refactoring CONFIGURATIONS
-nnoremap <leader>rap  :RAddParameter<cr>
-" nnoremap <leader>rcpc :RConvertPostConditional<cr>
-vnoremap <leader>rec  :RExtractConstant<cr>
-nnoremap <leader>rel  :RExtractLet<cr>
-vnoremap <leader>rem  :RExtractMethod<cr>
-vnoremap <leader>relv :RExtractLocalVariable<cr>
-nnoremap <leader>rit  :RInlineTemp<cr>
-vnoremap <leader>rrlv :RRenameLocalVariable<cr>
-vnoremap <leader>rriv :RRenameInstanceVariable<cr>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Test-running stuff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" test.vim"{{{
 nmap <silent> <leader>ts :TestFile<CR>
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tl :TestLast<CR>
+"}}}
 
+" vroom.vim"{{{
 let g:vroom_use_vimux=1
 let g:vroom_map_keys=0
 
@@ -493,92 +565,21 @@ map <leader>vi :VimuxInspectRunner<CR>
 map <leader>vc :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane map
 map <leader>vx :VimuxInterruptRunner<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"}}}
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-multiple-cursors
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:multi_cursor_use_default_mapping=0
-" let g:multi_cursor_next_key='<C-m>'
-" let g:multi_cursor_prev_key='<C-p>'
-" let g:multi_cursor_skip_key='<C-x>'
-" let g:multi_cursor_quit_key='<C-c>'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RENAME CURRENT FILE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ADJUST QUICKFIX WINDOW HEIGHT
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au FileType qf call AdjustWindowHeight(3, 10)
-function! AdjustWindowHeight(minheight, maxheight)
-  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
-endfunction
-
-" Insert the current time
-command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
-
-
-
-" tagbar configurations for Go support.
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent -R'
-\ }
-
-
-" bufExplorer configurations
+" bufexplorer"{{{
 let g:bufExplorerShowTabBuffer=1    " BufExplorer: show only buffers relative to this tab
 let g:bufExplorerShowRelativePath=1 " BufExplorer: show relative paths
+"}}}
 
-
-" gist-vim configurations
+" Gist.vim"{{{
 let g:gist_post_private = 1
 let g:gist_show_privates = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_detect_filetype = 1
+"}}}
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ShowMarks.vim CONFIGURATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ShowMarks.vim"{{{
 let showmarks_enable = 1
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 " Ignore help, quickfix, non-modifiable buffers
@@ -588,11 +589,9 @@ let showmarks_hlline_lower = 1
 let showmarks_hlline_upper = 1
 hi ShowMarksHLl ctermbg=Yellow  ctermfg=Black guibg=#FFDB72 guifg=Black
 hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black
+"}}}
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntastic.vim CONFIGURATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic.vim"{{{
 set statusline+=\ %#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -634,30 +633,21 @@ let g:syntastic_html_tidy_ignore_errors = [
                         \ '<rect> is not recognized!',
                         \ 'discarding unexpected <rect>'
                         \ ]
+"}}}
 
-
-
+" Highlight Pmenu"{{{
 highlight Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
 highlight PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 highlight PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+"}}}
 
-autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" YouCompleteMe & UltiSnips CONFIGURATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UltiSnips"{{{
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"}}}
 
-
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " NEOCOMPLCACHE & NEOSNIPPET CONFIGURATIONS
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
+" neocomplcache.vim (abandoned now)"{{{
 " let g:neocomplcache_enable_at_startup = 1
 " let g:neocomplcache_enable_camel_case_completion = 1
 " let g:neocomplcache_enable_smart_case = 1
@@ -693,23 +683,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " smap <silent><C-l> <Plug>(neosnippet_expand_or_jump)
 " imap <silent><C-j> <Plug>(neosnippet_jump_or_expand)
 " smap <silent><C-j> <Plug>(neosnippet_jump_or_expand)
+"}}}
 
-
-" Highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
-
-
-inoremap <C-e>  <esc>l
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CTRLP.vim CONFIGURATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp.vim"{{{
 silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
 silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
 silent! nnoremap <unique> <silent> <leader>dt :CtrlPTag<CR>
@@ -732,33 +708,9 @@ let g:ctrlp_prompt_mappings = {
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
 " let g:ctrlp_tjump_only_silent = 1
+"}}}
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Selecta CONFIGURATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Run a given vim command on the results of fuzzy selecting from a given shell
-" command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command)
-  try
-    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
-
-" Find all files in all non-dot directories starting in the working directory.
-" Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>sc :call SelectaCommand("git ls-files", "", ":e")<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Better Rainbow Parentheses
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" rainbow_parentheses.vim"{{{
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
@@ -783,59 +735,46 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+"}}}
 
-" NERDTree plugin configuration
+" nerdtree"{{{
 let NERDTreeWinSize = 30
 let NERDTreeAutoCenter=1
 let NERDTreeChDirMode=2
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeHijackNetrw=1
 map <F1> :NERDTreeToggle<CR>
+"}}}
 
-
-" ack.vim configuration
+" ack.vim"{{{
 if executable("ack")
-    " ,a to Ack (search in files)
-    nnoremap <leader>a :Ack 
-    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=_build --ignore-dir=deps --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
-    let g:ackhighlight=1
+  " ,a to Ack (search in files)
+  nnoremap <leader>a :Ack 
+  let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=_build --ignore-dir=deps --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
+  let g:ackhighlight=1
 endif
+"}}}
 
-
+" vim-ragtag"{{{
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1  = "inc"
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags    = "li\|p"
+"}}}
 
-" Remember last location when open a file
-" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-function! ResCur()
-  let filetype = &ft
-  if (line("'\"") <= line("$") && filetype != 'gitcommit')
-    normal! g`"
-    return 1
-  endif
-endfunction
-
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
-
-
-" filetype detection
-autocmd BufNewFile,BufRead Thorfile set filetype=ruby
-autocmd BufNewFile,BufRead *.thor set filetype=ruby
-autocmd BufNewFile,BufRead Gemfile set filetype=ruby
-autocmd BufNewFile,BufRead Capfile set filetype=ruby
-autocmd BufNewFile,BufRead pryrc set filetype=ruby
+" Filetype detection"{{{
+autocmd BufNewFile,BufRead Thorfile set filetype=ruby syntax=ruby
+autocmd BufNewFile,BufRead *.thor set filetype=ruby syntax=ruby
+autocmd BufNewFile,BufRead Gemfile set filetype=ruby syntax=ruby
+autocmd BufNewFile,BufRead Capfile set filetype=ruby syntax=ruby
+autocmd BufNewFile,BufRead pryrc set filetype=ruby syntax=ruby
+autocmd BufNewFile,BufRead *.god set filetype=ruby syntax=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
-autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *.es6 set filetype=javascript
 autocmd Filetype gitcommit setlocal textwidth=78
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd FileType go,c,cpp,rust set ts=4 sw=4 sts=4 et
-
+"}}}
