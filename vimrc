@@ -72,6 +72,10 @@ Plugin 'vim-scripts/matchit.zip'
 
 " Settings ------------------------------------------------------------
 
+" Mapleader {{{
+let mapleader=","
+" }}}
+
 " Make vim more useful {{{
 set nocompatible
 " }}}
@@ -170,6 +174,86 @@ set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,
 
 filetype plugin indent on
 
+" General"{{{
+augroup general_config
+  autocmd!
+
+  " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l) {{{
+  map <C-k> <C-w><Up>
+  map <C-j> <C-w><Down>
+  map <C-l> <C-w><Right>
+  map <C-h> <C-w><Left>
+  " }}}
+
+  " Sudo write (w!!) {{{
+  cmap w!! %!sudo tee > /dev/null %
+  " }}}
+
+  " Clear last search (C-n) {{{
+  map <silent> <C-n> <Esc>:nohlsearch<CR>
+  " }}}
+
+  " Remap keys for auto-completion menu {{{
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  " }}}
+
+  " Paste toggle (<F3>) {{{
+  nnoremap <F3> :set invpaste paste?<CR>
+  set pastetoggle=<F3>
+  " }}}
+
+  " Yank from cursor to end of line {{{
+  nnoremap Y y$
+  " }}}
+
+  " Search and replace word under cursor (,*) {{{
+  nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
+  vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
+  " }}}
+
+  " Strip trailing whitespace (<F4>) {{{
+  nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+  " }}}
+
+  " Toggle folds (<Space>) {{{
+  nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' : 'zc')<CR>
+  " }}}
+
+  " Generate ctags (<F5>)"{{{
+  map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .<CR>
+  "}}}
+
+  " Remap <ESC> (jj) (C-c)"{{{
+  imap <c-c> <ESC>
+  imap jj <ESC>
+  "}}}
+
+  " Insert hash rocket (C-h)"{{{
+  imap <c-h> =><space>
+  "}}}
+
+  " Remap increase number (C-i)"{{{
+  " <c-a> is prefix for tmux
+  map <c-i> <c-a>
+  "}}}
+
+  " Quick move under insert mode (C-f, C-b)"{{{
+  imap <c-f> <c-o>w
+  imap <c-b> <c-o>b
+  "}}}
+
+augroup END
+"}}}
+
+" Tagbar"{{{
+nmap <F2> :TagbarToggle<CR>
+"}}}
+
+" Supertab"{{{
+let g:SuperTabDefaultCompletionType = "<c-n>"
+"}}}
+
+" vim-gitgutter"{{{
 " Sign Column made by solarized color is strange, clear it.
 highlight clear SignColumn
 
@@ -179,11 +263,13 @@ let g:gitgutter_max_signs = 1024
 
 highlight clear LineNr
 highlight LineNr ctermfg=10
+"}}}
 
-
+" vim-ruby"{{{
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
+"}}}
 
-" lightline.vim configurations
+" lightline.vim"{{{
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
@@ -314,49 +400,9 @@ function! s:syntastic()
 endfunction
 
 command! LightlineRefresh call lightline#update()
+"}}}
 
 
-" force write and save
-cmap w!! %!sudo tee > /dev/null %
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MISC KEY MAPS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-nmap <F2> :TagbarToggle<CR>
-nnoremap <F3> :set invpaste paste?<CR>
-set pastetoggle=<F3>
-nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .<CR>
-
-nnoremap <F8> :GundoToggle<CR>
-let g:gundo_width = 60
-
-imap <c-c> <ESC>
-imap jj <ESC>
-" Insert a hash rocket with <c-h>
-imap <c-h> =><space>
-" Move around splits with <c-hjkl>
-map <C-k> <C-w><Up>
-map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
-
-" increase number, <c-a> is prefix for tmux.
-map <c-i> <c-a>
-
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
-
-" quick move under insert mode.
-imap <c-f> <c-o>w
-imap <c-b> <c-o>b
-
-map <C-n> :nohlsearch<CR>
-
-
-let mapleader=","
 
 nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -486,7 +532,6 @@ endfunction
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
 
 
 " tagbar configurations for Go support.
@@ -612,7 +657,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " " NEOCOMPLCACHE & NEOSNIPPET CONFIGURATIONS
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "
 " let g:neocomplcache_enable_at_startup = 1
 " let g:neocomplcache_enable_camel_case_completion = 1
