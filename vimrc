@@ -186,6 +186,7 @@ map <leader>dv :CtrlP app/views<cr>
 map <leader>df :CtrlP config<cr>
 map <leader>dl :CtrlP lib<cr>
 map <leader>ds :CtrlP spec<cr>
+map <leader>dt :CtrlP test<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
