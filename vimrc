@@ -283,8 +283,8 @@ augroup general_config
   "}}}
 
   " Remap <ESC> (jj) (Ctrl-c)"{{{
-  imap <c-c> <ESC>
-  imap jj <ESC>
+  imap <c-c> <ESC>l
+  imap jj <ESC>l
   "}}}
 
   " Insert hash rocket (Ctrl-h)"{{{
