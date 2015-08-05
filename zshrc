@@ -9,6 +9,7 @@ ZSH_THEME="larrylv"
 
 setopt prompt_subst
 setopt no_nomatch
+setopt interactivecomments
 
 zstyle ':completion:*' path-completion false
 zstyle ':completion:*' accept-exact-dirs true
