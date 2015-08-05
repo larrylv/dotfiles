@@ -1,1 +1,2 @@
 bind status P !git push
+set editor-line-number = no
