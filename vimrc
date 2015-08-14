@@ -68,6 +68,7 @@ Plugin 'benmills/vimux'
 Plugin 'eapache/rainbow_parentheses.vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/BufOnly.vim'
 " }}}
 
 " Settings ------------------------------------------------------------
@@ -196,6 +197,7 @@ map <leader>gr :GitGutterRevertHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
 map <leader>n :call RenameFile()<cr>
 map <leader>p :echo @%<cr>
+map <leader>q :BufOnly<cr>
 map <leader>rc :Econtroller<cr>
 map <leader>rf :Efixtures<cr>
 map <leader>rh :Ehelper<cr>
