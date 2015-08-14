@@ -121,8 +121,6 @@ set formatoptions+=n                       " Recognize numbered lists
 set formatoptions+=o                       " Make comment when using o or O from comment line
 set formatoptions+=q                       " Format comments with gq
 set formatoptions+=r                       " Continue comments by default
-" set gdefault                               " By default add g flag to search/replace. Add g to toggle
-set hidden                                 " When a buffer is brought to foreground, remember undo history and marks
 set history=1000                           " Increase history from 20 default to 1000
 set hlsearch                               " Highlight searches
 set ignorecase                             " Ignore case of searches
