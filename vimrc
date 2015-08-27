@@ -389,6 +389,24 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent -R'
 \ }
+let g:tagbar_type_elixir = {
+    \ 'ctagstype': 'elixir',
+    \ 'kinds': [
+        \ 'f:functions:0:0',
+        \ 'c:callbacks:0:0',
+        \ 'd:delegates:0:0',
+        \ 'e:exceptions:0:0',
+        \ 'i:implementations:0:0',
+        \ 'a:macros:0:0',
+        \ 'o:operators:0:0',
+        \ 'm:modules:0:0',
+        \ 'p:protocols:0:0',
+        \ 'r:records:0:0'
+    \ ],
+    \ 'sro': '.',
+    \ 'kind2scope': {'m': 'modules'},
+    \ 'scope2kind': {'modules': 'm'}
+\ }
 "}}}
 
 " Supertab"{{{
