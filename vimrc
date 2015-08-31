@@ -136,6 +136,7 @@ set noerrorbells                           " Disable error bells
 set nojoinspaces                           " Only insert single space after a '.', '?' and '!' with a join command
 set noshowmode                             " Don't show the current mode (airline.vim takes care of us)
 set nostartofline                          " Don't reset cursor to start of line when moving around
+set notitle
 set wrap                                   " Wrap lines that are too long
 set nu                                     " Enable line numbers
 set omnifunc=syntaxcomplete#Complete       " Set omni-completion method
@@ -153,7 +154,6 @@ set splitright                             " New windows goes right
 set tabstop=2
 set tags=./tags;
 set timeout timeoutlen=1000 ttimeoutlen=50 " Fix slow 0 inserts
-set title                                  " Show the filename in the window titlebar
 set ttyfast                                " Send more characters at a given time
 set undodir=~/.vim/.undo
 set undofile                               " Persistent Undo
