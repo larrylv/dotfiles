@@ -43,6 +43,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-rbenv'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-projectionist'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'scrooloose/nerdtree'
@@ -164,10 +165,10 @@ set wildmenu                               " Hitting TAB in command mode will sh
 set wildmode=list:longest                  " Complete only until point of ambiguity
 set wrapscan                               " Searches wrap around end of file
 
-set wildignore+=**/vendor/bundle,**/vendor/ruby,**/tmp/cache,**/vendor/cache,**/public/**,_build,deps
+set wildignore+=**/vendor/bundle,**/vendor/ruby,**/tmp/cache,**/vendor/cache,**/public/**,_build,deps,node_modules
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/bower_components/*,*/node_modules/*
-set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
+set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*,*/node_modules/*
 "}}}
 
 " Configurations ------------------------------------------------------
@@ -186,10 +187,12 @@ map <leader>df :CtrlP config<cr>
 map <leader>dl :CtrlP lib<cr>
 map <leader>ds :CtrlP spec<cr>
 map <leader>dt :CtrlP test<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
+map <leader>ec :Econtroller 
+map <leader>ej :Ejs 
+map <leader>em :Emodel 
+map <leader>es :Ecss 
+map <leader>et :Etemplate 
+map <leader>ev :Eview 
 map <leader>ga :GitGutterStageHunk<cr>
 map <leader>gn :GitGutterNextHunk<cr>
 map <leader>gp :GitGutterPrevHunk<cr>
@@ -424,6 +427,65 @@ let g:gitgutter_max_signs = 1024
 
 highlight clear LineNr
 highlight LineNr ctermfg=10
+"}}}
+
+" vim-projectionist"{{{
+let g:projectionist_heuristics = {
+      \  "web/": {
+      \    "web/channels/*.ex": {
+      \      "type": "channel",
+      \      "alternate": "test/channels/{}_test.exs"
+      \    },
+      \    "web/controllers/*.ex": {
+      \      "type": "controller",
+      \      "alternate": "test/controllers/{}_test.exs"
+      \    },
+      \    "web/models/*.ex": {
+      \      "type": "model",
+      \      "alternate": "test/models/{}_test.exs"
+      \    },
+      \    "web/views/*.ex": {
+      \      "type": "view",
+      \      "alternate": "test/views/{}_test.exs"
+      \    },
+      \    "web/templates/*.html.eex": {
+      \      "type": "template",
+      \    },
+      \    "web/static/css/*": {
+      \      "type": "css",
+      \    },
+      \    "web/static/js/*": {
+      \      "type": "js",
+      \    },
+      \  },
+      \  "lib/": {
+      \    "lib/*.exs": {
+      \      "type": "lib"
+      \    }
+      \  },
+      \  "test/": {
+      \    "test/channels/*_test.exs": {
+      \      "type": "test",
+      \      "alternate": "web/channels/{}.ex",
+      \      "dispatch": "mix test --color {file}"
+      \    },
+      \    "test/controllers/*_test.exs": {
+      \      "type": "test",
+      \      "alternate": "web/controllers/{}.ex",
+      \      "dispatch": "mix test --color {file}"
+      \    },
+      \    "test/models/*_test.exs": {
+      \      "type": "test",
+      \      "alternate": "web/models/{}.ex",
+      \      "dispatch": "mix test --color {file}"
+      \    },
+      \    "test/views/*_test.exs": {
+      \      "type": "test",
+      \      "alternate": "web/views/{}.ex",
+      \      "dispatch": "mix test --color {file}"
+      \    },
+      \  },
+      \ }
 "}}}
 
 " vim-ruby"{{{
