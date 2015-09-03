@@ -175,7 +175,6 @@ set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,
 " Leader Shortcuts"{{{
 nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>cc :ccl<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
 map <leader>da :CtrlP app/assets<cr>
@@ -225,6 +224,7 @@ vmap <leader>t# :Tabularize /#<CR>
 map <leader>vr :tabe ~/.vimrc<CR>
 " system yank: will copy into the system clipboard on OS X
 vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
+map <leader>z :ccl<cr>
 " vim-ruby-refactoring
 nnoremap <leader>rap  :RAddParameter<cr>
 vnoremap <leader>rec  :RExtractConstant<cr>
