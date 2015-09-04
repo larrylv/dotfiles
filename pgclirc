@@ -5,6 +5,10 @@
 # possible completions will be listed.
 smart_completion = True
 
+# Display the completions in several columns. (More completions will be
+# visible.)
+wider_completion_menu = False
+
 # Multi-line mode allows breaking up the sql statements into multiple lines. If
 # this is set to True, then the end of the statements must have a semi-colon.
 # If this is set to False then sql statements can't be split into multiple
@@ -12,7 +16,10 @@ smart_completion = True
 multi_line = True
 
 # log_file location.
-log_file = ~/.mycli.log
+log_file = ~/.pgcli.log
+
+# history_file location.
+history_file = ~/.pgcli-history
 
 # Default log level. Possible values: "CRITICAL", "ERROR", "WARNING", "INFO"
 # and "DEBUG".
@@ -31,12 +38,12 @@ table_format = psql
 # colorful, murphy, bw, pastie, paraiso-light, trac, default, fruity
 syntax_style = default
 
-# Keybindings: Possible values: emacs, vi
-key_bindings = emacs
+# Keybindings:
+# When Vi mode is enabled you can use modal editing features offered by Vi in the REPL.
+# When Vi mode is disabled emacs keybindings such as Ctrl-A for home and Ctrl-E
+# for end are available in the REPL.
+vi = False
 
-# MySQL prompt
-# \t - Product type (Percona, MySQL, Mariadb)
-# \u - Username
-# \h - Hostname of the server
-# \d - Database name
-prompt = '\t \u@\h:\d> '
+# Named queries are queries you can rexecute by name
+[named queries]
+
