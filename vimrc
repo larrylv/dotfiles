@@ -206,7 +206,6 @@ map <leader>rl :Elayout<cr>
 map <leader>rj :Ejavascript<cr>
 map <leader>rm :Emodel<cr>
 map <leader>rs :Eschema<cr>
-map <leader>rt :A<cr>
 map <leader>ru :Eunittest<CR>
 map <leader>rv :Eview<cr>
 map <leader>sc :sp db/schema.rb<cr>
