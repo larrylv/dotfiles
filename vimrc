@@ -165,10 +165,8 @@ set wildmenu                               " Hitting TAB in command mode will sh
 set wildmode=list:longest                  " Complete only until point of ambiguity
 set wrapscan                               " Searches wrap around end of file
 
-set wildignore+=**/vendor/bundle,**/vendor/ruby,**/tmp/cache,**/vendor/cache,**/public/**,_build,deps
-set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
-set wildignore+=*/bower_components/*,*/node_modules/*
-set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
+set wildignore+=**/*.jpg,*.jpeg,*.gif,**/*.png,*.gif,*.psd,*.o,*.obj,*.min.js
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*
 "}}}
 
 " Configurations ------------------------------------------------------
@@ -227,7 +225,7 @@ vmap <leader>t# :Tabularize /#<CR>
 map <leader>vr :tabe ~/.vimrc<CR>
 " system yank: will copy into the system clipboard on OS X
 vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
-map <leader>z :ccl<cr>
+map <leader>z :CtrlPClearCache<cr>
 " vim-ruby-refactoring
 nnoremap <leader>rap  :RAddParameter<cr>
 vnoremap <leader>rec  :RExtractConstant<cr>
@@ -789,6 +787,9 @@ let g:ctrlp_prompt_mappings = {
     \}
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor)$',
+  \ }
 " let g:ctrlp_tjump_only_silent = 1
 "}}}
 
@@ -825,6 +826,7 @@ let NERDTreeAutoCenter=1
 let NERDTreeChDirMode=2
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeHijackNetrw=1
+let g:NERDTreeIgnore=['\~$', '_build', 'bower_components', 'node_modules']
 map <F1> :NERDTreeToggle<CR>
 "}}}
 
