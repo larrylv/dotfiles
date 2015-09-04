@@ -190,6 +190,7 @@ map <leader>ec :Econtroller
 map <leader>ef :Efixtures 
 map <leader>eh :Ehelper 
 map <leader>ej :Ejavascript 
+map <leader>en :Echannel 
 map <leader>em :Emodel 
 map <leader>ep :Etemplate 
 map <leader>es :Espec 
