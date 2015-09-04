@@ -176,55 +176,62 @@ nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
-map <leader>da :CtrlP app/assets<cr>
+
+" CtrlP
 map <leader>dc :CtrlP app/controllers<cr>
 map <leader>dh :CtrlP app/helpers<cr>
 map <leader>dm :CtrlP app/models<cr>
-map <leader>dv :CtrlP app/views<cr>
-map <leader>df :CtrlP config<cr>
-map <leader>dl :CtrlP lib<cr>
 map <leader>ds :CtrlP spec<cr>
 map <leader>dt :CtrlP test<cr>
+map <leader>dv :CtrlP app/views<cr>
+
+" projectionist.vim && rails.vim
 map <leader>ec :Econtroller 
-map <leader>ej :Ejs 
+map <leader>ef :Efixtures 
+map <leader>eh :Ehelper 
+map <leader>ej :Ejavascript 
 map <leader>em :Emodel 
-map <leader>es :Ecss 
-map <leader>et :Etemplate 
+map <leader>ep :Etemplate 
+map <leader>es :Espec 
+map <leader>et :Etest 
+map <leader>eu :Eunittest 
 map <leader>ev :Eview 
+
+" gitgutter.vim
 map <leader>ga :GitGutterStageHunk<cr>
 map <leader>gn :GitGutterNextHunk<cr>
 map <leader>gp :GitGutterPrevHunk<cr>
 map <leader>gr :GitGutterRevertHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
+
 map <leader>n :call RenameFile()<cr>
 map <leader>p :echo @%<cr>
 map <leader>q :BufOnly<cr>
-map <leader>rc :Econtroller<cr>
-map <leader>rf :Efixtures<cr>
-map <leader>rh :Ehelper<cr>
-map <leader>rl :Elayout<cr>
-map <leader>rj :Ejavascript<cr>
-map <leader>rm :Emodel<cr>
-map <leader>rs :Eschema<cr>
-map <leader>ru :Eunittest<CR>
-map <leader>rv :Eview<cr>
-map <leader>sc :sp db/schema.rb<cr>
+
+map <leader>sd :sp db/schema.rb<cr>
 map <leader>sg :sp Gemfile<cr>
 map <leader>so :source $MYVIMRC<cr>
 map <leader>sr :sp config/routes.rb<cr>
 map <leader>ss :source ./Session.vim<cr>
+
 map  <leader>sj :stjump 
 map  <leader>st :stselect 
+
+" tabular.vim
 nmap <leader>ta :Tabularize /
 vmap <leader>ta :Tabularize /
 nmap <leader>t= :Tabularize /=<CR>
 vmap <leader>t= :Tabularize /=<CR>
 nmap <leader>t# :Tabularize /#<CR>
 vmap <leader>t# :Tabularize /#<CR>
+
 map <leader>vr :tabe ~/.vimrc<CR>
+
 " system yank: will copy into the system clipboard on OS X
 vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
+
 map <leader>z :CtrlPClearCache<cr>
+
 " vim-ruby-refactoring
 nnoremap <leader>rap  :RAddParameter<cr>
 vnoremap <leader>rec  :RExtractConstant<cr>
@@ -449,10 +456,10 @@ let g:projectionist_heuristics = {
       \      "type": "template",
       \    },
       \    "web/static/css/*": {
-      \      "type": "css",
+      \      "type": "stylesheet",
       \    },
       \    "web/static/js/*": {
-      \      "type": "js",
+      \      "type": "javascript",
       \    },
       \  },
       \  "lib/": {
