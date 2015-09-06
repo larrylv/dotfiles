@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Sep 04, 2015
+" Last Modified:  Sep 06, 2015
 "
 
 " Plugins -------------------------------------------------------------
@@ -174,6 +174,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*
 " Leader Shortcuts"{{{
 nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>cc :ccl<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
 
