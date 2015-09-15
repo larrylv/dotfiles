@@ -428,6 +428,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " Sign Column made by solarized color is strange, clear it.
 highlight clear SignColumn
 highlight clear LineNr
+highlight clear VertSplit
 
 " vim-gitgutter will use Sign Column to set its color, reload it.
 call gitgutter#highlight#define_highlights()
@@ -438,6 +439,7 @@ let g:gitgutter_sign_column_always = 1
 
 highlight SignColumn ctermfg=10
 highlight LineNr ctermfg=10
+highlight VertSplit ctermfg=10 ctermbg=0
 "}}}
 
 " vim-projectionist"{{{
