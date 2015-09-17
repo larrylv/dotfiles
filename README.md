@@ -6,17 +6,16 @@ These are config files to set up a system the way I like it.
 
 ```
 git clone git://github.com/larrylv/dotfiles.git ~/.dotfiles
-```
-
-Now all vim plugins are managed by Vundle, so we should install `Vundle` first.
-
-```
 cd ~/.dotfiles
 git submodule init
 git submodule update
 rake install
 vim +PluginInstall +qall
 ```
+
+#### Install tmux plugins
+
+https://github.com/tmux-plugins/tpm#installing-plugins
 
 ### Environment
 
