@@ -15,7 +15,7 @@ vim +PluginInstall +qall
 
 #### Install tmux plugins
 
-https://github.com/tmux-plugins/tpm#installing-plugins
+https://github.com/tmux-plugins/tpm#installation
 
 ### Environment
 
