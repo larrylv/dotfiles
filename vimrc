@@ -191,8 +191,8 @@ map <leader>ec :Econtroller
 map <leader>ef :Efixtures 
 map <leader>eh :Ehelper 
 map <leader>ej :Ejavascript 
-map <leader>en :Echannel 
 map <leader>em :Emodel 
+map <leader>en :Echannel 
 map <leader>ep :Etemplate 
 map <leader>es :Espec 
 map <leader>et :Etest 
@@ -470,11 +470,6 @@ let g:projectionist_heuristics = {
       \    "web/static/js/*": {
       \      "type": "javascript",
       \    },
-      \  },
-      \  "lib/": {
-      \    "lib/*.exs": {
-      \      "type": "lib"
-      \    }
       \  },
       \  "test/": {
       \    "test/channels/*_test.exs": {
