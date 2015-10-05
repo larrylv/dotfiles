@@ -46,17 +46,10 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 source $ZSH/oh-my-zsh.sh
 
 # Configure golang
-export GOPATH=$HOME/Code/Other/go-path
-export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/.gopath
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
 
-# Configure elixir
-export PATH="$PATH:/usr/local/opt/elixir/bin"
-
-[[ -s "/usr/local/bin" ]] && export PATH=/usr/local/bin:$PATH
-[[ -s "/usr/local/sbin" ]] && export PATH=/usr/local/sbin:$PATH
-[[ -s "~/.tig-completion.sh" ]] && source ~/.tig-completion.sh
+[[ -s "/usr/local/sbin" ]] && export PATH=$PATH:/usr/local/sbin:$PATH
 
 export PATH=.binstubs:$PATH
 
