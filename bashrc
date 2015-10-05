@@ -1,6 +1,7 @@
 # vim:ft=sh:
 
 bind 'set completion-ignore-case on'
+
 export CLICOLOR=1
 export EDITOR=vim
 export LC_ALL=en_US.UTF-8
