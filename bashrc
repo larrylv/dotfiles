@@ -41,6 +41,13 @@ if [ -r "$git_completion" ]; then
 fi
 unset git_completion
 
+## tmuxinator completion
+tmuxinator_completion="$HOME/.tmuxinator.bash"
+if [ -r "$tmuxinator_completion" ]; then
+  source "$tmuxinator_completion"
+fi
+unset tmuxinator_completion
+
 ## autojump script
 autojump_script="$(brew --prefix 2>/dev/null)/etc/profile.d/autojump.sh"
 if [ -r "$autojump_script" ]; then
