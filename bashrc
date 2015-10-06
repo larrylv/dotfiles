@@ -30,8 +30,11 @@ export LANG=en_US.UTF-8
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 ## go
+### For Mac: brew install go && sudo ln -s /usr/local/opt/go/libexec /usr/local/go
+### For Ubuntu: sudo tar -C /usr/local -xzf go{version}.src.tar.gz
+export GOROOT=/usr/local/go
 export GOPATH=$HOME/.gopath
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 ## rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
