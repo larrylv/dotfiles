@@ -94,7 +94,7 @@ unset autojump_script
 
 # PS1 -------------------------------------------------------------------------#{{{
 
-GIT_PROMPT_CLEAN=" ${echo_bold_green}✔ "
+GIT_PROMPT_CLEAN=" ${echo_bold_green}✔"
 GIT_PROMPT_DIRTY=" ${echo_bold_red}✗"
 GIT_PROMPT_STASH=" ${echo_bold_purple}#"
 GIT_PROMPT_NOSTASH=""
