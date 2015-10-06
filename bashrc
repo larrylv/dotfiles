@@ -1,5 +1,26 @@
 # vim:ft=sh:
 
+# alias
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias grep='grep --color=auto'
+alias tigs='tig status'
+alias rb='rbenv'
+alias be='bundle exec'
+alias pt='pstree'
+alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
+alias vless='/usr/local/opt/vim/share/vim/vim74/macros/less.sh'
+alias tailf='tail -f'
+alias gtags='ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .'
+alias mcopy='reattach-to-user-namespace pbcopy'
+alias mpaste='reattach-to-user-namespace pbpaste'
+alias ag='ack -H --smart-case --column --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags'
+alias t='git ls-files | ack --smart-case --no-column --noenv'
+alias vs='vim -S Session.vim'
+
+# environment
+
 bind 'set completion-ignore-case on'
 
 export CLICOLOR=1
@@ -8,18 +29,18 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-# go
+## go
 export GOPATH=$HOME/.gopath
 export PATH=$PATH:$GOPATH/bin
 
-# rbenv
+## rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# binstubs
+## binstubs
 export PATH=.binstubs:$PATH
 
-# history
+## history
 shopt -s histappend
 export HISTSIZE=100000
 export HISTFILESIZE=100000
@@ -40,6 +61,13 @@ if [ -r "$git_completion" ]; then
   source "$git_completion"
 fi
 unset git_completion
+
+## vagrant completion
+vagrant_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion.d/vagrant"
+if [ -r "$vagrant_completion" ]; then
+  source "$vagrant_completion"
+fi
+unset vagrant_completion
 
 ## tmuxinator completion
 tmuxinator_completion="$HOME/.tmuxinator.bash"
@@ -112,26 +140,8 @@ fi
 
 #}}}
 
-# alias
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias grep='grep --color=auto'
-alias tigs='tig status'
-alias rb='rbenv'
-alias be='bundle exec'
-alias pt='pstree'
-alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
-alias vless='/usr/local/opt/vim/share/vim/vim74/macros/less.sh'
-alias tailf='tail -f'
-alias gtags='ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .'
-alias mcopy='reattach-to-user-namespace pbcopy'
-alias mpaste='reattach-to-user-namespace pbpaste'
-alias ag='ack -H --smart-case --column --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags'
-alias t='git ls-files | ack --smart-case --no-column --noenv'
-alias vs='vim -S Session.vim'
+# set terminal title#{{{
 
-# set terminal title
 setTerminalTitle () {
   # echo works in bash & zsh
   local mode=$1 ; shift
@@ -167,3 +177,5 @@ color-ssh() {
 }
 
 alias ssh=color-ssh
+
+#}}}
