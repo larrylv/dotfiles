@@ -152,13 +152,16 @@ set_tab_title    () { setTerminalTitle 1 $@; }
 set_window_title () { setTerminalTitle 2 $@; }
 alias s='set_tab_title'
 
-# color ssh
-tab-color() {
+#}}}
+
+# Change the color of the tab when using SSH#{{{
+
+tab_color() {
   echo -ne "\033]6;1;bg;red;brightness;$1\a"
   echo -ne "\033]6;1;bg;green;brightness;$2\a"
   echo -ne "\033]6;1;bg;blue;brightness;$3\a"
 }
-tab-reset() {
+tab_reset() {
   echo -ne "\033]6;1;bg;*;default\a"
 }
 
@@ -166,15 +169,16 @@ tab-reset() {
 # reset the color after the connection closes
 color-ssh() {
   if [[ -n "$ITERM_SESSION_ID" ]]; then
-    trap "tab-reset" INT EXIT
+    trap "tab_reset" SIGINT EXIT
     if [[ "$*" =~ "production|ec2-.*compute-1" ]]; then
-      tab-color 255 0 0
+      tab_color 255 0 0
     else
-      tab-color 0 255 0
+      tab_color 0 255 0
     fi
   fi
   ssh $*
 }
+
 
 alias ssh=color-ssh
 
