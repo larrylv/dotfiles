@@ -84,10 +84,6 @@ autojump_script="$(brew --prefix 2>/dev/null)/etc/profile.d/autojump.sh"
 if [ -r "$autojump_script" ]; then
   source "$autojump_script"
 fi
-autojump_script="/usr/share/autojump/autojump.bash"
-if [ -r "$autojump_script" ]; then
-  source "$autojump_script"
-fi
 unset autojump_script
 
 ## colors script
