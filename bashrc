@@ -53,6 +53,10 @@ autojump_script="$(brew --prefix 2>/dev/null)/etc/profile.d/autojump.sh"
 if [ -r "$autojump_script" ]; then
   source "$autojump_script"
 fi
+autojump_script="/usr/share/autojump/autojump.bash"
+if [ -r "$autojump_script" ]; then
+  source "$autojump_script"
+fi
 unset autojump_script
 
 ## colors script
@@ -101,9 +105,9 @@ function rbenv_prompt_info() {
 }
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  PS1="\[\h:\u \w \$(git_prompt_info)\n\$ "
+  PS1="${bold_orange}\u@\h ${bold_yellow}➜  ${bold_blue}\w \$(rbenv_prompt_info) \$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
 else
-  PS1="${yellow}➜  ${blue}\w \$(rbenv_prompt_info) \$(git_prompt_info)${reset_color}\n${green}\$ ${reset_color}"
+  PS1="${bold_yellow}➜  ${bold_blue}\w \$(rbenv_prompt_info) \$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
 fi
 
 #}}}
