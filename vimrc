@@ -138,7 +138,6 @@ set nojoinspaces                           " Only insert single space after a '.
 set noshowmode                             " Don't show the current mode (airline.vim takes care of us)
 set nostartofline                          " Don't reset cursor to start of line when moving around
 set notitle
-set wrap                                   " Wrap lines that are too long
 set nu                                     " Enable line numbers
 set omnifunc=syntaxcomplete#Complete       " Set omni-completion method
 set relativenumber
@@ -163,8 +162,8 @@ set undoreload=10000
 set wildchar=<Tab>                         " Character for CLI expansion (TAB-completion)
 set wildmenu                               " Hitting TAB in command mode will show possible completions above command line
 set wildmode=list:longest                  " Complete only until point of ambiguity
+set wrap                                   " Wrap lines that are too long
 set wrapscan                               " Searches wrap around end of file
-
 set wildignore+=**/*.jpg,*.jpeg,*.gif,**/*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*
 "}}}
