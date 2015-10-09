@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Sep 06, 2015
+" Last Modified:  Oct 09, 2015
 "
 
 " Plugins -------------------------------------------------------------
@@ -139,6 +139,7 @@ set nostartofline                          " Don't reset cursor to start of line
 set notitle
 set nu                                     " Enable line numbers
 set omnifunc=syntaxcomplete#Complete       " Set omni-completion method
+set regexpengine=1
 set relativenumber
 set ruler                                  " Show the cursor position
 set scrolloff=3                            " Start scrolling three lines before horizontal border of window
