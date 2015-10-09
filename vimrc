@@ -62,7 +62,6 @@ Plugin 'ervandew/supertab'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'Raimondi/delimitMate'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
@@ -232,16 +231,6 @@ map <leader>vr :tabe ~/.vimrc<CR>
 vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
 
 map <leader>z :CtrlPClearCache<cr>
-
-" vim-ruby-refactoring
-nnoremap <leader>rap  :RAddParameter<cr>
-vnoremap <leader>rec  :RExtractConstant<cr>
-nnoremap <leader>rel  :RExtractLet<cr>
-vnoremap <leader>rem  :RExtractMethod<cr>
-vnoremap <leader>relv :RExtractLocalVariable<cr>
-nnoremap <leader>rit  :RInlineTemp<cr>
-vnoremap <leader>rrlv :RRenameLocalVariable<cr>
-vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
@@ -858,15 +847,6 @@ let g:tagbar_status_func = 'TagbarStatusFunc'
 function! TagbarStatusFunc(current, sort, fname, ...) abort
     let g:lightline.fname = a:fname
   return lightline#statusline(0)
-endfunction
-
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost * call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
 endfunction
 
 " fix statusline after reloading vimrc
