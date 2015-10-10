@@ -154,3 +154,5 @@ alias s='set_tab_title'
 
 #}}}
 
+# Local config
+[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
