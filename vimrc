@@ -593,44 +593,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "}}}
 
-" neocomplcache.vim (abandoned now)"{{{
-" let g:neocomplcache_enable_at_startup = 1
-" let g:neocomplcache_enable_camel_case_completion = 1
-" let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_min_syntax_length = 3
-" let g:neocomplcache_enable_underbar_completion = 1
-" let g:neocomplcache_enable_auto_delimiter = 1
-" let g:neocomplcache_force_overwrite_completefunc = 1
-" let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-"
-" " Enable omni completion.
-" if !exists('g:neocomplcache_omni_patterns')
-"   let g:neocomplcache_omni_patterns = {}
-" endif
-" let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-"
-" " <C-e>: Close popup and switch to normal mode
-" inoremap <C-e>  <esc>l
-" inoremap <expr><C-g>  neocomplcache#undo_completion()
-" inoremap <expr><C-l>  neocomplcache#complete_common_string()
-" inoremap <expr><C-y>  neocomplcache#close_popup()
-" inoremap <expr><C-c>  neocomplcache#cancel_popup()
-" inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
-"
-" " Enable snipMate compatibility feature.
-" let g:neosnippet#enable_snipmate_compatibility = 1
-" " Tell Neosnippet about the other snippets
-" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-" " Set snips_author & snips_email for snipMate.vim
-" let g:snips_author="Larry Lv"
-" let g:snips_email="larrylv1990@gmail.com""
-" " Mapping Keys
-" imap <silent><C-l> <Plug>(neosnippet_expand_or_jump)
-" smap <silent><C-l> <Plug>(neosnippet_expand_or_jump)
-" imap <silent><C-j> <Plug>(neosnippet_jump_or_expand)
-" smap <silent><C-j> <Plug>(neosnippet_jump_or_expand)
-"}}}
-
 " ctrlp.vim"{{{
 silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
 silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
