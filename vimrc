@@ -824,3 +824,9 @@ endfunction
 " fix statusline after reloading vimrc
 call lightline#update()
 "}}}
+
+" delimitMate"{{{
+" remove ` and * from the quotes
+let delimitMate_quotes = "\" '"
+"}}}
+
