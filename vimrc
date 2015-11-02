@@ -242,11 +242,12 @@ vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
 augroup general_config
   autocmd!
 
-  " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l) {{{
+  " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l, Ctrl-p) {{{
   map <C-k> <C-w><Up>
   map <C-j> <C-w><Down>
   map <C-l> <C-w><Right>
   map <C-h> <C-w><Left>
+  map <C-p> <C-w>p
   " }}}
 
   " Sudo write (w!!) {{{
