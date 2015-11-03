@@ -52,6 +52,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'skalnik/vim-vroom'
 Plugin 'honza/vim-snippets'
 Plugin 'janko-m/vim-test'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'godlygeek/tabular'
@@ -247,7 +248,7 @@ augroup general_config
   map <C-j> <C-w><Down>
   map <C-l> <C-w><Right>
   map <C-h> <C-w><Left>
-  map <C-p> <C-w>p
+  map <C-\> <C-w>p
   " }}}
 
   " Sudo write (w!!) {{{
@@ -826,5 +827,12 @@ call lightline#update()
 " delimitMate"{{{
 " remove ` and * from the quotes
 let delimitMate_quotes = "\" '"
+"}}}
+
+" vim-multiple-cursors"{{{
+let g:multi_cursor_next_key='<C-m>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<C-c>'
 "}}}
 
