@@ -251,10 +251,6 @@ augroup general_config
   map <C-\> <C-w>p
   " }}}
 
-  " Sudo write (w!!) {{{
-  cmap w!! %!sudo tee > /dev/null %
-  " }}}
-
   " Clear last search (Ctrl-n, ,h) {{{
   map <silent> <C-n> <Esc>:nohlsearch<CR>
   " }}}
