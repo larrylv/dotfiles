@@ -15,7 +15,7 @@ alias tailf='tail -f'
 alias gtags='ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .'
 alias mcopy='reattach-to-user-namespace pbcopy'
 alias mpaste='reattach-to-user-namespace pbpaste'
-alias ag='ack -H --smart-case --column --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags'
+alias ag='ack -H --smart-case --column --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=bower_components --ignore-dir=node_modules --ignore-dir=dist --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags'
 alias t='git ls-files | ack --smart-case --no-column --noenv'
 alias vs='vim -S Session.vim'
 
