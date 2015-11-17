@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Nov 03, 2015
+" Last Modified:  Nov 17, 2015
 "
 
 " Plugins -------------------------------------------------------------
@@ -206,7 +206,6 @@ map <leader>gp :GitGutterPrevHunk<cr>
 map <leader>gr :GitGutterRevertHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
 
-map <leader>n :call RenameFile()<cr>
 map <leader>p :echo @%<cr>
 map <leader>q :BufOnly<cr>
 
