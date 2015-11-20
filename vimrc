@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Nov 17, 2015
+" Last Modified:  Nov 20, 2015
 "
 
 " Plugins -------------------------------------------------------------
@@ -16,6 +16,7 @@ call vundle#rc()
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'pangloss/vim-javascript'
+Plugin 'lambdatoast/elm.vim'
 Plugin 'fatih/vim-go'
 Plugin 'guns/vim-clojure-static'
 Plugin 'kchmck/vim-coffee-script'
