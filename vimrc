@@ -649,7 +649,7 @@ map <F1> :NERDTreeToggle<CR>
 if executable("ack")
   " ,a to Ack (search in files)
   nnoremap <leader>a :Ack 
-  let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=_build --ignore-dir=deps --ignore-dir=bower_components --ignore-dir=node_modules --ignore-dir=dist --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
+  let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=_build --ignore-dir=deps --ignore-dir=bower_components --ignore-dir=node_modules --ignore-dir=dist --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
   let g:ackhighlight=1
 endif
 "}}}
