@@ -15,6 +15,10 @@ call vundle#rc()
 
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'vim-erlang/vim-erlang-runtime'
+Plugin 'vim-erlang/vim-erlang-compiler'
+Plugin 'vim-erlang/vim-erlang-omnicomplete'
+Plugin 'vim-erlang/vim-erlang-tags'
 Plugin 'pangloss/vim-javascript'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'fatih/vim-go'
