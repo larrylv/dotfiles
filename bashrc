@@ -45,11 +45,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH=.binstubs:$PATH
 
 ## history
-shopt -s histappend
 export HISTSIZE=100000
 export HISTFILESIZE=100000
 export HISTCONTROL=ignoredups
-export PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
 
 # source scripts -----------------------------------------------------------#{{{
 
