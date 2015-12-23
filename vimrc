@@ -68,7 +68,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ervandew/supertab'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
-" Plugin 'altercation/vim-colors-solarized'
 Plugin 'jwhitley/vim-colors-solarized'
 Plugin 'Raimondi/delimitMate'
 Plugin 'mattn/webapi-vim'
@@ -118,7 +117,8 @@ set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,chinese
 set foldcolumn=0                           " Column to show folds
 set foldenable                             " Enable folding
-set foldlevel=0                            " Close all folds by default
+" set foldlevel=0                            " Close all folds by default
+set foldlevelstart=99                      " Open all folds by default
 set foldmethod=marker                      " Syntax are used to specify folds
 set foldminlines=0                         " Allow folding single lines
 set foldnestmax=5                          " Set max fold nesting level
