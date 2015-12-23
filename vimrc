@@ -68,7 +68,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ervandew/supertab'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
+Plugin 'jwhitley/vim-colors-solarized'
 Plugin 'Raimondi/delimitMate'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
@@ -404,21 +405,12 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 "}}}
 
 " vim-gitgutter"{{{
-" Sign Column made by solarized color is strange, clear it.
-highlight clear SignColumn
-highlight clear LineNr
-highlight clear VertSplit
-
 " vim-gitgutter will use Sign Column to set its color, reload it.
 call gitgutter#highlight#define_highlights()
 
 let g:gitgutter_max_signs = 1024
-let g:gitgutter_override_sign_column_highlight = 0
+" let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_sign_column_always = 1
-
-highlight SignColumn ctermfg=10
-highlight LineNr ctermfg=10
-highlight VertSplit ctermfg=10 ctermbg=0
 "}}}
 
 " vim-projectionist"{{{
