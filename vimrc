@@ -75,6 +75,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'thinca/vim-ref'
+Plug 'AndrewRadev/splitjoin.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
