@@ -7,6 +7,7 @@ These are config files to set up a system the way I like it.
 ```
 git clone git://github.com/larrylv/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+rake install
 vim +PlugInstall +qall
 ```
 
