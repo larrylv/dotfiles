@@ -84,6 +84,8 @@ call plug#end()
 
 " Settings ------------------------------------------------------------
 
+runtime! plugin/sensible.vim
+
 " Mapleader {{{
 let mapleader=","
 " }}}
@@ -164,7 +166,7 @@ set splitbelow                             " New window goes below
 set splitright                             " New windows goes right
 set tabstop=2
 set tags=./tags;
-set timeout timeoutlen=1000 ttimeoutlen=50 " Fix slow 0 inserts
+set timeout timeoutlen=1000 ttimeoutlen=0  " No delay for entering normal mode
 set ttyfast                                " Send more characters at a given time
 set undodir=~/.vim/.undo
 set undofile                               " Persistent Undo
