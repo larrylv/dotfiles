@@ -1,2 +1,3 @@
 bind status P !git push
+bind status A !git commit --amend
 set editor-line-number = no
