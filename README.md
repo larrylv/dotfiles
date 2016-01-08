@@ -4,6 +4,8 @@ These are config files to set up a system the way I like it.
 
 ### Installation
 
+If you don't want to compile YouCompleteMe manually, you should uncomment the do block for line `Plug 'Valloric/YouCompleteMe' ", { 'do': './install.py --clang-completer' }` by simply removing the `"` mark.
+
 ```
 git clone git://github.com/larrylv/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
