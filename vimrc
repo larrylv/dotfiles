@@ -47,7 +47,7 @@ Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rsi'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe' ", { 'do': './install.py --clang-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
