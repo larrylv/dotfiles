@@ -1,11 +1,13 @@
 # vim:ft=sh:
 
 # alias
+alias af='git ls-files | ack --smart-case --no-column --noenv'
 alias ag='ack -H --smart-case --column --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=bower_components --ignore-dir=node_modules --ignore-dir=dist --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags'
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
 alias grep='grep --color=auto'
 alias gtags='ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .'
+alias ki='kiex'
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
@@ -14,7 +16,6 @@ alias mpaste='reattach-to-user-namespace pbpaste'
 alias pt='pstree'
 alias rb='rbenv'
 alias ssh='TERM=xterm ssh'
-alias t='git ls-files | ack --smart-case --no-column --noenv'
 alias tailf='tail -f'
 alias tigs='tig status'
 alias vless='/usr/local/opt/vim/share/vim/vim74/macros/less.sh'
@@ -40,6 +41,9 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 ## rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+## kiex
+[[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
 ## binstubs
 export PATH=.binstubs:$PATH
