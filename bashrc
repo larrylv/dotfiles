@@ -127,20 +127,26 @@ function git_branch_name() {
 function git_prompt_info() {
   local ref="$(command git symbolic-ref -q HEAD 2>/dev/null)"
   if [ -n "$ref" ]; then
-    echo -e "${echo_bold_cyan}git:($(git_branch_name)${echo_bold_cyan})$(parse_git_dirty)$(parse_git_stash)"
+    echo -e " ${echo_bold_cyan}git:($(git_branch_name)${echo_bold_cyan})$(parse_git_dirty)$(parse_git_stash)"
   fi
 }
 
 function rbenv_prompt_info() {
-  if which rbenv > /dev/null; then
-    echo -e "${echo_bold_cyan}ruby:(${echo_bold_purple}$(rbenv version-name)${echo_bold_cyan})"
+  if which rbenv > /dev/null && [ ! -f "$PWD/mix.exs" ]; then
+    echo -e " ${echo_bold_cyan}ruby:(${echo_bold_purple}$(rbenv version-name)${echo_bold_cyan})"
+  fi
+}
+
+function kiex_prompt_info() {
+  if which kiex > /dev/null && [ -f "$PWD/mix.exs" ]; then
+    echo -e " ${echo_bold_cyan}elixir:(${echo_bold_purple}$ELIXIR_VERSION${echo_bold_cyan})"
   fi
 }
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  PS1="${bold_green}\u@\h ${bold_yellow}➜  ${bold_blue}\w \$(rbenv_prompt_info) \$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
+  PS1="${bold_green}\u@\h ${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(kiex_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
 else
-  PS1="${bold_yellow}➜  ${bold_blue}\w \$(rbenv_prompt_info) \$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
+  PS1="${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(kiex_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
 fi
 
 #}}}
