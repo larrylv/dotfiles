@@ -76,6 +76,7 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'thinca/vim-ref'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'mhinz/vim-startify'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -833,3 +834,17 @@ nmap <Leader>j :SplitjoinJoin<cr>
 nmap <Leader>s :SplitjoinSplit<cr>
 "}}}
 
+" startify"{{{
+let g:startify_list_order = [
+		\ ['   MRU:'],
+		\ 'dir',
+		\ ['   Bookmarks:'],
+		\ 'bookmarks',
+		\ ]
+let g:startify_bookmarks = [
+		\ {'v': '~/.vimrc'},
+		\ {'b': '~/.bashrc'},
+		\ {'g': '~/.gitconfig'},
+		\ {'t': '~/.tmux.conf'}
+		\ ]
+"}}}
