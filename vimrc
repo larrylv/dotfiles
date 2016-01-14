@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Jan 08, 2016
+" Last Modified:  Jan 14, 2016
 "
 
 " Plugins -------------------------------------------------------------
@@ -847,4 +847,5 @@ let g:startify_bookmarks = [
 		\ {'g': '~/.gitconfig'},
 		\ {'t': '~/.tmux.conf'}
 		\ ]
+let g:startify_change_to_dir = 0
 "}}}
