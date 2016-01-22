@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Jan 14, 2016
+" Last Modified:  Jan 22, 2016
 "
 
 " Plugins -------------------------------------------------------------
@@ -489,6 +489,8 @@ let g:vroom_map_keys=0
 
 " Run the current file with vroom
 map <leader>vs :VroomRunTestFile<CR>
+" Runs the nearest test in the current file
+map <leader>vn :VroomRunNearestTest<CR>
 " Prompt for a command to run map
 map <leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
