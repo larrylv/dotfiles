@@ -133,17 +133,17 @@ function git_prompt_info() {
 
 function rbenv_prompt_info() {
   if which rbenv > /dev/null; then
-    # if [ -f "$PWD/Gemfile" ] || [ ! -f "$PWD/mix.exs" ] ; then
+    if [ -f "$PWD/Gemfile" ] || [ ! -f "$PWD/mix.exs" ] ; then
       echo -e " ${echo_bold_cyan}ruby:(${echo_bold_purple}$(rbenv version-name)${echo_bold_cyan})"
-    # fi
+    fi
   fi
 }
 
 function kiex_prompt_info() {
   if which kiex > /dev/null; then
-    # if [ -f "$PWD/mix.exs" ]; then
+    if [ -f "$PWD/mix.exs" ]; then
       echo -e " ${echo_bold_cyan}elixir:(${echo_bold_purple}$ELIXIR_VERSION${echo_bold_cyan})"
-    # fi
+    fi
   fi
 }
 
