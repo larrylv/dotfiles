@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Jan 22, 2016
+" Last Modified:  Feb 01, 2016
 "
 
 " Plugins -------------------------------------------------------------
@@ -16,7 +16,7 @@ Plug 'vim-erlang/vim-erlang-compiler'
 Plug 'vim-erlang/vim-erlang-omnicomplete'
 Plug 'vim-erlang/vim-erlang-tags'
 Plug 'pangloss/vim-javascript'
-Plug 'lambdatoast/elm.vim'
+Plug 'elmcast/elm-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'fatih/vim-go'
 Plug 'guns/vim-clojure-static'
