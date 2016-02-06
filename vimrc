@@ -75,7 +75,6 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'thinca/vim-ref'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'mhinz/vim-startify'
 
 " Add plugins to &runtimepath
@@ -826,14 +825,6 @@ let g:multi_cursor_next_key='<C-b>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
-"}}}
-
-" splitjoin.vim"{{{
-let g:splitjoin_split_mapping = ''
-let g:splitjoin_join_mapping = ''
-
-nmap <Leader>j :SplitjoinJoin<cr>
-nmap <Leader>s :SplitjoinSplit<cr>
 "}}}
 
 " startify"{{{
