@@ -114,6 +114,7 @@ set cindent
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
 set cursorline                             " Highlight current line
+set cursorcolumn                           " Highlight current column
 set diffopt+=iwhite                        " Ignore whitespaces with vimdiff
 set diffopt=filler                         " Add vertical spaces to keep right and left aligned
 set encoding=utf-8 nobomb                  " BOM often causes trouble
