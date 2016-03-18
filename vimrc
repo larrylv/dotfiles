@@ -1,6 +1,6 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Feb 01, 2016
+" Last Modified:  Mar 18, 2016
 "
 
 " Plugins -------------------------------------------------------------
@@ -605,7 +605,7 @@ let g:ctrlp_prompt_mappings = {
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor)$',
+  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle)$',
   \ }
 " let g:ctrlp_tjump_only_silent = 1
 "}}}
@@ -651,7 +651,7 @@ map <F1> :NERDTreeToggle<CR>
 if executable("ack")
   " ,a to Ack (search in files)
   nnoremap <leader>a :Ack 
-  let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=_build --ignore-dir=deps --ignore-dir=bower_components --ignore-dir=node_modules --ignore-dir=dist --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
+  let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nocss --ignore-dir=.binstubs --ignore-dir=vendor/bundle --ignore-dir=_build --ignore-dir=deps --ignore-dir=bower_components --ignore-dir=node_modules --ignore-dir=dist --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
   let g:ackhighlight=1
 endif
 "}}}
