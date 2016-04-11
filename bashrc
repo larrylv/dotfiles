@@ -46,7 +46,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
 ## docker-machine
-if which docker-machine > /dev/null; then eval "$(docker-machine env default)"; fi
+# if which docker-machine > /dev/null; then eval "$(docker-machine env default)"; fi
 
 ## binstubs
 export PATH=.binstubs:$PATH
