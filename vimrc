@@ -11,10 +11,12 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-erlang/vim-erlang-compiler'
 Plug 'vim-erlang/vim-erlang-omnicomplete'
 Plug 'vim-erlang/vim-erlang-tags'
+Plug 'ten0s/syntaxerl'
 Plug 'pangloss/vim-javascript'
 Plug 'elmcast/elm-vim'
 Plug 'mustache/vim-mustache-handlebars'
@@ -76,6 +78,7 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'thinca/vim-ref'
 Plug 'mhinz/vim-startify'
+Plug 'powerman/vim-plugin-AnsiEsc'
 
 " Add plugins to &runtimepath
 call plug#end()
