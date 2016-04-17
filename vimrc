@@ -10,24 +10,31 @@
 call plug#begin('~/.vim/bundle')
 
 Plug 'vim-ruby/vim-ruby'
-Plug 'elixir-lang/vim-elixir'
-" Plug 'slashmili/alchemist.vim'
-Plug 'vim-erlang/vim-erlang-runtime'
-Plug 'vim-erlang/vim-erlang-compiler'
-Plug 'vim-erlang/vim-erlang-omnicomplete'
-Plug 'vim-erlang/vim-erlang-tags'
-Plug 'ten0s/syntaxerl'
-Plug 'pangloss/vim-javascript'
-Plug 'elmcast/elm-vim'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'fatih/vim-go'
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'kchmck/vim-coffee-script'
-Plug 'mxw/vim-jsx'
-Plug 'othree/html5.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'groenewege/vim-less'
+Plug 'elixir-lang/vim-elixir',              { 'for': ['elixir', 'eelixir'] }
+" Plug 'slashmili/alchemist.vim',             { 'for': ['elixir', 'eelixir'] }
+Plug 'vim-erlang/vim-erlang-runtime',       { 'for': 'erlang' }
+Plug 'vim-erlang/vim-erlang-compiler',      { 'for': 'erlang' }
+Plug 'vim-erlang/vim-erlang-omnicomplete',  { 'for': 'erlang' }
+Plug 'vim-erlang/vim-erlang-tags',          { 'for': 'erlang' }
+Plug 'ten0s/syntaxerl',                     { 'for': 'erlang' }
+Plug 'guns/vim-clojure-static',             { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace',                 { 'for': 'clojure' }
+Plug 'guns/vim-sexp',                       { 'for': 'clojure' }
+Plug 'tpope/vim-salve',                     { 'for': 'clojure' }
+Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
+Plug 'fatih/vim-go',                        { 'for': 'go' }
+Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
+Plug 'kchmck/vim-coffee-script',            { 'for': ['javascript', 'coffee'] }
+Plug 'mxw/vim-jsx',                         { 'for': 'javascript' }
+Plug 'othree/html5.vim',                    { 'for': 'html'}
+Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
+Plug 'hail2u/vim-css3-syntax',              { 'for': ['css', 'sass', 'scss'] }
+Plug 'ap/vim-css-color',                    { 'for': ['css', 'sass', 'scss'] }
+Plug 'groenewege/vim-less',                 { 'for': 'less' }
+Plug 'tpope/vim-haml',                      { 'for': 'haml' }
+Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
+Plug 'elzr/vim-json',                       { 'for': 'json' }
+Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
 Plug 'larrylv/ShowMarks'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump'
@@ -39,11 +46,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-haml'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rbenv'
