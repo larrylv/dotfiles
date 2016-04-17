@@ -198,9 +198,11 @@ set wrapscan                               " Searches wrap around end of file
 set wildignore+=**/*.jpg,*.jpeg,*.gif,**/*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*
 
-" Switch cursor shape when using NeoVim
 if has('nvim')
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+  " Get cmd+c work
+  set mouse=
+  " Switch cursor shape when using NeoVim
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 ""
 endif
 "}}}
 
@@ -278,11 +280,11 @@ augroup general_config
   autocmd!
 
   " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l, Ctrl-p) {{{
-  map <C-k> <C-w><Up>
-  map <C-j> <C-w><Down>
-  map <C-l> <C-w><Right>
-  map <C-h> <C-w><Left>
-  map <C-\> <C-w>p
+  map <C-k> <C-W>k
+  map <C-j> <C-W>j
+  map <C-l> <C-W>l
+  map <C-h> <C-W>h
+  map <C-\> <C-W>p
   " }}}
 
   " Clear last search (Ctrl-n, ,h) {{{
