@@ -21,7 +21,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'elmcast/elm-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'fatih/vim-go'
-Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
