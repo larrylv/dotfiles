@@ -94,7 +94,9 @@ let mapleader=","
 " }}}
 
 " Make vim more useful {{{
-set nocompatible
+if !has('nvim')
+  set nocompatible
+endif
 " }}}
 
 " Syntax highlighting {{{
@@ -170,7 +172,9 @@ set splitright                             " New windows goes right
 set tabstop=2
 set tags=./tags;
 set timeout timeoutlen=1000 ttimeoutlen=0  " No delay for entering normal mode
-set ttyfast                                " Send more characters at a given time
+if !has('nvim')
+  set ttyfast                                " Send more characters at a given time
+endif
 set undodir=~/.vim/.undo
 set undofile                               " Persistent Undo
 set undolevels=1000
@@ -182,6 +186,11 @@ set wrap                                   " Wrap lines that are too long
 set wrapscan                               " Searches wrap around end of file
 set wildignore+=**/*.jpg,*.jpeg,*.gif,**/*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*
+
+" Switch cursor shape when using NeoVim
+if has('nvim')
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+endif
 "}}}
 
 " Configurations ------------------------------------------------------
@@ -832,16 +841,16 @@ let g:multi_cursor_quit_key='<Esc>'
 
 " startify"{{{
 let g:startify_list_order = [
-		\ ['   MRU:'],
-		\ 'dir',
-		\ ['   Bookmarks:'],
-		\ 'bookmarks',
-		\ ]
+    \ ['   MRU:'],
+    \ 'dir',
+    \ ['   Bookmarks:'],
+    \ 'bookmarks',
+    \ ]
 let g:startify_bookmarks = [
-		\ {'v': '~/.vimrc'},
-		\ {'b': '~/.bashrc'},
-		\ {'g': '~/.gitconfig'},
-		\ {'t': '~/.tmux.conf'}
-		\ ]
+    \ {'v': '~/.vimrc'},
+    \ {'b': '~/.bashrc'},
+    \ {'g': '~/.gitconfig'},
+    \ {'t': '~/.tmux.conf'}
+    \ ]
 let g:startify_change_to_dir = 0
 "}}}
