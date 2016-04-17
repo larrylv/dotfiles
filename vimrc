@@ -9,6 +9,19 @@
 
 call plug#begin('~/.vim/bundle')
 
+" Code Complete Engine
+if !has('nvim')
+  Plug 'Valloric/YouCompleteMe' ", { 'do': './install.py --clang-completer' }
+else
+  function! DoRemote(arg)
+    UpdateRemotePlugins
+  endfunction
+
+  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+
+  let g:deoplete#enable_at_startup = 1
+endif
+
 Plug 'vim-ruby/vim-ruby'
 Plug 'elixir-lang/vim-elixir',              { 'for': ['elixir', 'eelixir'] }
 " Plug 'slashmili/alchemist.vim',             { 'for': ['elixir', 'eelixir'] }
@@ -55,18 +68,6 @@ Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rsi'
-if !has('nvim')
-  Plug 'Valloric/YouCompleteMe' ", { 'do': './install.py --clang-completer' }
-else
-  function! DoRemote(arg)
-    UpdateRemotePlugins
-  endfunction
-
-  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-
-  " Use deoplete.
-  let g:deoplete#enable_at_startup = 1
-endif
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
