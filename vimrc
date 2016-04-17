@@ -49,7 +49,18 @@ Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rsi'
-Plug 'Valloric/YouCompleteMe' ", { 'do': './install.py --clang-completer' }
+if !has('nvim')
+  Plug 'Valloric/YouCompleteMe' ", { 'do': './install.py --clang-completer' }
+else
+  function! DoRemote(arg)
+    UpdateRemotePlugins
+  endfunction
+
+  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+
+  " Use deoplete.
+  let g:deoplete#enable_at_startup = 1
+endif
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
