@@ -379,7 +379,7 @@ augroup general_config
   "}}}
 
   " Set local omnifunc"{{{
-  autocmd FileType ruby,eruby setlocal omnifunc=syntaxcomplete#Complete
+  autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
