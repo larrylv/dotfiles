@@ -4,3 +4,4 @@ vim/.undo
 vim/bundle/
 oh-my-zsh/cache
 *.cache
+spacemacs.elc
