@@ -320,7 +320,7 @@ augroup general_config
   "}}}
 
   " Generate ctags (<F5>)"{{{
-  map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .<CR>
+  map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extra=+q .<CR>
   "}}}
 
   " Remap <ESC> (jj) (Ctrl-c)"{{{
@@ -874,3 +874,8 @@ let g:startify_bookmarks = [
     \ ]
 let g:startify_change_to_dir = 0
 "}}}
+
+" YouCompleteMe"{{{
+let g:ycm_collect_identifiers_from_tags_files = 1
+"}}}
+

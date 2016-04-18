@@ -6,7 +6,7 @@ alias ag='ack -H --smart-case --column --ignore-dir=.binstubs --ignore-dir=vendo
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
 alias grep='grep --color=auto'
-alias gtags='ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+iaS --extra=+q .'
+alias gtags='ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extra=+q .'
 alias ki='kiex'
 alias l='ls -CF'
 alias la='ls -A'
