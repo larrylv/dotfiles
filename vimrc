@@ -7,6 +7,8 @@
 
 " Load plugins {{{
 
+filetype off
+
 call plug#begin('~/.vim/bundle')
 
 " Code Complete Engine
@@ -33,7 +35,6 @@ Plug 'ten0s/syntaxerl',                     { 'for': 'erlang' }
 Plug 'guns/vim-clojure-static',             { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace',                 { 'for': 'clojure' }
 Plug 'guns/vim-sexp',                       { 'for': 'clojure' }
-Plug 'tpope/vim-salve',                     { 'for': 'clojure' }
 Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
 Plug 'fatih/vim-go',                        { 'for': 'go' }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
@@ -100,6 +101,8 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 
 " Add plugins to &runtimepath
 call plug#end()
+
+filetype plugin indent on
 
 " }}}
 
@@ -612,6 +615,7 @@ highlight PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray cter
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsUsePythonVersion = 2
 "}}}
 
 " ctrlp.vim"{{{
