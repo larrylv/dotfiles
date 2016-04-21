@@ -537,8 +537,9 @@ map <leader>vc :VimuxCloseRunner<CR>
 map <leader>vx :VimuxInterruptRunner<CR>
 
 " when run unit test, also include current directory
+" for bettern compatibility
 if !exists("g:vroom_test_unit_command")
-  let g:vroom_test_unit_command = 'ruby -Itest -I. '
+  let g:vroom_test_unit_command = 'ruby -Itest -I.'
 endif
 "}}}
 
