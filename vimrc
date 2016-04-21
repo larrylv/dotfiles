@@ -535,6 +535,11 @@ map <leader>vi :VimuxInspectRunner<CR>
 map <leader>vc :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane map
 map <leader>vx :VimuxInterruptRunner<CR>
+
+" when run unit test, also include current directory
+if !exists("g:vroom_test_unit_command")
+  let g:vroom_test_unit_command = 'ruby -Itest -I. '
+endif
 "}}}
 
 " bufexplorer"{{{
