@@ -255,6 +255,10 @@ map <leader>gp :GitGutterPrevHunk<cr>
 map <leader>gr :GitGutterRevertHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
 
+" splitjoin.vim
+nmap <leader>kj :SplitjoinJoin<cr>
+nmap <leader>ks :SplitjoinSplit<cr>
+
 map <leader>p :echo @%<cr>
 map <leader>q :BufOnly<cr>
 
