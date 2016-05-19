@@ -99,6 +99,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'thinca/vim-ref'
 Plug 'mhinz/vim-startify'
 Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'AndrewRadev/splitjoin.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -897,5 +898,10 @@ let g:ycm_semantic_triggers = {
 " elm-vim"{{{
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 1
+"}}}
+
+" splitjoin.vim"{{{
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
 "}}}
 
