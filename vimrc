@@ -87,7 +87,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ervandew/supertab'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'jwhitley/vim-colors-solarized'
+" Plug 'jwhitley/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'Raimondi/delimitMate'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
@@ -125,12 +126,20 @@ endif
 " Syntax highlighting {{{
 set t_Co=256
 syntax on
-let g:solarized_termtrans = 1
-let g:solarized_termcolors = 256
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
+
+" jwhitley/vim-colors-solarized
+" let g:solarized_termtrans = 1
+" let g:solarized_termcolors = 256
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" set background=dark
+" colorscheme solarized
+
+" lifepillar/vim-solarized8
 set background=dark
-colorscheme solarized
+colorscheme solarized8_dark_flat
+" dirty patch
+hi! CursorLine cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=0 guibg=#073642 guisp=#eee8d5
 " }}}
 
 " Set some junk"{{{
@@ -301,6 +310,7 @@ augroup general_config
   map <C-l> <C-W>l
   map <C-h> <C-W>h
   map <C-\> <C-W>p
+
   " }}}
 
   " Clear last search (Ctrl-n, ,h) {{{
