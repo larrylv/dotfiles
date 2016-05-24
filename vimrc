@@ -150,7 +150,7 @@ set backspace=indent,eol,start             " Allow backspacing over everything i
 set cindent
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
-set cursorline                             " Highlight current line
+" set cursorline                             " Highlight current line
 set diffopt+=iwhite                        " Ignore whitespaces with vimdiff
 set diffopt=filler                         " Add vertical spaces to keep right and left aligned
 set encoding=utf-8 nobomb                  " BOM often causes trouble
@@ -403,6 +403,12 @@ augroup general_config
   autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   "}}}
+
+  " Only use cursorline in current window and not when being in insert mode
+	autocmd WinEnter    * set cursorline
+	autocmd WinLeave    * set nocursorline
+	autocmd InsertEnter * set nocursorline
+	autocmd InsertLeave * set cursorline
 
 augroup END
 "}}}
