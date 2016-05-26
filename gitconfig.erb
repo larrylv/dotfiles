@@ -52,12 +52,16 @@
     sl         = stash list -p --color
     sp         = stash pop
     st         = status
+    standup    = shortlog --since=yesterday
     svn-pb     = svn rebase
     svn-ps     = svn dcommit
     svn-pull   = svn fetch
     svn-push   = svn dcommit
-    unstage    = reset HEAD --
+    today      = shortlog --since=midnight
+    uncommit   = !git reset --soft HEAD^ && git reset HEAD .
+    unstage    = reset HEAD .
     wdiff      = diff --word-diff
+    who        = shortlog -s -n --no-merges
 [merge]
     tool = vimdiff
     conflictstyle = diff3
