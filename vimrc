@@ -48,7 +48,6 @@ Plug 'ap/vim-css-color',                    { 'for': ['css', 'sass', 'scss'] }
 Plug 'groenewege/vim-less',                 { 'for': 'less' }
 Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
-Plug 'elzr/vim-json',                       { 'for': 'json' }
 Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
 Plug 'larrylv/ShowMarks'
 Plug 'ctrlpvim/ctrlp.vim'
