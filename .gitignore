@@ -2,6 +2,7 @@ vim/.netrwhist
 vim/.VimballRecord
 vim/.undo
 vim/bundle/
+vim/view
 oh-my-zsh/cache
 *.cache
 spacemacs.elc
