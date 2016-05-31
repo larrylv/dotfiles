@@ -48,3 +48,6 @@ _yardoc
 
 # Go .gitignore
 .godeps/
+
+# Elm .gitignore
+elm-stuff
