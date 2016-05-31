@@ -915,9 +915,6 @@ let g:startify_change_to_dir = 0
 
 " YouCompleteMe"{{{
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_semantic_triggers = {
-    \ 'elm' : ['.'],
-    \}
 "}}}
 
 " elm-vim"{{{
