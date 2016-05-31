@@ -166,12 +166,12 @@ set foldnestmax=5                          " Set max fold nesting level
 set formatoptions=
 set formatoptions+=1                       " Break before 1-letter words
 set formatoptions+=2                       " Use indent from 2nd line of a paragraph
-set formatoptions+=c                       " Format comments
+" set formatoptions+=c                       " Format comments
 set formatoptions+=l                       " Don't break lines that are already long
 set formatoptions+=n                       " Recognize numbered lists
-set formatoptions+=o                       " Make comment when using o or O from comment line
+" set formatoptions+=o                       " Make comment when using o or O from comment line
 set formatoptions+=q                       " Format comments with gq
-set formatoptions+=r                       " Continue comments by default
+" set formatoptions+=r                       " Continue comments by default
 set history=1000                           " Increase history from 20 default to 1000
 set hlsearch                               " Highlight searches
 set ignorecase                             " Ignore case of searches
@@ -411,6 +411,9 @@ augroup general_config
 
   " Set tab to 4-space for elm files
   autocmd FileType elm set ai ts=4 sw=4 sts=4 et
+
+  " Disable auto comment insertion
+  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 augroup END
 "}}}
