@@ -675,7 +675,7 @@ let g:ctrlp_prompt_mappings = {
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle)$',
+  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle|elm-stuff)$',
   \ }
 " let g:ctrlp_tjump_only_silent = 1
 "}}}
@@ -713,7 +713,7 @@ let NERDTreeAutoCenter=1
 let NERDTreeChDirMode=2
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeHijackNetrw=1
-let g:NERDTreeIgnore=['\~$', '_build', 'bower_components', 'node_modules']
+let g:NERDTreeIgnore=['\~$']
 map <F1> :NERDTreeToggle<CR>
 "}}}
 
@@ -721,7 +721,7 @@ map <F1> :NERDTreeToggle<CR>
 if executable("ack")
   " ,a to Ack (search in files)
   nnoremap <leader>a :Ack 
-  let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nocss --ignore-dir=.binstubs --ignore-dir=vendor/bundle --ignore-dir=_build --ignore-dir=deps --ignore-dir=bower_components --ignore-dir=node_modules --ignore-dir=dist --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
+  let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nocss --ignore-dir=.binstubs --ignore-dir=vendor/bundle --ignore-dir=_build --ignore-dir=deps --ignore-dir=bower_components --ignore-dir=node_modules --ignore-dir=elm-stuff --ignore-dir=dist --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
   let g:ackhighlight=1
 endif
 "}}}
