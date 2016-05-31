@@ -409,6 +409,9 @@ augroup general_config
 	autocmd InsertEnter * set nocursorline
 	autocmd InsertLeave * set cursorline
 
+  " Set tab to 4-space for elm files
+  autocmd FileType elm set ai ts=4 sw=4 sts=4 et
+
 augroup END
 "}}}
 
