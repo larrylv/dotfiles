@@ -79,7 +79,6 @@ Plug 'janko-m/vim-test'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'godlygeek/tabular'
 Plug 'tudorprodan/html_annoyance.vim'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
@@ -100,6 +99,7 @@ Plug 'thinca/vim-ref'
 Plug 'mhinz/vim-startify'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'junegunn/vim-easy-align'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -279,13 +279,13 @@ map <leader>ss :source ./Session.vim<cr>
 map  <leader>sj :stjump 
 map  <leader>st :stselect 
 
-" tabular.vim
-nmap <leader>ta :Tabularize /
-vmap <leader>ta :Tabularize /
-nmap <leader>t= :Tabularize /=<CR>
-vmap <leader>t= :Tabularize /=<CR>
-nmap <leader>t# :Tabularize /#<CR>
-vmap <leader>t# :Tabularize /#<CR>
+" vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap <leader>ta <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap <leader>ta <Plug>(EasyAlign)
+xmap <leader>t= <Plug>(EasyAlign) =<CR>
+nmap <leader>t= <Plug>(EasyAlign) =<CR>
 
 map <leader>vr :tabe ~/.vimrc<CR>
 
