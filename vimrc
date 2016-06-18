@@ -286,6 +286,8 @@ xmap <leader>ta <Plug>(EasyAlign)
 nmap <leader>ta <Plug>(EasyAlign)
 xmap <leader>t= <Plug>(EasyAlign) =<CR>
 nmap <leader>t= <Plug>(EasyAlign) =<CR>
+xmap <leader>t: <Plug>(EasyAlign) :<CR>
+nmap <leader>t: <Plug>(EasyAlign) :<CR>
 
 map <leader>vr :tabe ~/.vimrc<CR>
 
