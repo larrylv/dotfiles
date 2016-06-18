@@ -25,6 +25,7 @@
     delete     = !git ls-files -z --deleted | xargs -0 git rm
     df         = diff
     diff       = diff --ignore-space-change --color
+    ds         = diff --staged
     dt         = difftool
     fa         = fetch --all
     fp         = fetch -p --all
@@ -63,12 +64,17 @@
     wdiff      = diff --word-diff
     who        = shortlog -s -n --no-merges
 [merge]
-    tool = vimdiff
+    tool          = vimdiff
     conflictstyle = diff3
+    summary       = true
 [push]
     default = tracking
 [color]
-    ui = true
+    ui          = always
+    diff        = auto
+    status      = auto
+    branch      = auto
+    interactive = auto
 [i18n]
     commitEncoding = utf8
     logOutputEncoding = utf8
