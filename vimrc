@@ -282,12 +282,16 @@ map  <leader>st :stselect
 " vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap <leader>ta <Plug>(EasyAlign)
+" Start interactive EasyAlign in visual and select mode (e.g. gaip)
+vmap <leader>ta <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap <leader>ta <Plug>(EasyAlign)
-xmap <leader>t= <Plug>(EasyAlign) =<CR>
-nmap <leader>t= <Plug>(EasyAlign) =<CR>
-xmap <leader>t: <Plug>(EasyAlign) :<CR>
-nmap <leader>t: <Plug>(EasyAlign) :<CR>
+xmap <leader>t= <Plug>(EasyAlign) =
+vmap <leader>t= <Plug>(EasyAlign) =
+nmap <leader>t= <Plug>(EasyAlign) =
+xmap <leader>t: <Plug>(EasyAlign) :
+vmap <leader>t: <Plug>(EasyAlign) :
+nmap <leader>t: <Plug>(EasyAlign) :
 
 map <leader>vr :tabe ~/.vimrc<CR>
 
