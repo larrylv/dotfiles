@@ -85,6 +85,7 @@ export PATH=$HOME/.rbenv/bin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ## kiex
+# shellcheck disable=SC1090
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
 ## docker-machine
@@ -110,6 +111,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 ## bash completion
 bash_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion"
 if [ -r "$bash_completion" ]; then
+  # shellcheck disable=SC1090
   source "$bash_completion"
 fi
 unset bash_completion
@@ -117,6 +119,7 @@ unset bash_completion
 ## git completion
 git_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion.d/git-completion.bash"
 if [ -r "$git_completion" ]; then
+  # shellcheck disable=SC1090
   source "$git_completion"
 fi
 unset git_completion
@@ -124,6 +127,7 @@ unset git_completion
 ## vagrant completion
 vagrant_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion.d/vagrant"
 if [ -r "$vagrant_completion" ]; then
+  # shellcheck disable=SC1090
   source "$vagrant_completion"
 fi
 unset vagrant_completion
@@ -131,6 +135,7 @@ unset vagrant_completion
 ## tmuxinator completion
 tmuxinator_completion="$HOME/.tmuxinator.bash"
 if [ -r "$tmuxinator_completion" ]; then
+  # shellcheck disable=SC1090
   source "$tmuxinator_completion"
 fi
 unset tmuxinator_completion
@@ -138,19 +143,24 @@ unset tmuxinator_completion
 ## autojump script
 autojump_script="$(brew --prefix 2>/dev/null)/etc/profile.d/autojump.sh"
 if [ -r "$autojump_script" ]; then
+  # shellcheck disable=SC1090
   source "$autojump_script"
 fi
 unset autojump_script
 
 ## colors script
-[[ -s $HOME/.colors.bash ]] && source $HOME/.colors.bash
+# shellcheck disable=SC1090
+[[ -s "$HOME/.colors.bash" ]] && source "$HOME/.colors.bash"
 
 #}}}
 
 # PS1 -------------------------------------------------------------------------#{{{
 
+# shellcheck disable=SC2154
 GIT_PROMPT_CLEAN=" ${echo_bold_green}✔"
+# shellcheck disable=SC2154
 GIT_PROMPT_DIRTY=" ${echo_bold_red}✗"
+# shellcheck disable=SC2154
 GIT_PROMPT_STASH=" ${echo_bold_purple}#"
 GIT_PROMPT_NOSTASH=""
 
@@ -175,8 +185,10 @@ function git_branch_name() {
 }
 
 function git_prompt_info() {
+  # shellcheck disable=SC2155
   local ref="$(command git symbolic-ref -q HEAD 2>/dev/null)"
   if [ -n "$ref" ]; then
+    # shellcheck disable=SC2154
     echo -e " ${echo_bold_cyan}git:($(git_branch_name)${echo_bold_cyan})$(parse_git_dirty)$(parse_git_stash)"
   fi
 }
@@ -198,6 +210,7 @@ function kiex_prompt_info() {
 }
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  # shellcheck disable=SC2154
   PS1="${bold_green}\u@\h ${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(kiex_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
 else
   PS1="${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(kiex_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
@@ -210,14 +223,19 @@ fi
 setTerminalTitle () {
   # echo works in bash & zsh
   local mode=$1 ; shift
+  # shellcheck disable=SC2145
   echo -ne "\033]$mode;$@\007"
 }
+# shellcheck disable=SC2068
 set_both_title   () { setTerminalTitle 0 $@; }
+# shellcheck disable=SC2068
 set_tab_title    () { setTerminalTitle 1 $@; }
+# shellcheck disable=SC2068
 set_window_title () { setTerminalTitle 2 $@; }
 alias s='set_tab_title'
 
 #}}}
 
 # Local config
+# shellcheck disable=SC1090
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
