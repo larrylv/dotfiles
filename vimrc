@@ -245,9 +245,9 @@ map <leader>dv :CtrlP app/views<cr>
 
 " vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
-map <leader>ed :Eschema 
+map <leader>ed :Eschema<cr>
 map <leader>ef :Efixtures 
-map <leader>eg :Emigration 
+map <leader>eg :Emigration<cr>
 map <leader>eh :Ehelper 
 map <leader>ej :Ejavascript 
 map <leader>em :Emodel 
