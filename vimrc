@@ -243,9 +243,11 @@ map <leader>ds :CtrlP spec<cr>
 map <leader>dt :CtrlP test<cr>
 map <leader>dv :CtrlP app/views<cr>
 
-" projectionist.vim && rails.vim
+" vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
+map <leader>ed :Eschema 
 map <leader>ef :Efixtures 
+map <leader>eg :Emigration 
 map <leader>eh :Ehelper 
 map <leader>ej :Ejavascript 
 map <leader>em :Emodel 
@@ -270,7 +272,9 @@ nmap <leader>ks :SplitjoinSplit<cr>
 map <leader>p :echo @%<cr>
 map <leader>q :BufOnly<cr>
 
-map <leader>sd :sp db/schema.rb<cr>
+" provided by vim-rails
+map <leader>sd :Sschema<cr>
+
 map <leader>sg :sp Gemfile<cr>
 map <leader>so :source $MYVIMRC<cr>
 map <leader>sr :sp config/routes.rb<cr>
