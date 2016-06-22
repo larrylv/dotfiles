@@ -2,7 +2,6 @@
 
 # alias
 alias af='git ls-files | ack --smart-case --no-column --noenv'
-alias ag='ack -H --smart-case --column --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=bower_components --ignore-dir=node_modules --ignore-dir=dist --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags'
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
 alias cat='ccat'
