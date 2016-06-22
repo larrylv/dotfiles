@@ -728,10 +728,14 @@ map <F1> :NERDTreeToggle<CR>
 "}}}
 
 " ack.vim"{{{
-if executable("ack")
+if executable("ag")
   " ,a to Ack (search in files)
   nnoremap <leader>a :Ack 
-  let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nocss --ignore-dir=.binstubs --ignore-dir=vendor/bundle --ignore-dir=_build --ignore-dir=deps --ignore-dir=bower_components --ignore-dir=node_modules --ignore-dir=elm-stuff --ignore-dir=dist --ignore-dir=log --ignore-dir=tmp --ignore-file=is:Session.vim --ignore-file=is:tags"
+  let g:ackprg="ag --nocolor --nogroup --column"
+  let g:ackhighlight=1
+elseif executable("ack")
+  nnoremap <leader>a :Ack 
+  let g:ackprg="ack --nocolor --nogroup --column"
   let g:ackhighlight=1
 endif
 "}}}
