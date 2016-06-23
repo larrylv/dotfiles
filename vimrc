@@ -149,7 +149,7 @@ set backspace=indent,eol,start             " Allow backspacing over everything i
 set cindent
 set complete=.,w,b,u,t,i
 set completeopt=longest,menu
-" set cursorline                             " Highlight current line
+set cursorline                             " Highlight current line
 set diffopt+=iwhite                        " Ignore whitespaces with vimdiff
 set diffopt=filler                         " Add vertical spaces to keep right and left aligned
 if !has('nvim')
