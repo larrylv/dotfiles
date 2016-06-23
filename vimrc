@@ -152,7 +152,9 @@ set completeopt=longest,menu
 " set cursorline                             " Highlight current line
 set diffopt+=iwhite                        " Ignore whitespaces with vimdiff
 set diffopt=filler                         " Add vertical spaces to keep right and left aligned
-set encoding=utf-8 nobomb                  " BOM often causes trouble
+if !has('nvim')
+  set encoding=utf-8 nobomb                " BOM often causes trouble
+endif
 set expandtab                              " Expand tabs to spaces
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,chinese
