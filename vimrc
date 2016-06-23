@@ -225,6 +225,8 @@ if has('nvim')
   set mouse=
   " Switch cursor shape when using NeoVim
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 ""
+  " Bring back ctrl-h
+  nmap <BS> <C-W>h
 endif
 "}}}
 
