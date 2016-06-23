@@ -138,7 +138,7 @@ syntax on
 set background=dark
 colorscheme solarized8_dark_flat
 " dirty patch
-hi! CursorLine cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=0 guibg=#073642 guisp=#eee8d5
+" hi! CursorLine cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=0 guibg=#073642 guisp=#eee8d5
 " }}}
 
 " Set some junk"{{{
