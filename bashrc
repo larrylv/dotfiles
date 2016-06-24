@@ -20,7 +20,7 @@ alias ssh='TERM=xterm ssh'
 alias tailf='tail -f'
 alias tigs='tig status'
 alias vless='/usr/local/opt/vim/share/vim/vim74/macros/less.sh'
-alias vs='vim -S Session.vim'
+alias vs='nvim -S Session.vim'
 
 # bash-sensible (https://github.com/mrzool/bash-sensible/blob/master/sensible.bash)
 
