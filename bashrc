@@ -87,6 +87,10 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # shellcheck disable=SC1090
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
+## jEnv
+export PATH="$HOME/.jenv/bin:$PATH"
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
 ## docker-machine
 # if which docker-machine > /dev/null; then eval "$(docker-machine env default)"; fi
 
