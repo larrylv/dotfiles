@@ -13,6 +13,7 @@ alias la='ls -A'
 alias ll='ls -alF'
 alias mcopy='reattach-to-user-namespace pbcopy'
 alias mpaste='reattach-to-user-namespace pbpaste'
+alias nvs='nvim -S Session.vim'
 alias pt='pstree'
 alias rb='rbenv'
 alias rtags='~/.rbenv/versions/2.3.0/gemsets/global/bin/ripper-tags -R'
@@ -20,7 +21,7 @@ alias ssh='TERM=xterm ssh'
 alias tailf='tail -f'
 alias tigs='tig status'
 alias vless='/usr/local/opt/vim/share/vim/vim74/macros/less.sh'
-alias vs='nvim -S Session.vim'
+alias vs='vim -S Session.vim'
 
 # bash-sensible (https://github.com/mrzool/bash-sensible/blob/master/sensible.bash)
 
