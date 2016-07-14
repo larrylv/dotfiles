@@ -266,7 +266,7 @@ map <leader>ev :Eview
 map <leader>ga :GitGutterStageHunk<cr>
 map <leader>gn :GitGutterNextHunk<cr>
 map <leader>gp :GitGutterPrevHunk<cr>
-map <leader>gr :GitGutterRevertHunk<cr>
+map <leader>gu :GitGutterUndoHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
 
 " splitjoin.vim
