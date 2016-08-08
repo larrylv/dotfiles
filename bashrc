@@ -92,9 +92,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH="$HOME/.jenv/bin:$PATH"
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
-## docker-machine
-# if which docker-machine > /dev/null; then eval "$(docker-machine env default)"; fi
-
 ## binstubs
 export PATH=.binstubs:$PATH
 
