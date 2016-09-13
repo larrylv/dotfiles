@@ -352,7 +352,7 @@ augroup general_config
   "}}}
 
   " Generate ctags (<F5>)"{{{
-  map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extra=+q .<CR>
+  nnoremap <F5> :Dispatch ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extra=+q .<CR>
   "}}}
 
   " Remap <ESC> (jj) (Ctrl-c)"{{{
@@ -739,8 +739,9 @@ endfunction
 "}}}
 
 " ack.vim"{{{
+" ,a to Ack (search in files)
+let g:ack_use_dispatch=1
 if executable("ag")
-  " ,a to Ack (search in files)
   nnoremap <leader>a :Ack 
   let g:ackprg="ag --nocolor --nogroup --column"
   let g:ackhighlight=1
