@@ -732,6 +732,8 @@ map <F1> :call NERDTreeToggleInCurDir()<CR>
 function! NERDTreeToggleInCurDir()
   if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
     exe ":NERDTreeClose"
+  elseif (bufname('%') == '' || bufname('%') =~ 'Startify')
+    exe ":NERDTreeToggle"
   else
     exe ":NERDTreeFind"
   endif
