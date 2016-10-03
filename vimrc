@@ -743,14 +743,11 @@ endfunction
 " ack.vim"{{{
 " ,a to Ack (search in files)
 let g:ack_use_dispatch=1
-if executable("ag")
-  nnoremap <leader>a :Ack 
-  let g:ackprg="ag --nocolor --nogroup --column"
-  let g:ackhighlight=1
-elseif executable("ack")
-  nnoremap <leader>a :Ack 
-  let g:ackprg="ack --nocolor --nogroup --column"
-  let g:ackhighlight=1
+let g:ackhighlight=1
+if executable("ack")
+  cnoreabbrev Ack Ack!
+  nnoremap <leader>a :Ack!<Space>
+  let g:ackprg="ack -H --nocolor --nogroup --column --no-smart-case"
 endif
 "}}}
 
