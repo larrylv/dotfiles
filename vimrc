@@ -739,7 +739,7 @@ endfunction
 
 " ack.vim"{{{
 " ,a to Ack (search in files)
-let g:ack_use_dispatch=1
+let g:ack_use_dispatch=0
 let g:ackhighlight=1
 if executable("ack")
   cnoreabbrev Ack Ack!
