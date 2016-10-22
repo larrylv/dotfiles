@@ -49,7 +49,7 @@ Plug 'groenewege/vim-less',                 { 'for': 'less' }
 Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
-Plug 'larrylv/ShowMarks'
+Plug 'kshenoy/vim-signature'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'tpope/vim-ragtag'
