@@ -41,7 +41,7 @@ Plug 'fatih/vim-go',                        { 'for': 'go' }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
 Plug 'kchmck/vim-coffee-script',            { 'for': ['javascript', 'coffee'] }
 Plug 'mxw/vim-jsx',                         { 'for': 'javascript' }
-Plug 'othree/html5.vim',                    { 'for': 'html'}
+Plug 'othree/html5.vim',                    { 'for': ['html', 'eruby'] }
 Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
 Plug 'hail2u/vim-css3-syntax',              { 'for': ['css', 'sass', 'scss'] }
 Plug 'ap/vim-css-color',                    { 'for': ['css', 'sass', 'scss'] }
@@ -49,6 +49,7 @@ Plug 'groenewege/vim-less',                 { 'for': 'less' }
 Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
+Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'kshenoy/vim-signature'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump'
@@ -79,7 +80,6 @@ Plug 'janko-m/vim-test'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'tudorprodan/html_annoyance.vim'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'ervandew/supertab'
