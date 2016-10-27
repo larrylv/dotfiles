@@ -92,7 +92,6 @@ Plug 'benmills/vimux'
 Plug 'eapache/rainbow_parentheses.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'vim-scripts/matchit.zip'
-Plug 'vim-scripts/BufOnly.vim'
 Plug 'mhinz/vim-startify'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -271,7 +270,6 @@ nmap <leader>kj :SplitjoinJoin<cr>
 nmap <leader>ks :SplitjoinSplit<cr>
 
 map <leader>p :echo @%<cr>
-map <leader>q :BufOnly<cr>
 
 " provided by vim-rails
 map <leader>sd :Sschema<cr>
