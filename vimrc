@@ -296,6 +296,9 @@ xmap <leader>t: <Plug>(EasyAlign) :
 vmap <leader>t: <Plug>(EasyAlign) :
 nmap <leader>t: <Plug>(EasyAlign) :
 
+map  <leader>tj :tjump 
+map  <leader>ts :tselect 
+
 map <leader>vr :tabe ~/.vimrc<CR>
 
 " system yank: will copy into the system clipboard on OS X
