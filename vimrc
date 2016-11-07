@@ -235,14 +235,6 @@ map <leader>cc :ccl<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
 
-" CtrlP
-map <leader>dc :CtrlP app/controllers<cr>
-map <leader>dh :CtrlP app/helpers<cr>
-map <leader>dm :CtrlP app/models<cr>
-map <leader>ds :CtrlP spec<cr>
-map <leader>dt :CtrlP test<cr>
-map <leader>dv :CtrlP app/views<cr>
-
 " vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
 map <leader>ed :Eschema<cr>
@@ -270,6 +262,14 @@ nmap <leader>kj :SplitjoinJoin<cr>
 nmap <leader>ks :SplitjoinSplit<cr>
 
 map <leader>p :echo @%<cr>
+
+" CtrlP
+map <leader>pc :CtrlP app/controllers<cr>
+map <leader>ph :CtrlP app/helpers<cr>
+map <leader>pm :CtrlP app/models<cr>
+map <leader>ps :CtrlP spec<cr>
+map <leader>pt :CtrlP test<cr>
+map <leader>pv :CtrlP app/views<cr>
 
 " provided by vim-rails
 map <leader>sd :Sschema<cr>
