@@ -262,7 +262,7 @@ map <leader>gv :GitGutterPreviewHunk<cr>
 nmap <leader>kj :SplitjoinJoin<cr>
 nmap <leader>ks :SplitjoinSplit<cr>
 
-map <leader>p :echo @%<cr>
+map <leader>pp :echo @%<cr>
 
 " CtrlP
 map <leader>pc :CtrlP app/controllers<cr>
