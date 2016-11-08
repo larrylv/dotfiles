@@ -262,15 +262,15 @@ map <leader>gv :GitGutterPreviewHunk<cr>
 nmap <leader>kj :SplitjoinJoin<cr>
 nmap <leader>ks :SplitjoinSplit<cr>
 
-map <leader>pp :echo @%<cr>
+map <leader>p :echo @%<cr>
 
 " CtrlP
-map <leader>pc :CtrlP app/controllers<cr>
-map <leader>ph :CtrlP app/helpers<cr>
-map <leader>pm :CtrlP app/models<cr>
-map <leader>ps :CtrlP spec<cr>
-map <leader>pt :CtrlP test<cr>
-map <leader>pv :CtrlP app/views<cr>
+map <leader>rc :CtrlP app/controllers<cr>
+map <leader>rh :CtrlP app/helpers<cr>
+map <leader>rm :CtrlP app/models<cr>
+map <leader>rs :CtrlP spec<cr>
+map <leader>rt :CtrlP test<cr>
+map <leader>rv :CtrlP app/views<cr>
 
 " provided by vim-rails
 map <leader>sd :Sschema<cr>
