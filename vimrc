@@ -53,6 +53,7 @@ Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'kshenoy/vim-signature'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'larrylv/vim-ctrlp-tjump'
+Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
@@ -669,6 +670,7 @@ silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
 silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
 silent! nnoremap <unique> <silent> <leader>dt :CtrlPTag<CR>
 silent! nnoremap <unique> <silent> <leader>f :CtrlP<CR>
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_by_filename = 0
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
