@@ -35,7 +35,10 @@ Plug 'vim-erlang/vim-erlang-tags',          { 'for': 'erlang' }
 Plug 'ten0s/syntaxerl',                     { 'for': 'erlang' }
 Plug 'guns/vim-clojure-static',             { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace',                 { 'for': 'clojure' }
+Plug 'tpope/vim-classpath',                 { 'for': 'clojure' }
+Plug 'tpope/vim-salve',                     { 'for': 'clojure' }
 Plug 'guns/vim-sexp',                       { 'for': 'clojure' }
+Plug 'vim-scripts/paredit.vim',             { 'for': 'clojure' }
 Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
 Plug 'fatih/vim-go',                        { 'for': 'go' }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
@@ -552,9 +555,10 @@ let g:ruby_path = system('echo $HOME/.rbenv/shims')
 "}}}
 
 " test.vim"{{{
-nmap <silent> <leader>ts :TestFile<CR>
+nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
 "}}}
 
 " vroom.vim"{{{
