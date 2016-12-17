@@ -362,10 +362,6 @@ augroup general_config
   imap jj <ESC>l
   "}}}
 
-  " Insert hash rocket (Ctrl-h)"{{{
-  imap <c-h> =><space>
-  "}}}
-
   " Remap increase number (Ctrl-i)"{{{
   " <c-a> is prefix for tmux
   map <c-i> <c-a>
