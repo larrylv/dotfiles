@@ -19,7 +19,8 @@
     br         = branch
     changes    = diff --stat -r
     ci         = commit
-    cia        = commit --amend
+    ca         = commit --amend
+    cc         = commit --amend -C HEAD
     co         = checkout
     dc         = diff --cached
     delete     = !git ls-files -z --deleted | xargs -0 git rm
