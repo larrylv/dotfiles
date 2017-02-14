@@ -55,7 +55,7 @@ Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'kshenoy/vim-signature'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'larrylv/vim-ctrlp-tjump'
+Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-rails'
