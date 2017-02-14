@@ -86,7 +86,6 @@ Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
-Plug 'ervandew/supertab'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 " Plug 'jwhitley/vim-colors-solarized'
@@ -476,11 +475,6 @@ let g:tagbar_type_elixir = {
         \ 'r:records',
     \ ]
 \ }
-"}}}
-
-" Supertab"{{{
-let g:SuperTabDefaultCompletionType = "<c-n>"
-" <C-e>: stop completion and go back to the originally typed text
 "}}}
 
 " vim-gitgutter"{{{
