@@ -175,7 +175,6 @@ set formatoptions+=q                       " Format comments with gq
 " set formatoptions+=r                       " Continue comments by default
 set history=1000                           " Increase history from 20 default to 1000
 set hlsearch                               " Highlight searches
-set ignorecase                             " Ignore case of searches
 set incsearch                              " Highlight dynamically as pattern is typed
 set laststatus=2                           " Always show status line
 set lazyredraw                             " Don't redraw when we don't have to
@@ -183,6 +182,7 @@ set magic                                  " Enable extended regexes
 set modeline
 set nobackup
 set noerrorbells                           " Disable error bells
+set noignorecase                           " Don't ignore case of searches
 set nojoinspaces                           " Only insert single space after a '.', '?' and '!' with a join command
 set noshowmode                             " Don't show the current mode (airline.vim takes care of us)
 set nostartofline                          " Don't reset cursor to start of line when moving around
@@ -353,7 +353,7 @@ augroup general_config
   "}}}
 
   " Generate ctags (<F5>)"{{{
-  nnoremap <F5> :Dispatch ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extra=+q .<CR>
+  nnoremap <F5> :Dispatch ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extras=+q .<CR>
   "}}}
 
   " Remap <ESC> (jj) (Ctrl-c)"{{{
