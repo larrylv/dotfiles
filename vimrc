@@ -935,6 +935,7 @@ let g:startify_change_to_dir = 0
 
 " YouCompleteMe"{{{
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 "}}}
 
 " elm-vim"{{{
