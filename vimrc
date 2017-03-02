@@ -420,9 +420,6 @@ augroup general_config
 	autocmd InsertEnter * set nocursorline
 	autocmd InsertLeave * set cursorline
 
-  " Set tab to 4-space for elm files
-  autocmd FileType elm set ai ts=4 sw=4 sts=4 et
-
   " Disable auto comment insertion
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -766,7 +763,7 @@ autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *.es6 set filetype=javascript
 autocmd Filetype gitcommit setlocal textwidth=78
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
-autocmd FileType go,c,cpp,rust set ts=4 sw=4 sts=4 et
+autocmd FileType go,c,cpp,rust,elm set ts=4 sw=4 sts=4 et
 autocmd FileType elixir set foldmethod=syntax
 "}}}
 
