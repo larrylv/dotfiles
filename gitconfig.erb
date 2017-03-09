@@ -28,6 +28,7 @@
     dt         = difftool
     fa         = fetch --all
     fp         = fetch -p --all
+    hide       = update-index --assume-unchanged
     ignored    = !git ls-files -v | grep "^[[:lower:]]"
     last       = log -n 1 -p --color
     lg         = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
@@ -57,6 +58,7 @@
     today      = shortlog --since=midnight
     tree       = log --graph --decorate --pretty=oneline --abbrev-commit --name-status
     uncommit   = !git reset --soft HEAD^ && git reset HEAD .
+    unhide     = update-index --no-assume-unchanged
     unstage    = reset HEAD .
     wdiff      = diff --word-diff
     who        = shortlog -s -n --no-merges
