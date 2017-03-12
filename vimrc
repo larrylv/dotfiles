@@ -1,6 +1,5 @@
 "
 " Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  Jun 22, 2016
 "
 
 " Plugins -------------------------------------------------------------
