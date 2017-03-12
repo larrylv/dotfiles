@@ -31,4 +31,4 @@ It will work on Mac OS X and Linux.
 
 ### Vim Plugins
 
-https://github.com/larrylv/dotfiles/blob/master/vimrc#L12
+https://github.com/larrylv/dotfiles/blob/master/vimrc#L27
