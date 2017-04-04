@@ -2,6 +2,7 @@
 
 # alias
 alias af='git ls-files | ack --smart-case --no-column --noenv'
+alias ag='ack'
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
 alias cat='ccat'
