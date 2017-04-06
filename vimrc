@@ -411,6 +411,7 @@ augroup general_config
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  let g:omni_sql_no_default_maps = 1
   "}}}
 
   " Only use cursorline in current window and not when being in insert mode
