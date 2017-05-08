@@ -685,6 +685,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsUsePythonVersion = 2
 "}}}
 
+" fzf.vim{{{
+silent! nnoremap <unique> <silent> <leader>d :FZF<CR>
+"}}}
+
 " ctrlp.vim"{{{
 silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
 silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
