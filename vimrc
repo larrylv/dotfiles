@@ -52,6 +52,7 @@ Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
+Plug 'junegunn/fzf',                        { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'kshenoy/vim-signature'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump'

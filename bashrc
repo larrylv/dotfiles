@@ -238,6 +238,9 @@ alias s='set_tab_title'
 
 #}}}
 
+# shellcheck disable=SC1090
+[[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
+
 # Local config
 # shellcheck disable=SC1090
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
