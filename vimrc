@@ -688,7 +688,7 @@ let g:UltiSnipsUsePythonVersion = 2
 " ctrlp.vim"{{{
 silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
 silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
-silent! nnoremap <unique> <silent> <leader>dt :CtrlPTag<CR>
+silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<CR>
 silent! nnoremap <unique> <silent> <leader>f :CtrlP<CR>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_clear_cache_on_exit = 0
