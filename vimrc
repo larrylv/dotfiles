@@ -702,7 +702,7 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_mruf_max = 0
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("h")': ['<c-d>', '<c-cr>', '<c-e>'],
+    \ 'AcceptSelection("h")': ['<c-d>', '<c-cr>', '<c-e>', '<c-x>'],
     \ 'ToggleByFname()':      ['<c-f>'],
     \}
 nnoremap <c-]> :CtrlPtjump<cr>
