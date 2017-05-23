@@ -40,6 +40,8 @@ Plug 'guns/vim-sexp',                       { 'for': 'clojure' }
 Plug 'vim-scripts/paredit.vim',             { 'for': 'clojure' }
 Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
 Plug 'fatih/vim-go',                        { 'for': 'go' }
+Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
+Plug 'fisadev/vim-isort',                   { 'for': 'python' }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
 Plug 'kchmck/vim-coffee-script',            { 'for': ['javascript', 'coffee'] }
 Plug 'mxw/vim-jsx',                         { 'for': 'javascript' }
@@ -313,6 +315,9 @@ map <leader>vr :tabe ~/.vimrc<CR>
 vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
 
 map <leader>z :CtrlPClearCache<cr>
+
+" format python code
+autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
 
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
@@ -967,5 +972,16 @@ let g:elm_format_autosave = 1
 " splitjoin.vim"{{{
 let g:splitjoin_split_mapping = ''
 let g:splitjoin_join_mapping = ''
+"}}}
+
+" jedi-vim{{{
+let g:jedi#goto_command = "<leader>xg"
+let g:jedi#goto_assignments_command = ""
+let g:jedi#goto_definitions_command = "<leader>xd"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = ""
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>xr"
+let g:jedi#use_splits_not_buffers = "left"
 "}}}
 

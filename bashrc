@@ -85,13 +85,15 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 export PATH=$HOME/.rbenv/bin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+## pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+## jEnv
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
 ## kiex
 # shellcheck disable=SC1090
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
-
-## jEnv
-export PATH="$HOME/.jenv/bin:$PATH"
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 ## binstubs
 export PATH=.binstubs:$PATH
@@ -197,9 +199,13 @@ function git_prompt_info() {
 
 function rbenv_prompt_info() {
   if which rbenv > /dev/null; then
-    if [ -f "$PWD/Gemfile" ] || [ ! -f "$PWD/mix.exs" ] ; then
-      echo -e " ${echo_bold_cyan}ruby:(${echo_bold_purple}$(rbenv version-name)${echo_bold_cyan})"
-    fi
+    echo -e " ${echo_bold_cyan}ruby:(${echo_bold_purple}$(rbenv version-name)${echo_bold_cyan})"
+  fi
+}
+
+function pyenv_prompt_info() {
+  if which pyenv > /dev/null; then
+    echo -e " ${echo_bold_cyan}python:(${echo_bold_purple}$(pyenv version-name)${echo_bold_cyan})"
   fi
 }
 
@@ -213,9 +219,9 @@ function kiex_prompt_info() {
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   # shellcheck disable=SC2154
-  PS1="${bold_green}\u@\h ${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(kiex_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
+  PS1="${bold_green}\u@\h ${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(pyenv_prompt_info)\$(kiex_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
 else
-  PS1="${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(kiex_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
+  PS1="${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(pyenv_prompt_info)\$(kiex_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
 fi
 
 #}}}
