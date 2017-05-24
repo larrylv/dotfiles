@@ -205,7 +205,9 @@ function rbenv_prompt_info() {
 
 function pyenv_prompt_info() {
   if which pyenv > /dev/null; then
-    echo -e " ${echo_bold_cyan}python:(${echo_bold_purple}$(pyenv version-name)${echo_bold_cyan})"
+    if [ ! -f "$PWD/Gemfile" ] && [ ! -f "$PWD/mix.exs" ] && [ ! -f "$PWD/project.clj" ] ; then
+      echo -e " ${echo_bold_cyan}python:(${echo_bold_purple}$(pyenv version-name)${echo_bold_cyan})"
+    fi
   fi
 }
 
