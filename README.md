@@ -16,6 +16,7 @@ vim +PlugInstall +qall
 If you would like to use zsh and on-my-zsh, then you should run this:
 
 ```
+git checkout with_zsh_config
 git submodule init
 git submodule update
 rake install
