@@ -89,7 +89,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 ## jEnv
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+# if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 ## kiex
 # shellcheck disable=SC1090
