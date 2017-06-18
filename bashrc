@@ -86,7 +86,7 @@ export PATH=$HOME/.rbenv/bin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ## pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 ## jEnv
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
