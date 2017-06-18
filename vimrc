@@ -78,7 +78,6 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rsi'
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
-" Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 Plug 'tomtom/tcomment_vim'
 Plug 'skalnik/vim-vroom'
@@ -612,60 +611,6 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠ '
 let g:ale_statusline_format = ['✗ %d', '⚠ %d', '']
 let g:ale_echo_msg_format = '[%linter%] %s'
-"}}}
-
-" Syntastic.vim"{{{
-" augroup AutoSyntastic
-"   autocmd!
-"   autocmd BufWritePost * call s:syntastic()
-" augroup END
-" function! s:syntastic()
-"   SyntasticCheck
-"   call lightline#update()
-" endfunction
-"
-" set statusline+=\ %#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" " let g:syntastic_debug = 1
-" " let g:syntastic_ruby_checkers       = [ 'rubocop', 'mri' ]
-" let g:syntastic_ruby_checkers       = [ 'mri' ]
-" let g:syntastic_ruby_exec           = "~/.rbenv/versions/2.3.0/bin/ruby"
-" let g:syntastic_ruby_mri_exec       = "~/.rbenv/versions/2.3.0/bin/ruby"
-" let g:syntastic_shell_checkers      = [ 'shellcheck' ]
-" let g:syntastic_javascript_checkers = [ 'jshint' ]
-" let g:syntastic_coffee_checkers     = [ 'coffeelint' ]
-" let g:syntastic_html_checkers       = [ 'jshint' ]
-" let g:syntastic_haml_checkers       = [ 'haml_lint' ]
-" let g:syntastic_css_checkers        = [ 'csslint' ]
-" let g:syntastic_json_checkers       = [ 'jsonlint' ]
-" let g:syntastic_elixir_checkers     = [ '' ]
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_cursor_column = 0
-" let g:syntastic_enable_highlighting = 0
-" let g:syntastic_enable_signs = 1
-" let g:syntastic_auto_jump = 0
-" let g:syntastic_mode_map = { 'mode': 'active',
-"                            \ 'passive_filetypes': ['tex', 'scss', 'slim'] }
-" let g:syntastic_error_symbol = '✗'
-" let g:syntastic_style_error_symbol = '✠'
-" let g:syntastic_warning_symbol = '∆'
-" " let g:syntastic_style_warning_symbol = '≈'
-" let g:syntastic_style_warning_symbol = '∆'
-" let g:syntastic_html_tidy_ignore_errors = [
-"                         \ 'trimming empty <i>',
-"                         \ 'trimming empty <span>',
-"                         \ '<input> proprietary attribute \"autocomplete\"',
-"                         \ 'proprietary attribute \"role\"',
-"                         \ 'proprietary attribute \"hidden\"',
-"                         \ 'proprietary attribute \"ng-',
-"                         \ '<svg> is not recognized!',
-"                         \ 'discarding unexpected <svg>',
-"                         \ 'discarding unexpected </svg>',
-"                         \ '<rect> is not recognized!',
-"                         \ 'discarding unexpected <rect>'
-"                         \ ]
 "}}}
 
 " Highlight Pmenu"{{{
