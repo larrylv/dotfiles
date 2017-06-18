@@ -93,7 +93,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ## kiex
 # shellcheck disable=SC1090
-[[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
+# [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
 ## binstubs
 export PATH=.binstubs:$PATH
