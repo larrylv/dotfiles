@@ -631,6 +631,12 @@ let g:UltiSnipsUsePythonVersion = 2
 
 " fzf.vim{{{
 silent! nnoremap <unique> <silent> <leader>d :FZF<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-d': 'split',
+  \ 'ctrl-e': 'split',
+  \ 'ctrl-v': 'vsplit' }
 "}}}
 
 " ctrlp.vim"{{{
