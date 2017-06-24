@@ -74,16 +74,11 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-## go
-### For Mac: brew install go && sudo ln -s /usr/local/opt/go/libexec /usr/local/go
-### For Ubuntu: sudo tar -C /usr/local -xzf go{version}.src.tar.gz
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/.gopath
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
-
 ## rbenv
-export PATH=$HOME/.rbenv/bin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+## goenv
+if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 
 ## pyenv
 # if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
@@ -203,6 +198,12 @@ function rbenv_prompt_info() {
   fi
 }
 
+function goenv_prompt_info() {
+  if which goenv > /dev/null; then
+    echo -e " ${echo_bold_cyan}go:(${echo_bold_purple}$(goenv version-name)${echo_bold_cyan})"
+  fi
+}
+
 function pyenv_prompt_info() {
   if which pyenv > /dev/null; then
     if [ ! -f "$PWD/Gemfile" ] && [ ! -f "$PWD/mix.exs" ] && [ ! -f "$PWD/project.clj" ] ; then
@@ -221,9 +222,9 @@ function kiex_prompt_info() {
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   # shellcheck disable=SC2154
-  PS1="${bold_green}\u@\h ${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(kiex_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
+  PS1="${bold_green}\u@\h ${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
 else
-  PS1="${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(kiex_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
+  PS1="${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${reset_color}"
 fi
 
 #}}}
