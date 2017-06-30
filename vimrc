@@ -263,6 +263,15 @@ nmap <leader>ks :SplitjoinSplit<cr>
 
 map <leader>p :echo @%<cr>
 
+function! CloseAllBuffersButCurrent()
+  let curr = bufnr("%")
+  let last = bufnr("$")
+
+  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
+  if curr < last | silent! execute (curr+1).",".last."bd" | endif
+endfunction
+nmap <Leader>q :call CloseAllBuffersButCurrent()<CR>
+
 " CtrlP
 map <leader>rc :CtrlP app/controllers<cr>
 map <leader>rh :CtrlP app/helpers<cr>
