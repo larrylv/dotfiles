@@ -640,6 +640,7 @@ let g:UltiSnipsUsePythonVersion = 2
 "}}}
 
 " fzf.vim{{{
+set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 silent! nnoremap <unique> <silent> <leader>d :FZF<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
