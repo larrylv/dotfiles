@@ -9,7 +9,7 @@ class Dotfiles < Thor
   def install
     replace_all = options[:force]
     Dir['*'].each do |file|
-      next if %w[Rakefile Thorfile README.md LICENSE].include? file
+      next if %w[Rakefile Thorfile README.md LICENSE Session.vim].include? file
 
       if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
         if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
