@@ -101,7 +101,7 @@ export HISTCONTROL=ignoredups
 ## %T equivalent to %H:%M:%S (24-hours format)
 export HISTTIMEFORMAT='%F %T '
 
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # source scripts -----------------------------------------------------------#{{{
 
