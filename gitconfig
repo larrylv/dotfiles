@@ -81,3 +81,5 @@
     compaction-heuristic = true
 [commit]
     gpgsign = true
+[includeIf "gitdir:~/Code/Work/"]
+    path = .gitconfig-work
