@@ -1,10 +1,10 @@
 [user]
-    name  = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
-    email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+    name  = Larry Lv
+    email = larrylv1990@gmail.com
 [github]
     user  = larrylv
 [core]
-    excludesfile = <%= ENV['HOME'] %>/.gitignore
+    excludesfile = ~/.gitignore
     pager        = less -+FRSX -FRX
     editor       = vim
     autocrlf     = input
