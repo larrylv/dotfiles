@@ -7,3 +7,4 @@ oh-my-zsh/cache
 *.cache
 spacemacs.elc
 vim/autoload/plug.vim.old
+gitconfig-work

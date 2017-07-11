@@ -10,6 +10,7 @@
     autocrlf     = input
     safecrlf     = true
     whitespace   = cr-at-eol
+    preloadindex = true
 [alias]
     al         = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
     br         = branch
@@ -81,5 +82,5 @@
     compaction-heuristic = true
 [commit]
     gpgsign = true
-[includeIf "gitdir:~/Code/Work/"]
+[includeIf "gitdir:~/Code/Stripe/"]
     path = .gitconfig-work
