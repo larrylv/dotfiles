@@ -362,7 +362,7 @@ augroup general_config
   "}}}
 
   " Generate ctags (<F5>)"{{{
-  nnoremap <F5> :Dispatch ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extras=+q .<CR>
+  nnoremap <F5> :Dispatch ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extra=+q .<CR>
   "}}}
 
   " Remap <ESC> (jj) (Ctrl-c)"{{{
