@@ -361,8 +361,9 @@ augroup general_config
   command! GdiffInTab tabedit %|vsplit|Gdiff
   "}}}
 
-  " Generate ctags (<F5>)"{{{
+  " Generate ctags (<F5>, <F6>)"{{{
   nnoremap <F5> :Dispatch ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extra=+q .<CR>
+  nnoremap <F6> :Dispatch ripper-tags -R<CR>
   "}}}
 
   " Remap <ESC> (jj) (Ctrl-c)"{{{
