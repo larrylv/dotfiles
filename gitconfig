@@ -82,5 +82,5 @@
     compaction-heuristic = true
 [commit]
     gpgsign = true
-[includeIf "gitdir:~/Code/Stripe/"]
+[includeIf "gitdir:~/stripe/"]
     path = .gitconfig-work
