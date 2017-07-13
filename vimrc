@@ -730,9 +730,11 @@ endfunction
 " ,a to Ack (search in files)
 let g:ack_use_dispatch=0
 let g:ackhighlight=1
-if executable("ack")
-  cnoreabbrev Ack Ack!
-  nnoremap <leader>a :Ack!<Space>
+cnoreabbrev Ack Ack!
+nnoremap <leader>a :Ack!<Space>
+if executable("ag")
+  let g:ackprg="ag -H --nocolor --nogroup --column"
+elseif executable("ack")
   let g:ackprg="ack -H --nocolor --nogroup --column --no-smart-case"
 endif
 "}}}
