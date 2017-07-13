@@ -714,7 +714,7 @@ let NERDTreeChDirMode=2
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeHijackNetrw=1
 let g:NERDTreeIgnore=['\~$']
-map <F1> :call NERDTreeToggleInCurDir()<CR>
+nnoremap <F1> :call NERDTreeToggleInCurDir()<CR>
 function! NERDTreeToggleInCurDir()
   if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
     exe ":NERDTreeClose"
