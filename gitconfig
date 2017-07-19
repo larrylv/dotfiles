@@ -84,3 +84,5 @@
     gpgsign = true
 [includeIf "gitdir:~/stripe/"]
     path = .gitconfig-work
+[grep]
+    linenumber = true
