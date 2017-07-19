@@ -3,14 +3,6 @@
     email = larrylv1990@gmail.com
 [github]
     user  = larrylv
-[core]
-    excludesfile = ~/.gitignore
-    pager        = less -+FRSX -FRX
-    editor       = vim
-    autocrlf     = input
-    safecrlf     = true
-    whitespace   = cr-at-eol
-    preloadindex = true
 [alias]
     al         = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
     br         = branch
@@ -63,26 +55,34 @@
     unstage    = reset HEAD .
     wdiff      = diff --word-diff
     who        = shortlog -s -n --no-merges
-[merge]
-    tool          = vimdiff
-    conflictstyle = diff3
-    summary       = true
-[push]
-    default = tracking
 [color]
     ui          = always
     diff        = auto
     status      = auto
     branch      = auto
     interactive = auto
+[commit]
+    gpgsign = true
+[core]
+    excludesfile = ~/.gitignore
+    pager        = less -+FRSX -FRX
+    editor       = vim
+    autocrlf     = input
+    safecrlf     = true
+    whitespace   = cr-at-eol
+    preloadindex = true
+[diff]
+    compaction-heuristic = true
+[grep]
+    linenumber = true
 [i18n]
     commitEncoding = utf8
     logOutputEncoding = utf8
-[diff]
-    compaction-heuristic = true
-[commit]
-    gpgsign = true
 [includeIf "gitdir:~/stripe/"]
     path = .gitconfig-work
-[grep]
-    linenumber = true
+[merge]
+    tool          = vimdiff
+    conflictstyle = diff3
+    summary       = true
+[push]
+    default = tracking
