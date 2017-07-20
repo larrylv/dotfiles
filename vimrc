@@ -734,7 +734,7 @@ let g:ackhighlight=1
 cnoreabbrev Ack Ack!
 nnoremap <leader>a :Ack!<Space>
 if executable("ag")
-  let g:ackprg="ag -H --nocolor --nogroup --column"
+  let g:ackprg="ag --nocolor --nogroup --column"
 elseif executable("ack")
   let g:ackprg="ack -H --nocolor --nogroup --column --no-smart-case"
 endif
