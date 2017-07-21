@@ -643,7 +643,7 @@ let g:UltiSnipsUsePythonVersion = 2
 
 " fzf.vim{{{
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
-silent! nnoremap <unique> <silent> <leader>d :FZF<CR>
+silent! nnoremap <unique> <silent> <leader>f :FZF<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
@@ -656,7 +656,7 @@ let g:fzf_action = {
 silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
 silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
 silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<CR>
-silent! nnoremap <unique> <silent> <leader>f :CtrlP<CR>
+silent! nnoremap <unique> <silent> <leader>d :CtrlP<CR>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_by_filename = 0
