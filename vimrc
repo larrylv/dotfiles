@@ -231,6 +231,13 @@ map <leader>cc :ccl<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
 
+" Generate ctags
+nnoremap <leader>dc :Dispatch ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extra=+q .<CR>
+" Strip tailing white spaces
+nnoremap <leader>dd :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+" Generate ctags with ripper-tags, specifically for Ruby
+nnoremap <leader>dr :Dispatch ripper-tags -R<CR>
+
 " vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
 map <leader>ed :Eschema<cr>
@@ -353,19 +360,11 @@ augroup general_config
   nnoremap Y y$
   " }}}
 
-  " Strip trailing whitespace (<F4>) {{{
-  nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-  " }}}
-
   " Show git diff in tab"{{{
   command! GdiffInTab tabedit %|vsplit|Gdiff
   "}}}
 
-  " Generate ctags (<F5>, <F6>)"{{{
-  nnoremap <F5> :Dispatch ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extra=+q .<CR>
-  nnoremap <F6> :Dispatch ripper-tags -R<CR>
-  "}}}
-
+  " }}}
   " Remap <ESC> (jj) (Ctrl-c)"{{{
   imap <c-c> <ESC>l
   imap jj <ESC>l
