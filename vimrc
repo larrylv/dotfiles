@@ -26,7 +26,7 @@ endif
 Plug 'vim-ruby/vim-ruby'
 Plug 'elixir-lang/vim-elixir',              { 'for': ['elixir', 'eelixir'] }
 Plug 'slashmili/alchemist.vim',             { 'for': ['elixir', 'eelixir'] }
-Plug 'larrylv/ycm-elixir',                  { 'for': ['elixir', 'eelixir'] }
+" Plug 'larrylv/ycm-elixir',                  { 'for': ['elixir', 'eelixir'] }
 Plug 'vim-erlang/vim-erlang-runtime',       { 'for': 'erlang' }
 Plug 'vim-erlang/vim-erlang-compiler',      { 'for': 'erlang' }
 Plug 'vim-erlang/vim-erlang-omnicomplete',  { 'for': 'erlang' }
