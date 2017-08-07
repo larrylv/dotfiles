@@ -43,8 +43,8 @@ Plug 'fatih/vim-go',                        { 'for': 'go' }
 Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
 Plug 'fisadev/vim-isort',                   { 'for': 'python' }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
-Plug 'kchmck/vim-coffee-script',            { 'for': ['javascript', 'coffee'] }
-Plug 'mxw/vim-jsx',                         { 'for': 'javascript' }
+Plug 'kchmck/vim-coffee-script',            { 'for': ['javascript', 'coffee', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx',                         { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/html5.vim',                    { 'for': ['html', 'eruby'] }
 Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
 Plug 'hail2u/vim-css3-syntax',              { 'for': ['css', 'sass', 'scss'] }
