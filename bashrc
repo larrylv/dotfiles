@@ -46,6 +46,10 @@ bind "set completion-map-case on"
 ## Display matches for ambiguous patterns at first tab press
 bind "set show-all-if-ambiguous on"
 
+## on menu-complete, first display the common prefix, then cycle through the
+# options when hitting TAB
+bind "set menu-complete-display-prefix on"
+
 ## Save multi-line commands as one command
 shopt -s cmdhist
 
