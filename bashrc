@@ -230,6 +230,8 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 else
   PS1="${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${normal}"
 fi
+# this will reset the color and font weight before displaying output but will keep the inputted command bold
+trap "${normal}" DEBUG
 
 #}}}
 
