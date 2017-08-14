@@ -440,6 +440,21 @@ augroup END
 nnoremap <F2> :TagbarToggle<CR>
 let g:tagbar_sort = 0
 let g:tagbar_iconchars = ['+', '-']
+if executable('ripper-tags')
+  " Configure Tagbar to user ripper-tags with ruby
+  let g:tagbar_type_ruby = {
+      \ 'kinds' : [
+          \ 'm:modules',
+          \ 'c:classes',
+          \ 'f:methods',
+          \ 'F:singleton methods',
+          \ 'C:constants',
+          \ 'a:aliases'
+      \ ],
+      \ 'ctagsbin':  'ripper-tags',
+      \ 'ctagsargs': ['-f', '-']
+  \ }
+endif
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
