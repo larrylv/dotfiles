@@ -236,7 +236,7 @@ nnoremap <leader>dc :Dispatch ctags -R --languages=-javascript --exclude=.git --
 " Strip tailing white spaces
 nnoremap <leader>dd :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " Generate ctags with ripper-tags, specifically for Ruby
-nnoremap <leader>dr :Dispatch ripper-tags -R<CR>
+nnoremap <leader>dr :Dispatch ripper-tags -R --force<CR>
 
 " vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
