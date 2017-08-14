@@ -489,8 +489,7 @@ let g:tagbar_type_elixir = {
 call gitgutter#highlight#define_highlights()
 
 let g:gitgutter_max_signs = 1024
-" let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 "}}}
 
 " vim-projectionist"{{{
