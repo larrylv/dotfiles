@@ -452,7 +452,7 @@ if executable('ripper-tags')
           \ 'a:aliases'
       \ ],
       \ 'ctagsbin':  'ripper-tags',
-      \ 'ctagsargs': ['-f', '-']
+      \ 'ctagsargs': '--fields=+n -f -'
   \ }
 endif
 let g:tagbar_type_go = {
