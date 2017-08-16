@@ -12,6 +12,7 @@
     ca         = commit --amend
     cc         = commit --amend -C HEAD
     co         = checkout
+    conflicts  = diff --name-only --diff-filter=U
     dc         = diff --cached
     delete     = !git ls-files -z --deleted | xargs -0 git rm
     df         = diff
