@@ -177,7 +177,7 @@ set nobackup
 set noerrorbells                           " Disable error bells
 set noignorecase                           " Don't ignore case of searches
 set nojoinspaces                           " Only insert single space after a '.', '?' and '!' with a join command
-set noshowmode                             " Don't show the current mode (airline.vim takes care of us)
+set noshowmode                             " Don't show the current mode (lightline.vim takes care of us)
 set nostartofline                          " Don't reset cursor to start of line when moving around
 set notitle
 set nu                                     " Enable line numbers
@@ -316,6 +316,9 @@ map  <leader>tj :tjump
 map  <leader>ts :tselect 
 
 map <leader>vr :tabe ~/.vimrc<CR>
+
+" n,w to qucikly switch vim window
+map <leader>w <C-W><C-W>
 
 " system yank: will copy into the system clipboard on OS X
 vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
@@ -787,12 +790,22 @@ let g:lightline = {
       \ 'active': {
       \   'left': [
       \     [ 'mode', 'paste' ],
-      \     [ 'filename' ],
-      \     ['ctrlpmark']
+      \     [ 'filename'],
+      \     ['ctrlpmark'],
       \   ],
       \   'right': [
-      \     [ 'ale', 'lineinfo' ], ['percent'],
+      \     [ 'ale', 'lineinfo' ],
+      \     ['winnr'],
       \     [ 'filetype' ],
+      \   ]
+      \ },
+      \ 'inactive': {
+      \   'left': [
+      \     [ 'filename' ],
+      \   ],
+      \   'right': [
+      \     [ 'lineinfo' ],
+      \     [ 'winnr' ]
       \   ]
       \ },
       \ 'component_function': {
@@ -802,6 +815,7 @@ let g:lightline = {
       \   'filetype': 'MyFiletype',
       \   'fileencoding': 'MyFileencoding',
       \   'mode': 'MyMode',
+      \   'winnr': 'MyWinnr',
       \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ 'component_expand': {
@@ -821,17 +835,25 @@ function! MyReadonly()
   return &ft !~? 'help' && &readonly ? 'RO' : ''
 endfunction
 
+function! MyWinnr()
+  let fname = expand('%:t')
+  let nr = winnr()
+  return fname == 'ControlP' ? '' : nr
+endfunction
+
 function! MyFilename()
   let fname = expand('%:t')
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ fname == '__Tagbar__' ? g:lightline.fname :
-        \ fname =~ '__Gundo\|NERD_tree' ? '' :
-        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \ &ft == 'unite' ? unite#get_status_string() :
-        \ &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
+        \ (
+        \   fname == '__Tagbar__' ? g:lightline.fname :
+        \   fname =~ '__Gundo\|NERD_tree' ? '' :
+        \   &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \   &ft == 'unite' ? unite#get_status_string() :
+        \   &ft == 'vimshell' ? vimshell#get_status_string() :
+        \   ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \   ('' != fname ? fname : '[No Name]') .
+        \   ('' != MyModified() ? ' ' . MyModified() : '')
+        \ )
 endfunction
 
 function! MyFugitive()
