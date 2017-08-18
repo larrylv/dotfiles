@@ -441,7 +441,7 @@ augroup END
 
 " Tagbar"{{{
 nnoremap <F2> :TagbarToggle<CR>
-let g:tagbar_sort = 0
+let g:tagbar_sort = 1
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_show_linenumbers=1
 if executable('ripper-tags')
