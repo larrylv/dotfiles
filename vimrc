@@ -600,6 +600,13 @@ map <leader>vx :VimuxInterruptRunner<CR>
 if !exists("g:vroom_test_unit_command")
   let g:vroom_test_unit_command = 'ruby -Itest -I.'
 endif
+
+function! SetupVroomForPayServer()
+  let g:vroom_test_unit_command = 'pay test'
+  let g:vroom_use_bundle_exec = 0
+endfunction
+
+autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupVroomForPayServer()
 "}}}
 
 " bufexplorer"{{{
