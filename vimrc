@@ -440,8 +440,9 @@ augroup END
 "}}}
 
 " Tagbar"{{{
-nnoremap <F2> :TagbarToggle<CR>
+nnoremap <F1> :TagbarToggle<CR>
 let g:tagbar_sort = 1
+let g:tagbar_left = 1
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_show_linenumbers=1
 if executable('ripper-tags')
@@ -738,10 +739,11 @@ au Syntax * RainbowParenthesesLoadBraces
 let NERDTreeWinSize = 30
 let NERDTreeAutoCenter=1
 let NERDTreeChDirMode=2
+let g:NERDTreeWinPos="right"
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeHijackNetrw=1
 let g:NERDTreeIgnore=['\~$']
-nnoremap <F1> :call NERDTreeToggleInCurDir()<CR>
+nnoremap <F2> :call NERDTreeToggleInCurDir()<CR>
 function! NERDTreeToggleInCurDir()
   if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
     exe ":NERDTreeClose"
