@@ -368,9 +368,7 @@ augroup general_config
   "}}}
 
   " }}}
-  " Remap <ESC> (jj) (Ctrl-c)"{{{
   imap <c-c> <ESC>l
-  imap jj <ESC>l
   "}}}
 
   " Remap increase number (Ctrl-i)"{{{
