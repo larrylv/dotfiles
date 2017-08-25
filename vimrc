@@ -41,6 +41,7 @@ Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
 Plug 'fatih/vim-go',                        { 'for': 'go' }
 Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
 Plug 'fisadev/vim-isort',                   { 'for': 'python' }
+Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
 Plug 'kchmck/vim-coffee-script',            { 'for': ['javascript', 'coffee', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx',                         { 'for': ['javascript', 'javascript.jsx'] }
