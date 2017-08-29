@@ -512,6 +512,12 @@ set signcolumn=yes
 
 " vim-projectionist"{{{
 let g:projectionist_heuristics = {
+      \  "lib/": {
+      \    "lib/db/model/*.rb": {
+      \      "type": "model",
+      \      "alternate": "test/integration/lib/db/model/{}.rb",
+      \    },
+      \  },
       \  "web/": {
       \    "web/channels/*.ex": {
       \      "type": "channel",
@@ -540,6 +546,18 @@ let g:projectionist_heuristics = {
       \    },
       \  },
       \  "test/": {
+      \    "test/unit/lib/db/model/*.rb": {
+      \      "type": "unittest",
+      \      "alternate": "lib/db/model/{}.rb",
+      \    },
+      \    "test/integration/lib/db/model/*.rb": {
+      \      "type": "test",
+      \      "alternate": "lib/db/model/{}.rb",
+      \    },
+      \    "test/_lib/helpers/fake_data/*.rb": {
+      \      "type": "fixtures",
+      \      "alternate": "lib/db/model/{}.rb",
+      \    },
       \    "test/channels/*_test.exs": {
       \      "type": "test",
       \      "alternate": "web/channels/{}.ex",
