@@ -663,11 +663,22 @@ let g:ale_sign_warning = '⚠ '
 let g:ale_statusline_format = ['✗ %d', '⚠ %d', '']
 let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_linters = {
+      \   'coffee': [],
       \   'eruby': [],
+      \   'go': ['gometalinter'],
       \   'html': ['htmlhint'],
       \   'javascript': ['eslint'],
-      \   'coffee': [],
       \}
+let g:ale_go_gometalinter_options = '
+  \ --aggregate
+  \ --fast
+  \ --sort=line
+  \ --vendor
+  \ --vendored-linters
+  \ --disable=gas
+  \ --disable=goconst
+  \ --disable=gocyclo
+  \ '
 "}}}
 
 " Highlight Pmenu"{{{
@@ -802,7 +813,6 @@ autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *.es6 set filetype=javascript
 autocmd Filetype gitcommit setlocal textwidth=78
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd FileType go,c,cpp,rust,elm set ts=4 sw=4 sts=4 et
 autocmd FileType elixir set foldmethod=syntax
 "}}}
@@ -1006,3 +1016,6 @@ let g:jedi#rename_command = "<leader>xr"
 let g:jedi#use_splits_not_buffers = "left"
 "}}}
 
+" vim-go{{{
+let g:go_fmt_fail_silently = 1
+"}}}
