@@ -237,6 +237,8 @@ nnoremap <leader>dc :Dispatch ctags -R --languages=-javascript --exclude=.git --
 nnoremap <leader>dd :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " Generate ctags with ripper-tags, specifically for Ruby
 nnoremap <leader>dr :Dispatch ripper-tags -R --force --fields=+n<CR>
+" Generate ctags with jsctags, specifically for JavaScript
+nnoremap <leader>dj :Dispatch `find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed ''/^$/d'' \| LANG=C sort >\| tags`<CR>
 
 " vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
