@@ -662,6 +662,7 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠ '
 let g:ale_statusline_format = ['✗ %d', '⚠ %d', '']
 let g:ale_echo_msg_format = '[%linter%] %s'
+let g:ale_set_highlights = 0
 let g:ale_linters = {
       \   'coffee': [],
       \   'eruby': [],
