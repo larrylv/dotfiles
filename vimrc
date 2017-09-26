@@ -76,6 +76,7 @@ Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-rhubarb'
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
@@ -1021,4 +1022,8 @@ let g:jedi#use_splits_not_buffers = "left"
 
 " vim-go{{{
 let g:go_fmt_fail_silently = 1
+"}}}
+
+" vim-rhubarb{{{
+let g:github_enterprise_urls = ['https://git.corp.stripe.com']
 "}}}
