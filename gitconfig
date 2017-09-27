@@ -57,7 +57,7 @@
     wdiff      = diff --word-diff
     who        = shortlog -s -n --no-merges
 [color]
-    ui          = always
+    ui          = auto
     diff        = auto
     status      = auto
     branch      = auto
