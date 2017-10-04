@@ -84,7 +84,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'larrylv/vim-vroom'
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
@@ -968,14 +967,6 @@ call lightline#update()
 " delimitMate"{{{
 " remove ` and * from the quotes
 let delimitMate_quotes = "\" '"
-"}}}
-
-" vim-multiple-cursors"{{{
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-b>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
 "}}}
 
 " startify"{{{
