@@ -5,7 +5,7 @@ alias af='git ls-files | ack --smart-case --no-column --noenv'
 alias ag='ack'
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
-alias cat='ccat'
+[[ -f /usr/local/bin/ccat ]] && alias cat='ccat'
 alias grep='grep --color=auto'
 alias gtags='ctags -R --languages=-javascript --exclude=.git --exclude=log --exclude=target --fields=+ialS --extra=+q .'
 alias jtags='find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '''/^$/d''' | LANG=C sort >| tags'
@@ -23,6 +23,8 @@ alias ssh='TERM=xterm ssh'
 alias tailf='tail -f'
 alias tigs='tig status'
 alias vs='vim -S Session.vim'
+
+set -o emacs
 
 # bash-sensible (https://github.com/mrzool/bash-sensible/blob/master/sensible.bash)
 
