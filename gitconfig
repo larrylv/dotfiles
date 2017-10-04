@@ -11,6 +11,7 @@
     ci         = commit
     ca         = commit --amend
     cc         = commit --amend -C HEAD
+    cleanup    = "!git branch --no-color --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d && git remote prune origin && git prune && :"
     co         = checkout
     conflicts  = diff --name-only --diff-filter=U
     dc         = diff --cached
