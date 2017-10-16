@@ -54,6 +54,7 @@ Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
+Plug 'lifepillar/vim-solarized8',           { 'commit': 'fe944794264d83d14fea120c70f9ed549bf7912e' }
 Plug 'junegunn/fzf'
 Plug 'kshenoy/vim-signature'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -90,7 +91,6 @@ Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'lifepillar/vim-solarized8'
 Plug 'Raimondi/delimitMate'
 Plug 'benmills/vimux'
 Plug 'eapache/rainbow_parentheses.vim'
