@@ -194,12 +194,6 @@ Style/MultilineTernaryOperator:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-multiline-ternary
   Enabled: true
 
-Style/IfUnlessModifier:
-  Description: Favor modifier if/unless usage when you have a single-line body.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#if-as-a-modifier
-  Enabled: true
-  MaxLineLength: 80
-
 Style/UnlessElse:
   Description: Do not use unless with else. Rewrite these with the positive case first.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-else-with-unless
@@ -727,6 +721,18 @@ Style/UnneededCapitalW:
 
 
 ## Disabled ##
+
+Metrics/BlockLength:
+  Enabled: false
+
+Style/ParallelAssignment
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Description: Favor modifier if/unless usage when you have a single-line body.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#if-as-a-modifier
+  Enabled: false
+  MaxLineLength: 80
 
 Style/Encoding:
   Description: Use UTF-8 as the source file encoding.
