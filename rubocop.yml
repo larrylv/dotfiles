@@ -725,7 +725,7 @@ Style/UnneededCapitalW:
 Metrics/BlockLength:
   Enabled: false
 
-Style/ParallelAssignment
+Style/ParallelAssignment:
   Enabled: false
 
 Style/IfUnlessModifier:
