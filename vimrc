@@ -100,6 +100,7 @@ Plug 'mhinz/vim-startify'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/goyo.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
