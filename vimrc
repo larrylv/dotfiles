@@ -263,6 +263,34 @@ map <leader>gp :GitGutterPrevHunk<cr>
 map <leader>gu :GitGutterUndoHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
 
+" vim-go
+
+function! SetupMapForVimGo()
+  " run :GoBuild or :GoTestCompile based on the go file
+  function! s:build_go_files()
+    let l:file = expand('%')
+    if l:file =~# '^\f\+_test\.go$'
+      call go#test#Test(0, 1)
+    elseif l:file =~# '^\f\+\.go$'
+      call go#cmd#Build(0)
+    endif
+  endfunction
+
+  nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
+  " nmap <leader>gb  <Plug>(go-build)
+  nmap <Leader>gi <Plug>(go-info)
+  nmap <leader>gr <Plug>(go-run)
+  nmap <leader>gt <Plug>(go-test)
+
+  nmap <leader>gs :<C-u>GoSameIds<CR>
+  nmap <leader>gc :<C-u>GoSameIdsClear<CR>
+
+  nmap <Leader>gd :<C-u>GoDeclsDir<CR>
+  nmap <Leader>gl :<C-u>GoDecls<CR>
+endfunction
+
+autocmd FileType go call SetupMapForVimGo()
+
 " ALE
 nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
 nmap <silent> <leader>ln <Plug>(ale_next_wrap)
@@ -811,8 +839,8 @@ autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+autocmd BufNewFile,BufRead *.go,*.c,*.cpp,*.rust,*.elm setlocal noexpandtab ts=4 sw=4 sts=4
 autocmd Filetype gitcommit setlocal textwidth=78
-autocmd FileType go,c,cpp,rust,elm set ts=4 sw=4 sts=4 et
 autocmd FileType elixir set foldmethod=syntax
 "}}}
 
@@ -1016,8 +1044,17 @@ let g:jedi#use_splits_not_buffers = "left"
 "}}}
 
 " vim-go{{{
+let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
 let g:go_gocode_autobuild = 0
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_list_type = "quickfix"
 "}}}
 
 " vim-rhubarb{{{
