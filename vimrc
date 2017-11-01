@@ -674,14 +674,9 @@ let g:ale_linters = {
       \   'javascript': ['eslint'],
       \}
 let g:ale_go_gometalinter_options = '
+  \ --config=/Users/$USER/.gometalinterrc
   \ --aggregate
   \ --fast
-  \ --sort=line
-  \ --vendor
-  \ --vendored-linters
-  \ --disable=gas
-  \ --disable=goconst
-  \ --disable=gocyclo
   \ '
 "}}}
 

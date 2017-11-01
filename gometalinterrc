@@ -1,0 +1,6 @@
+{
+    "Disable": ["deadcode", "goconst", "gocyclo", "vetshadow"],
+    "Vendor": true,
+    "VendoredLinters": true,
+    "Sort": ["line"]
+}
