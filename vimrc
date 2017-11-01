@@ -1022,6 +1022,7 @@ let g:jedi#use_splits_not_buffers = "left"
 
 " vim-go{{{
 let g:go_fmt_fail_silently = 1
+let g:go_gocode_autobuild = 0
 "}}}
 
 " vim-rhubarb{{{
