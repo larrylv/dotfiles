@@ -311,19 +311,7 @@ endfunction
 nmap <Leader>q :call CloseAllBuffersButCurrent()<CR>
 
 " CtrlP
-map <leader>rc :CtrlP app/controllers<cr>
-map <leader>rh :CtrlP app/helpers<cr>
-map <leader>rm :CtrlP app/models<cr>
-map <leader>rs :CtrlP spec<cr>
-map <leader>rt :CtrlP test<cr>
-map <leader>rv :CtrlP app/views<cr>
-
-" provided by vim-rails
-map <leader>sd :Sschema<cr>
-
-map <leader>sg :sp Gemfile<cr>
 map <leader>so :source $MYVIMRC<cr>
-map <leader>sr :sp config/routes.rb<cr>
 map <leader>ss :source ./Session.vim<cr>
 
 map  <leader>sj :stjump 
