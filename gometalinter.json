@@ -1,0 +1,8 @@
+{
+    "Aggregate": true,
+    "Enable": ["gas", "golint", "vet"],
+    "Sort": ["line"],
+    "Test": true,
+    "Vendor": true,
+    "VendoredLinters": true
+}

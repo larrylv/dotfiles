@@ -689,11 +689,7 @@ let g:ale_linters = {
       \   'html': ['htmlhint'],
       \   'javascript': ['eslint'],
       \}
-let g:ale_go_gometalinter_options = '
-  \ --config=/Users/$USER/.gometalinterrc
-  \ --aggregate
-  \ --fast
-  \ '
+let g:ale_go_gometalinter_options = '--aggregate --disable-all --enable=gas --enable=golint --enable=vet --fast --sort=line -t --vendor --vendored-linters'
 "}}}
 
 " Highlight Pmenu"{{{
