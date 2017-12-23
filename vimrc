@@ -311,7 +311,7 @@ endfunction
 nmap <Leader>q :call CloseAllBuffersButCurrent()<CR>
 
 " CtrlP
-map <leader>so :source $MYVIMRC<cr>
+map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParenthesesActivate<cr>
 map <leader>ss :source ./Session.vim<cr>
 
 map  <leader>sj :stjump 
@@ -770,7 +770,7 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
+au VimEnter * RainbowParenthesesActivate
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
