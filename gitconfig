@@ -67,7 +67,7 @@
     gpgsign = true
 [core]
     excludesfile = ~/.gitignore
-    pager        = less -+FRSX -FRX
+    pager        = less -FRX
     editor       = vim
     autocrlf     = input
     safecrlf     = true
