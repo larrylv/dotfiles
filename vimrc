@@ -797,7 +797,9 @@ let g:ack_use_dispatch=0
 let g:ackhighlight=1
 cnoreabbrev Ack Ack!
 nnoremap <leader>a :Ack!<Space>
-if executable("ag")
+if executable("rg")
+  let g:ackprg="rg --vimgrep"
+elseif executable("ag")
   let g:ackprg="ag --nocolor --nogroup --column"
 elseif executable("ack")
   let g:ackprg="ack -H --nocolor --nogroup --column --no-smart-case"
