@@ -18,11 +18,13 @@ alias mpaste='reattach-to-user-namespace pbpaste'
 alias nvs='nvim -S Session.vim'
 alias pt='pstree'
 alias rb='rbenv'
+alias rg='rg --color always --vimgrep'
 alias lgit='GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -F /dev/null" git'
 alias ssh='TERM=xterm ssh'
 alias tailf='tail -f'
 alias tigs='tig status'
 alias vs='vim -S Session.vim'
+LESS="-iXRF"; export LESS
 
 set -o emacs
 
