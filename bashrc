@@ -25,7 +25,13 @@ alias vs='vim -S Session.vim'
 LESS="-iXRF"; export LESS
 
 ag() {
-  rg --color always --vimgrep "$1" | less
+  if which rg > /dev/null; then
+    rg --color always --vimgrep "$@" | less
+  elif which ag > /dev/null; then
+    ag "$@"
+  else
+    ack "$@"
+  fi
 }
 
 set -o emacs
