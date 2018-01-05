@@ -2,7 +2,6 @@
 
 # alias
 alias af='git ls-files | ack --smart-case --no-column --noenv'
-alias ag='ack'
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
 [[ -f /usr/local/bin/ccat ]] && alias cat='ccat'
@@ -18,13 +17,16 @@ alias mpaste='reattach-to-user-namespace pbpaste'
 alias nvs='nvim -S Session.vim'
 alias pt='pstree'
 alias rb='rbenv'
-alias rg='rg --color always --vimgrep'
 alias lgit='GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -F /dev/null" git'
 alias ssh='TERM=xterm ssh'
 alias tailf='tail -f'
 alias tigs='tig status'
 alias vs='vim -S Session.vim'
 LESS="-iXRF"; export LESS
+
+ag() {
+  rg --color always --vimgrep "$1" | less
+}
 
 set -o emacs
 
