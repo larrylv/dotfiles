@@ -798,7 +798,7 @@ let g:ackhighlight=1
 cnoreabbrev Ack Ack!
 nnoremap <leader>a :Ack!<Space>
 if executable("rg")
-  let g:ackprg="rg --vimgrep"
+  let g:ackprg="rg --vimgrep --sort-files"
 elseif executable("ag")
   let g:ackprg="ag --nocolor --nogroup --column"
 elseif executable("ack")

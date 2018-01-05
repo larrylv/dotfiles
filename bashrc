@@ -26,7 +26,7 @@ LESS="-iXRF"; export LESS
 
 ag() {
   if which rg > /dev/null; then
-    rg --color always --vimgrep "$@" | less
+    rg --color always --vimgrep --sort-files "$@" | less
   elif which ag > /dev/null; then
     ag "$@"
   else
