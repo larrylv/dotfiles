@@ -113,8 +113,8 @@ export PATH=.binstubs:$PATH
 
 ## history
 shopt -s histappend
-export HISTSIZE=100000
-export HISTFILESIZE=100000
+export HISTSIZE=-1
+export HISTFILESIZE=-1
 export HISTCONTROL=ignoredups
 ## Use standard ISO 8601 timestamp
 ## %F equivalent to %Y-%m-%d
