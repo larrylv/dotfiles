@@ -1006,6 +1006,17 @@ let g:startify_change_to_dir = 0
 " YouCompleteMe"{{{
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_semantic_triggers =  {
+	\   'c' : ['->', '.', 're!\w{2}'],
+	\   'cpp' : ['->', '.', '::', 're!\w{2}'],
+	\   'java,javascript,typescript,python,scala,elixir,go' : ['.', 're!\w{2}'],
+	\   'ruby' : ['.', '::', 're!\w{2}'],
+	\   'lua' : ['.', ':', 're!\w{2}'],
+	\   'erlang' : [':', 're!\w{2}'],
+	\ }
 "}}}
 
 " elm-vim"{{{
