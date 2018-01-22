@@ -4,59 +4,63 @@
 [github]
     user  = larrylv
 [alias]
-    al         = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
-    br         = branch
-    bv         = branch -vv --color
-    changes    = diff --stat -r
-    ci         = commit
-    ca         = commit --amend
-    cc         = commit --amend -C HEAD
-    cleanup    = "!git branch --no-color --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d && git remote prune origin && git prune && :"
-    co         = checkout
-    conflicts  = diff --name-only --diff-filter=U
-    dc         = diff --cached
-    delete     = !git ls-files -z --deleted | xargs -0 git rm
-    df         = diff
-    diff       = diff --ignore-space-change --color
-    ds         = diff --staged
-    dsf        = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
-    dt         = difftool
-    fa         = fetch --all
-    fp         = fetch -p --all
-    hide       = update-index --assume-unchanged
-    ignored    = !git ls-files -v | grep "^[[:lower:]]"
-    last       = log -n 1 -p --color
-    lg         = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    ls-ignored = ls-files --exclude-standard --ignored --others
-    mf         = merge --no-ff
-    news       = log -p HEAD@{1}..HEAD@{0}
-    next       = !git checkout `git rev-list HEAD..master | tail -1`
-    pb         = pull --rebase
-    pick       = cherry-pick
-    pl         = pull
-    prev       = checkout @^
-    ps         = push
-    pushall    = push --recurse-submodules=on-demand
-    rbs        = !sh -c 'git co $1 && git pull && git co @{-1} && git rebase -i $1' -
-    sb         = show-branch
-    show-next  = !git show `git rev-list HEAD..master | tail -1`
-    show-prev  = !git show @^
-    ss         = stash save
-    sl         = stash list -p --color
-    sp         = stash pop
-    st         = status
-    standup    = shortlog --since=yesterday
-    svn-pb     = svn rebase
-    svn-ps     = svn dcommit
-    svn-pull   = svn fetch
-    svn-push   = svn dcommit
-    today      = shortlog --since=midnight
-    tree       = log --graph --decorate --pretty=oneline --abbrev-commit --name-status
-    uncommit   = !git reset --soft HEAD^ && git reset HEAD .
-    unhide     = update-index --no-assume-unchanged
-    unstage    = reset HEAD .
-    wdiff      = diff --word-diff
-    who        = shortlog -s -n --no-merges
+    al                       = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
+    br                       = branch
+    bv                       = branch -vv --color
+    changes                  = diff --stat -r
+    ci                       = commit
+    ca                       = commit --amend
+    cc                       = commit --amend -C HEAD
+    cleanup                  = "!git branch --no-color --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d && git remote prune origin && git prune && :"
+    co                       = checkout
+    conflicts                = diff --name-only --diff-filter=U
+    dc                       = diff --cached
+    delete                   = !git ls-files -z --deleted | xargs -0 git rm
+    df                       = diff
+    diff                     = diff --ignore-space-change --color
+    ds                       = diff --staged
+    dsf                      = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+    dt                       = difftool
+    fa                       = fetch --all
+    files-since              = "!git diff --name-only $(git merge-base HEAD $1) | xargs ls 2>/dev/null && :"
+    files-since-master       = "!git files-since origin/master && :"
+    fp                       = fetch -p --all
+    hide                     = update-index --assume-unchanged
+    ignored                  = !git ls-files -v | grep "^[[:lower:]]"
+    last                     = log -n 1 -p --color
+    lg                       = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    ls-ignored               = ls-files --exclude-standard --ignored --others
+    mf                       = merge --no-ff
+    minimal-diff-with        = "! git files-since $1 | xargs git diff -w $(git merge-base HEAD $1)..HEAD && :"
+    minimal-diff-with-master = "! git minimal-diff-with origin/master && :"
+    news                     = log -p HEAD@{1}..HEAD@{0}
+    next                     = !git checkout `git rev-list HEAD..master | tail -1`
+    pb                       = pull --rebase
+    pick                     = cherry-pick
+    pl                       = pull
+    prev                     = checkout @^
+    ps                       = push
+    pushall                  = push --recurse-submodules=on-demand
+    rbs                      = !sh -c 'git co $1 && git pull && git co @{-1} && git rebase -i $1' -
+    sb                       = show-branch
+    show-next                = !git show `git rev-list HEAD..master | tail -1`
+    show-prev                = !git show @^
+    ss                       = stash save
+    sl                       = stash list -p --color
+    sp                       = stash pop
+    st                       = status
+    standup                  = shortlog --since=yesterday
+    svn-pb                   = svn rebase
+    svn-ps                   = svn dcommit
+    svn-pull                 = svn fetch
+    svn-push                 = svn dcommit
+    today                    = shortlog --since=midnight
+    tree                     = log --graph --decorate --pretty=oneline --abbrev-commit --name-status
+    uncommit                 = !git reset --soft HEAD^ && git reset HEAD .
+    unhide                   = update-index --no-assume-unchanged
+    unstage                  = reset HEAD .
+    wdiff                    = diff --word-diff
+    who                      = shortlog -s -n --no-merges
 [color]
     ui          = auto
     diff        = auto
