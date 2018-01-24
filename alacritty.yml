@@ -187,7 +187,7 @@ mouse:
   # The `double_click` and `triple_click` settings control the time
   # alacritty should wait for accepting multiple clicks as one double
   # or triple click.
-  double_click: { threshold: 0 }
+  double_click: { threshold: 500 }
   triple_click: { threshold: 0 }
 
   # Faux Scrollback
