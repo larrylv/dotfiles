@@ -61,6 +61,12 @@
     unstage                  = reset HEAD .
     wdiff                    = diff --word-diff
     who                      = shortlog -s -n --no-merges
+    change                   = codereview change
+    gofmt                    = codereview gofmt
+    mail                     = codereview mail
+    pending                  = codereview pending
+    submit                   = codereview submit
+    sync                     = codereview sync
 [color]
     ui          = auto
     diff        = auto
