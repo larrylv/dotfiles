@@ -109,7 +109,7 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
 ## binstubs
-export PATH=.binstubs:$PATH
+# export PATH=.binstubs:$PATH
 
 ## history
 shopt -s histappend
