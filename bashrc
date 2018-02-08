@@ -96,6 +96,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 ## goenv
 if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 export GOPATH=$HOME/code/gopath
+export GOROOT="$(goenv prefix)"
 export PATH=$GOPATH/bin:$PATH
 
 ## pyenv
