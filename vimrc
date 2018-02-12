@@ -730,6 +730,13 @@ vnoremap <c-]> :CtrlPtjumpVisual<cr>
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle|elm-stuff)$',
   \ }
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
 " let g:ctrlp_tjump_only_silent = 1
 "}}}
 
