@@ -678,6 +678,7 @@ let g:ale_linters = {
       \   'javascript': ['eslint'],
       \}
 let g:ale_go_gometalinter_options = '--aggregate --disable-all --enable=gas --enable=golint --enable=vet --fast --sort=line -t --vendor --vendored-linters'
+let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
 "}}}
 
 " Highlight Pmenu"{{{
