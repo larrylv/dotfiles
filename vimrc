@@ -56,6 +56,7 @@ Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'lifepillar/vim-solarized8',           { 'commit': 'fe944794264d83d14fea120c70f9ed549bf7912e' }
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump'
@@ -697,12 +698,32 @@ let g:UltiSnipsUsePythonVersion = 2
 " fzf.vim{{{
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 silent! nnoremap <unique> <silent> <leader>f :FZF<CR>
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>AG :Ag <C-R><C-A><CR>
+xnoremap <silent> <Leader>ag y:Ag <C-R>"<CR>"
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-d': 'split',
   \ 'ctrl-e': 'split',
   \ 'ctrl-v': 'vsplit' }
+if &columns >= 160
+  let s:horiz_preview_layout = 'right:50%'
+else
+  let s:horiz_preview_layout = 'right:50%:hidden'
+endif
+let s:ag_opts = {"options": ["-d:", "-n4"]}
+" command! -bang -nargs=* Ag
+"   \ call fzf#vim#ag(<q-args>,
+"   \                 <bang>0 ? fzf#vim#with_preview(s:ag_opts, 'down:60%')
+"   \                         : fzf#vim#with_preview(s:ag_opts, s:horiz_preview_layout, '?'),
+"   \                 <bang>0)
+command! -bang -nargs=* Ag
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview(s:ag_opts, 'down:50%')
+  \           : fzf#vim#with_preview(s:ag_opts, s:horiz_preview_layout, '?'),
+  \   <bang>0)
 "}}}
 
 " ctrlp.vim"{{{
@@ -788,11 +809,11 @@ endfunction
 "}}}
 
 " ack.vim"{{{
-" ,a to Ack (search in files)
+" ,aa to Ack (search in files)
 let g:ack_use_dispatch=0
 let g:ackhighlight=1
 cnoreabbrev Ack Ack!
-nnoremap <leader>a :Ack!<Space>
+nnoremap <leader>aa :Ack!<Space>
 if executable("rg")
   let g:ackprg="rg --vimgrep --sort-files"
 elseif executable("ag")
