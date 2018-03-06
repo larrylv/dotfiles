@@ -698,9 +698,10 @@ let g:UltiSnipsUsePythonVersion = 2
 " fzf.vim{{{
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 silent! nnoremap <unique> <silent> <leader>f :FZF<CR>
+nnoremap <Leader>aa :Ag<Space>
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
-nnoremap <silent> <Leader>AG :Ag <C-R><C-A><CR>
 xnoremap <silent> <Leader>ag y:Ag <C-R>"<CR>"
+nnoremap <silent> <Leader>AG :Ag <C-R><C-A><CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
@@ -809,11 +810,10 @@ endfunction
 "}}}
 
 " ack.vim"{{{
-" ,aa to Ack (search in files)
 let g:ack_use_dispatch=0
 let g:ackhighlight=1
 cnoreabbrev Ack Ack!
-nnoremap <leader>aa :Ack!<Space>
+" nnoremap <leader>aa :Ack!<Space>
 if executable("rg")
   let g:ackprg="rg --vimgrep --sort-files"
 elseif executable("ag")
