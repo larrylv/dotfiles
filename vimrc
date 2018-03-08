@@ -813,7 +813,7 @@ endfunction
 let g:ack_use_dispatch=0
 let g:ackhighlight=1
 cnoreabbrev Ack Ack!
-" nnoremap <leader>aa :Ack!<Space>
+nnoremap <leader>ac :Ack!<Space>
 if executable("rg")
   let g:ackprg="rg --vimgrep --sort-files"
 elseif executable("ag")
