@@ -279,15 +279,15 @@ function! SetupMapForVimGo()
 
   nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
   " nmap <leader>gb  <Plug>(go-build)
-  nmap <Leader>gi <Plug>(go-info)
+  nmap <leader>gi <Plug>(go-info)
   nmap <leader>gr <Plug>(go-run)
   nmap <leader>gt <Plug>(go-test)
 
   nmap <leader>gs :<C-u>GoSameIds<CR>
   nmap <leader>gc :<C-u>GoSameIdsClear<CR>
 
-  nmap <Leader>gd :<C-u>GoDeclsDir<CR>
-  nmap <Leader>gl :<C-u>GoDecls<CR>
+  nmap <leader>gd :<C-u>GoDeclsDir<CR>
+  nmap <leader>gl :<C-u>GoDecls<CR>
 endfunction
 
 autocmd FileType go call SetupMapForVimGo()
@@ -309,7 +309,7 @@ function! CloseAllBuffersButCurrent()
   if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
   if curr < last | silent! execute (curr+1).",".last."bd" | endif
 endfunction
-nmap <Leader>q :call CloseAllBuffersButCurrent()<CR>
+nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
 
 " CtrlP
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParenthesesActivate<cr>
@@ -698,10 +698,10 @@ let g:UltiSnipsUsePythonVersion = 2
 " fzf.vim{{{
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 silent! nnoremap <unique> <silent> <leader>f :FZF<CR>
-nnoremap <Leader>aa :Ag<Space>
-nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
-xnoremap <silent> <Leader>ag y:Ag <C-R>"<CR>"
-nnoremap <silent> <Leader>AG :Ag <C-R><C-A><CR>
+nnoremap <leader>aa :Ag<Space>
+nnoremap <silent> <leader>ag :Ag <C-R><C-W><CR>
+xnoremap <silent> <leader>ag y:Ag <C-R>"<CR>"
+nnoremap <silent> <leader>AG :Ag <C-R><C-A><CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
