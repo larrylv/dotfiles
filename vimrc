@@ -88,6 +88,7 @@ Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
 Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-textobj-user'
@@ -857,7 +858,7 @@ let g:lightline = {
       \     ['ctrlpmark'],
       \   ],
       \   'right': [
-      \     [ 'ale', 'lineinfo' ],
+      \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'lineinfo' ],
       \     ['winnr'],
       \     [ 'filetype' ],
       \   ]
@@ -882,10 +883,14 @@ let g:lightline = {
       \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ 'component_expand': {
-      \   'ale': 'ALEGetStatusLine',
+      \   'linter_checking': 'lightline#ale#checking',
+      \   'linter_warnings': 'lightline#ale#warnings',
+      \   'linter_errors': 'lightline#ale#errors',
       \ },
       \ 'component_type': {
-      \   'ale': 'error',
+      \   'linter_checking': 'left',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error',
       \ },
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
