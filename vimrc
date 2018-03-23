@@ -624,7 +624,7 @@ map <leader>vn :VroomRunNearestTest<CR>
 " Prompt for a command to run map
 map <leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-map <leader>vl :VroomRunLastTest<CR>
+map <leader>vl :VimuxCloseRunner<CR>:VroomRunLastTest<CR>
 " Inspect runner pane map
 map <leader>vi :VimuxInspectRunner<CR>
 " Close vim tmux runner opened by VimuxRunCommand
