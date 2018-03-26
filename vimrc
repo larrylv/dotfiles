@@ -618,9 +618,9 @@ let g:vroom_use_vimux=1
 let g:vroom_map_keys=0
 
 " Run the current file with vroom
-map <leader>vs :VroomRunTestFile<CR>
+map <leader>vs :VimuxCloseRunner<CR>:VroomRunTestFile<CR>
 " Runs the nearest test in the current file
-map <leader>vn :VroomRunNearestTest<CR>
+map <leader>vn :VimuxCloseRunner<CR>:VroomRunNearestTest<CR>
 " Prompt for a command to run map
 map <leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
