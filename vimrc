@@ -55,6 +55,7 @@ Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'lifepillar/vim-solarized8',           { 'commit': 'fe944794264d83d14fea120c70f9ed549bf7912e' }
+Plug 'tpope/vim-dispatch',                  { 'commit': '1fe6e005d1e521439354478b26d0b76debc8c973'}
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'kshenoy/vim-signature'
@@ -71,7 +72,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rbenv'
