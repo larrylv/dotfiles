@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # vim:ft=sh:
 
 # alias
