@@ -716,7 +716,7 @@ if &columns >= 160
 else
   let s:horiz_preview_layout = 'right:50%:hidden'
 endif
-let s:ag_opts = {"options": ["-d:", "-n4"]}
+let s:ag_opts = {"options": ["-d:"]}
 " command! -bang -nargs=* Ag
 "   \ call fzf#vim#ag(<q-args>,
 "   \                 <bang>0 ? fzf#vim#with_preview(s:ag_opts, 'down:60%')
