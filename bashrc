@@ -34,6 +34,10 @@ ag() {
   fi
 }
 
+if which rg > /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+fi
+
 set -o emacs
 
 # bash-sensible (https://github.com/mrzool/bash-sensible/blob/master/sensible.bash)
