@@ -54,7 +54,7 @@ Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
-Plug 'lifepillar/vim-solarized8',           { 'commit': 'fe944794264d83d14fea120c70f9ed549bf7912e' }
+Plug 'lifepillar/vim-solarized8'
 Plug 'tpope/vim-dispatch',                  { 'commit': '1fe6e005d1e521439354478b26d0b76debc8c973'}
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -130,8 +130,9 @@ set t_Co=256
 syntax on
 
 " lifepillar/vim-solarized8
+let g:solarized_use16 = 1
 set background=dark
-colorscheme solarized8_dark_flat
+colorscheme solarized8_flat
 " dirty patch
 hi! CursorLine cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=237 guibg=#3c3d3a
 " }}}
@@ -153,6 +154,7 @@ endif
 set expandtab                              " Expand tabs to spaces
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,chinese
+set fillchars+=vert:\                      " Styling vertical split borders
 set foldcolumn=0                           " Column to show folds
 set foldenable                             " Enable folding
 " set foldlevel=0                            " Close all folds by default
