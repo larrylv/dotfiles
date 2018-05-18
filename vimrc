@@ -316,7 +316,6 @@ function! CloseAllBuffersButCurrent()
 endfunction
 nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
 
-" CtrlP
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParenthesesActivate<cr>
 map <leader>ss :source ./Session.vim<cr>
 
@@ -713,6 +712,21 @@ let g:fzf_action = {
   \ 'ctrl-d': 'split',
   \ 'ctrl-e': 'split',
   \ 'ctrl-v': 'vsplit' }
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Statement'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 if &columns >= 160
   let s:horiz_preview_layout = 'right:50%'
 else
