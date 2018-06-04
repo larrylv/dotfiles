@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ -f /etc/profile ] && [ "$(uname)" == "Darwin" ]; then
   PATH=""
   source /etc/profile
