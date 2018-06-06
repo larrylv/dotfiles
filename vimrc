@@ -388,6 +388,9 @@ augroup general_config
   nnoremap Y y$
   " }}}
 
+  " Close all buffers but this one
+  command! BufOnly silent! execute "%bd|e#|bd#"
+
   " Show git diff in tab"{{{
   command! GdiffInTab tabedit %|vsplit|Gdiff
   "}}}
