@@ -348,7 +348,7 @@ map <leader>w <C-W><C-W>
 " system yank: will copy into the system clipboard on OS X
 vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
 
-map <leader>z :CtrlPClearCache<cr>
+map <leader>z :BufOnly<cr>
 
 " format python code
 autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
