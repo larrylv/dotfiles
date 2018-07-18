@@ -18,6 +18,7 @@
     delete                   = !git ls-files -z --deleted | xargs -0 git rm
     df                       = diff
     diff                     = diff --ignore-space-change --color
+    done                     = "!f() { ([ `git rev-parse --abbrev-ref HEAD` == 'master' ] || git checkout master) && git branch -D @{-1}; }; f"
     ds                       = diff --staged
     dsf                      = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
     dt                       = difftool
