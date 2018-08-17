@@ -644,13 +644,6 @@ map <leader>vx :VimuxInterruptRunner<CR>
 if !exists("g:vroom_test_unit_command")
   let g:vroom_test_unit_command = 'ruby -Itest -I.'
 endif
-
-function! SetupVroomForPayServer()
-  let g:vroom_test_unit_command = 'pay test'
-  let g:vroom_use_bundle_exec = 0
-endfunction
-
-autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupVroomForPayServer()
 "}}}
 
 " bufexplorer"{{{
@@ -694,6 +687,16 @@ let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
 highlight Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
 highlight PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 highlight PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+"}}}
+
+" pay-server specific configs"{{{
+function! SetupConfigForPayServer()
+  let g:vroom_test_unit_command = 'pay test'
+  let g:vroom_use_bundle_exec = 0
+  let g:ale_ruby_rubocop_executable = 'scripts/bin/rubocop'
+endfunction
+
+autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupConfigForPayServer()
 "}}}
 
 " UltiSnips"{{{
