@@ -12,15 +12,12 @@ call plug#begin('~/.vim/bundle')
 
 " Code Complete Engine
 if !has('nvim')
-  Plug 'Valloric/YouCompleteMe' ", { 'do': './install.py --clang-completer' }
+  " Plug 'Valloric/YouCompleteMe' ", { 'do': './install.py --clang-completer' }
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 else
-  function! DoRemote(arg)
-    UpdateRemotePlugins
-  endfunction
-
-  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-
-  let g:deoplete#enable_at_startup = 1
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
 Plug 'vim-ruby/vim-ruby'
@@ -37,14 +34,20 @@ Plug 'tpope/vim-classpath',                 { 'for': 'clojure' }
 Plug 'tpope/vim-salve',                     { 'for': 'clojure' }
 Plug 'guns/vim-sexp',                       { 'for': 'clojure' }
 Plug 'vim-scripts/paredit.vim',             { 'for': 'clojure' }
+Plug 'clojure-vim/async-clj-omni',          { 'for': 'clojure' }
 Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
-Plug 'fatih/vim-go',                        { 'for': 'go' }
+Plug 'pbogut/deoplete-elm',                 { 'for': 'elm' }
+Plug 'fatih/vim-go',                        { 'for': 'go', 'do': 'make' }
+Plug 'zchee/deoplete-go',                   { 'for': 'go' }
+Plug 'mdempsky/gocode',                     { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
+Plug 'zchee/deoplete-jedi',                 { 'for': 'python' }
 Plug 'fisadev/vim-isort',                   { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
 Plug 'kchmck/vim-coffee-script',            { 'for': ['javascript', 'coffee', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx',                         { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'wokalski/autocomplete-flow',          { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/html5.vim',                    { 'for': ['html', 'eruby'] }
 Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
 Plug 'hail2u/vim-css3-syntax',              { 'for': ['css', 'sass', 'scss'] }
@@ -271,7 +274,6 @@ map <leader>gu :GitGutterUndoHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
 
 " vim-go
-
 function! SetupMapForVimGo()
   " run :GoBuild or :GoTestCompile based on the go file
   function! s:build_go_files()
@@ -703,7 +705,7 @@ autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupConfigForPayServer()
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsUsePythonVersion = 3
 "}}}
 
 " fzf.vim{{{
@@ -1050,20 +1052,26 @@ let g:startify_bookmarks = [
 let g:startify_change_to_dir = 0
 "}}}
 
+" deoplete.nvim"{{{
+let g:deoplete#enable_at_startup = 1
+" let g:deoplete#keyword_patterns = {}
+" let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+"}}}
+
 " YouCompleteMe"{{{
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_semantic_triggers =  {
-	\   'c' : ['->', '.', 're!\w{2}'],
-	\   'cpp' : ['->', '.', '::', 're!\w{2}'],
-	\   'java,javascript,typescript,python,scala,elixir,go' : ['.', 're!\w{2}'],
-	\   'ruby' : ['.', '::', 're!\w{2}'],
-	\   'lua' : ['.', ':', 're!\w{2}'],
-	\   'erlang' : [':', 're!\w{2}'],
-	\ }
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_min_num_identifier_candidate_chars = 2
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" let g:ycm_semantic_triggers =  {
+" 	\   'c' : ['->', '.', 're!\w{2}'],
+" 	\   'cpp' : ['->', '.', '::', 're!\w{2}'],
+" 	\   'java,javascript,typescript,python,scala,elixir,go' : ['.', 're!\w{2}'],
+" 	\   'ruby' : ['.', '::', 're!\w{2}'],
+" 	\   'lua' : ['.', ':', 're!\w{2}'],
+" 	\   'erlang' : [':', 're!\w{2}'],
+" 	\ }
 "}}}
 
 " elm-vim"{{{
