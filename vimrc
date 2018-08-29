@@ -378,7 +378,8 @@ augroup general_config
   " }}}
 
   " Remap keys for auto-completion menu {{{
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <expr><tab>  pumvisible() ? "\<C-n>" : "\<tab>"
+  inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
   " }}}
 
   " Paste toggle (<F3>) {{{
