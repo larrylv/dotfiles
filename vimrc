@@ -236,6 +236,9 @@ endif
 " Leader Shortcuts"{{{
 nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+nnoremap <leader>bp orequire 'pry'; binding.pry<C-c>:w<CR>
+
 map <leader>cc :ccl<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
@@ -308,7 +311,7 @@ nmap <silent> <leader>ln <Plug>(ale_next_wrap)
 nmap <leader>kj :SplitjoinJoin<cr>
 nmap <leader>ks :SplitjoinSplit<cr>
 
-map <leader>p :echo @%<cr>
+nnoremap <leader>p :echo @%<cr>
 
 function! CloseAllBuffersButCurrent()
   let curr = bufnr("%")
