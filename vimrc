@@ -628,13 +628,13 @@ let g:vroom_use_vimux=1
 let g:vroom_map_keys=0
 
 " Run the current file with vroom
-map <leader>vs :VimuxCloseRunner<CR>:VroomRunTestFile<CR>
+map <leader>vs :VroomRunTestFile<CR>
 " Runs the nearest test in the current file
-map <leader>vn :VimuxCloseRunner<CR>:VroomRunNearestTest<CR>
+map <leader>vn :VroomRunNearestTest<CR>
 " Prompt for a command to run map
 map <leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-map <leader>vl :VimuxCloseRunner<CR>:VroomRunLastTest<CR>
+map <leader>vl :VroomRunLastTest<CR>
 " Inspect runner pane map
 map <leader>vi :VimuxInspectRunner<CR>
 " Close vim tmux runner opened by VimuxRunCommand
