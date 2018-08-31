@@ -325,9 +325,6 @@ nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParenthesesActivate<cr>
 map <leader>ss :source ./Session.vim<cr>
 
-map  <leader>sj :stjump 
-map  <leader>st :stselect 
-
 " vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap <leader>ta <Plug>(EasyAlign)
@@ -341,9 +338,6 @@ nmap <leader>t= <Plug>(EasyAlign) =
 xmap <leader>t: <Plug>(EasyAlign) :
 vmap <leader>t: <Plug>(EasyAlign) :
 nmap <leader>t: <Plug>(EasyAlign) :
-
-map  <leader>tj :tjump 
-map  <leader>ts :tselect 
 
 map <leader>vr :tabe ~/.vimrc<CR>
 
@@ -719,6 +713,12 @@ nnoremap <leader>aa :Ag<Space>
 nnoremap <silent> <leader>ag :Ag <C-R><C-W><CR>
 xnoremap <silent> <leader>ag y:Ag <C-R>"<CR>"
 nnoremap <silent> <leader>AG :Ag <C-R><C-A><CR>
+silent! nnoremap <unique> <silent> <leader>bb :Buffers<CR>
+silent! nnoremap <unique> <silent> <leader>bl :BLines<CR>
+nnoremap <leader>tj :Tags 
+nnoremap <leader>tm :Marks<CR>
+nnoremap <leader>ts :Tags 
+
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
@@ -760,7 +760,6 @@ command! -bang -nargs=* Ag
 "}}}
 
 " ctrlp.vim"{{{
-silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
 silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
 silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<CR>
 silent! nnoremap <unique> <silent> <leader>d :CtrlP<CR>
