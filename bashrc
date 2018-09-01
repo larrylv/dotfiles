@@ -4,21 +4,23 @@
 alias af='git ls-files | ack --smart-case --no-column --noenv'
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
-[[ -f /usr/local/bin/ccat ]] && alias cat='ccat'
+[[ -f /usr/local/bin/bat ]] && alias cat='bat'
 alias grep='grep --color=auto'
 alias gtags='ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=target/ --exclude=node_modules/ --fields=+ialS --extras=+q .'
 alias jtags='find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '''/^$/d''' | LANG=C sort >| tags'
-alias rtags='ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n'
-alias ki='kiex'
 alias l='ls -CF'
 alias la='ls -A'
+alias lgit='GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -F /dev/null" git'
 alias ll='ls -alF'
 alias mcopy='reattach-to-user-namespace pbcopy'
 alias mpaste='reattach-to-user-namespace pbpaste'
-alias nvs='nvim -S Session.vim'
+alias ping='prettyping --nolegend'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+# add support for ctrl+o to open selected file in VS Code
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias pt='pstree'
 alias rb='rbenv'
-alias lgit='GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -F /dev/null" git'
+alias rtags='ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n'
 alias ssh='TERM=xterm ssh'
 alias tailf='tail -f'
 alias tigs='tig status'
@@ -190,7 +192,7 @@ GIT_PROMPT_STASH=" ${echo_bold_purple}#"
 GIT_PROMPT_NOSTASH=""
 
 function parse_git_dirty () {
-  if [[ $(git status 2> /dev/null | tail -n1 | cut -c 1-17) != "nothing to commit" ]]; then
+  if [[ $(/usr/local/bin/git status 2> /dev/null | tail -n1 | cut -c 1-17) != "nothing to commit" ]]; then
     echo -e "$GIT_PROMPT_DIRTY"
   else
     echo -e "$GIT_PROMPT_CLEAN"
@@ -198,7 +200,7 @@ function parse_git_dirty () {
 }
 
 function parse_git_stash() {
-  if [[ -n $(git stash list 2> /dev/null) ]]; then
+  if [[ -n $(/usr/local/bin/git stash list 2> /dev/null) ]]; then
     echo -e "$GIT_PROMPT_STASH"
   else
     echo -e "$GIT_PROMPT_NOSTASH"
@@ -206,12 +208,12 @@ function parse_git_stash() {
 }
 
 function git_branch_name() {
-  echo -e "${echo_bold_purple}$(git symbolic-ref HEAD 2> /dev/null | sed -e "s/refs\/heads\///")"
+  echo -e "${echo_bold_purple}$(/usr/local/bin/git symbolic-ref HEAD 2> /dev/null | sed -e "s/refs\/heads\///")"
 }
 
 function git_prompt_info() {
   # shellcheck disable=SC2155
-  local ref="$(command git symbolic-ref -q HEAD 2>/dev/null)"
+  local ref="$(/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null)"
   if [ -n "$ref" ]; then
     # shellcheck disable=SC2154
     echo -e " ${echo_bold_cyan}git:($(git_branch_name)${echo_bold_cyan})$(parse_git_dirty)$(parse_git_stash)"
