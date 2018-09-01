@@ -244,7 +244,7 @@ map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
 
 " Generate ctags
-nnoremap <leader>dc :Dispatch ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --fields=+ialS --extra=+q .<CR>
+nnoremap <leader>dc :Dispatch ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --fields=+ialS --extras=+q .<CR>
 " Strip tailing white spaces
 nnoremap <leader>dd :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " Generate ctags with jsctags, specifically for JavaScript
