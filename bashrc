@@ -17,8 +17,6 @@ alias mcopy='reattach-to-user-namespace pbcopy'
 alias mpaste='reattach-to-user-namespace pbpaste'
 alias ping='prettyping --nolegend'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
-# add support for ctrl+o to open selected file in VS Code
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias pt='pstree'
 alias rb='rbenv'
 alias rtags='ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n'
