@@ -362,6 +362,12 @@ vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
 "}}}
 
 " General"{{{
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+
 augroup general_config
   autocmd!
 
@@ -539,6 +545,11 @@ call gitgutter#highlight#define_highlights()
 
 let g:gitgutter_max_signs = 1024
 set signcolumn=yes
+"}}}
+
+" vim-fugitive"{{{
+call SetupCommandAlias("GBlame", "Gblame")
+call SetupCommandAlias("GBrowse", "Gbrowse")
 "}}}
 
 " vim-projectionist"{{{
