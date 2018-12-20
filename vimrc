@@ -106,6 +106,7 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -392,6 +393,10 @@ augroup general_config
   " Paste toggle (<F3>) {{{
   nnoremap <F3> :set invpaste paste?<CR>
   set pastetoggle=<F3>
+  " }}}
+
+  " Open selected text in https://carbon.now.sh {{{
+  vnoremap <F5> :CarbonNowSh<CR>
   " }}}
 
   " Yank from cursor to end of line {{{
