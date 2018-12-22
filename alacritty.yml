@@ -22,6 +22,9 @@ window:
     columns: 220
     lines: 64
 
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: false
+
   # Adds this many blank pixels of padding around the window
   # Units are physical pixels; this is not DPI aware.
   # (change requires restart)
@@ -30,10 +33,54 @@ window:
     y: 2
 
   # Window decorations
-  # Setting this to false will result in window without borders and title bar.
-  decorations: true
+  #
+  # Available values:
+  # - `full`: Window with title bar and title bar buttons
+  # - `none`: Window without title bar, rounded corners, or drop shadow
+  # - `transparent`: Window with title bar with transparent background and title
+  #   bar buttons
+  # - `buttonless`: Window with title bar with transparent background and no
+  #   title bar buttons
+  # Window decorations
+  #
+  # Values for `decorations`:
+  #     - full: Borders and title bar
+  #     - none: Neither borders nor title bar
+  #     - buttonless: Title bar, transparent background and title bar buttons
+  #     - transparent: Title bar, transparent background, but no title bar buttons
+  decorations: full
 
-# Display tabs using this many cells (changes require restart)
+  # When true, alacritty starts maximized.
+  start_maximized: false
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 3
+
+  # Faux Scrolling
+  #
+  # The `faux_multiplier` setting controls the number of lines the terminal
+  # should scroll when the alternate screen buffer is active. This is used
+  # to allow mouse scrolling for applications like `man`.
+  #
+  # Specifying `0` will disable faux scrolling.
+  faux_multiplier: 3
+
+  # Scroll to the bottom when new text is written to the terminal.
+  auto_scroll: false
+
+# Spaces per Tab (changes require restart)
+#
+# This setting defines the width of a tab in cells.
+#
+# Some applications, like Emacs, rely on knowing about the width of a tab.
+# To prevent unexpected behavior in these applications, it's also required to
+# change the `it` value in terminfo when altering this setting.
 tabspaces: 8
 
 # When true, bold text is drawn using the bright variant of colors.
@@ -83,15 +130,15 @@ font:
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
-    x: 0.0
-    y: 0.5
+    x: 0
+    y: 1
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increase the x offset to move the glyph to
   # the right, increase the y offset to move the glyph upward.
   glyph_offset:
-    x: 0.0
-    y: 2.5
+    x: 0
+    y: 2
 
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
   # for retina displays, but for non-retina you probably want this set to
@@ -100,10 +147,6 @@ font:
 
 # Should display the render timer
 render_timer: false
-
-# Use custom cursor colors. If true, display the cursor in the cursor.foreground
-# and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: true
 
 # Colors (Solarized Dark)
 colors:
@@ -192,28 +235,45 @@ mouse:
 
   # Faux Scrollback
   #
-  # The `faux_scrollback_lines` setting controls the number
+  # The `faux_scrolling_lines` setting controls the number
   # of lines the terminal should scroll when the alternate
   # screen buffer is active. This is used to allow mouse
   # scrolling for applications like `man`.
   #
   # To disable this completely, set `faux_scrollback_lines` to 0.
-  faux_scrollback_lines: 0
+  faux_scrolling_lines: 0
+
+  hide_when_typing: false
+
+  url:
+    # URL launcher
+    #
+    # This program is executed when clicking on a text which is recognized as a URL.
+    # The URL is always added to the command as the last parameter.
+    launcher: open
+
+    # URL modifiers
+    #
+    # These are the modifiers that need to be held down for opening URLs when clicking
+    # on them. The available modifiers are documented in the key binding section.
+    #modifiers: Control|Shift
+
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: true
 
 dynamic_title: true
 
-hide_cursor_when_typing: false
-
-# Style of the cursor
-#
-# Values for 'cursor_style':
-# - Block
-# - Underline
-# - Beam
-cursor_style: Block
+cursor:
+  # Cursor style
+  #
+  # Values for 'style':
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Block
 
 # Live config reload (changes require restart)
 live_config_reload: true
