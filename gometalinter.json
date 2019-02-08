@@ -1,6 +1,6 @@
 {
     "Aggregate": true,
-    "Enable": ["gas", "golint", "vet"],
+    "Enable": ["golint", "gosec", "structcheck", "vet"],
     "Sort": ["line"],
     "Test": true,
     "Vendor": true,
