@@ -312,6 +312,8 @@ endfunction
 
 autocmd FileType go call SetupMapForVimGo()
 
+let g:go_def_mode = 'gopls'
+
 " ALE
 nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
 nmap <silent> <leader>ln <Plug>(ale_next_wrap)
