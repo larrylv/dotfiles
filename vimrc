@@ -420,9 +420,10 @@ augroup general_config
   imap <c-c> <ESC>l
   "}}}
 
-  " Remap increase number (Ctrl-i)"{{{
+  " Remap increase number (Ctrl-p)"{{{
   " <c-a> is prefix for tmux
-  map <c-i> <c-a>
+  " I used to use <c-i>, but that's useful for jumps.
+  map <c-p> <c-a>
   "}}}
 
   " Quick move under insert mode (Ctrl-f, Ctrl-b)"{{{
