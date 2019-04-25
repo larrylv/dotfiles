@@ -356,7 +356,8 @@ map <leader>vr :tabe ~/.vimrc<CR>
 map <leader>w <C-W><C-W>
 
 " system yank: will copy into the system clipboard on OS X
-vmap <leader>y :w !reattach-to-user-namespace pbcopy<CR><CR>
+" vim has to be compiled with +clipboard to support this
+vmap <leader>y "*y
 
 map <leader>z :BufOnly<cr>
 
