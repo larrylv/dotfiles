@@ -209,6 +209,7 @@ set tags=./tags;
 set timeout timeoutlen=1000 ttimeoutlen=0  " No delay for entering normal mode
 if !has('nvim')
   set ttyfast                                " Send more characters at a given time
+  set ttyscroll=3
 endif
 set undodir=~/.vim/.undo
 set undofile                               " Persistent Undo
