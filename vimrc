@@ -324,7 +324,7 @@ nmap <silent> <leader>ln <Plug>(ale_next_wrap)
 nmap <leader>kj :SplitjoinJoin<cr>
 nmap <leader>ks :SplitjoinSplit<cr>
 
-nnoremap <leader>p :echo @%<cr>
+nnoremap <leader>p :let @* = expand("%")<cr>:echo @%<cr>
 
 function! CloseAllBuffersButCurrent()
   let curr = bufnr("%")
