@@ -40,7 +40,7 @@ Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
 Plug 'pbogut/deoplete-elm',                 { 'for': 'elm' }
 Plug 'fatih/vim-go',                        { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
 Plug 'mdempsky/gocode',                     { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
-Plug 'zchee/deoplete-go',                   { 'for': 'go' }
+Plug 'deoplete-plugins/deoplete-go',        { 'for': 'go', 'do': 'make' }
 Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
 Plug 'zchee/deoplete-jedi',                 { 'for': 'python' }
 Plug 'fisadev/vim-isort',                   { 'for': 'python' }
@@ -1087,8 +1087,6 @@ let g:startify_change_to_dir = 0
 
 " deoplete.nvim"{{{
 let g:deoplete#enable_at_startup = 1
-" let g:deoplete#keyword_patterns = {}
-" let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 "}}}
 
 " YouCompleteMe"{{{
