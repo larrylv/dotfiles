@@ -28,6 +28,7 @@ Plug 'vim-erlang/vim-erlang-compiler',      { 'for': 'erlang' }
 Plug 'vim-erlang/vim-erlang-omnicomplete',  { 'for': 'erlang' }
 Plug 'vim-erlang/vim-erlang-tags',          { 'for': 'erlang' }
 Plug 'ten0s/syntaxerl',                     { 'for': 'erlang' }
+Plug 'derekwyatt/vim-scala',                { 'for': 'scala' }
 Plug 'guns/vim-clojure-static',             { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace',                 { 'for': 'clojure' }
 Plug 'tpope/vim-classpath',                 { 'for': 'clojure' }
