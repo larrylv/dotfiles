@@ -487,6 +487,10 @@ augroup general_config
   " Disable auto comment insertion
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+  " :set indentkeys? - get full list of trigger keys.
+  " DO NOT INTENT FOR `.` !!!
+  autocmd FileType ruby setlocal indentkeys-=.
+
 augroup END
 "}}}
 
