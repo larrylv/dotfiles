@@ -106,6 +106,8 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ## goenv
+# See https://github.com/syndbg/goenv/issues/72
+export GOENV_DISABLE_GOPATH=1
 if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 export GOPATH=$HOME/code/gopath
 export GOROOT="$(goenv prefix)"
