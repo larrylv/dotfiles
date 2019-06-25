@@ -130,7 +130,7 @@ export PATH=$GOPATH/bin:$PATH
 shopt -s histappend
 export HISTSIZE=-1
 export HISTFILESIZE=-1
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth:erasedups
 ## Use standard ISO 8601 timestamp
 ## %F equivalent to %Y-%m-%d
 ## %T equivalent to %H:%M:%S (24-hours format)
