@@ -699,6 +699,7 @@ augroup AutoALE
 augroup END
 
 let g:ale_lint_on_text_changed = 'never' " lint only on save
+let g:ale_lint_on_insert_leave = 0 " don't lint when leaving insert mode
 let g:ale_lint_on_enter = 0 " don't lint on enter
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✗'
