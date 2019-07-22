@@ -734,6 +734,13 @@ endfunction
 autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupConfigForPayServer()
 "}}}
 
+" UltiSnips"{{{
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsUsePythonVersion = 3
+"}}}
+
 " fzf.vim{{{
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 silent! nnoremap <unique> <silent> <leader>f :FZF<CR>
