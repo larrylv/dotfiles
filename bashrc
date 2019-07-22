@@ -41,9 +41,10 @@ fi
 
 # alias rtags='ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n'
 rtags() {
-  [[ -f ./tags ]] && rm ./tags && echo 'rm ./tags'
   echo 'running ripper-tags'
-  find . \( -name 'build' -o -name 'log' -o -name 'migrations' -o -name 'node_modules' -o -name 'target' \) -prune -o -name '*.rb' -print0 | xargs -0 -P 6 -n 3000 ripper-tags -f - | LC_ALL=C sort -u --radixsort >> tags
+  find . \( -name 'build' -o -name 'log' -o -name 'migrations' -o -name 'node_modules' -o -name 'target' \) -prune -o -name '*.rb' -print0 | xargs -0 -P 6 -n 3000 ripper-tags -f - | LC_ALL=C sort -u --radixsort >> tmp_tags
+  [[ -f ./tags ]] && rm ./tags && echo 'rm ./tags'
+  mv tmp_tags tags
 }
 
 set -o emacs
