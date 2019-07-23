@@ -1095,7 +1095,7 @@ let g:startify_change_to_dir = 0
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({
     \ 'auto_complete_delay': 100,
-    \ 'max_list': 20,
+    \ 'max_list': 50,
     \ 'on_insert_enter': v:false,
     \ 'skip_chars': ['(', ')', '<', '>'],
     \ 'skip_multibyte': v:true,
