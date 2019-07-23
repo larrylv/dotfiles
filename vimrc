@@ -1092,6 +1092,16 @@ let g:startify_change_to_dir = 0
 
 " deoplete.nvim"{{{
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({
+    \ 'auto_complete_delay': 100,
+    \ 'max_list': 20,
+    \ 'on_insert_enter': v:false,
+    \ 'skip_chars': ['(', ')', '<', '>'],
+    \ 'skip_multibyte': v:true,
+    \ 'smart_case': v:true,
+    \ })
+autocmd FileType css,csv,html,json,tex,txt
+    \ call deoplete#custom#buffer_option('auto_complete', v:false)
 "}}}
 
 " YouCompleteMe"{{{
