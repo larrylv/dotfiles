@@ -12,10 +12,10 @@ call plug#begin('~/.vim/bundle')
 
 " Code Complete Engine
 if !has('nvim')
-  Plug 'Valloric/YouCompleteMe',   { 'for': ['ruby'], 'do': './install.py --clang-completer --go-completer' }
-  Plug 'Shougo/deoplete.nvim',     { 'for': ['elm', 'go', 'python'] }
-  Plug 'roxma/nvim-yarp',          { 'for': ['elm', 'go', 'python'] }
-  Plug 'roxma/vim-hug-neovim-rpc', { 'for': ['elm', 'go', 'python'] }
+  " Plug 'Valloric/YouCompleteMe',   { 'for': ['ruby'], 'do': './install.py --clang-completer --go-completer' }
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 else
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
@@ -1095,19 +1095,19 @@ let g:deoplete#enable_at_startup = 1
 "}}}
 
 " YouCompleteMe"{{{
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_semantic_triggers =  {
-	\   'c' : ['->', '.', 're!\w{2}'],
-	\   'cpp' : ['->', '.', '::', 're!\w{2}'],
-	\   'java,javascript,typescript,python,scala,elixir,go' : ['.', 're!\w{2}'],
-	\   'ruby' : ['.', '::', 're!\w{2}'],
-	\   'lua' : ['.', ':', 're!\w{2}'],
-	\   'erlang' : [':', 're!\w{2}'],
-	\ }
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_min_num_identifier_candidate_chars = 2
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" let g:ycm_semantic_triggers =  {
+" 	\   'c' : ['->', '.', 're!\w{2}'],
+" 	\   'cpp' : ['->', '.', '::', 're!\w{2}'],
+" 	\   'java,javascript,typescript,python,scala,elixir,go' : ['.', 're!\w{2}'],
+" 	\   'ruby' : ['.', '::', 're!\w{2}'],
+" 	\   'lua' : ['.', ':', 're!\w{2}'],
+" 	\   'erlang' : [':', 're!\w{2}'],
+" 	\ }
 "}}}
 
 " elm-vim"{{{
