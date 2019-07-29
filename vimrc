@@ -206,6 +206,7 @@ set smarttab                               " At start of line, <Tab> inserts shi
 set softtabstop=2                          " Tab key results in 2 spaces
 set splitbelow                             " New window goes below
 set splitright                             " New windows goes right
+set synmaxcol=256                          " Syntax coloring lines that are too long just slows down the world
 set tabstop=2
 set tags=./tags;
 set timeout timeoutlen=1000 ttimeoutlen=0  " No delay for entering normal mode
