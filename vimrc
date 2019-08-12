@@ -58,6 +58,7 @@ Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
+Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
 Plug 'lifepillar/vim-solarized8',           { 'commit': 'b9731eed54c9ed9520d19c08b582f8e8f8355576'}
 Plug 'tpope/vim-dispatch',                  { 'commit': '1fe6e005d1e521439354478b26d0b76debc8c973'}
 Plug 'junegunn/fzf'
@@ -336,6 +337,9 @@ function! CloseAllBuffersButCurrent()
   if curr < last | silent! execute (curr+1).",".last."bd" | endif
 endfunction
 nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
+
+" fzf-copy-ruby-token
+nmap <leader>ry <Plug>(fzf_copy_ruby_token)
 
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParenthesesActivate<cr>
 map <leader>ss :source ./Session.vim<cr>
