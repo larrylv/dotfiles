@@ -182,6 +182,8 @@ set formatoptions+=q                       " Format comments with gq
 set history=1000                           " Increase history from 20 default to 1000
 set hlsearch                               " Highlight searches
 set incsearch                              " Highlight dynamically as pattern is typed
+" :set indentkeys? - get full list of trigger keys.
+set indentkeys=                            " DO NOT INTENT FOR ANY CHARACTERS
 set laststatus=2                           " Always show status line
 set lazyredraw                             " Don't redraw when we don't have to
 set magic                                  " Enable extended regexes
@@ -492,10 +494,6 @@ augroup general_config
 
   " Disable auto comment insertion
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-  " :set indentkeys? - get full list of trigger keys.
-  " DO NOT INTENT FOR `.` !!!
-  autocmd FileType ruby setlocal indentkeys-=.
 
 augroup END
 "}}}
