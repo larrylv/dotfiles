@@ -247,7 +247,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 nnoremap <leader>bp orequire 'pry'; binding.pry<C-c>:w<CR>
 
-map <leader>cc :ccl<cr>
+map <leader>cc :ccl <bar> lcl<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
 
@@ -328,6 +328,11 @@ nmap <silent> <leader>ln <Plug>(ale_next_wrap)
 " splitjoin.vim
 nmap <leader>kj :SplitjoinJoin<cr>
 nmap <leader>ks :SplitjoinSplit<cr>
+
+" Delete all upcase marks
+nmap mx :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
+" Only show marks I care about
+nmap ms :marks abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
 
 nnoremap <leader>p :let @* = expand("%")<cr>:echo @%<cr>
 
