@@ -151,7 +151,7 @@ set autoread                               " Reload files changed outside automa
 set backspace=indent,eol,start             " Allow backspacing over everything in insert mode
 set cindent
 set complete=.,w,b,u,t,i
-set completeopt=longest,menu
+set completeopt=noselect,menuone,preview
 " set cursorcolumn                           " Highlight current column
 " set cursorline                             " Highlight current line
 set diffopt+=iwhite                        " Ignore whitespaces with vimdiff
