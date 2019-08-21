@@ -106,6 +106,7 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'mhinz/vim-startify'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
@@ -344,6 +345,8 @@ function! CloseAllBuffersButCurrent()
 endfunction
 nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
 
+" Toggle RainbowParentheses
+nmap <leader>rp :RainbowParentheses!!<CR>
 " fzf-copy-ruby-token
 nmap <leader>ry <Plug>(fzf_copy_ruby_token)
 
@@ -835,6 +838,15 @@ let g:ctrlp_user_command = {
   \ 'fallback': 'find %s -type f'
   \ }
 " let g:ctrlp_tjump_only_silent = 1
+"}}}
+
+" rainbow_parentheses.vim"{{{
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+augroup rainbow_activation
+  autocmd!
+  autocmd FileType clojure,json,lisp,ruby,scheme,yaml RainbowParentheses
+augroup END
 "}}}
 
 " nerdtree"{{{
