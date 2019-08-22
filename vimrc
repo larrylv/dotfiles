@@ -110,6 +110,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'tyru/open-browser.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -1157,3 +1158,8 @@ let g:go_list_type = "quickfix"
 " vim-rhubarb{{{
 let g:github_enterprise_urls = ['https://git.corp.stripe.com']
 "}}}
+
+" tyru/open-browser.vim
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-open)
+vmap gx <Plug>(openbrowser-open)
