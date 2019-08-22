@@ -502,6 +502,12 @@ augroup general_config
   " Disable auto comment insertion
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+  augroup HiglightTODO
+    autocmd!
+    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
+    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'FIXME', -1)
+  augroup END
+
 augroup END
 "}}}
 
