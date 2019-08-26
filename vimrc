@@ -1163,3 +1163,32 @@ let g:github_enterprise_urls = ['https://git.corp.stripe.com']
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
+
+" starsearch.vim
+" https://www.vim.org/scripts/script.php?script_id=4335
+function! s:VStarsearch_searchCWord()
+  let wordStr = expand("<cword>")
+  if strlen(wordStr) == 0
+    echohl ErrorMsg
+    echo 'E348: No string under cursor'
+    echohl NONE
+    return
+  endif
+
+  if wordStr[0] =~ '\<'
+    let @/ = '\<' . wordStr . '\>'
+  else
+    let @/ = wordStr
+  endif
+
+  let savedUnnamed = @"
+  let savedS = @s
+  normal! "syiw
+  if wordStr != @s
+    normal! w
+  endif
+  let @s = savedS
+  let @" = savedUnnamed
+endfunction
+
+nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<CR>:set hls<CR>
