@@ -141,7 +141,7 @@ syntax on
 let g:solarized_use16 = 1
 set background=dark
 colorscheme solarized8_flat
-" dirty patch
+" dirty patch for CursorLine
 hi! CursorLine cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=237 guibg=#3c3d3a
 " }}}
 
@@ -493,6 +493,9 @@ augroup general_config
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   let g:omni_sql_no_default_maps = 1
   "}}}
+
+  " dirty patch for hiding markdown error highlighting
+  autocmd FileType markdown,mkd syn match markdownError "\w\@<=\w\@="
 
   " Only use cursorline in current window and not when being in insert mode
   autocmd WinEnter    * set cursorline
