@@ -737,9 +737,9 @@ let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
 "}}}
 
 " Highlight Pmenu"{{{
-highlight Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-highlight PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-highlight PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+highlight Pmenu ctermfg=lightgray ctermbg=black cterm=NONE
+highlight PmenuSbar ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+highlight PmenuThumb ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 "}}}
 
 " pay-server specific configs"{{{
