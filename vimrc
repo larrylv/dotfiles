@@ -496,6 +496,8 @@ augroup general_config
 
   " dirty patch for hiding markdown error highlighting
   autocmd FileType markdown,mkd syn match markdownError "\w\@<=\w\@="
+  " don't cindent for markdown files
+  autocmd FileType markdown,mkd setlocal nocindent
 
   " Only use cursorline in current window and not when being in insert mode
   autocmd WinEnter    * set cursorline
