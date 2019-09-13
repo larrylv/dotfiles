@@ -736,6 +736,7 @@ let g:ale_linters = {
       \   'go': ['gometalinter'],
       \   'html': ['htmlhint'],
       \   'javascript': ['eslint'],
+      \   'yaml': [],
       \}
 let g:ale_go_gometalinter_options = '--aggregate --disable-all --enable=gosec --enable=golint --enable=structcheck --enable=vet --sort=line -t --vendor --vendored-linters'
 let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
