@@ -13,7 +13,7 @@ call plug#begin('~/.vim/bundle')
 " Code Complete Engine
 if !has('nvim')
   " Plug 'Valloric/YouCompleteMe',   { 'for': ['ruby'], 'do': './install.py --clang-completer --go-completer' }
-  Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete.nvim', { 'commit': '98566131d5f574ee2896138bdda08afa68bda416' }
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 else
@@ -59,7 +59,7 @@ Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'tpope/vim-markdown',                  { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
-Plug 'tpope/vim-dispatch',                  { 'commit': '1fe6e005d1e521439354478b26d0b76debc8c973'}
+Plug 'tpope/vim-dispatch',                  { 'commit': '1fe6e005d1e521439354478b26d0b76debc8c973' }
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
