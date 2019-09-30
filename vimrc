@@ -247,7 +247,16 @@ endif
 nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
-nnoremap <leader>bp orequire 'pry'; binding.pry<C-c>:w<CR>
+function! FlipBindingPry()
+  if getline('.') =~? '^.*binding\.pry.*$'
+    normal dd
+  else
+    normal orequire 'pry'; binding.pry
+  endif
+  write
+endfunction
+
+nnoremap <leader>bp :call FlipBindingPry()<CR>
 
 map <leader>cc :ccl <bar> lcl<cr>
 map <leader>cn :cn<cr>
