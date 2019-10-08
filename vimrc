@@ -20,7 +20,7 @@ else
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
-Plug 'vim-ruby/vim-ruby'
+" Plug 'vim-ruby/vim-ruby'
 Plug 'elixir-lang/vim-elixir',              { 'for': ['elixir', 'eelixir'] }
 Plug 'slashmili/alchemist.vim',             { 'for': ['elixir', 'eelixir'] }
 Plug 'vim-erlang/vim-erlang-runtime',       { 'for': 'erlang' }
