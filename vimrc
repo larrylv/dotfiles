@@ -1080,6 +1080,8 @@ call lightline#update()
 " delimitMate"{{{
 " remove ` and * from the quotes
 let delimitMate_quotes = "\" '"
+" remove <> from match pairs
+let delimitMate_matchpairs = "(:),[:],{:}"
 imap <silent> <BS> <C-R>=YcmOnDeleteChar()<CR><Plug>delimitMateBS
 
 function! YcmOnDeleteChar()
