@@ -39,7 +39,7 @@
     prev                     = checkout @^
     ps                       = push
     pushall                  = push --recurse-submodules=on-demand
-    rbs                      = !sh -c 'git co $1 && git pull && git co @{-1} && git rebase -i $1' -
+    rbm                      = !sh -c 'git fetch origin && git rebase -i origin/master' -
     sb                       = show-branch
     show-next                = !git show `git rev-list HEAD..master | tail -1`
     show-prev                = !git show @^
