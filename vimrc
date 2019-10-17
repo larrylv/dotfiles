@@ -499,7 +499,7 @@ augroup general_config
   augroup END
   "}}}
 
-  autocmd FileType ruby,eruby setlocal indentkeys=0{,0},0),0],!^F,o,O,e,==begin,==end,=private,=protected,=public
+  autocmd FileType ruby,eruby setlocal indentkeys=0{,0},0),0],!^F,o,O,e,=end,=else,=elsif,=when,=ensure,=rescue,==begin,==end,=private,=protected,=public
 
   " Set local omnifunc"{{{
   autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
