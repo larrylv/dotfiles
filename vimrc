@@ -362,6 +362,8 @@ nmap <leader>rp :RainbowParentheses!!<CR>
 nmap <leader>ry <Plug>(fzf_copy_ruby_token)
 
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParenthesesActivate<cr>
+map <leader>sl :set synmaxcol=200<cr>:e<cr>
+map <leader>sh :set synmaxcol=1000<cr>:e<cr>
 map <leader>ss :source ./Session.vim<cr>
 
 " vim-easy-align
