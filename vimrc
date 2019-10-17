@@ -38,7 +38,8 @@ Plug 'vim-scripts/paredit.vim',             { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni',          { 'for': 'clojure' }
 Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
 Plug 'pbogut/deoplete-elm',                 { 'for': 'elm' }
-Plug 'fatih/vim-go',                        { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go',                        { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go'
 Plug 'mdempsky/gocode',                     { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'deoplete-plugins/deoplete-go',        { 'for': 'go', 'do': 'make' }
 Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
