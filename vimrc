@@ -140,6 +140,7 @@ syntax on
 
 " lifepillar/vim-solarized8
 let g:solarized_use16 = 1
+let g:solarized_visibility = "high"
 set background=dark
 colorscheme solarized8_flat
 " dirty patch for CursorLine
