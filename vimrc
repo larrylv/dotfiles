@@ -769,7 +769,7 @@ highlight PmenuThumb ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 function! SetupConfigForPayServer()
   let g:vroom_test_unit_command = 'pay test'
   let g:vroom_use_bundle_exec = 0
-  let g:ale_ruby_rubocop_executable = 'scripts/bin/rubocop'
+  let g:ale_ruby_rubocop_executable = 'scripts/bin/rubocop.rb'
 endfunction
 
 autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupConfigForPayServer()
