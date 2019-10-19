@@ -1217,3 +1217,6 @@ function! s:VStarsearch_searchCWord()
 endfunction
 
 nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<CR>:set hls<CR>
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
