@@ -146,6 +146,7 @@ set background=dark
 colorscheme solarized8_flat
 " dirty patch for CursorLine
 hi! CursorLine cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=237 guibg=#3c3d3a
+hi! CursorLineNr cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=NONE guibg=NONE
 " }}}
 
 " Set some junk"{{{
