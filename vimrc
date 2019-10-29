@@ -395,6 +395,9 @@ vmap <leader>y "*y
 
 map <leader>z :BufOnly<cr>
 
+" No Ex mode
+map Q <Nop>
+
 " format python code
 autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
 
