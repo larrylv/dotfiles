@@ -222,11 +222,6 @@ set timeout timeoutlen=1000 ttimeoutlen=0  " No delay for entering normal mode
 if !has('nvim')
   set ttyfast                                " Send more characters at a given time
   set ttyscroll=3
-  " set this to the name of your terminal that supports mouse codes.
-  " must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
-  " don't set this if we are using Neovim
-  set mouse=a
-  set ttymouse=xterm2
 endif
 set undodir=~/.vim/.undo
 set undofile                               " Persistent Undo
@@ -905,7 +900,6 @@ function! NERDTreeToggleInCurDir()
     exe ":NERDTreeFind"
   endif
 endfunction
-let g:NERDTreeMouseMode=3
 "}}}
 
 " ack.vim"{{{
