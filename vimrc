@@ -344,6 +344,11 @@ nmap <silent> <leader>ln <Plug>(ale_next_wrap)
 nmap <leader>kj :SplitjoinJoin<cr>
 nmap <leader>ks :SplitjoinSplit<cr>
 
+" increase window size
+map <leader>ni <C-W>>
+" decrease window size
+map <leader>nd <C-W><
+
 " Delete all upcase marks
 nmap mx :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
 " Only show marks I care about
