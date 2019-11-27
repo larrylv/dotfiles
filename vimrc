@@ -325,17 +325,20 @@ function! SetupMapForVimGo()
   nmap <leader>gr <Plug>(go-run)
   nmap <leader>gt <Plug>(go-test)
 
-  nmap <leader>gs :<C-u>GoSameIds<CR>
-  nmap <leader>gc :<C-u>GoSameIdsClear<CR>
+  nmap <leader>gc :<C-u>GoChannelPeers<CR>
 
-  nmap <leader>gd :<C-u>GoDeclsDir<CR>
-  nmap <leader>gl :<C-u>GoDecls<CR>
+  nmap <leader>gl :<C-u>GoReferrers<CR>
+
+  nmap <leader>tj :<C-u>GoDeclsDir<CR>
+  nmap <leader>ts :<C-u>GoDecls<CR>
+
+	" :GoDef but opens in a vertical split
+	nmap <Leader>gv <Plug>(go-def-vertical)
+	" :GoDef but opens in a horizontal split
+	nmap <Leader>gs <Plug>(go-def-split)
 endfunction
 
 autocmd FileType go call SetupMapForVimGo()
-
-let g:go_def_mode = 'gopls'
-let g:go_info_mode = 'gopls'
 
 " ALE
 nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
@@ -1188,6 +1191,10 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_list_type = "quickfix"
+
+let g:go_decls_mode = 'fzf'
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
 "}}}
 
 " vim-rhubarb{{{
