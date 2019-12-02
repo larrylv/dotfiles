@@ -13,7 +13,7 @@ call plug#begin('~/.vim/bundle')
 " Code Complete Engine
 if !has('nvim')
   " Plug 'Valloric/YouCompleteMe',   { 'for': ['ruby'], 'do': './install.py --clang-completer --go-completer' }
-  Plug 'Shougo/deoplete.nvim', { 'commit': '98566131d5f574ee2896138bdda08afa68bda416' }
+  Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 else
