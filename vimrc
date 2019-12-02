@@ -61,7 +61,7 @@ Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown',             { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
-Plug 'tpope/vim-dispatch',                  { 'commit': '1fe6e005d1e521439354478b26d0b76debc8c973' }
+Plug 'tpope/vim-dispatch'
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -609,6 +609,11 @@ let g:tagbar_type_elixir = {
         \ 'r:records',
     \ ]
 \ }
+"}}}
+
+" vim-dispatch{{{
+" disable m maps from vim-dispatch
+let g:dispatch_no_maps = 1
 "}}}
 
 " vim-gitgutter"{{{
