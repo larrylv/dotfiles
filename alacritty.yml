@@ -64,20 +64,11 @@ window:
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 0
+  history: 10000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
   multiplier: 3
-
-  # Faux Scrolling
-  #
-  # The `faux_multiplier` setting controls the number of lines the terminal
-  # should scroll when the alternate screen buffer is active. This is used
-  # to allow mouse scrolling for applications like `man`.
-  #
-  # Specifying `0` will disable faux scrolling.
-  faux_multiplier: 0
 
   # Scroll to the bottom when new text is written to the terminal.
   auto_scroll: false
@@ -240,16 +231,6 @@ mouse:
   # or triple click.
   double_click: { threshold: 500 }
   triple_click: { threshold: 0 }
-
-  # Faux Scrollback
-  #
-  # The `faux_scrolling_lines` setting controls the number
-  # of lines the terminal should scroll when the alternate
-  # screen buffer is active. This is used to allow mouse
-  # scrolling for applications like `man`.
-  #
-  # To disable this completely, set `faux_scrollback_lines` to 0.
-  faux_scrolling_lines: 0
 
   hide_when_typing: false
 
