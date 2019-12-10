@@ -353,9 +353,9 @@ map <leader>ni <C-W>>
 " decrease window size
 map <leader>nd <C-W><
 
-" Delete all upcase marks
+" Delete all upcase marks / bookmarks
 nmap mx :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
-" Only show marks I care about
+" Only show marks / bookmarks I care about
 nmap ms :marks abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
 
 nnoremap <leader>p :let @* = expand("%")<cr>:echo @%<cr>
@@ -810,6 +810,7 @@ nnoremap <silent> <leader>AG :Ag <C-R><C-A><CR>
 silent! nnoremap <unique> <silent> <leader>bb :Buffers<CR>
 silent! nnoremap <unique> <silent> <leader>bl :BLines<CR>
 nnoremap <leader>tj :Tags 
+" list bookmarks
 nnoremap <leader>tm :Marks<CR>
 nnoremap <leader>ts :Tags 
 
