@@ -274,16 +274,21 @@ nnoremap <leader>dd :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " Generate ctags with jsctags, specifically for JavaScript
 " nnoremap <leader>dj :Dispatch `find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed ''/^$/d'' \| LANG=C sort >\| tags`<CR>
 nnoremap <leader>dj :VimuxPromptCommand<CR>`find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed ''/^$/d'' \| LANG=C sort >\| tags`<CR>
-" Generate ctags with ripper-tags, specifically for Ruby
-" nnoremap <leader>dr :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
-" nnoremap <leader>dr :VimuxPromptCommand<CR>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
-" Generate ctags with custmized but faster ripper-tags function
-nnoremap <leader>dr :VimuxPromptCommand<CR>rtags<CR>
-" Generate ctags with ripper-tags, specifically for Ruby
-" nnoremap <leader>dt :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
-" nnoremap <leader>dt :VimuxPromptCommand<CR>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
-" Generate ctags with custmized but faster ripper-tags function
-nnoremap <leader>dt :VimuxPromptCommand<CR>rtags<CR>
+
+function! SetupMapForRipperTags()
+  " Generate ctags with ripper-tags, specifically for Ruby
+  " nnoremap <leader>dr :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
+  " nnoremap <leader>dr :VimuxPromptCommand<CR>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
+  " Generate ctags with custmized but faster ripper-tags function
+  nnoremap <leader>dr :VimuxPromptCommand<CR>rtags<CR>
+  " Generate ctags with ripper-tags, specifically for Ruby
+  " nnoremap <leader>dt :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
+  " nnoremap <leader>dt :VimuxPromptCommand<CR>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
+  " Generate ctags with custmized but faster ripper-tags function
+  nnoremap <leader>dt :VimuxPromptCommand<CR>rtags<CR>
+endfunction
+
+autocmd FileType ruby call SetupMapForRipperTags()
 
 " vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
@@ -336,6 +341,10 @@ function! SetupMapForVimGo()
 	nmap <Leader>gv <Plug>(go-def-vertical)
 	" :GoDef but opens in a horizontal split
 	nmap <Leader>gs <Plug>(go-def-split)
+  autocmd Filetype go
+    \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+    \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+    \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 endfunction
 
 autocmd FileType go call SetupMapForVimGo()
@@ -857,7 +866,7 @@ command! -bang -nargs=* Ag
 " ctrlp.vim"{{{
 silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
 silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<CR>
-silent! nnoremap <unique> <silent> <leader>d :CtrlP<CR>
+" silent! nnoremap <unique> <silent> <leader>d :CtrlP<CR>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_by_filename = 0
