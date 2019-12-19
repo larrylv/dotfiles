@@ -821,7 +821,6 @@ silent! nnoremap <unique> <silent> <leader>bl :BLines<CR>
 nnoremap <leader>tj :Tags 
 " list bookmarks
 nnoremap <leader>tm :Marks<CR>
-nnoremap <leader>ts :Tags 
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
