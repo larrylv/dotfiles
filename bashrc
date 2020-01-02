@@ -101,7 +101,7 @@ export CLICOLOR=1
 export EDITOR=vim
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt/python/bin:$PATH"
 
 ## rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
