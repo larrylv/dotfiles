@@ -960,6 +960,7 @@ autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *.es6 set filetype=javascript
 autocmd BufNewFile,BufRead *.go,*.c,*.cpp,*.rust,*.elm setlocal noexpandtab ts=4 sw=4 sts=4
 autocmd Filetype gitcommit setlocal textwidth=78
+autocmd Filetype markdown setlocal textwidth=80
 autocmd FileType elixir set foldmethod=syntax
 "}}}
 
