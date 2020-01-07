@@ -209,6 +209,7 @@ set ruler                                  " Show the cursor position
 set scrolloff=3                            " Start scrolling three lines before horizontal border of window
 set shiftwidth=2                           " The # of spaces for indenting
 set shortmess=atI                          " Don't show the intro message when starting vim
+set shortmess+=c                           " This prevents the display of "Pattern not found" & similar messages during completion.
 set showcmd                                " display incomplete commands
 set smartcase                              " Ignore 'ignorecase' if search patter contains uppercase characters
 set smarttab                               " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
