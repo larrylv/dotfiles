@@ -138,7 +138,8 @@ export HISTCONTROL=ignoreboth:erasedups
 export HISTTIMEFORMAT='%F %T '
 
 if ! echo "$PROMPT_COMMAND" | grep -q history; then
-  export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+  # https://unix.stackexchange.com/a/18443
+  export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 fi
 
 # source scripts -----------------------------------------------------------#{{{
