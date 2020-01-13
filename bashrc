@@ -135,7 +135,7 @@ export HISTCONTROL=ignoreboth:erasedups
 ## Use standard ISO 8601 timestamp
 ## %F equivalent to %Y-%m-%d
 ## %T equivalent to %H:%M:%S (24-hours format)
-export HISTTIMEFORMAT='%F %T '
+# export HISTTIMEFORMAT='%F %T '
 
 if ! echo "$PROMPT_COMMAND" | grep -q history; then
   # https://unix.stackexchange.com/a/18443
