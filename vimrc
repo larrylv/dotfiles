@@ -113,6 +113,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'tyru/open-browser.vim'
+Plug 'rodjek/vim-puppet'
 
 " Add plugins to &runtimepath
 call plug#end()
