@@ -31,7 +31,6 @@ pickle-email-*.html
 # Ruby .gitignore
 InstalledFiles
 lib/bundler/man
-pkg
 rdoc
 spec/reports
 test/tmp
