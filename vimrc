@@ -779,12 +779,11 @@ let g:ale_set_highlights = 0
 let g:ale_linters = {
       \   'coffee': [],
       \   'eruby': [],
-      \   'go': ['gometalinter'],
+      \   'go': ['golangci-lint'],
       \   'html': ['htmlhint'],
       \   'javascript': ['eslint'],
       \   'yaml': [],
       \}
-let g:ale_go_gometalinter_options = '--aggregate --disable-all --enable=golint --enable=goimports --enable=gosec --enable=ineffassign --enable=structcheck --enable=vet --sort=line -t --vendor --vendored-linters'
 let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
 "}}}
 
