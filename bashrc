@@ -36,7 +36,7 @@ ag() {
 }
 
 if which rg > /dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_COMMAND="rg --hidden --glob '!.git/*' --files"
 fi
 
 # alias rtags='ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n'
@@ -131,7 +131,7 @@ export PATH=$GOPATH/bin:$PATH
 shopt -s histappend
 export HISTSIZE=-1
 export HISTFILESIZE=-1
-export HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL=ignoredups:erasedups
 ## Use standard ISO 8601 timestamp
 ## %F equivalent to %Y-%m-%d
 ## %T equivalent to %H:%M:%S (24-hours format)
