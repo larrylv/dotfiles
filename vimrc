@@ -63,7 +63,6 @@ Plug 'plasticboy/vim-markdown',             { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
 Plug 'tpope/vim-dispatch'
-Plug 'Shougo/echodoc.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -94,6 +93,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'tomtom/tcomment_vim'
 Plug 'larrylv/vim-vroom'
+Plug 'larrylv/echodoc.vim'
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
 Plug 'mileszs/ack.vim'
