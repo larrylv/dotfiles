@@ -1209,8 +1209,10 @@ let g:go_highlight_types = 1
 let g:go_list_type = "quickfix"
 
 let g:go_decls_mode = 'fzf'
-let g:go_def_mode = 'gopls'
-let g:go_info_mode = 'gopls'
+let g:go_gopls_enabled = 0
+let g:go_def_mode = 'godef'
+let g:go_info_mode = 'guru'
+let g:go_referrers_mode = 'guru'
 
 function! s:go_guru_scope_from_git_root()
   let gitroot = system("git rev-parse --show-toplevel | tr -d '\n'")
