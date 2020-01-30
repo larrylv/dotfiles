@@ -40,7 +40,8 @@ Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
 Plug 'pbogut/deoplete-elm',                 { 'for': 'elm' }
 " Plug 'fatih/vim-go',                        { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
 Plug 'fatih/vim-go'
-Plug 'mdempsky/gocode',                     { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+" Plug 'mdempsky/gocode',                     { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+Plug 'visualfc/gocode',                     { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'deoplete-plugins/deoplete-go',        { 'for': 'go', 'do': 'make' }
 Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
 Plug 'zchee/deoplete-jedi',                 { 'for': 'python' }
@@ -1199,6 +1200,7 @@ let g:jedi#use_splits_not_buffers = "left"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
 let g:go_gocode_autobuild = 0
+let g:go_gocode_propose_source = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
