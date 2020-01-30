@@ -1199,6 +1199,7 @@ let g:jedi#use_splits_not_buffers = "left"
 
 "echodoc.vim
 let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = "echo"
 
 " vim-go{{{
 let g:go_fmt_command = "goimports"
