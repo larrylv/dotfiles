@@ -63,6 +63,7 @@ Plug 'plasticboy/vim-markdown',             { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
 Plug 'tpope/vim-dispatch'
+Plug 'Shougo/echodoc.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -158,7 +159,7 @@ set autoread                               " Reload files changed outside automa
 set backspace=indent,eol,start             " Allow backspacing over everything in insert mode
 set cindent
 set complete=.,w,b,u,t,i
-set completeopt=noselect,menuone,preview
+set completeopt=noselect,menuone
 set colorcolumn=81
 " set cursorcolumn                           " Highlight current column
 " set cursorline                             " Highlight current line
@@ -1195,6 +1196,9 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>xr"
 let g:jedi#use_splits_not_buffers = "left"
 "}}}
+
+"echodoc.vim
+let g:echodoc#enable_at_startup = 1
 
 " vim-go{{{
 let g:go_fmt_command = "goimports"
