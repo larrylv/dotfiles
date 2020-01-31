@@ -345,13 +345,13 @@ function! SetupMapForVimGo()
 	nmap <Leader>gv <Plug>(go-def-vertical)
 	" :GoDef but opens in a horizontal split
 	nmap <Leader>gs <Plug>(go-def-split)
-  autocmd Filetype go
-    \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-    \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-    \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 endfunction
 
 autocmd FileType go call SetupMapForVimGo()
+autocmd Filetype go
+  \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 
 " ALE
 nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
