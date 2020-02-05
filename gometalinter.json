@@ -1,8 +1,0 @@
-{
-    "Aggregate": true,
-    "Enable": ["golint", "gosec", "structcheck", "vet"],
-    "Sort": ["line"],
-    "Test": true,
-    "Vendor": true,
-    "VendoredLinters": true
-}

@@ -90,7 +90,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'deoplete-plugins/deoplete-tag'
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'tomtom/tcomment_vim'
 Plug 'larrylv/vim-vroom'
 Plug 'larrylv/echodoc.vim'
@@ -787,6 +787,7 @@ let g:ale_linters = {
       \   'yaml': [],
       \}
 let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
+let g:ale_go_golangci_lint_options = '--disable gochecknoglobals --disable gochecknoinits'
 "}}}
 
 " Highlight Pmenu"{{{
