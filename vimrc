@@ -192,7 +192,7 @@ set history=1000                           " Increase history from 20 default to
 set hlsearch                               " Highlight searches
 set incsearch                              " Highlight dynamically as pattern is typed
 " :set indentkeys? - get full list of trigger keys.
-set indentkeys=                            " DO NOT INTENT FOR ANY CHARACTERS
+" set indentkeys=                            " DO NOT INTENT FOR ANY CHARACTERS
 set laststatus=2                           " Always show status line
 set lazyredraw                             " Don't redraw when we don't have to
 set magic                                  " Enable extended regexes
