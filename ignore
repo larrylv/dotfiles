@@ -4,8 +4,4 @@ vendor/cache
 bower_components
 node_modules
 dist
-log
 tmp
-vim/bundle
-Session.vim
-tags
