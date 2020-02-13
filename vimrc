@@ -1271,3 +1271,5 @@ nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<CR>:set hls<CR>
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
+" Don't auto indent for new list item
+let g:vim_markdown_new_list_item_indent = 0
