@@ -1197,6 +1197,7 @@ let g:jedi#usages_command = ""
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>xr"
 let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#show_call_signatures = "0"
 "}}}
 
 "echodoc.vim
