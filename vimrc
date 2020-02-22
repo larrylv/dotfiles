@@ -384,10 +384,11 @@ nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
 
 " Toggle RainbowParentheses
 nmap <leader>rp :RainbowParentheses!!<CR>
+
 " fzf-copy-ruby-token
 nmap <leader>ry <Plug>(fzf_copy_ruby_token)
 
-map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParenthesesActivate<cr>
+map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParentheses<cr>
 map <leader>sl :set synmaxcol=200<cr>:e<cr>
 map <leader>sh :set synmaxcol=1000<cr>:e<cr>
 map <leader>ss :source ./Session.vim<cr>
