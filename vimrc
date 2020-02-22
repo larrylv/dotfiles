@@ -160,7 +160,7 @@ set backspace=indent,eol,start             " Allow backspacing over everything i
 set cindent
 set complete=.,w,b,u,t,i
 set completeopt=noselect,menuone
-set colorcolumn=81
+" set colorcolumn=81                       " Highlight line at position 81
 " set cursorcolumn                           " Highlight current column
 " set cursorline                             " Highlight current line
 set diffopt+=iwhite                        " Ignore whitespaces with vimdiff
@@ -943,6 +943,7 @@ autocmd BufNewFile,BufRead *.es6 set filetype=javascript
 autocmd BufNewFile,BufRead *.go,*.c,*.cpp,*.rust,*.elm setlocal noexpandtab ts=4 sw=4 sts=4
 autocmd Filetype gitcommit setlocal textwidth=78
 autocmd Filetype markdown setlocal textwidth=80
+autocmd Filetype gitcommit,markdown set colorcolumn=81
 autocmd FileType elixir set foldmethod=syntax
 "}}}
 
