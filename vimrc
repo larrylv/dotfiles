@@ -502,6 +502,9 @@ augroup general_config
   command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
   "}}}
 
+  " Change SpecialKey color for Tagbar + Golang
+  highlight SpecialKey term=bold cterm=bold ctermfg=9 guifg=Cyan
+
   " Highlight trailing whitespace"{{{
   highlight ExtraWhitespace ctermbg=red guibg=red
   match ExtraWhitespace /\s\+$/
