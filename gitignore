@@ -12,6 +12,8 @@ vendor/bundle
 .tmux.sh
 Session.vim
 Dev.vim
+# Added by `gocode` plugin
+gocomplete.vim
 /tags
 
 # Rails .gitignore
