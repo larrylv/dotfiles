@@ -21,8 +21,10 @@ alias pt='pstree'
 alias rb='rbenv'
 alias ssh='TERM=xterm ssh'
 alias tailf='tail -f'
+alias tcommit="git add . ; date +\"%Y-%m-%d\" | xargs git ci -m"
 alias tigs='tig status'
 alias vs='vim -S Session.vim'
+alias ycommit="git add . ; date -v-1d +\"%Y-%m-%d\" | xargs git ci -m"
 LESS="-iXRF"; export LESS
 
 ag() {
