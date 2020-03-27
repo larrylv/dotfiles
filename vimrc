@@ -825,7 +825,6 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-let g:fzf_preview_window = 'right:50%'
 "}}}
 
 " ctrlp.vim"{{{
