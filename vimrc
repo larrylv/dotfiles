@@ -793,7 +793,7 @@ let g:UltiSnipsUsePythonVersion = 3
 
 " fzf.vim{{{
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
-silent! nnoremap <unique> <silent> <leader>f :FZF<CR>
+silent! nnoremap <unique> <silent> <leader>f :Files<CR>
 nnoremap <leader>aa :Rg<Space>
 nnoremap <silent> <leader>ag :Rg <C-R><C-W><CR>
 xnoremap <silent> <leader>ag y:Rg <C-R>"<CR>"
@@ -825,6 +825,7 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+let g:fzf_preview_window = 'right:50%'
 "}}}
 
 " ctrlp.vim"{{{
