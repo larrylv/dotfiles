@@ -794,10 +794,10 @@ let g:UltiSnipsUsePythonVersion = 3
 " fzf.vim{{{
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 silent! nnoremap <unique> <silent> <leader>f :FZF<CR>
-nnoremap <leader>aa :Ag<Space>
-nnoremap <silent> <leader>ag :Ag <C-R><C-W><CR>
-xnoremap <silent> <leader>ag y:Ag <C-R>"<CR>"
-nnoremap <silent> <leader>AG :Ag <C-R><C-A><CR>
+nnoremap <leader>aa :Rg<Space>
+nnoremap <silent> <leader>ag :Rg <C-R><C-W><CR>
+xnoremap <silent> <leader>ag y:Rg <C-R>"<CR>"
+nnoremap <silent> <leader>AG :Rg <C-R><C-A><CR>
 silent! nnoremap <unique> <silent> <leader>bb :Buffers<CR>
 silent! nnoremap <unique> <silent> <leader>bl :BLines<CR>
 nnoremap <leader>tj :Tags 
@@ -825,23 +825,6 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-if &columns >= 160
-  let s:horiz_preview_layout = 'right:50%'
-else
-  let s:horiz_preview_layout = 'right:50%:hidden'
-endif
-let s:ag_opts = {"options": ["-d:"]}
-" command! -bang -nargs=* Ag
-"   \ call fzf#vim#ag(<q-args>,
-"   \                 <bang>0 ? fzf#vim#with_preview(s:ag_opts, 'down:60%')
-"   \                         : fzf#vim#with_preview(s:ag_opts, s:horiz_preview_layout, '?'),
-"   \                 <bang>0)
-command! -bang -nargs=* Ag
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview(s:ag_opts, 'down:50%')
-  \           : fzf#vim#with_preview(s:ag_opts, s:horiz_preview_layout, '?'),
-  \   <bang>0)
 "}}}
 
 " ctrlp.vim"{{{
