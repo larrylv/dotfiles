@@ -99,3 +99,5 @@
     show = diff-so-fancy | less --tabs=1,5 -RFX
 [push]
     default = tracking
+[pull]
+	rebase = true
