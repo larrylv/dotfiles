@@ -765,7 +765,6 @@ let g:ale_linters = {
       \   'yaml': [],
       \}
 let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
-let g:ale_go_golangci_lint_options = '--disable gochecknoglobals --disable gochecknoinits'
 "}}}
 
 " Highlight Pmenu"{{{
