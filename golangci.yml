@@ -47,6 +47,8 @@ issues:
         - gochecknoinits
         - gosec
         - gosimple
+        - ineffassign
+        - staticcheck
         - structcheck
         - unused
 
