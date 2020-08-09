@@ -561,6 +561,14 @@ augroup general_config
     autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'FIXME', -1)
   augroup END
 
+  " Cursor Mode Settings https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+  " SI = INSERT mode
+  " SR = REPLACE mode
+  " EI = NORMAL mode (ELSE)
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
 augroup END
 "}}}
 
