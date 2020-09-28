@@ -801,6 +801,8 @@ let g:UltiSnipsUsePythonVersion = 3
 
 " fzf.vim{{{
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
+let g:fzf_layout = { 'down': '40%' }
+
 silent! nnoremap <unique> <silent> <leader>f :Files<CR>
 nnoremap <leader>aa :Rg<Space>
 nnoremap <silent> <leader>ag :Rg <C-R><C-W><CR>
