@@ -393,6 +393,14 @@ map <leader>sl :set synmaxcol=200<cr>:e<cr>
 map <leader>sh :set synmaxcol=1000<cr>:e<cr>
 map <leader>ss :source ./Session.vim<cr>
 
+nmap <leader>sp :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 " vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap <leader>ta <Plug>(EasyAlign)
