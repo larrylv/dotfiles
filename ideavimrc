@@ -5,15 +5,19 @@ let mapleader = ','
 set clipboard+=ideaput
 set scrolloff=3
 
+nmap <leader>aa :action SearchEverywhere<cr>
+
 nmap <leader>bb :action RecentFiles<cr>
 nmap <leader>bl :action RecentLocations<cr>
 nmap <leader>bp :action Blaze.PartialSync<cr>
-nmap <leader>g :action GotoDeclaration<cr>
+
 nmap <leader>u :action FindUsages<cr>
+
+nmap <leader>g :action GotoDeclaration<cr>
+
 nmap <leader>f :action GotoFile<cr>
 nmap <leader>c :action GotoClass<cr>
 nmap <leader>s :action GotoSymbol<cr>
-nmap <leader>a :action SearchEverywhere<cr>
 nmap <leader>y "*y
 vmap <leader>y "*y
 
