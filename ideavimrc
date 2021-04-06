@@ -5,7 +5,21 @@ let mapleader = ','
 set clipboard+=ideaput
 set scrolloff=3
 
-nmap <leader>aa :action SearchEverywhere<cr>
+
+nmap <leader>aa :action FindInPath<cr>
+vmap <leader>aa :action FindInPath<cr>
+
+nmap <leader>al :action SearchEverywhere<cr>
+vmap <leader>al :action SearchEverywhere<cr>
+
+nmap <leader>af :action GotoFile<cr>
+vmap <leader>af :action GotoFile<cr>
+nmap <leader>f :action GotoFile<cr>
+vmap <leader>f :action GotoFile<cr>
+
+nmap <leader>c :action GotoClass<cr>
+nmap <leader>s :action GotoSymbol<cr>
+nmap <leader>an :action GotoAction<cr>
 
 nmap <leader>bb :action RecentFiles<cr>
 nmap <leader>bl :action RecentLocations<cr>
@@ -15,13 +29,10 @@ nmap <leader>u :action FindUsages<cr>
 
 nmap <leader>g :action GotoDeclaration<cr>
 
-nmap <leader>f :action GotoFile<cr>
-nmap <leader>c :action GotoClass<cr>
-nmap <leader>s :action GotoSymbol<cr>
 nmap <leader>y "*y
 vmap <leader>y "*y
 
 nmap <leader>i :action GotoImplementation<cr>
-nmap <leader>h :action HideAllWindows<cr>
+
 nmap <C-h> :action PrevSplitter<cr>
 nmap <C-l> :action NextSplitter<cr>"
