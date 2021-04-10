@@ -29,6 +29,12 @@ nmap <leader>u :action FindUsages<cr>
 
 nmap <leader>g :action GotoDeclaration<cr>
 
+nmap <leader>t :action ExpressionTypeInfo<cr>
+vmap <leader>t :action ExpressionTypeInfo<cr>
+
+nmap <leader>rn :action RunClass<cr>
+vmap <leader>rn :action RunClass<cr>
+
 nmap <leader>y "*y
 vmap <leader>y "*y
 
