@@ -35,6 +35,30 @@ vmap <leader>t :action ExpressionTypeInfo<cr>
 nmap <leader>rn :action RunClass<cr>
 vmap <leader>rn :action RunClass<cr>
 
+nnoremap m. :action ToggleBookmark<cr>
+
+nnoremap ma :action ToggleBookmark0<cr>
+nnoremap mb :action ToggleBookmark1<cr>
+nnoremap mc :action ToggleBookmark2<cr>
+nnoremap md :action ToggleBookmark3<cr>
+nnoremap me :action ToggleBookmark4<cr>
+nnoremap mf :action ToggleBookmark5<cr>
+nnoremap mg :action ToggleBookmark6<cr>
+nnoremap mh :action ToggleBookmark7<cr>
+nnoremap mi :action ToggleBookmark8<cr>
+nnoremap mj :action ToggleBookmark9<cr>
+
+nnoremap 'a :action GotoBookmark0<cr>
+nnoremap 'b :action GotoBookmark1<cr>
+nnoremap 'c :action GotoBookmark2<cr>
+nnoremap 'd :action GotoBookmark3<cr>
+nnoremap 'e :action GotoBookmark4<cr>
+nnoremap 'f :action GotoBookmark5<cr>
+nnoremap 'g :action GotoBookmark6<cr>
+nnoremap 'h :action GotoBookmark7<cr>
+nnoremap 'i :action GotoBookmark8<cr>
+nnoremap 'j :action GotoBookmark9<cr>
+
 nmap <leader>y "*y
 vmap <leader>y "*y
 
