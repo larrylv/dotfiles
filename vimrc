@@ -569,7 +569,7 @@ augroup general_config
     autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'FIXME', -1)
   augroup END
 
-  autocmd VimEnter * redraw!
+  autocmd WinEnter,VimEnter * redraw!
 
   " Cursor Mode Settings https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
   " SI = INSERT mode
