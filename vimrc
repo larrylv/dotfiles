@@ -194,7 +194,7 @@ set incsearch                              " Highlight dynamically as pattern is
 " :set indentkeys? - get full list of trigger keys.
 " set indentkeys=                            " DO NOT INTENT FOR ANY CHARACTERS
 set laststatus=2                           " Always show status line
-set lazyredraw                             " Don't redraw when we don't have to
+" set lazyredraw                             " Don't redraw when we don't have to
 set magic                                  " Enable extended regexes
 set modeline
 set nobackup
