@@ -633,8 +633,9 @@ set signcolumn=yes
 "}}}
 
 " vim-fugitive"{{{
-call SetupCommandAlias("GBlame", "Gblame")
-call SetupCommandAlias("GBrowse", "Gbrowse")
+call SetupCommandAlias("GBlame", "Git blame")
+call SetupCommandAlias("Gblame", "Git blame")
+call SetupCommandAlias("Gbrowse", "GBrowse")
 "}}}
 
 " vim-projectionist"{{{
