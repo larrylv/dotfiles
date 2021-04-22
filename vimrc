@@ -636,6 +636,7 @@ set signcolumn=yes
 call SetupCommandAlias("GBlame", "Git blame")
 call SetupCommandAlias("Gblame", "Git blame")
 call SetupCommandAlias("Gbrowse", "GBrowse")
+call SetupCommandAlias("Gbrowse!", "GBrowse!")
 "}}}
 
 " vim-projectionist"{{{
