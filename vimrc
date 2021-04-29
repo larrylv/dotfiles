@@ -194,7 +194,7 @@ set incsearch                              " Highlight dynamically as pattern is
 " :set indentkeys? - get full list of trigger keys.
 " set indentkeys=                            " DO NOT INTENT FOR ANY CHARACTERS
 set laststatus=2                           " Always show status line
-" set lazyredraw                             " Don't redraw when we don't have to
+set lazyredraw                             " Don't redraw when we don't have to
 set magic                                  " Enable extended regexes
 set modeline
 set nobackup
@@ -569,8 +569,6 @@ augroup general_config
     autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'FIXME', -1)
   augroup END
 
-  autocmd WinEnter,VimEnter * redraw!
-
   " Cursor Mode Settings https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
   " SI = INSERT mode
   " SR = REPLACE mode
@@ -813,7 +811,8 @@ let g:UltiSnipsUsePythonVersion = 3
 
 " fzf.vim{{{
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
-let g:fzf_layout = { 'down': '40%' }
+" - Popup window (center of the current window)
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
 
 silent! nnoremap <unique> <silent> <leader>f :Files<CR>
 nnoremap <leader>aa :Rg<Space>
@@ -832,21 +831,6 @@ let g:fzf_action = {
   \ 'ctrl-d': 'split',
   \ 'ctrl-e': 'split',
   \ 'ctrl-v': 'vsplit' }
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Statement'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
 "}}}
 
 " ctrlp.vim"{{{
