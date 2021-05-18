@@ -119,7 +119,7 @@ export GOROOT="$(goenv prefix)"
 export PATH=$GOPATH/bin:$PATH
 
 ## pyenv
-# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 ## jEnv
 # if which jenv > /dev/null; then eval "$(jenv init -)"; fi
