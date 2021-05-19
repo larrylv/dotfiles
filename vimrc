@@ -62,6 +62,7 @@ Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown',             { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
+Plug 'majutsushi/tagbar',                   { 'for': ['go', 'ruby', 'python'] }
 Plug 'tpope/vim-dispatch'
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf'
@@ -99,7 +100,6 @@ Plug 'janko-m/vim-test'
 Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
-Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
