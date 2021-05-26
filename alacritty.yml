@@ -222,6 +222,7 @@ mouse:
 
   hide_when_typing: false
 
+hints:
   url:
     # URL launcher
     #
@@ -234,7 +235,6 @@ mouse:
     # These are the modifiers that need to be held down for opening URLs when clicking
     # on them. The available modifiers are documented in the key binding section.
     #modifiers: Control|Shift
-
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
