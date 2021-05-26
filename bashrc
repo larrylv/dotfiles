@@ -6,6 +6,7 @@ alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
 [[ -f /usr/local/bin/bat ]] && alias cat='bat'
 alias du="ncdu --color dark -rr -x"
+alias fvim="vim \$(fzf)"
 alias grep='grep --color=auto'
 alias gtags='ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=target/ --exclude=node_modules/ --fields=+ialS --extras=+q .'
 alias jtags='find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '''/^$/d''' | LANG=C sort >| tags'
