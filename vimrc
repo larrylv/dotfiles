@@ -811,8 +811,8 @@ let g:UltiSnipsUsePythonVersion = 3
 
 " fzf.vim{{{
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
-" - Popup window (center of the current window)
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
+" - Popup window (center of the screen)
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 silent! nnoremap <unique> <silent> <leader>f :Files<CR>
 nnoremap <leader>aa :Rg<Space>
