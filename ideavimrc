@@ -33,6 +33,7 @@ nmap <leader>t :action ExpressionTypeInfo<cr>
 vmap <leader>t :action ExpressionTypeInfo<cr>
 
 nnoremap <leader>vn :action RunClass<cr>
+nnoremap <leader>vs :action RunClass<cr>
 
 nnoremap m. :action ToggleBookmark<cr>
 
