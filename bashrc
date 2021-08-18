@@ -17,7 +17,7 @@ alias ll='ls -alF'
 alias mcopy='reattach-to-user-namespace pbcopy'
 alias mpaste='reattach-to-user-namespace pbpaste'
 alias ping='prettyping --nolegend'
-alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias preview="fzf --preview='bat --color always {}'"
 alias pt='pstree'
 alias rb='rbenv'
 alias ssh='TERM=xterm ssh'
