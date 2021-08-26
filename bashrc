@@ -190,9 +190,28 @@ unset autojump_script
 
 ## colors script
 # shellcheck disable=SC1090
-[[ -s "$HOME/.colors.bash" ]] && source "$HOME/.colors.bash"
+# [[ -s "$HOME/.colors.bash" ]] && source "$HOME/.colors.bash"
 
 #}}}
+
+echo_reset_color='\033[0m'
+echo_black='\033[0;30m'
+echo_bold_black='\033[1;30m'
+echo_red='\033[0;31m'
+echo_bold_red='\033[1;31m'
+echo_green='\033[0;32m'
+echo_bold_green='\033[1;32m'
+echo_yellow='\033[0;33m'
+echo_bold_yellow='\033[1;33m'
+echo_blue='\033[0;34m'
+echo_bold_blue='\033[1;34m'
+echo_purple='\033[0;35m'
+echo_bold_purple='\033[1;35m'
+echo_cyan='\033[0;36m'
+echo_bold_cyan='\033[1;36m'
+echo_white='\033[0;37m'
+echo_bold_white='\033[1;37m'
+
 
 # PS1 -------------------------------------------------------------------------#{{{
 
@@ -263,9 +282,9 @@ function kiex_prompt_info() {
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   # shellcheck disable=SC2154
-  PS1="${bold_green}\u@\h ${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${normal}"
+  PS1="${echo_bold_green}\u@\h ${echo_bold_yellow}➜  ${echo_bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${echo_reset_color}\n${echo_bold_green}\$ ${echo_reset_color}"
 else
-  PS1="${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${normal}"
+  PS1="${echo_bold_yellow}➜  ${echo_bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${echo_reset_color}\n${echo_bold_green}\$ ${echo_reset_color}"
 fi
 
 #}}}
