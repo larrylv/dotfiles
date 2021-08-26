@@ -149,12 +149,12 @@ fi
 # source scripts -----------------------------------------------------------#{{{
 
 ## bash completion
-bash_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion"
-if [ -r "$bash_completion" ]; then
-  # shellcheck disable=SC1090
-  source "$bash_completion"
-fi
-unset bash_completion
+# bash_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion"
+# if [ -r "$bash_completion" ]; then
+#   # shellcheck disable=SC1090
+#   source "$bash_completion"
+# fi
+# unset bash_completion
 
 ## git completion
 git_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion.d/git-completion.bash"
