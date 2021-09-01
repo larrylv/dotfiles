@@ -157,12 +157,12 @@ fi
 # unset bash_completion
 
 ## git completion
-# git_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion.d/git-completion.bash"
-# if [ -r "$git_completion" ]; then
-#   # shellcheck disable=SC1090
-#   source "$git_completion"
-# fi
-# unset git_completion
+git_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion.d/git-completion.bash"
+if [ -r "$git_completion" ]; then
+  # shellcheck disable=SC1090
+  source "$git_completion"
+fi
+unset git_completion
 
 ## vagrant completion
 # vagrant_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion.d/vagrant"
