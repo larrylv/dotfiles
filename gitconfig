@@ -8,6 +8,7 @@
     br                       = branch
     bv                       = branch -vv --color
     changes                  = diff --stat -r
+    c                        = !git checkout $(git branch | fzf| tr -d '[:space:]' | tr -d '*')
     ci                       = commit
     ca                       = commit --amend
     cc                       = commit --amend -C HEAD
@@ -26,7 +27,7 @@
     hide                     = update-index --assume-unchanged
     ignored                  = !git ls-files -v | grep "^[[:lower:]]"
     last                     = log -n 1 -p --color
-    lb                       = for-each-ref --sort='-authordate:iso8601' --format='%(if)%(HEAD)%(then)* %(else)  %(end)%(color:red)%(authordate:relative):%(color:reset)%09%(if)%(HEAD)%(then)%(color:green)%(align:30,left)%(refname:short)%(end)%(color:reset)%(else)%(align:30,left)%(refname:short)%(end)%(end) - %(subject)' refs/heads
+    lb                       = for-each-ref --sort='-authordate:iso8601' --format='%(if)%(HEAD)%(then)* %(else)  %(end)%(color:red)%(align:16,left)%(authordate:relative):%(color:reset)%(end)%(if)%(HEAD)%(then)%(color:green)%(align:50,left)%(refname:short)%(end)%(color:reset)%(else)%(align:50,left)%(refname:short)%(end)%(end) - %(subject)' refs/heads
     lg                       = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     ls-ignored               = ls-files --exclude-standard --ignored --others
     mf                       = merge --no-ff
