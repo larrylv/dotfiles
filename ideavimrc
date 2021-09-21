@@ -5,6 +5,8 @@ let mapleader = ','
 set clipboard+=ideaput
 set scrolloff=3
 
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
 
 nmap <leader>aa :action FindInPath<cr>
 vmap <leader>aa :action FindInPath<cr>
@@ -17,9 +19,10 @@ vmap <leader>af :action GotoFile<cr>
 nmap <leader>f :action GotoFile<cr>
 vmap <leader>f :action GotoFile<cr>
 
+nmap <leader>an :action GotoAction<cr>
+
 nmap <leader>c :action GotoClass<cr>
 nmap <leader>s :action GotoSymbol<cr>
-nmap <leader>an :action GotoAction<cr>
 
 nmap <leader>bb :action RecentFiles<cr>
 nmap <leader>bl :action RecentLocations<cr>
@@ -28,12 +31,16 @@ nmap <leader>bp :action Blaze.PartialSync<cr>
 nmap <leader>u :action FindUsages<cr>
 
 nmap <leader>g :action GotoDeclaration<cr>
+nmap <leader>i :action GotoImplementation<cr>
 
 nmap <leader>t :action ExpressionTypeInfo<cr>
 vmap <leader>t :action ExpressionTypeInfo<cr>
 
 nnoremap <leader>vn :action RunClass<cr>
 nnoremap <leader>vs :action RunClass<cr>
+
+nmap <leader>r :action RenameElement<CR>
+vmap <leader>r :action RenameElement<CR>
 
 nnoremap m. :action ToggleBookmark<cr>
 
@@ -61,8 +68,6 @@ nnoremap 'j :action GotoBookmark9<cr>
 
 nmap <leader>y "*y
 vmap <leader>y "*y
-
-nmap <leader>i :action GotoImplementation<cr>
 
 nmap <C-h> :action PrevSplitter<cr>
 nmap <C-l> :action NextSplitter<cr>"
