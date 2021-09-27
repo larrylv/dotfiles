@@ -21,8 +21,8 @@ vmap <leader>f :action GotoFile<cr>
 
 nmap <leader>an :action GotoAction<cr>
 
-nmap <leader>c :action GotoClass<cr>
-nmap <leader>s :action GotoSymbol<cr>
+nmap <leader>ac :action GotoClass<cr>
+nmap <leader>as :action GotoSymbol<cr>
 
 nmap <leader>bb :action RecentFiles<cr>
 nmap <leader>bl :action RecentLocations<cr>
@@ -38,9 +38,14 @@ vmap <leader>t :action ExpressionTypeInfo<cr>
 
 nnoremap <leader>vn :action RunClass<cr>
 nnoremap <leader>vs :action RunClass<cr>
+nnoremap <leader>vd :action DebugClass<cr>
 
 nmap <leader>r :action RenameElement<CR>
 vmap <leader>r :action RenameElement<CR>
+
+nmap <leader>so :action MoveEditorToOppositeTabGroup<cr>
+nmap <leader>sj :action MoveTabDown<cr>
+nmap <leader>sl :action MoveTabRight<cr>
 
 nnoremap m. :action ToggleBookmark<cr>
 
@@ -68,6 +73,8 @@ nnoremap 'j :action GotoBookmark9<cr>
 
 nmap <leader>y "*y
 vmap <leader>y "*y
+
+nmap <leader>z :action CloseAllEditorsButActive<cr>
 
 nmap <C-h> :action PrevSplitter<cr>
 nmap <C-l> :action NextSplitter<cr>"
