@@ -33,6 +33,9 @@ nmap <leader>u :action FindUsages<cr>
 nmap <leader>g :action GotoDeclaration<cr>
 nmap <leader>i :action GotoImplementation<cr>
 
+nmap <leader>gn :action VcsShowNextChangeMarker<cr>
+nmap <leader>gp :action VcsShowPrevChangeMarker<cr>
+
 nmap <leader>t :action ExpressionTypeInfo<cr>
 vmap <leader>t :action ExpressionTypeInfo<cr>
 
