@@ -1125,7 +1125,7 @@ call deoplete#custom#option({
     \ 'skip_multibyte': v:true,
     \ 'smart_case': v:true,
     \ })
-autocmd FileType css,csv,html,json,tex,txt,yaml
+autocmd FileType css,csv,html,json,markdown,tex,txt,yaml
     \ call deoplete#custom#buffer_option('auto_complete', v:false)
 "}}}
 
