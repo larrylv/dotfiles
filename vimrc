@@ -426,6 +426,10 @@ vmap <leader>y "*y
 
 map <leader>z :BufOnly<cr>
 
+" Keep selected text selected when fixing indentation
+vnoremap < <gv
+vnoremap > >gv
+
 " No Ex mode
 map Q <Nop>
 
