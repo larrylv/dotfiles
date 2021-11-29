@@ -772,6 +772,7 @@ let g:ale_lint_on_text_changed = 'never' " lint only on save
 let g:ale_lint_on_insert_leave = 0 " don't lint when leaving insert mode
 let g:ale_lint_on_enter = 0 " don't lint on enter
 let g:ale_hover_cursor = 0 " disable ALEHover (ALEPreviewWindow)
+let g:ale_set_balloons = 1 " By showing balloons for your mouse cursor
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠ '
