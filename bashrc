@@ -38,7 +38,9 @@ ag() {
   fi
 }
 
-if which rg > /dev/null; then
+if which fd > /dev/null; then
+  export FZF_DEFAULT_COMMAND="fd --type f"
+elif which rg > /dev/null; then
   export FZF_DEFAULT_COMMAND="rg --hidden --glob '!.git/*' --files"
 fi
 
