@@ -145,6 +145,7 @@ syntax on
 " lifepillar/vim-solarized8
 let g:solarized_use16 = 1
 let g:solarized_visibility = "high"
+let g:solarized_termtrans = 1
 set background=dark
 colorscheme solarized8_flat
 " dirty patch for CursorLine
@@ -818,6 +819,7 @@ let g:UltiSnipsUsePythonVersion = 3
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 " - Popup window (center of the screen)
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" let g:fzf_preview_window = ['right:hidden', 'ctrl-/']
 
 silent! nnoremap <unique> <silent> <leader>f :Files<CR>
 nnoremap <leader>aa :Rg<Space>
