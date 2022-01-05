@@ -21,6 +21,7 @@ else
 endif
 
 " Plug 'vim-ruby/vim-ruby'
+Plug 'rust-lang/rust.vim',                  { 'for': 'rust' }
 Plug 'elixir-lang/vim-elixir',              { 'for': ['elixir', 'eelixir'] }
 Plug 'slashmili/alchemist.vim',             { 'for': ['elixir', 'eelixir'] }
 Plug 'vim-erlang/vim-erlang-runtime',       { 'for': 'erlang' }
@@ -47,6 +48,8 @@ Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
 Plug 'zchee/deoplete-jedi',                 { 'for': 'python' }
 Plug 'fisadev/vim-isort',                   { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
+Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
+Plug 'majutsushi/tagbar',                   { 'for': ['go', 'ruby', 'rust', 'python'] }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
 Plug 'kchmck/vim-coffee-script',            { 'for': ['javascript', 'coffee', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx',                         { 'for': ['javascript', 'javascript.jsx'] }
@@ -61,8 +64,6 @@ Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown',             { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
-Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
-Plug 'majutsushi/tagbar',                   { 'for': ['go', 'ruby', 'python'] }
 Plug 'tpope/vim-dispatch'
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf'
@@ -785,6 +786,7 @@ let g:ale_linters = {
       \   'coffee': [],
       \   'eruby': [],
       \   'go': ['golangci-lint'],
+      \   'rust': ['analyzer'],
       \   'html': ['htmlhint'],
       \   'javascript': ['eslint'],
       \   'yaml': [],
@@ -1251,3 +1253,6 @@ nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<CR>:set hls<CR>
 let g:vim_markdown_folding_disabled = 1
 " Don't auto indent for new list item
 let g:vim_markdown_new_list_item_indent = 0
+
+" rust.vim
+let g:rustfmt_autosave = 1
