@@ -571,8 +571,8 @@ augroup general_config
 
   augroup HiglightTODO
     autocmd!
-    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
-    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'FIXME', -1)
+    autocmd WinEnter,VimEnter,GUIEnter,BufEnter,TabEnter * :silent! call matchadd('Todo', 'TODO', -1)
+    autocmd WinEnter,VimEnter,GUIEnter,BufEnter,TabEnter * :silent! call matchadd('Todo', 'FIXME', -1)
   augroup END
 
   " Cursor Mode Settings https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
