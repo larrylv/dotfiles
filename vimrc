@@ -939,8 +939,8 @@ autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *.es6 set filetype=javascript
 autocmd BufNewFile,BufRead *.go,*.c,*.cpp,*.rust,*.elm setlocal noexpandtab ts=4 sw=4 sts=4
+autocmd BufNewFile,BufRead *.md setlocal textwidth=80
 autocmd Filetype gitcommit setlocal textwidth=78
-autocmd Filetype markdown setlocal textwidth=80
 autocmd Filetype gitcommit,markdown set colorcolumn=81
 autocmd FileType elixir set foldmethod=syntax
 "}}}
