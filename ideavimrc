@@ -50,6 +50,9 @@ nmap <leader>so :action MoveEditorToOppositeTabGroup<cr>
 nmap <leader>sj :action MoveTabDown<cr>
 nmap <leader>sl :action MoveTabRight<cr>
 
+nmap [<Space> :action EditorStartNewLineBefore<cr>
+nmap ]<Space> :action EditorStartNewLine<cr>
+
 nnoremap m. :action ToggleBookmark<cr>
 
 nnoremap ma :action ToggleBookmark0<cr>
