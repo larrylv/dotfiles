@@ -62,7 +62,7 @@ Plug 'groenewege/vim-less',                 { 'for': 'less' }
 Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
-Plug 'plasticboy/vim-markdown',             { 'for': 'markdown' }
+Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'tpope/vim-dispatch'
 Plug 'lifepillar/vim-solarized8'

@@ -22,8 +22,13 @@ window:
     columns: 220
     lines: 64
 
+  # Background opacity
+  opacity: 1.0
+
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
+
+  dynamic_title: true
 
   # Adds this many blank pixels of padding around the window
   # Units are physical pixels; this is not DPI aware.
@@ -190,9 +195,6 @@ bell:
   animation: EaseOutExpo
   duration: 0
 
-# Background opacity
-background_opacity: 1.0
-
 # Mouse bindings
 #
 # Currently doesn't support modifiers. Both the `mouse` and `action` fields must
@@ -240,8 +242,6 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
-
-window.dynamic_title: true
 
 cursor:
   # Cursor style
