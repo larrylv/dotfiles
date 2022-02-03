@@ -770,6 +770,16 @@ augroup AutoALE
   autocmd User ALELint call lightline#update()
 augroup END
 
+
+call ale#linter#Define('ruby', {
+  \   'name': 'sorbet-payserver',
+  \   'lsp': 'stdio',
+  \   'executable': 'true',
+  \   'command': 'pay exec scripts/bin/typecheck --lsp',
+  \   'language': 'ruby',
+  \   'project_root': $HOME . '/stripe/pay-server',
+  \})
+
 let g:ale_lint_on_text_changed = 'never' " lint only on save
 let g:ale_lint_on_insert_leave = 0 " don't lint when leaving insert mode
 let g:ale_lint_on_enter = 0 " don't lint on enter
@@ -791,7 +801,11 @@ let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'yaml': [],
       \}
+
 let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
+if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe/pay-server'
+	let g:ale_linters['ruby'] = ['sorbet-payserver', 'rubocop']
+end
 "}}}
 
 " Highlight Pmenu"{{{
