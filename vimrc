@@ -753,7 +753,7 @@ endif
 "}}}
 
 " bufexplorer"{{{
-let g:bufExplorerShowTabBuffer=1    " BufExplorer: show only buffers relative to this tab
+let g:bufExplorerShowTabBuffer=0    " BufExplorer: show only buffers relative to this tab
 let g:bufExplorerShowRelativePath=1 " BufExplorer: show relative paths
 "}}}
 

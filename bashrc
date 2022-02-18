@@ -52,6 +52,15 @@ rtags() {
   mv tmp_tags tags
 }
 
+# syntax highlighting, useful for pasting code to google doc.
+# 1. copy the code to your clipboard
+# 2. in your terminal do: hlpb rb (where rb is your language)
+# 3. paste it into gdocs
+# You could get the `Roboto Mono` font here: https://fonts.google.com/specimen/Roboto+Mono
+hlpb () {
+	pbpaste | highlight -O rtf --font 'Roboto Mono' --font-size 12 --syntax $1 -s 'solarized-dark' | pbcopy
+}
+
 set -o emacs
 
 # bash-sensible (https://github.com/mrzool/bash-sensible/blob/master/sensible.bash)
