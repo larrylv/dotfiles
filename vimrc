@@ -100,6 +100,7 @@ Plug 'honza/vim-snippets'
 Plug 'vim-test/vim-test'
 Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'larrylv/lightline-solarized'
 Plug 'maximbaz/lightline-ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-textobj-user'
@@ -215,6 +216,7 @@ set scrolloff=3                            " Start scrolling three lines before 
 set shiftwidth=2                           " The # of spaces for indenting
 set shortmess=atI                          " Don't show the intro message when starting vim
 set shortmess+=c                           " This prevents the display of "Pattern not found" & similar messages during completion.
+set showtabline=2                          " Show tab bar all the time
 " set showcmd                                " display incomplete commands
 set smartcase                              " Ignore 'ignorecase' if search patter contains uppercase characters
 set smarttab                               " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
@@ -961,7 +963,7 @@ autocmd FileType elixir set foldmethod=syntax
 
 " lightline.vim"{{{
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'lightline_solarized',
       \ 'active': {
       \   'left': [
       \     [ 'mode', 'paste' ],
