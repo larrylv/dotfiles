@@ -868,6 +868,7 @@ let g:ctrlp_by_filename = 0
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
 let g:ctrlp_map = '<\-t>'
 let g:ctrlp_max_files = 0
+let g:ctrlp_max_history = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_extensions = [ 'ctrlp-filetpe' ]
 let g:ctrlp_follow_symlinks = 1
@@ -877,6 +878,10 @@ let g:ctrlp_mruf_relative = 1
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("h")': ['<c-d>', '<c-cr>', '<c-e>', '<c-x>'],
     \ 'ToggleByFname()':      ['<c-f>'],
+    \ 'PrtHistory(-1)':       [],
+    \ 'PrtHistory(1)':        [],
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>', '<down>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>', '<up>'],
     \}
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
