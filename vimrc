@@ -440,6 +440,10 @@ map Q <Nop>
 " format python code
 autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
 
+" horizontal resize window
+nnoremap <leader>_ <C-W><
+nnoremap <leader>+ <C-W>>
+
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
