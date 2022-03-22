@@ -209,6 +209,7 @@ set nostartofline                          " Don't reset cursor to start of line
 set notitle
 set nu                                     " Enable line numbers
 set omnifunc=syntaxcomplete#Complete       " Set omni-completion method
+set redrawtime=10000
 set regexpengine=1
 set relativenumber
 set ruler                                  " Show the cursor position
