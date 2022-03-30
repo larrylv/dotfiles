@@ -347,7 +347,7 @@ function! SetupMapForVimGo()
   nmap <leader>ts :<C-u>GoDecls<CR>
 
 	" :GoDef but opens in a vertical split
-	nmap <leader>gv <Plug>(go-def-vertical)
+	nmap <leader>gd <Plug>(go-def-vertical)
 	" :GoDef but opens in a horizontal split
 	nmap <leader>gs <Plug>(go-def-split)
 endfunction
