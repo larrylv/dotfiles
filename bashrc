@@ -39,7 +39,7 @@ ag() {
 }
 
 if which fd > /dev/null; then
-  export FZF_DEFAULT_COMMAND="fd --hidden --type f"
+  export FZF_DEFAULT_COMMAND="fd --hidden --follow --type f"
 elif which rg > /dev/null; then
   export FZF_DEFAULT_COMMAND="rg --hidden --glob '!.git/*' --files"
 fi

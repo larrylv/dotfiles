@@ -845,6 +845,16 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " let g:fzf_preview_window = ['right:hidden', 'ctrl-/']
 
 silent! nnoremap <unique> <silent> <leader>f :Files<CR>
+" Show search results from files and directories that would otherwise be ignored
+" by '.gitignore', '.ignore', '.fdignore', or the global ignore file.
+command! -bang -nargs=* FilesNoIgnore
+  \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
+" Show search results from files and directories that would otherwise be ignored
+" by '.gitignore' files.
+command! -bang -nargs=* FilesNoIgnoreVcs
+  \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore-vcs --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
+silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnoreVcs<CR>
+
 nnoremap <leader>aa :Rg<Space>
 nnoremap <silent> <leader>ag :Rg <C-R><C-W><CR>
 xnoremap <silent> <leader>ag y:Rg <C-R>"<CR>"
