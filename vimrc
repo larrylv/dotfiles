@@ -299,6 +299,9 @@ endfunction
 
 autocmd FileType ruby call SetupMapForRipperTags()
 
+" Move the cursor to the already-open NERDTree, and then switch back to the file
+nnoremap <leader>dn :NERDTreeFind<CR><C-w><C-p><CR>
+
 " vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
 map <leader>ed :Eschema<cr>
@@ -925,7 +928,7 @@ augroup END
 " nerdtree"{{{
 let NERDTreeWinSize = 30
 let NERDTreeAutoCenter=1
-let NERDTreeChDirMode=2
+let NERDTreeChDirMode=0
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeHijackNetrw=1
 let g:NERDTreeIgnore=['\~$']
