@@ -926,7 +926,7 @@ augroup END
 "}}}
 
 " nerdtree"{{{
-let NERDTreeWinSize = 30
+let NERDTreeWinSize = 42
 let NERDTreeAutoCenter=1
 let NERDTreeChDirMode=0
 let g:NERDTreeMinimalUI=1
