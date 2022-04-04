@@ -324,6 +324,9 @@ map <leader>gp :GitGutterPrevHunk<cr>
 map <leader>gu :GitGutterUndoHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
 
+" open popup window for git blame
+nmap <silent><Leader>gm :call setbufvar(winbufnr(popup_atcursor(split(system("git log -n 1 -L " . line(".") . ",+1:" . expand("%:p")), "\n"), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
+
 " vim-go
 function! SetupMapForVimGo()
   " run :GoBuild or :GoTestCompile based on the go file
