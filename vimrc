@@ -51,9 +51,8 @@ Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
 Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
 Plug 'majutsushi/tagbar',                   { 'for': ['go', 'ruby', 'rust', 'python'] }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
-Plug 'kchmck/vim-coffee-script',            { 'for': ['javascript', 'coffee', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx',                         { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'wokalski/autocomplete-flow',          { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx',                         { 'for': ['javascript', 'javascript.jsx', 'typescript'] }
+Plug 'othree/es.next.syntax.vim',           { 'for': ['javascript', 'javascript.jsx', 'typescript'] }
 Plug 'othree/html5.vim',                    { 'for': ['html', 'eruby'] }
 Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
 Plug 'hail2u/vim-css3-syntax',              { 'for': ['css', 'sass', 'scss'] }
@@ -806,14 +805,26 @@ let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_set_highlights = 0
 let g:ale_sign_priority = 100
 let g:ale_linters = {
-      \   'coffee': [],
-      \   'eruby': [],
-      \   'go': ['golangci-lint'],
-      \   'rust': ['analyzer'],
-      \   'html': ['htmlhint'],
-      \   'javascript': ['eslint'],
-      \   'yaml': [],
+      \  'coffee': [],
+      \  'eruby': [],
+      \  'go': ['golangci-lint'],
+      \  'rust': ['analyzer'],
+      \  'html': ['htmlhint'],
+      \  'javascript': ['eslint'],
+      \  'javascript.jsx': ['eslint'],
+      \  'javascriptreact': ['eslint'],
+      \  'typescriptreact': ['eslint'],
+      \  'typescript': ['eslint'],
+      \  'yaml': [],
       \}
+let g:ale_fixers = {
+      \  'javascript': ['eslint'],
+      \  'javascript.jsx': ['eslint'],
+      \  'javascriptreact': ['eslint'],
+      \  'typescriptreact': ['eslint'],
+      \  'typescript': ['eslint'],
+      \}
+let g:ale_fix_on_save = 1
 
 let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
 if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe/pay-server'
