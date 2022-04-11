@@ -388,6 +388,10 @@ nmap <leader>ks :SplitjoinSplit<cr>
 map <leader>ni <C-W>>
 " decrease window size
 map <leader>nd <C-W><
+" increase a window to its maximum height
+map <leader>nh <C-W>_
+" increase a window to its maximum width
+map <leader>nw <C-W>\|
 
 " Delete all upcase marks / bookmarks
 nmap mx :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
