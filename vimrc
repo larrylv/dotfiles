@@ -209,7 +209,6 @@ set notitle
 set nu                                     " Enable line numbers
 set omnifunc=syntaxcomplete#Complete       " Set omni-completion method
 set redrawtime=10000
-autocmd FileType ruby setlocal regexpengine=1 " https://github.com/vim-ruby/vim-ruby/issues/243
 set relativenumber
 set ruler                                  " Show the cursor position
 set scrolloff=3                            " Start scrolling three lines before horizontal border of window
@@ -242,6 +241,20 @@ set wrap                                   " Wrap lines that are too long
 set wrapscan                               " Searches wrap around end of file
 set wildignore+=**/*.jpg,*.jpeg,*.gif,**/*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*
+
+function! SetRegexpEngine()
+  let filetype = &ft
+  if (filetype == 'ruby')
+    setlocal regexpengine=1 " https://github.com/vim-ruby/vim-ruby/issues/243
+  else
+    setlocal regexpengine=0 " https://jameschambers.co.uk/vim-typescript-slow
+  endif
+endfunction
+
+augroup regexpEngine
+  autocmd!
+  autocmd WinEnter,VimEnter,GUIEnter,BufEnter,TabEnter * call SetRegexpEngine()
+augroup END
 
 if has('nvim')
   " Get cmd+c work
