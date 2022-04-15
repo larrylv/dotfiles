@@ -1275,7 +1275,7 @@ endfunction
 call defx#custom#option('_', {
       \ 'root_marker': '',
       \ 'columns': 'indent:icon:filename',
-      \ 'winwidth': 42,
+      \ 'winwidth': 50,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
       \ 'buffer_name': 'DEFX',
