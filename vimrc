@@ -14,10 +14,12 @@ call plug#begin('~/.vim/bundle')
 if !has('nvim')
   " Plug 'Valloric/YouCompleteMe',   { 'for': ['ruby'], 'do': './install.py --clang-completer --go-completer' }
   Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/defx.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 else
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
 " Plug 'vim-ruby/vim-ruby'
@@ -117,6 +119,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'tyru/open-browser.vim'
 Plug 'rodjek/vim-puppet'
+Plug 'bronson/vim-trailing-whitespace'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -312,7 +315,7 @@ endfunction
 autocmd FileType ruby call SetupMapForRipperTags()
 
 " Move the cursor to the already-open NERDTree, and then switch back to the file
-nnoremap <leader>dn :NERDTreeFind<CR><C-w><C-p><CR>
+" nnoremap <leader>dn :NERDTreeFind<CR><C-w><C-p><CR>
 
 " vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
@@ -548,14 +551,6 @@ augroup general_config
 
   " Change SpecialKey color for Tagbar + Golang
   highlight SpecialKey term=bold cterm=bold ctermfg=9 guifg=Cyan
-
-  " Highlight trailing whitespace"{{{
-  highlight ExtraWhitespace ctermbg=red guibg=red
-  match ExtraWhitespace /\s\+$/
-  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-  autocmd BufWinLeave * call clearmatches()
   "}}}
 
   " Remember last location when open a file"{{{
@@ -589,11 +584,10 @@ augroup general_config
   " don't cindent for markdown files
   autocmd FileType markdown,mkd setlocal nocindent
 
-  " Only use cursorline in current window and not when being in insert mode
-  autocmd WinEnter    * set cursorline
-  autocmd WinLeave    * set nocursorline
-  autocmd InsertEnter * set nocursorline
-  autocmd InsertLeave * set cursorline
+  " Only use cursorline in all windows and not when being in insert mode
+  autocmd WinEnter,VimEnter,GUIEnter,BufEnter,TabEnter * set cursorline
+  autocmd InsertEnter                                  * set nocursorline
+  autocmd InsertLeave                                  * set cursorline
 
   " Disable auto comment insertion
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -963,7 +957,7 @@ let NERDTreeChDirMode=0
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeHijackNetrw=1
 let g:NERDTreeIgnore=['\~$']
-nnoremap <F1> :call NERDTreeToggleInCurDir()<CR>
+" nnoremap <F1> :call NERDTreeToggleInCurDir()<CR>
 function! NERDTreeToggleInCurDir()
   if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
     exe ":NERDTreeClose"
@@ -1081,7 +1075,7 @@ function! MyFilename()
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ (
         \   fname == '__Tagbar__' ? g:lightline.fname :
-        \   fname =~ '__Gundo\|NERD_tree' ? '' :
+        \   fname =~ '__Gundo\|NERD_tree\|DEFX' ? '' :
         \   &ft == 'vimfiler' ? vimfiler#get_status_string() :
         \   &ft == 'unite' ? unite#get_status_string() :
         \   &ft == 'vimshell' ? vimshell#get_status_string() :
@@ -1122,6 +1116,7 @@ function! MyMode()
         \ fname == '__Gundo__' ? 'Gundo' :
         \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ fname =~ 'DEFX' ? 'Defx' :
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
@@ -1207,6 +1202,102 @@ call deoplete#custom#option({
 autocmd FileType css,csv,html,json,markdown,tex,txt,yaml
     \ call deoplete#custom#buffer_option('auto_complete', v:false)
 "}}}
+
+" defx.nvim
+nnoremap <F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -resume -toggle<CR>
+" Move the cursor to the already-open Defx, and then switch back to the file
+nnoremap <leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -resume -no-focus<CR>
+
+let g:extra_whitespace_ignored_filetypes = ['unite']
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  setlocal nonu
+  setlocal norelativenumber
+
+  highlight! default link Defx_filename_root Statement
+  highlight! default link Defx_filename_root_marker Statement
+  highlight! default link Defx_icon_root_icon Statement
+  highlight! default link Defx_filename_directory Directory
+  highlight! default link Defx_icon_directory_icon Directory
+  highlight! default link Defx_icon_opened_icon Directory
+
+  " Define mappings
+  nnoremap <silent><buffer><expr> o
+        \ defx#is_directory() ?
+        \ defx#do_action('open_tree', 'toggle') :
+        \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> <CR>
+        \ defx#is_directory() ?
+        \ defx#do_action('open_tree', 'toggle') :
+        \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> c
+        \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+        \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+        \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> i
+        \ defx#do_action('multi', [['drop', 'split']])
+  nnoremap <silent><buffer><expr> s
+        \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> K
+        \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+        \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+        \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> d
+        \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> yy
+        \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> q
+        \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+        \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+        \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+        \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+        \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> R
+        \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> >
+        \ defx#do_action('resize', defx#get_context().winwidth + 10)
+  nnoremap <silent><buffer><expr> <
+        \ defx#do_action('resize', defx#get_context().winwidth - 10)
+  nnoremap <silent><buffer><expr> <leader>p
+        \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> P
+        \ defx#do_action('search', fnamemodify(defx#get_candidate().action__path, ':h'))
+endfunction
+
+call defx#custom#option('_', {
+      \ 'root_marker': '',
+      \ 'columns': 'indent:icon:filename',
+      \ 'winwidth': 42,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'buffer_name': 'DEFX',
+      \ })
+
+call defx#custom#column('icon', {
+      \ 'directory_icon': '▸ ',
+      \ 'file_icon': '  ',
+      \ 'opened_icon': '▾ ',
+      \ 'root_icon': '  ',
+      \ })
+
+call defx#custom#column('indent', {
+      \ 'indent': '  ',
+      \ })
+
+call defx#custom#column('filename', {
+      \ 'min_width': 80,
+      \ 'max_width': 120,
+      \ })
 
 " YouCompleteMe"{{{
 " let g:ycm_collect_identifiers_from_tags_files = 1
