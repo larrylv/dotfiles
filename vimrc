@@ -1264,10 +1264,8 @@ function! s:defx_my_settings() abort
         \ line('.') == 1 ? 'G' : 'k'
   nnoremap <silent><buffer><expr> R
         \ defx#do_action('redraw')
-  nnoremap <silent><buffer><expr> >
-        \ defx#do_action('resize', defx#get_context().winwidth + 10)
-  nnoremap <silent><buffer><expr> <
-        \ defx#do_action('resize', defx#get_context().winwidth - 10)
+  nnoremap <silent><buffer><expr> > '10<C-W>>'
+  nnoremap <silent><buffer><expr> < '10<C-W><'
   nnoremap <silent><buffer><expr> <leader>p
         \ defx#do_action('print')
   nnoremap <silent><buffer><expr> P
