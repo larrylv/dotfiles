@@ -1254,10 +1254,10 @@ function! s:defx_my_settings() abort
         \ defx#do_action('yank_path')
   nnoremap <silent><buffer><expr> q
         \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> <Space>
-        \ defx#do_action('toggle_select') . 'j'
-  nnoremap <silent><buffer><expr> *
-        \ defx#do_action('toggle_select_all')
+  " nnoremap <silent><buffer><expr> <Space>
+  "       \ defx#do_action('toggle_select') . 'j'
+  " nnoremap <silent><buffer><expr> *
+  "       \ defx#do_action('toggle_select_all')
   nnoremap <silent><buffer><expr> j
         \ line('.') == line('$') ? 'gg' : 'j'
   nnoremap <silent><buffer><expr> k
