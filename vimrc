@@ -1075,7 +1075,7 @@ function! MyFilename()
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ (
         \   fname == '__Tagbar__' ? g:lightline.fname :
-        \   fname =~ '__Gundo\|NERD_tree\|DEFX' ? '' :
+        \   fname =~ '__Gundo\|NERD_tree\|\[defx\]' ? '' :
         \   &ft == 'vimfiler' ? vimfiler#get_status_string() :
         \   &ft == 'unite' ? unite#get_status_string() :
         \   &ft == 'vimshell' ? vimshell#get_status_string() :
@@ -1087,7 +1087,7 @@ endfunction
 
 function! MyFugitive()
   try
-    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD\|\[defx\]' && &ft !~? 'vimfiler' && exists('*fugitive#head')
       let mark = '⭠ '  " edit here for cool mark
       let _ = fugitive#head()
       return strlen(_) ? mark._ : ''
@@ -1116,7 +1116,7 @@ function! MyMode()
         \ fname == '__Gundo__' ? 'Gundo' :
         \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ fname =~ 'DEFX' ? 'Defx' :
+        \ fname =~ '\[defx\]' ? 'Defx' :
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
@@ -1204,9 +1204,9 @@ autocmd FileType css,csv,html,json,markdown,tex,txt,yaml
 "}}}
 
 " defx.nvim
-nnoremap <F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -resume -toggle -buffer-name=`'defx' . tabpagenr()`<CR>
+nnoremap <F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -resume -toggle -buffer-name=` tabpagenr()`<CR>
 " Move the cursor to the already-open Defx, and then switch back to the file
-nnoremap <leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -resume -no-focus -buffer-name=`'defx' . tabpagenr()`<CR>
+nnoremap <leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -resume -no-focus -buffer-name=` tabpagenr()`<CR>
 
 let g:extra_whitespace_ignored_filetypes = ['unite']
 autocmd FileType defx call s:defx_my_settings()
@@ -1278,7 +1278,6 @@ call defx#custom#option('_', {
       \ 'winwidth': 50,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
-      \ 'buffer_name': 'DEFX',
       \ })
 
 call defx#custom#column('icon', {
