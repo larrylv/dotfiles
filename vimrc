@@ -150,6 +150,7 @@ syntax on
 let g:solarized_use16 = 1
 let g:solarized_visibility = "high"
 let g:solarized_termtrans = 1
+let g:solarized_extra_hi_groups = 0
 set background=dark
 colorscheme solarized8_flat
 " dirty patch for CursorLine
