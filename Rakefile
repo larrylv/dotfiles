@@ -5,7 +5,7 @@ desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
   Dir['*'].each do |file|
-    next if %w[Rakefile Thorfile README.md LICENSE Session.vim].include? file
+    next if %w[Rakefile Thorfile README.md LICENSE Session.vim init.nvim].include? file
 
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
       if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
@@ -30,6 +30,10 @@ task :install do
       link_file(file)
     end
   end
+
+  puts "linking init.nvim to ~/.config/nvim/init.vim"
+  system %Q{mkdir -p $HOME/.config/nvim/}
+  system %Q{ln -s "$PWD/init.nvim" "$HOME/.config/nvim/init.vim"}
 end
 
 def replace_file(file)
