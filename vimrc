@@ -120,6 +120,7 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'tyru/open-browser.vim'
 Plug 'rodjek/vim-puppet'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'rhysd/git-messenger.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -341,7 +342,7 @@ map <leader>gu :GitGutterUndoHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
 
 " open popup window for git blame
-nmap <silent><Leader>gm :call setbufvar(winbufnr(popup_atcursor(split(system("git log -n 1 -L " . line(".") . ",+1:" . expand("%:p")), "\n"), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
+" nmap <silent><Leader>gm :call setbufvar(winbufnr(popup_atcursor(split(system("git log -n 1 -L " . line(".") . ",+1:" . expand("%:p")), "\n"), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
 
 " vim-go
 function! SetupMapForVimGo()
@@ -871,7 +872,8 @@ let g:UltiSnipsUsePythonVersion = 3
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 " - Popup window (center of the screen)
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-" let g:fzf_preview_window = ['right:hidden', 'ctrl-/']
+" hidden by default, ctrl-\ to toggle
+" let g:fzf_preview_window = ['right:hidden', 'ctrl-\']
 
 silent! nnoremap <unique> <silent> <leader>f :Files<CR>
 " Show search results from files and directories that would otherwise be ignored
