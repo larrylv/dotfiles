@@ -1207,9 +1207,9 @@ autocmd FileType css,csv,html,json,markdown,tex,txt,yaml
 "}}}
 
 " defx.nvim
-nnoremap <F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -resume -toggle -buffer-name=` tabpagenr()`<CR>
+nnoremap <F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle -buffer-name=` tabpagenr()`<CR>
 " Move the cursor to the already-open Defx, and then switch back to the file
-nnoremap <leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -resume -no-focus -buffer-name=` tabpagenr()`<CR>
+nnoremap <leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<CR>
 
 let g:extra_whitespace_ignored_filetypes = ['unite']
 autocmd FileType defx call s:defx_my_settings()
