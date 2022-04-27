@@ -1013,17 +1013,24 @@ autocmd FileType elixir set foldmethod=syntax
 "}}}
 
 " lightline.vim"{{{
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_infos = "\uf129"
+let g:lightline#ale#indicator_warnings = "\uf071 "
+let g:lightline#ale#indicator_errors = "\uf05e "
+
 let g:lightline = {
       \ 'colorscheme': 'lightline_solarized',
       \ 'active': {
       \   'left': [
       \     [ 'mode', 'paste' ],
       \     [ 'filename'],
-      \     ['ctrlpmark'],
+      \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+      \     [ 'ctrlpmark' ],
       \   ],
       \   'right': [
-      \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'lineinfo' ],
-      \     ['winnr'],
+      \     [ 'lineinfo' ],
+      \     [ 'percent' ],
+      \     [ 'winnr' ],
       \     [ 'filetype' ],
       \   ]
       \ },
@@ -1032,9 +1039,17 @@ let g:lightline = {
       \     [ 'filename' ],
       \   ],
       \   'right': [
-      \     [ 'lineinfo' ],
-      \     [ 'winnr' ]
+      \     [ 'winnr' ],
+      \     [ 'filetype' ]
       \   ]
+      \ },
+      \ 'component': {
+      \   'lineinfo': "\uf124 ".'%3l:%-2v',
+		  \   'percent': "\uf110 ".'%3p%%',
+      \   'vim_logo': " \ue62b ",
+      \ },
+      \ 'tabline': {
+      \   'left': [ [ 'vim_logo', 'tabs' ] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
@@ -1050,14 +1065,16 @@ let g:lightline = {
       \   'linter_checking': 'lightline#ale#checking',
       \   'linter_warnings': 'lightline#ale#warnings',
       \   'linter_errors': 'lightline#ale#errors',
+      \   'linter_ok': 'lightline#ale#ok',
       \ },
       \ 'component_type': {
       \   'linter_checking': 'left',
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
+      \   'linter_ok': 'left',
       \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ 'separator': { 'left': "\ue0b0" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue621" }
       \ }
 function! MyModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -1070,7 +1087,7 @@ endfunction
 function! MyWinnr()
   let fname = expand('%:t')
   let nr = winnr()
-  return fname == 'ControlP' ? '' : nr
+  return fname == 'ControlP' ? '' : 'nr:' . nr
 endfunction
 
 function! MyFilename()
