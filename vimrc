@@ -1028,8 +1028,7 @@ let g:lightline = {
       \     [ 'ctrlpmark' ],
       \   ],
       \   'right': [
-      \     [ 'lineinfo' ],
-      \     [ 'percent' ],
+      \     [ 'percent', 'lineinfo' ],
       \     [ 'winnr' ],
       \     [ 'filetype' ],
       \   ]
@@ -1044,9 +1043,9 @@ let g:lightline = {
       \   ]
       \ },
       \ 'component': {
-      \   'lineinfo': "\uf124 ".'%3l:%-2v',
-		  \   'percent': "\uf110 ".'%3p%%',
-      \   'vim_logo': " \ue62b ",
+      \   'lineinfo': "\uf124".'%3l:%-2v',
+		  \   'percent': "\uf110".'%3p%%',
+      \   'vim_logo': " \ue62b",
       \ },
       \ 'tabline': {
       \   'left': [ [ 'vim_logo', 'tabs' ] ]
