@@ -1023,7 +1023,7 @@ let g:lightline = {
       \ 'active': {
       \   'left': [
       \     [ 'mode', 'paste' ],
-      \     [ 'filename'],
+      \     [ 'filename' ],
       \     [ 'linter_checking', 'linter_errors', 'linter_warnings' ],
       \     [ 'ctrlpmark' ],
       \   ],
@@ -1050,6 +1050,10 @@ let g:lightline = {
       \ 'tabline': {
       \   'left': [ [ 'vim_logo', 'tabs' ] ]
       \ },
+      \ 'tab': {
+      \   'active': [ 'tabnum', 'filename' ],
+      \   'inactive': [ 'tabnum', 'filename' ],
+      \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
       \   'filename': 'MyFilename',
@@ -1060,7 +1064,11 @@ let g:lightline = {
       \   'winnr': 'MyWinnr',
       \   'ctrlpmark': 'CtrlPMark',
       \ },
+      \ 'tab_component_function': {
+      \   'filename': 'MyTabname',
+      \ },
       \ 'component_expand': {
+      \   'tabs': 'lightline#tabs',
       \   'linter_checking': 'lightline#ale#checking',
       \   'linter_warnings': 'lightline#ale#warnings',
       \   'linter_errors': 'lightline#ale#errors',
@@ -1091,10 +1099,12 @@ endfunction
 
 function! MyFilename()
   let fname = expand('%:t')
-  return fname == 'ControlP' ? g:lightline.ctrlp_item :
+  let ufname = fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ (
         \   fname == '__Tagbar__' ? g:lightline.fname :
         \   fname =~ '__Gundo\|NERD_tree\|\[defx\]' ? '' :
+        \   fname =~ '[FZF]' ? '[FZF]' :
+        \   fname =~ '!sh' ? '[FZF]' :
         \   &ft == 'vimfiler' ? vimfiler#get_status_string() :
         \   &ft == 'unite' ? unite#get_status_string() :
         \   &ft == 'vimshell' ? vimshell#get_status_string() :
@@ -1102,6 +1112,11 @@ function! MyFilename()
         \   ('' != fname ? fname : '[No Name]') .
         \   ('' != MyModified() ? ' ' . MyModified() : '')
         \ )
+  return "\uf0f6 ".ufname
+endfunction
+
+function! MyTabname(n)
+  return MyFilename()
 endfunction
 
 function! MyFugitive()
