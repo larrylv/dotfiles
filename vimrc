@@ -1024,7 +1024,7 @@ let g:lightline = {
       \   'left': [
       \     [ 'mode', 'paste' ],
       \     [ 'filename'],
-      \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+      \     [ 'linter_checking', 'linter_errors', 'linter_warnings' ],
       \     [ 'ctrlpmark' ],
       \   ],
       \   'right': [
