@@ -1,7 +1,7 @@
 # vim:ft=sh:
 
 # alias
-alias vim='nvim'
+# alias vim='nvim'
 
 alias af='git ls-files | ack --smart-case --no-column --noenv'
 alias be='bundle exec'
@@ -114,11 +114,13 @@ shopt -s cdspell 2> /dev/null
 # environment
 
 export CLICOLOR=1
-export EDITOR=nvim
+# export EDITOR=nvim
+export EDITOR=vim
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt/python/bin:$PATH"
-export GIT_EDITOR=nvim
+# export GIT_EDITOR=nvim
+export GIT_EDITOR=vim
 
 ## rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
