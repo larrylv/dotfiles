@@ -1039,11 +1039,11 @@ let g:lightline = {
       \   ],
       \   'right': [
       \     [ 'winnr' ],
-      \     [ 'filetype' ]
+      \     [ 'filename' ]
       \   ]
       \ },
       \ 'component': {
-      \   'lineinfo': "\uf124".'%3l:%-2v',
+      \   'lineinfo': "\ue0a1".'%3l'." \ue0a3".'%-2v',
 		  \   'percent': "\uf110".'%3p%%',
       \   'vim_logo': " \ue62b",
       \ },
@@ -1086,7 +1086,7 @@ endfunction
 function! MyWinnr()
   let fname = expand('%:t')
   let nr = winnr()
-  return fname == 'ControlP' ? '' : 'nr:' . nr
+  return fname == 'ControlP' ? '' : "\uf77a " . nr
 endfunction
 
 function! MyFilename()
