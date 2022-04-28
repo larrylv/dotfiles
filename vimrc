@@ -292,6 +292,9 @@ map <leader>cc :ccl <bar> lcl<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
 
+" toggle colorcolumn=81
+nnoremap <silent><leader>co :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
+
 " Generate ctags
 " nnoremap <leader>dc :Dispatch ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --fields=+ialS --extras=+q .<CR>
 nnoremap <leader>dc :VimuxPromptCommand<CR>ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --fields=+ialS --extras=+q .<CR>
