@@ -1097,8 +1097,8 @@ function! MyWinnr()
   return fname == 'ControlP' ? '' : "\uf77a " . nr
 endfunction
 
-function! MyFilename()
-  let fname = expand('%:t')
+function! GetFilename(fname)
+  let fname = a:fname
   let ufname = fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ (
         \   fname == '__Tagbar__' ? g:lightline.fname :
@@ -1108,15 +1108,24 @@ function! MyFilename()
         \   &ft == 'vimfiler' ? vimfiler#get_status_string() :
         \   &ft == 'unite' ? unite#get_status_string() :
         \   &ft == 'vimshell' ? vimshell#get_status_string() :
-        \   ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \   ('' != fname ? fname : '[No Name]') .
-        \   ('' != MyModified() ? ' ' . MyModified() : '')
+        \   ('' != fname ? fname : '[No Name]')
         \ )
   return "\uf0f6 ".ufname
 endfunction
 
+function! MyFilename()
+  let fname = expand('%:t')
+  return GetFilename(fname) .
+        \  ('' != MyReadonly() ? ' ' . MyReadonly() : '') .
+        \  ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
 function! MyTabname(n)
-  return MyFilename()
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let fname = expand('#'.buflist[winnr - 1].':t')
+
+  return GetFilename(fname)
 endfunction
 
 function! MyFugitive()
