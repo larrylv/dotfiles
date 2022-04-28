@@ -1083,8 +1083,8 @@ let g:lightline = {
       \   'linter_errors': 'error',
       \   'linter_ok': 'left',
       \ },
-      \ 'separator': { 'left': "\ue0b0" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue621" }
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
       \ }
 function! MyModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -1250,9 +1250,9 @@ autocmd FileType css,csv,html,json,markdown,tex,txt,yaml
 "}}}
 
 " defx.nvim
-nnoremap <F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle -buffer-name=` tabpagenr()`<CR>
+nnoremap <silent><F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle -buffer-name=` tabpagenr()`<CR>
 " Move the cursor to the already-open Defx, and then switch back to the file
-nnoremap <leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<CR>
+nnoremap <silent><leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<CR>
 
 let g:extra_whitespace_ignored_filetypes = ['unite']
 autocmd FileType defx call s:defx_my_settings()
