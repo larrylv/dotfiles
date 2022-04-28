@@ -1042,7 +1042,6 @@ let g:lightline = {
       \   ],
       \   'right': [
       \     [ 'winnr' ],
-      \     [ 'filename' ]
       \   ]
       \ },
       \ 'component': {
