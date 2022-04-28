@@ -160,7 +160,7 @@ hi! CursorLineNr cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=NONE guibg=
 " }}}
 
 " Set some junk"{{{
-set ambiwidth=double
+" set ambiwidth=double
 set autoindent                             " Copy indent from last line when starting new line
 set autoread                               " Reload files changed outside automatically
 set backspace=indent,eol,start             " Allow backspacing over everything in insert mode
