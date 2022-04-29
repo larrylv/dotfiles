@@ -1104,7 +1104,7 @@ function! GetFilename(fname)
   let ufname = fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ (
         \   fname == '__Tagbar__' ? g:lightline.fname :
-        \   fname =~ '__Gundo\|NERD_tree\|\[defx\]' ? '' :
+        \   fname =~ '__Gundo\|NERD_tree\|\[defx\]' ? 'Explorer' :
         \   fname =~ '[FZF]' ? '[FZF]' :
         \   fname =~ '!sh' ? '[FZF]' :
         \   &ft == 'vimfiler' ? vimfiler#get_status_string() :
