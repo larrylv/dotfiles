@@ -447,6 +447,8 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
+nnoremap <leader>tt :tabe<cr>
+
 " vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap <leader>ta <Plug>(EasyAlign)
