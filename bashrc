@@ -208,6 +208,7 @@ unset autojump_script
 
 #}}}
 
+echo_normal='\033[0;00m'
 echo_black='\033[0;30m'
 echo_bold_black='\033[1;30m'
 echo_red='\033[0;31m'
@@ -280,26 +281,26 @@ function git_prompt_info() {
   local ref="$(/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null)"
   if [ -n "$ref" ]; then
     # shellcheck disable=SC2154
-    echo -e " ${echo_bold_cyan}git:($(git_branch_name)${echo_bold_cyan})$(parse_git_dirty)$(parse_git_stash)"
+    echo -e " ${echo_bold_purple}\ue725 $(git_branch_name)$(parse_git_dirty)$(parse_git_stash)"
   fi
 }
 
 function rbenv_prompt_info() {
   if which rbenv > /dev/null; then
-    echo -e " ${echo_bold_cyan}ruby:(${echo_bold_purple}$(rbenv version-name)${echo_bold_cyan})"
+    echo -e " ${echo_bold_red}\ue21e $(rbenv version-name)${echo_normal}"
   fi
 }
 
 function goenv_prompt_info() {
   if which goenv > /dev/null; then
-    echo -e " ${echo_bold_cyan}go:(${echo_bold_purple}$(goenv version-name)${echo_bold_cyan})"
+    echo -e " ${echo_bold_cyan}\ufcd1 $(goenv version-name)${echo_normal}"
   fi
 }
 
 function pyenv_prompt_info() {
   if which pyenv > /dev/null; then
     if [ ! -f "$PWD/Gemfile" ] && [ ! -f "$PWD/mix.exs" ] && [ ! -f "$PWD/project.clj" ] ; then
-      echo -e " ${echo_bold_cyan}python:(${echo_bold_purple}$(pyenv version-name)${echo_bold_cyan})"
+      echo -e " ${echo_bold_yellow}\uf81f $(pyenv version-name)${echo_normal}"
     fi
   fi
 }
@@ -307,16 +308,24 @@ function pyenv_prompt_info() {
 function kiex_prompt_info() {
   if which kiex > /dev/null; then
     if [ -f "$PWD/mix.exs" ]; then
-      echo -e " ${echo_bold_cyan}elixir:(${echo_bold_purple}$ELIXIR_VERSION${echo_bold_cyan})"
+      echo -e " ${echo_bold_purple}\ue62d $ELIXIR_VERSION${echo_normal}"
     fi
   fi
 }
 
+function dir_prompt() {
+  echo -e "\uf124"
+}
+
+function bash_prompt() {
+  echo -e "\uf155"
+}
+
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   # shellcheck disable=SC2154
-  PS1="${bold_green}\u@\h ${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${normal}"
+  PS1="${bold_green}\u@\h ${bold_blue}\$(dir_prompt)  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 else
-  PS1="${bold_yellow}➜  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$ ${normal}"
+  PS1="${bold_blue}\$(dir_prompt)  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 fi
 
 #}}}

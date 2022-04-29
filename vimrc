@@ -277,6 +277,7 @@ endif
 nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+" Use Alt + number to swtich tabs
 nnoremap <M-1> 1gt
 nnoremap <M-2> 2gt
 nnoremap <M-3> 3gt
