@@ -889,7 +889,32 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " hidden by default, ctrl-\ to toggle
 " let g:fzf_preview_window = ['right:hidden', 'ctrl-\']
 
-silent! nnoremap <unique> <silent> <leader>f :Files<CR>
+function! s:cache_list_cmd()
+  let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
+	if ref == ''
+    return $FZF_DEFAULT_COMMAND
+	endif
+
+  " trim the newline output from rev-parse
+  let head_commit = system('git rev-parse HEAD | tr -d "\n"')
+  let cache_file = '/tmp/'.head_commit.'.files'
+  if !filereadable(expand(cache_file))
+    execute 'silent !' . $FZF_DEFAULT_COMMAND . ' > '.cache_file
+  endif
+
+  let base = fnamemodify(expand('%'), ':h:.:S')
+  return base == '.' ?
+    \ printf('cat %s', cache_file) :
+    \ printf('cat %s | proximity-sort %s', cache_file, expand('%'))
+endfunction
+
+command! -bang -nargs=? -complete=dir MyFiles
+  \ call fzf#vim#files(<q-args>, {'source': s:cache_list_cmd(),
+  \                               'options': '--tiebreak=index'}, <bang>0)
+silent! nnoremap <unique> <silent> <leader>f :MyFiles<CR>
+
+" silent! nnoremap <unique> <silent> <leader>f :Files<CR>
+
 " Show search results from files and directories that would otherwise be ignored
 " by '.gitignore', '.ignore', '.fdignore', or the global ignore file.
 command! -bang -nargs=* FilesNoIgnore
@@ -919,8 +944,8 @@ let g:fzf_action = {
 "}}}
 
 " ctrlp.vim"{{{
-silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
-silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<CR>
+" silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
+" silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<CR>
 " silent! nnoremap <unique> <silent> <leader>d :CtrlP<CR>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_clear_cache_on_exit = 0
