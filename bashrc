@@ -318,7 +318,7 @@ function dir_prompt() {
 }
 
 function bash_prompt() {
-  echo -e "\uf155"
+  echo -e "$"
 }
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
