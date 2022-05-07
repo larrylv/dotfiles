@@ -889,7 +889,7 @@ set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 " - Popup window (center of the screen)
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " hidden by default, ctrl-\ to toggle
-" let g:fzf_preview_window = ['right:hidden', 'ctrl-\']
+let g:fzf_preview_window = ['right:hidden', 'ctrl-\']
 
 function! s:cache_list_cmd()
   let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
@@ -912,7 +912,7 @@ endfunction
 
 command! -bang -nargs=? -complete=dir MyFiles
   \ call fzf#vim#files(<q-args>, {'source': s:cache_list_cmd(),
-  \                               'options': '--tiebreak=index'}, <bang>0)
+  \                               'options': ['--tiebreak=index', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
 silent! nnoremap <unique> <silent> <leader>f :MyFiles<CR>
 
 " silent! nnoremap <unique> <silent> <leader>f :Files<CR>
