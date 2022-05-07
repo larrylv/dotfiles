@@ -383,10 +383,10 @@ function! SetupMapForVimGo()
   nmap <leader>tj :<C-u>GoDeclsDir<CR>
   nmap <leader>ts :<C-u>GoDecls<CR>
 
-	" :GoDef but opens in a vertical split
-	nmap <leader>gd <Plug>(go-def-vertical)
-	" :GoDef but opens in a horizontal split
-	nmap <leader>gs <Plug>(go-def-split)
+  " :GoDef but opens in a vertical split
+  nmap <leader>gd <Plug>(go-def-vertical)
+  " :GoDef but opens in a horizontal split
+  nmap <leader>gs <Plug>(go-def-split)
 endfunction
 
 autocmd FileType go call SetupMapForVimGo()
@@ -857,7 +857,7 @@ let g:ale_fix_on_save = 1
 
 let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
 if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe/pay-server'
-	let g:ale_linters['ruby'] = ['sorbet-payserver', 'rubocop']
+  let g:ale_linters['ruby'] = ['sorbet-payserver', 'rubocop']
 end
 "}}}
 
@@ -893,9 +893,9 @@ let g:fzf_preview_window = ['right:hidden', 'ctrl-\']
 
 function! s:cache_list_cmd()
   let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
-	if ref == ''
+  if ref == ''
     return $FZF_DEFAULT_COMMAND
-	endif
+  endif
 
   " trim the newline output from rev-parse
   let head_commit = system('git rev-parse HEAD | tr -d "\n"')
@@ -1084,7 +1084,7 @@ let g:lightline = {
       \ },
       \ 'component': {
       \   'lineinfo': "\ue0a1".'%3l'." \ue0a3".'%-2v',
-		  \   'percent': "\uf110".'%3p%%',
+      \   'percent': "\uf110".'%3p%%',
       \   'vim_logo': " \ue62b",
       \ },
       \ 'tabline': {
@@ -1386,13 +1386,13 @@ call defx#custom#column('filename', {
 " let g:ycm_min_num_identifier_candidate_chars = 2
 " let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " let g:ycm_semantic_triggers =  {
-" 	\   'c' : ['->', '.', 're!\w{2}'],
-" 	\   'cpp' : ['->', '.', '::', 're!\w{2}'],
-" 	\   'java,javascript,typescript,python,scala,elixir,go' : ['.', 're!\w{2}'],
-" 	\   'ruby' : ['.', '::', 're!\w{2}'],
-" 	\   'lua' : ['.', ':', 're!\w{2}'],
-" 	\   'erlang' : [':', 're!\w{2}'],
-" 	\ }
+"   \   'c' : ['->', '.', 're!\w{2}'],
+"   \   'cpp' : ['->', '.', '::', 're!\w{2}'],
+"   \   'java,javascript,typescript,python,scala,elixir,go' : ['.', 're!\w{2}'],
+"   \   'ruby' : ['.', '::', 're!\w{2}'],
+"   \   'lua' : ['.', ':', 're!\w{2}'],
+"   \   'erlang' : [':', 're!\w{2}'],
+"   \ }
 "}}}
 
 " elm-vim"{{{
