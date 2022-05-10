@@ -938,17 +938,14 @@ silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnoreVcs<CR>
 
 function! ClearFzfCache()
   let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
-  if ref == ''
-    return
+  if ref != ''
+    " trim the newline output from rev-parse
+    let head_commit = system('git rev-parse HEAD | tr -d "\n"')
+    let cache_file = '/tmp/'.head_commit.'.files'
+    if filereadable(expand(cache_file))
+      execute 'silent !rm ' . cache_file
+    endif
   endif
-
-  " trim the newline output from rev-parse
-  let head_commit = system('git rev-parse HEAD | tr -d "\n"')
-  let cache_file = '/tmp/'.head_commit.'.files'
-  if filereadable(expand(cache_file))
-    execute 'silent !rm ' . cache_file
-  endif
-  return
 endfunction
 silent! nnoremap <unique> <silent> <leader>cf :call ClearFzfCache()<CR>
 
@@ -1317,8 +1314,8 @@ nnoremap <silent><F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle
 nnoremap <silent><leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<CR>
 
 let g:extra_whitespace_ignored_filetypes = ['unite']
-autocmd FileType defx call s:defx_my_settings()
-function! s:defx_my_settings() abort
+autocmd FileType defx call MyDefxSettings()
+function! MyDefxSettings() abort
   setlocal nonu
   setlocal norelativenumber
 
