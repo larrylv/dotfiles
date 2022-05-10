@@ -891,7 +891,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " hidden by default, ctrl-\ to toggle
 " let g:fzf_preview_window = ['right:hidden', 'ctrl-\']
 
-function! s:cache_list_cmd()
+function! CacheListCmd()
   let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
   if ref == ''
     return $FZF_DEFAULT_COMMAND
@@ -911,7 +911,7 @@ function! s:cache_list_cmd()
 endfunction
 
 command! -bang -nargs=? -complete=dir MyFiles
-  \ call fzf#vim#files(<q-args>, {'source': s:cache_list_cmd(),
+  \ call fzf#vim#files(<q-args>, {'source': CacheListCmd(),
   \                               'options': ['--tiebreak=index', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
 silent! nnoremap <unique> <silent> <leader>f :MyFiles<CR>
 
