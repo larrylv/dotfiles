@@ -248,19 +248,23 @@ set wrapscan                               " Searches wrap around end of file
 set wildignore+=**/*.jpg,*.jpeg,*.gif,**/*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*
 
-function! SetRegexpEngine()
-  let filetype = &ft
-  if (filetype == 'ruby')
-    setlocal regexpengine=1 " https://github.com/vim-ruby/vim-ruby/issues/243
-  else
-    setlocal regexpengine=0 " https://jameschambers.co.uk/vim-typescript-slow
-  endif
-endfunction
+if !has('nvim')
+  function! SetRegexpEngine()
+    let filetype = &ft
+    if (filetype == 'ruby')
+      setlocal regexpengine=1 " https://github.com/vim-ruby/vim-ruby/issues/243
+    else
+      setlocal regexpengine=0 " https://jameschambers.co.uk/vim-typescript-slow
+    endif
+  endfunction
 
-augroup regexpEngine
-  autocmd!
-  autocmd WinEnter,VimEnter,GUIEnter,BufEnter,TabEnter * call SetRegexpEngine()
-augroup END
+  augroup regexpEngine
+    autocmd!
+    autocmd WinEnter,VimEnter,GUIEnter,BufEnter,TabEnter * call SetRegexpEngine()
+  augroup END
+else
+  set regexpengine=0
+endif
 
 if has('nvim')
   " Get cmd+c work
