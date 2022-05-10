@@ -220,6 +220,7 @@ set scrolloff=3                            " Start scrolling three lines before 
 set shiftwidth=2                           " The # of spaces for indenting
 set shortmess=atI                          " Don't show the intro message when starting vim
 set shortmess+=c                           " This prevents the display of "Pattern not found" & similar messages during completion.
+set shortmess+=F                           " Don't give the file info when editing a file, like :silent as used for the command
 set showtabline=2                          " Show tab bar all the time
 " set showcmd                                " display incomplete commands
 set smartcase                              " Ignore 'ignorecase' if search patter contains uppercase characters
