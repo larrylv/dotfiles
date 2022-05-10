@@ -53,8 +53,7 @@ Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
 Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
 Plug 'majutsushi/tagbar',                   { 'for': ['go', 'ruby', 'rust', 'python'] }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
-Plug 'mxw/vim-jsx',                         { 'for': ['javascript', 'javascript.jsx', 'typescript'] }
-Plug 'othree/es.next.syntax.vim',           { 'for': ['javascript', 'javascript.jsx', 'typescript'] }
+Plug 'HerringtonDarkholme/yats.vim',        { 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact'] }
 Plug 'othree/html5.vim',                    { 'for': ['html', 'eruby'] }
 Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
 Plug 'hail2u/vim-css3-syntax',              { 'for': ['css', 'sass', 'scss'] }
