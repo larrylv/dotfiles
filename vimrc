@@ -108,7 +108,8 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'Raimondi/delimitMate'
 Plug 'benmills/vimux'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'vim-scripts/matchit.zip'
+" Plug 'vim-scripts/matchit.zip'
+Plug 'andymass/vim-matchup'
 Plug 'mhinz/vim-startify'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -332,6 +333,10 @@ autocmd FileType ruby call SetupMapForRipperTags()
 
 " Move the cursor to the already-open NERDTree, and then switch back to the file
 " nnoremap <leader>dn :NERDTreeFind<CR><C-w><C-p><CR>
+
+" vim-matchup
+" disable match highlighting
+let g:matchup_matchparen_enabled = 0
 
 " vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
