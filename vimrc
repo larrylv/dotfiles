@@ -936,6 +936,22 @@ command! -bang -nargs=* FilesNoIgnoreVcs
   \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore-vcs --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
 silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnoreVcs<CR>
 
+function! ClearFzfCache()
+  let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
+  if ref == ''
+    return
+  endif
+
+  " trim the newline output from rev-parse
+  let head_commit = system('git rev-parse HEAD | tr -d "\n"')
+  let cache_file = '/tmp/'.head_commit.'.files'
+  if filereadable(expand(cache_file))
+    execute 'silent !rm ' . cache_file
+  endif
+  return
+endfunction
+silent! nnoremap <unique> <silent> <leader>cf :call ClearFzfCache()<CR>
+
 nnoremap <leader>aa :Rg<Space>
 nnoremap <silent> <leader>ag :Rg <C-R><C-W><CR>
 xnoremap <silent> <leader>ag y:Rg <C-R>"<CR>"
