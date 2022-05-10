@@ -109,7 +109,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'benmills/vimux'
 Plug 'jlanzarotta/bufexplorer'
 " Plug 'vim-scripts/matchit.zip'
-Plug 'andymass/vim-matchup'
+" Plug 'andymass/vim-matchup'
 Plug 'mhinz/vim-startify'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -336,7 +336,7 @@ autocmd FileType ruby call SetupMapForRipperTags()
 
 " vim-matchup
 " disable match highlighting
-let g:matchup_matchparen_enabled = 0
+" let g:matchup_matchparen_enabled = 0
 
 " vim-projectionist && vim-rails
 map <leader>ec :Econtroller 
