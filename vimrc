@@ -481,7 +481,26 @@ map <leader>w <C-W><C-W>
 " vim has to be compiled with +clipboard to support this
 vmap <leader>y "*y
 
-map <leader>z :BufOnly<cr>
+
+" Close all buffers but this one
+" command! BufOnly silent! execute "%bd|e#|bd#"
+" map <leader>z :BufOnly<cr>
+
+" Close all hidden buffers
+function! DeleteHiddenBuffers()
+  let tpbl=[]
+  let closed = 0
+  call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+  for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+    if getbufvar(buf, '&mod') == 0
+      silent execute 'bwipeout' buf
+      let closed += 1
+    endif
+  endfor
+  echo "Closed ".closed." hidden buffers"
+endfunction
+
+nnoremap <leader>z :call DeleteHiddenBuffers()<CR>
 
 " Keep selected text selected when fixing indentation
 vnoremap < <gv
@@ -542,9 +561,6 @@ augroup general_config
   " Yank from cursor to end of line {{{
   nnoremap Y y$
   " }}}
-
-  " Close all buffers but this one
-  command! BufOnly silent! execute "%bd|e#|bd#"
 
   " Show git diff in tab"{{{
   command! GdiffInTab tabedit %|vsplit|Gdiff
