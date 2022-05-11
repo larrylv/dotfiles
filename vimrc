@@ -215,7 +215,7 @@ set nu                                     " Enable line numbers
 set omnifunc=syntaxcomplete#Complete       " Set omni-completion method
 set redrawtime=10000
 set relativenumber
-set ruler                                  " Show the cursor position
+set noruler                                " Don't show the line and column number of the cursor position. lightline has it already.
 set scrolloff=3                            " Start scrolling three lines before horizontal border of window
 set shiftwidth=2                           " The # of spaces for indenting
 set shortmess=atI                          " Don't show the intro message when starting vim
