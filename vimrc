@@ -713,6 +713,9 @@ let g:gitgutter_max_signs = 1024
 set signcolumn=yes
 "}}}
 
+" vim-trailing-whitespace
+let g:extra_whitespace_ignored_filetypes = ['defx']
+
 " vim-fugitive"{{{
 call SetupCommandAlias("GBlame", "Git blame")
 call SetupCommandAlias("Gblame", "Git blame")
