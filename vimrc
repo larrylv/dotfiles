@@ -483,7 +483,7 @@ vmap <leader>y "*y
 
 
 " Close all buffers but this one
-" command! BufOnly silent! execute "%bd|e#|bd#"
+command! BufOnly silent! execute "%bd|e#|bd#"
 " map <leader>z :BufOnly<cr>
 
 " Close all hidden buffers
