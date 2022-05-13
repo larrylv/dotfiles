@@ -4,6 +4,7 @@
 alias vim='nvim'
 
 alias af='git ls-files | ack --smart-case --no-column --noenv'
+alias ag='rg'
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
 [[ -f /usr/local/bin/bat ]] && alias cat='bat'
@@ -30,15 +31,17 @@ alias vs='vim -S Session.vim'
 alias ycommit="git add . ; date -v-1d +\"%Y-%m-%d\" | xargs git ci -m"
 LESS="-iXRF"; export LESS
 
-ag() {
-  if which rg > /dev/null; then
-    rg --color always --vimgrep --sort-files "$@" | less
-  elif which ag > /dev/null; then
-    ag "$@"
-  else
-    ack "$@"
-  fi
-}
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
+
+# ag() {
+#   if which rg > /dev/null; then
+#     rg --color always --vimgrep --sort-files "$@" | less
+#   elif which ag > /dev/null; then
+#     ag "$@"
+#   else
+#     ack "$@"
+#   fi
+# }
 
 if which fd > /dev/null; then
   export FZF_DEFAULT_COMMAND="fd --hidden --follow --type f"

@@ -31,9 +31,13 @@ task :install do
     end
   end
 
-  puts "linking init.nvim to ~/.config/nvim/init.vim"
   system %Q{mkdir -p $HOME/.config/nvim/}
-  system %Q{ln -s "$PWD/init.nvim" "$HOME/.config/nvim/init.vim"}
+  if File.identical? 'init.nvim', File.join(ENV['HOME'], ".config/nvim/init.vim")
+    puts "identical ~/.config/nvim/init.vim"
+  else
+    puts "linking init.nvim to ~/.config/nvim/init.vim"
+    system %Q{ln -s "$PWD/init.nvim" "$HOME/.config/nvim/init.vim"}
+  end
 end
 
 def replace_file(file)
