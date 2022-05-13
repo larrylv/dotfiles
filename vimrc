@@ -96,6 +96,7 @@ Plug 'dense-analysis/ale'
 Plug 'tomtom/tcomment_vim'
 Plug 'larrylv/vim-vroom'
 Plug 'larrylv/echodoc.vim'
+Plug 'larrylv/vim-trailing-whitespace'
 Plug 'honza/vim-snippets'
 Plug 'vim-test/vim-test'
 Plug 'mileszs/ack.vim'
@@ -119,7 +120,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'tyru/open-browser.vim'
 Plug 'rodjek/vim-puppet'
-Plug 'bronson/vim-trailing-whitespace'
 Plug 'rhysd/git-messenger.vim'
 
 " Add plugins to &runtimepath
@@ -714,7 +714,8 @@ set signcolumn=yes
 "}}}
 
 " vim-trailing-whitespace
-let g:extra_whitespace_ignored_filetypes = ['defx']
+let g:extra_whitespace_ignored_filetypes = ['defx', 'unite']
+let g:extra_whitespace_ignored_filenames = ['defx', 'unite']
 
 " vim-fugitive"{{{
 call SetupCommandAlias("GBlame", "Git blame")
@@ -1343,7 +1344,6 @@ nnoremap <silent><F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle
 " Move the cursor to the already-open Defx, and then switch back to the file
 nnoremap <silent><leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<CR>
 
-let g:extra_whitespace_ignored_filetypes = ['unite']
 autocmd FileType defx call MyDefxSettings()
 function! MyDefxSettings() abort
   setlocal nonu
