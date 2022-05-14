@@ -381,7 +381,8 @@ function! SetupMapForVimGo()
     endif
   endfunction
 
-  nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
+  nmap <leader>vb :<C-u>call <SID>build_go_files()<CR>
+
   " nmap <leader>gb  <Plug>(go-build)
   nmap <leader>gi <Plug>(go-info)
   nmap <leader>gr <Plug>(go-run)
