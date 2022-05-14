@@ -443,7 +443,7 @@ endfunction
 nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
 
 " Toggle RainbowParentheses
-nmap <leader>rp :RainbowParentheses!!<CR>
+" nmap <leader>rp :RainbowParentheses!!<CR>
 
 " fzf-copy-ruby-token
 nmap <leader>ry <Plug>(fzf_copy_ruby_token)
