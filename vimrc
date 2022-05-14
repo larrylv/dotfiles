@@ -449,8 +449,8 @@ nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
 nmap <leader>ry <Plug>(fzf_copy_ruby_token)
 
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParentheses<cr>
-map <leader>sl :set synmaxcol=200<cr>:e<cr>
-map <leader>sh :set synmaxcol=1000<cr>:e<cr>
+" map <leader>sl :set synmaxcol=200<cr>:e<cr>
+" map <leader>sh :set synmaxcol=1000<cr>:e<cr>
 
 nmap <leader>sp :call <SID>SynStack()<CR>
 function! <SID>SynStack()
