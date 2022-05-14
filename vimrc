@@ -365,7 +365,9 @@ map <leader>gu :GitGutterUndoHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
 
 " open popup window for git blame
-" nmap <silent><Leader>gm :call setbufvar(winbufnr(popup_atcursor(split(system("git log -n 1 -L " . line(".") . ",+1:" . expand("%:p")), "\n"), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
+if !has('nvim')
+  nmap <silent><Leader>gm :call setbufvar(winbufnr(popup_atcursor(split(system("git log -n 1 -L " . line(".") . ",+1:" . expand("%:p")), "\n"), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
+endif
 
 " vim-go
 function! SetupMapForVimGo()
