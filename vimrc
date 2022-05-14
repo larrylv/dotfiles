@@ -430,6 +430,7 @@ nmap ms :marks abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
 
 nnoremap <leader>p :let @* = expand("%")<cr>:echo @%<cr>
 
+" command! BufOnly silent! execute "%bd|e#|bd#"
 function! CloseAllBuffersButCurrent()
   let curr = bufnr("%")
   let last = bufnr("$")
@@ -481,11 +482,6 @@ map <leader>w <C-W><C-W>
 " system yank: will copy into the system clipboard on OS X
 " vim has to be compiled with +clipboard to support this
 vmap <leader>y "*y
-
-
-" Close all buffers but this one
-command! BufOnly silent! execute "%bd|e#|bd#"
-" map <leader>z :BufOnly<cr>
 
 " Close all hidden buffers
 function! DeleteHiddenBuffers()
