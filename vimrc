@@ -954,7 +954,14 @@ endfunction
 command! -bang -nargs=? -complete=dir MyFiles
   \ call fzf#vim#files(<q-args>, {'source': CacheListCmd(),
   \                               'options': ['--tiebreak=index', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
+
 silent! nnoremap <unique> <silent> <leader>f :MyFiles<CR>
+
+" list bookmarks
+nnoremap <leader>tm :Marks<CR>
+
+" list commands
+nnoremap <leader>an :Commands<CR>
 
 " silent! nnoremap <unique> <silent> <leader>f :Files<CR>
 
@@ -988,8 +995,6 @@ nnoremap <silent> <leader>AG :Rg <C-R><C-A><CR>
 silent! nnoremap <unique> <silent> <leader>bb :Buffers<CR>
 silent! nnoremap <unique> <silent> <leader>bl :BLines<CR>
 nnoremap <leader>tj :Tags 
-" list bookmarks
-nnoremap <leader>tm :Marks<CR>
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
