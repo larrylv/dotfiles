@@ -415,16 +415,21 @@ nmap <silent> <leader>ln <Plug>(ale_next_wrap)
 nmap <leader>sj :SplitjoinJoin<cr>
 nmap <leader>ss :SplitjoinSplit<cr>
 
-" increase window size
+" increase window horizontal size
 map <leader>ni <C-W>>
-" decrease window size
+map <leader>n+ <C-W>>
+map <leader>+ <C-W>>
+map <leader>= <C-W>>
+" decrease window horizontal size
 map <leader>nd <C-W><
+map <leader>n- <C-W><
+map <leader>_ <C-W><
+map <leader>- <C-W><
+
 " increase a window to its maximum height
 map <leader>nh <C-W>_
-map <leader>n- <C-W>_
 " increase a window to its maximum width
 map <leader>nw <C-W>\|
-map <leader>n\ <C-W>\|
 
 " Delete all upcase marks / bookmarks
 nmap mx :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
@@ -510,11 +515,7 @@ vnoremap > >gv
 map Q <Nop>
 
 " format python code
-autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
-
-" horizontal resize window
-nnoremap <leader>_ <C-W><
-nnoremap <leader>+ <C-W>>
+autocmd FileType python nnoremap <leader>s= :0,$!yapf<CR>
 
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
