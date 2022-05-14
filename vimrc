@@ -420,8 +420,10 @@ map <leader>ni <C-W>>
 map <leader>nd <C-W><
 " increase a window to its maximum height
 map <leader>nh <C-W>_
+map <leader>n- <C-W>_
 " increase a window to its maximum width
 map <leader>nw <C-W>\|
+map <leader>n\ <C-W>\|
 
 " Delete all upcase marks / bookmarks
 nmap mx :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
