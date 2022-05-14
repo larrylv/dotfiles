@@ -343,19 +343,19 @@ autocmd FileType ruby call SetupMapForRipperTags()
 " let g:matchup_matchparen_enabled = 0
 
 " vim-projectionist && vim-rails
-map <leader>ec :Econtroller 
-map <leader>ed :Eschema<cr>
-map <leader>ef :Efixtures 
-map <leader>eg :Emigration<cr>
-map <leader>eh :Ehelper 
-map <leader>ej :Ejavascript 
-map <leader>em :Emodel 
-map <leader>en :Echannel 
-map <leader>ep :Etemplate 
-map <leader>es :Espec 
-map <leader>et :Etest 
-map <leader>eu :Eunittest 
-map <leader>ev :Eview 
+" map <leader>ec :Econtroller 
+" map <leader>ed :Eschema<cr>
+" map <leader>ef :Efixtures 
+" map <leader>eg :Emigration<cr>
+" map <leader>eh :Ehelper 
+" map <leader>ej :Ejavascript 
+" map <leader>em :Emodel 
+" map <leader>en :Echannel 
+" map <leader>ep :Etemplate 
+" map <leader>es :Espec 
+" map <leader>et :Etest 
+" map <leader>eu :Eunittest 
+" map <leader>ev :Eview 
 
 " gitgutter.vim
 map <leader>ga :GitGutterStageHunk<cr>
