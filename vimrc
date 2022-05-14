@@ -390,7 +390,7 @@ function! SetupMapForVimGo()
 
   nmap <leader>gc :<C-u>GoChannelPeers<CR>
 
-  nmap <leader>gl :<C-u>GoReferrers<CR>
+  " nmap <leader>gl :<C-u>GoReferrers<CR>
 
   " nmap <leader>tj :<C-u>GoDeclsDir<CR>
   " nmap <leader>ts :<C-u>GoDecls<CR>
@@ -722,6 +722,16 @@ call SetupCommandAlias("GBlame", "Git blame")
 call SetupCommandAlias("Gblame", "Git blame")
 call SetupCommandAlias("Gbrowse", "GBrowse")
 call SetupCommandAlias("Gbrowse!", "GBrowse!")
+
+map <leader>gb :Git blame<cr>
+" copy github / ghe link
+map <leader>gl :GBrowse!<cr>
+map <leader>gr :GBrowse!<cr>
+vmap <leader>gl :GBrowse!<cr>
+vmap <leader>gr :GBrowse!<cr>
+" open github / ghe link
+nmap <leader>go :GBrowse<cr>
+vmap <leader>go :GBrowse<cr>
 "}}}
 
 " vim-projectionist"{{{
