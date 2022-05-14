@@ -411,8 +411,8 @@ nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
 nmap <silent> <leader>ln <Plug>(ale_next_wrap)
 
 " splitjoin.vim
-nmap <leader>kj :SplitjoinJoin<cr>
-nmap <leader>ks :SplitjoinSplit<cr>
+nmap <leader>sj :SplitjoinJoin<cr>
+nmap <leader>ss :SplitjoinSplit<cr>
 
 " increase window size
 map <leader>ni <C-W>>
@@ -448,7 +448,6 @@ nmap <leader>ry <Plug>(fzf_copy_ruby_token)
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParentheses<cr>
 map <leader>sl :set synmaxcol=200<cr>:e<cr>
 map <leader>sh :set synmaxcol=1000<cr>:e<cr>
-map <leader>ss :source ./Session.vim<cr>
 
 nmap <leader>sp :call <SID>SynStack()<CR>
 function! <SID>SynStack()
