@@ -522,12 +522,6 @@ vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
 "}}}
 
 " General"{{{
-fun! SetupCommandAlias(from, to)
-  exec 'cnoreabbrev <expr> '.a:from
-        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
-        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
-endfun
-
 augroup general_config
   autocmd!
 
@@ -718,6 +712,12 @@ let g:extra_whitespace_ignored_filetypes = ['defx', 'unite']
 let g:extra_whitespace_ignored_filenames = ['defx', 'unite']
 
 " vim-fugitive"{{{
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+
 call SetupCommandAlias("GBlame", "Git blame")
 call SetupCommandAlias("Gblame", "Git blame")
 call SetupCommandAlias("Gbrowse", "GBrowse")
