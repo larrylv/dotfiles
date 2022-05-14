@@ -391,8 +391,8 @@ function! SetupMapForVimGo()
 
   nmap <leader>gl :<C-u>GoReferrers<CR>
 
-  nmap <leader>tj :<C-u>GoDeclsDir<CR>
-  nmap <leader>ts :<C-u>GoDecls<CR>
+  " nmap <leader>tj :<C-u>GoDeclsDir<CR>
+  " nmap <leader>ts :<C-u>GoDecls<CR>
 
   " :GoDef but opens in a vertical split
   nmap <leader>gd <Plug>(go-def-vertical)
