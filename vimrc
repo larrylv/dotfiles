@@ -542,6 +542,9 @@ augroup general_config
   " Remap keys for auto-completion menu {{{
   inoremap <expr><tab>  pumvisible() ? "\<C-n>" : "\<tab>"
   inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
+
+  " Close preview window when completion is done.
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
   " }}}
 
   " Paste toggle (<F3>) {{{
@@ -1344,9 +1347,9 @@ let g:startify_change_to_dir = 0
 " deoplete.nvim"{{{
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({
-    \ 'auto_complete_delay': 100,
+    \ 'auto_complete_delay': 50,
     \ 'max_list': 50,
-    \ 'on_insert_enter': v:false,
+    \ 'on_insert_enter': v:true,
     \ 'skip_chars': ['(', ')', '<', '>'],
     \ 'skip_multibyte': v:true,
     \ 'smart_case': v:true,
