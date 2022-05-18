@@ -410,6 +410,11 @@ autocmd Filetype go
 " ALE
 nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
 nmap <silent> <leader>ln <Plug>(ale_next_wrap)
+" Bind <leader>ad to go-to-definition.
+nmap <silent> <leader>ad <Plug>(ale_go_to_definition)
+nmap <silent> <leader>ar <Plug>(ale_find_references)
+" especially if you set let g:ale_hover_cursor = 0
+nmap <silent> K <Plug>(ale_hover)
 
 " splitjoin.vim
 nmap <leader>sj :SplitjoinJoin<cr>
