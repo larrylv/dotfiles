@@ -976,7 +976,7 @@ command! -bang -nargs=? -complete=dir MyFiles
 silent! nnoremap <unique> <silent> <leader>f :MyFiles<CR>
 
 " list bookmarks
-nnoremap <leader>tm :Marks<CR>
+nnoremap <leader>m :Marks<CR>
 
 " list commands
 nnoremap <leader>an :Commands<CR>
