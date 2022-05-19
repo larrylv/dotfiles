@@ -1015,7 +1015,10 @@ xnoremap <silent> <leader>ag y:Rg <C-R>"<CR>"
 nnoremap <silent> <leader>AG :Rg <C-R><C-A><CR>
 silent! nnoremap <unique> <silent> <leader>bb :Buffers<CR>
 silent! nnoremap <unique> <silent> <leader>bl :BLines<CR>
-nnoremap <leader>tj :Tags 
+nnoremap <leader>tj :Tags<CR>
+nnoremap <leader>ts :Tags<Space>
+nnoremap <silent> <leader>tg :Tags <C-R><C-W><CR>
+xnoremap <silent> <leader>tg y:Tags <C-R>"<CR>"
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
