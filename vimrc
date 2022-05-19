@@ -64,6 +64,7 @@ Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
 Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
+Plug 'deoplete-plugins/deoplete-tag',       { 'for': 'ruby' }
 Plug 'tpope/vim-dispatch'
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf'
@@ -89,7 +90,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-rhubarb', { 'commit': '2590324d7fdaf0c6311fad4ee2a2878acaaec42d' }
-Plug 'deoplete-plugins/deoplete-tag'
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
 Plug 'dense-analysis/ale'
