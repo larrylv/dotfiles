@@ -1440,7 +1440,7 @@ endfunction
 call defx#custom#option('_', {
       \ 'root_marker': '',
       \ 'columns': 'indent:icon:filename',
-      \ 'winwidth': 30,
+      \ 'winwidth': 50,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
       \ })
