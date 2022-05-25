@@ -1011,7 +1011,7 @@ silent! nnoremap <unique> <silent> <leader>cf :call ClearFzfCache()<CR>
 
 nnoremap <leader>aa :Rg<Space>
 nnoremap <silent> <leader>ag :Rg <C-R><C-W><CR>
-xnoremap <silent> <leader>ag y:Rg <C-R>"<CR>"
+xnoremap <silent> <leader>ag y:Rg <C-R>"<CR>
 nnoremap <silent> <leader>AG :Rg <C-R><C-A><CR>
 silent! nnoremap <unique> <silent> <leader>bb :Buffers<CR>
 silent! nnoremap <unique> <silent> <leader>bl :BLines<CR>
@@ -1101,6 +1101,8 @@ let g:ack_use_dispatch=0
 let g:ackhighlight=1
 cnoreabbrev Ack Ack!
 nnoremap <leader>ac :Ack!<Space>
+nnoremap <silent> <leader>ak :Ack! <C-R><C-W><CR>
+xnoremap <silent> <leader>ak y:Ack! <CR>"<CR>
 if executable("rg")
   let g:ackprg="rg --vimgrep"
 elseif executable("ag")
