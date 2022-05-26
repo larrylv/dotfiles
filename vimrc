@@ -50,7 +50,6 @@ Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
 Plug 'zchee/deoplete-jedi',                 { 'for': 'python' }
 Plug 'fisadev/vim-isort',                   { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
-Plug 'zackhsi/fzf-copy-ruby-token',         { 'for': ['ruby'] }
 Plug 'majutsushi/tagbar',                   { 'for': ['go', 'ruby', 'rust', 'python'] }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
 " Plug 'HerringtonDarkholme/yats.vim',        { 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact'] }
@@ -455,9 +454,6 @@ nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
 
 " Toggle RainbowParentheses
 " nmap <leader>rp :RainbowParentheses!!<CR>
-
-" fzf-copy-ruby-token
-nmap <leader>ry <Plug>(fzf_copy_ruby_token)
 
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParentheses<cr>
 " map <leader>sl :set synmaxcol=200<cr>:e<cr>
@@ -1026,6 +1022,53 @@ let g:fzf_action = {
   \ 'ctrl-d': 'split',
   \ 'ctrl-e': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+" mostly borrowed from fzf-copy-ruby-token, with customized layout
+function! FzfCopyRubyTokenFn(token)
+  let source_lines = FzfCopyRubyTokenSourceLines(a:token)
+
+  if len(source_lines) == 0
+    echohl WarningMsg
+    echo 'Token not found in current buffer: ' . a:token
+    echohl None
+  elseif len(source_lines) == 1
+    call FzfCopyRubyTokenCopyToClipboard(source_lines[0])
+  else
+    " A list of length one is passed to the sink function. This happily
+    " matches the arglist for funcrefs.
+    call fzf#run({
+    \   'source': source_lines,
+    \   'sink':   function('FzfCopyRubyTokenCopyToClipboard'),
+    \   'options': '--prompt " Copy to clipboard > "',
+    \   'window': { 'width': 0.9, 'height': 0.6 },
+    \ })
+  endif
+endfunction
+
+function! FzfCopyRubyTokenSourceLines(token)
+  " In literal strings (':h literal-string'), two quotes stand for one quote.
+  let raw_output = system('ripper-tags --tag-file=- --format=json ' . expand('%') . ' | jq --raw-output ''.[] | select(.name == "' . a:token . '") | .full_name''')
+  let matches = split(raw_output)
+  return matches
+endfunction
+
+" Make tokens REPL friendly. In the highly unlikely case there are multiple
+" pound signs, only replace the last one.
+"
+" https://stackoverflow.com/questions/736120/why-are-methods-in-ruby-documentation-preceded-by-a-hash-sign
+" https://stackoverflow.com/questions/11865845/replace-last-occurrence-in-line
+function! FzfCopyTubyTokenConvertLastPoundToDot(text)
+  return substitute(a:text, '.*\zs#', '.', '')
+endfunction
+
+function! FzfCopyRubyTokenCopyToClipboard(text)
+  let text_to_copy = FzfCopyTubyTokenConvertLastPoundToDot(a:text)
+  execute 'let @+="' . text_to_copy . '"'
+  echom('Copied to clipboard: ' . string(text_to_copy))
+endfunction
+
+command! -bar FZFCopyRubyToken :call FzfCopyRubyTokenFn(expand('<cword>'))
+nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
 "}}}
 
 " ctrlp.vim"{{{
