@@ -1147,7 +1147,7 @@ nnoremap <leader>ac :Ack!<Space>
 nnoremap <silent> <leader>ak :Ack! <C-R><C-W><CR>
 xnoremap <silent> <leader>ak y:Ack! <C-R>"<CR>
 if executable("rg")
-  let g:ackprg="rg --vimgrep"
+  let g:ackprg="rg --vimgrep --color=never"
 elseif executable("ag")
   let g:ackprg="ag --nocolor --nogroup --column"
 elseif executable("ack")
