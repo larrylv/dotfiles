@@ -534,6 +534,9 @@ augroup general_config
   map <C-h> <C-W>h
   map <C-\> <C-W>p
 
+  " Go to previous (last accessed) window.
+  map <C-w>\ <C-w><C-p>
+  map <C-w><C-\> <C-w><C-p>
   " }}}
 
   " Clear last search (Ctrl-n, ,h) {{{
