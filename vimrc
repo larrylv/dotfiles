@@ -878,6 +878,14 @@ call ale#linter#Define('ruby', {
   \   'language': 'ruby',
   \   'project_root': $HOME . '/stripe/pay-server',
   \})
+call ale#linter#Define('ruby', {
+  \   'name': 'sorbet-payserver-b',
+  \   'lsp': 'stdio',
+  \   'executable': 'true',
+  \   'command': 'pay exec scripts/bin/typecheck --lsp',
+  \   'language': 'ruby',
+  \   'project_root': $HOME . '/stripe-b/pay-server',
+  \})
 
 let g:ale_lint_on_text_changed = 'never' " lint only on save
 let g:ale_lint_on_insert_leave = 0 " don't lint when leaving insert mode
@@ -900,6 +908,7 @@ let g:ale_linters = {
       \  'javascript': ['eslint'],
       \  'javascript.jsx': ['eslint'],
       \  'javascriptreact': ['eslint'],
+      \  'ruby': ['rubocop'],
       \  'typescriptreact': ['eslint'],
       \  'typescript': ['eslint'],
       \  'yaml': [],
@@ -917,6 +926,9 @@ let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
 if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe/pay-server'
   let g:ale_linters['ruby'] = ['sorbet-payserver', 'rubocop']
 end
+if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe-b/pay-server'
+  let g:ale_linters['ruby'] = ['sorbet-payserver-b', 'rubocop']
+end
 "}}}
 
 " Highlight Pmenu"{{{
@@ -933,6 +945,7 @@ function! SetupConfigForPayServer()
 endfunction
 
 autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupConfigForPayServer()
+autocmd BufRead,BufNewFile */stripe-b/pay-server/* call SetupConfigForPayServer()
 "}}}
 
 " UltiSnips"{{{
