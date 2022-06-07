@@ -301,6 +301,9 @@ function! FlipBindingPry()
   write
 endfunction
 
+command! BufOnly silent! execute "%bd|e#|bd#"
+nmap <leader>bo :BufOnly<cr>
+
 nnoremap <leader>bp :call FlipBindingPry()<CR>
 
 map <leader>cc :ccl <bar> lcl<cr>
@@ -442,7 +445,6 @@ nmap ms :marks abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
 
 nnoremap <leader>p :let @* = expand("%")<cr>:echo @%<cr>
 
-" command! BufOnly silent! execute "%bd|e#|bd#"
 function! CloseAllBuffersButCurrent()
   let curr = bufnr("%")
   let last = bufnr("$")
