@@ -1289,7 +1289,7 @@ function! GetFilename(fname)
         \ (
         \   fname == '__Tagbar__' ? g:lightline.fname :
         \   fname =~ '__Gundo\|NERD_tree\|\[defx\]' ? 'Explorer' :
-        \   fname =~ '[FZF]' ? '[FZF]' :
+        \   fname =~ ';#FZF' ? '[FZF]' :
         \   fname =~ '!sh' ? '[FZF]' :
         \   &ft == 'vimfiler' ? vimfiler#get_status_string() :
         \   &ft == 'unite' ? unite#get_status_string() :
@@ -1309,9 +1309,17 @@ endfunction
 function! MyTabname(n)
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
-  let fname = expand('#'.buflist[winnr - 1].':t')
+  let fname = GetFilename(expand('#'.buflist[winnr - 1].':t'))
 
-  return GetFilename(fname)
+  if fname =~ '[FZF]'
+    let buflist = fzf#vim#_buflisted_sorted()
+    if len(buflist) > 0
+      let lastfile = buflist[0]
+      return GetFilename(fnamemodify(bufname(lastfile), ':t'))
+    endif
+  endif
+
+  return fname
 endfunction
 
 function! MyFugitive()
