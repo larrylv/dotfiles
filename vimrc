@@ -878,7 +878,6 @@ let g:gist_detect_filetype = 1
 
 " coc.nvim
 let g:coc_snippet_next = '<tab>'
-inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 " ALE {{{
 augroup AutoALE
