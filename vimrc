@@ -13,12 +13,10 @@ call plug#begin('~/.vim/bundle')
 " Code Complete Engine
 if !has('nvim')
   " Plug 'Valloric/YouCompleteMe',   { 'for': ['ruby'], 'do': './install.py --clang-completer --go-completer' }
-  Plug 'Shougo/deoplete.nvim'
   Plug 'Shougo/defx.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 else
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
@@ -40,14 +38,11 @@ Plug 'guns/vim-sexp',                       { 'for': 'clojure' }
 Plug 'vim-scripts/paredit.vim',             { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni',          { 'for': 'clojure' }
 Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
-Plug 'pbogut/deoplete-elm',                 { 'for': 'elm' }
 " Plug 'fatih/vim-go',                        { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
 Plug 'fatih/vim-go'
 " Plug 'mdempsky/gocode',                     { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'visualfc/gocode',                     { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
-Plug 'deoplete-plugins/deoplete-go',        { 'for': 'go', 'do': 'make' }
 Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
-Plug 'zchee/deoplete-jedi',                 { 'for': 'python' }
 Plug 'fisadev/vim-isort',                   { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
 Plug 'majutsushi/tagbar',                   { 'for': ['go', 'ruby', 'rust', 'python'] }
@@ -63,7 +58,6 @@ Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
 Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
-Plug 'deoplete-plugins/deoplete-tag',       { 'for': 'ruby' }
 Plug 'tpope/vim-dispatch'
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf'
@@ -1446,20 +1440,6 @@ let g:startify_bookmarks = [
     \ {'t': '~/.tmux.conf'}
     \ ]
 let g:startify_change_to_dir = 0
-"}}}
-
-" deoplete.nvim"{{{
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({
-    \ 'auto_complete_delay': 50,
-    \ 'max_list': 50,
-    \ 'on_insert_enter': v:true,
-    \ 'skip_chars': ['(', ')', '<', '>'],
-    \ 'skip_multibyte': v:true,
-    \ 'smart_case': v:true,
-    \ })
-autocmd FileType css,csv,html,json,markdown,tex,txt,yaml
-    \ call deoplete#custom#buffer_option('auto_complete', v:false)
 "}}}
 
 " defx.nvim
