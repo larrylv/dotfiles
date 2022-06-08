@@ -92,6 +92,7 @@ Plug 'tpope/vim-rhubarb', { 'commit': '2590324d7fdaf0c6311fad4ee2a2878acaaec42d'
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
 Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tomtom/tcomment_vim'
 Plug 'larrylv/vim-vroom'
 Plug 'larrylv/echodoc.vim'
@@ -409,14 +410,29 @@ autocmd Filetype go
   \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 
-" ALE
+" ALE + coc.nvim
 nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
 nmap <silent> <leader>ln <Plug>(ale_next_wrap)
-" Bind <leader>ad to go-to-definition.
-nmap <silent> <leader>ad <Plug>(ale_go_to_definition)
-nmap <silent> <leader>ar <Plug>(ale_find_references)
-" especially if you set let g:ale_hover_cursor = 0
-nmap <silent> K <Plug>(ale_hover)
+
+" " Bind <leader>ad to go-to-definition.
+" nmap <silent> <leader>ad <Plug>(ale_go_to_definition)
+" nmap <silent> <leader>ar <Plug>(ale_find_references)
+" " especially if you set let g:ale_hover_cursor = 0
+" nmap <silent> K <Plug>(ale_hover)
+
+function! g:CocShowDocumentation()
+  " supports jumping to vim documentation as well using built-ins.
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocActionAsync('doHover')
+  endif
+endfunction
+
+nmap <silent> <leader>ad <Plug>(coc-definition)
+nmap <silent> <leader>ai <Plug>(coc-implementation)
+nmap <silent> <leader>ar <Plug>(coc-references)
+nnoremap <silent> K :call CocShowDocumentation()<CR>
 
 " splitjoin.vim
 nmap <leader>sj :SplitjoinJoin<cr>
@@ -872,22 +888,23 @@ augroup AutoALE
 augroup END
 
 
-call ale#linter#Define('ruby', {
-  \   'name': 'sorbet-payserver',
-  \   'lsp': 'stdio',
-  \   'executable': 'true',
-  \   'command': 'pay exec scripts/bin/typecheck --lsp',
-  \   'language': 'ruby',
-  \   'project_root': $HOME . '/stripe/pay-server',
-  \})
-call ale#linter#Define('ruby', {
-  \   'name': 'sorbet-payserver-b',
-  \   'lsp': 'stdio',
-  \   'executable': 'true',
-  \   'command': 'pay exec scripts/bin/typecheck --lsp',
-  \   'language': 'ruby',
-  \   'project_root': $HOME . '/stripe-b/pay-server',
-  \})
+" call ale#linter#Define('ruby', {
+"   \   'name': 'sorbet-payserver',
+"   \   'lsp': 'stdio',
+"   \   'executable': 'true',
+"   \   'command': 'pay exec scripts/bin/typecheck --lsp',
+"   \   'language': 'ruby',
+"   \   'project_root': $HOME . '/stripe/pay-server',
+"   \})
+" call ale#linter#Define('ruby', {
+"   \   'name': 'sorbet-payserver-b',
+"   \   'lsp': 'stdio',
+"   \   'executable': 'true',
+"   \   'command': 'pay exec scripts/bin/typecheck --lsp',
+"   \   'language': 'ruby',
+"   \   'project_root': $HOME . '/stripe-b/pay-server',
+"   \})
+let g:ale_disable_lsp = 1
 
 let g:ale_lint_on_text_changed = 'never' " lint only on save
 let g:ale_lint_on_insert_leave = 0 " don't lint when leaving insert mode
@@ -924,13 +941,13 @@ let g:ale_fixers = {
       \}
 let g:ale_fix_on_save = 1
 
-let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
-if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe/pay-server'
-  let g:ale_linters['ruby'] = ['sorbet-payserver', 'rubocop']
-end
-if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe-b/pay-server'
-  let g:ale_linters['ruby'] = ['sorbet-payserver-b', 'rubocop']
-end
+" let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
+" if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe/pay-server'
+"   let g:ale_linters['ruby'] = ['sorbet-payserver', 'rubocop']
+" end
+" if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe-b/pay-server'
+"   let g:ale_linters['ruby'] = ['sorbet-payserver-b', 'rubocop']
+" end
 "}}}
 
 " Highlight Pmenu"{{{
