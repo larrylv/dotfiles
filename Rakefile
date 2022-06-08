@@ -4,8 +4,11 @@ require 'erb'
 desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
+  nvim_config_files = %w{init.nvim coc-settings.json}
+  non_config_files = %w{Rakefile Thorfile README.md LICENSE Session.vim}
+
   Dir['*'].each do |file|
-    next if %w[Rakefile Thorfile README.md LICENSE Session.vim init.nvim].include? file
+    next if (nvim_config_files + non_config_files).include? file
 
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
       if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
@@ -32,11 +35,14 @@ task :install do
   end
 
   system %Q{mkdir -p $HOME/.config/nvim/}
-  if File.identical? 'init.nvim', File.join(ENV['HOME'], ".config/nvim/init.vim")
-    puts "identical ~/.config/nvim/init.vim"
-  else
-    puts "linking init.nvim to ~/.config/nvim/init.vim"
-    system %Q{ln -s "$PWD/init.nvim" "$HOME/.config/nvim/init.vim"}
+  nvim_config_files.each do |file|
+    mapped_file = file == 'init.nvim' ? 'init.vim' : file
+    if File.identical? file, File.join(ENV['HOME'], ".config/nvim/#{mapped_file}")
+      puts "identical ~/.config/nvim/#{mapped_file}"
+    else
+      puts "linking #{file} to ~/.config/nvim/#{mapped_file}"
+      system %Q{ln -s "$PWD/#{file}" "$HOME/.config/nvim/#{mapped_file}"}
+    end
   end
 end
 

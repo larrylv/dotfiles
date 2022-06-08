@@ -1,0 +1,7 @@
+{
+  "diagnostic.displayByAle": true,
+  "codeLens.enable": true,
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true
+}
+
