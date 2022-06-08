@@ -166,7 +166,7 @@ set autoread                               " Reload files changed outside automa
 set backspace=indent,eol,start             " Allow backspacing over everything in insert mode
 set cindent
 set complete=.,w,b,u,t,i
-set completeopt=noselect,menuone
+set completeopt=noinsert,noselect,menuone
 " set colorcolumn=81                       " Highlight line at position 81
 " set cursorcolumn                           " Highlight current column
 " set cursorline                             " Highlight current line
@@ -884,6 +884,7 @@ let g:gist_detect_filetype = 1
 
 " coc.nvim
 let g:coc_snippet_next = '<tab>'
+inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 " ALE {{{
 augroup AutoALE
