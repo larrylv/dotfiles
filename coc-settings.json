@@ -1,7 +1,9 @@
 {
   "diagnostic.displayByAle": true,
   "codeLens.enable": true,
+  "coc.source.tag.priority": 20,
   "suggest.enablePreview": true,
-  "suggest.floatEnable": true
+  "suggest.floatEnable": true,
+  "suggest.snippetIndicator": ""
 }
 

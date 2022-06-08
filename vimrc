@@ -423,10 +423,10 @@ function! g:CocShowDocumentation()
   endif
 endfunction
 
-nmap <silent> <leader>ad <Plug>(coc-definition)
-nmap <silent> <leader>ai <Plug>(coc-implementation)
-nmap <silent> <leader>ar <Plug>(coc-references)
-nmap <silent> <leader>cr <Plug>(coc-rename)
+nmap <silent> <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>li <Plug>(coc-implementation)
+nmap <silent> <leader>lf <Plug>(coc-references)
+nmap <silent> <leader>lr <Plug>(coc-rename)
 nnoremap <silent> K :call CocShowDocumentation()<CR>
 
 " splitjoin.vim
