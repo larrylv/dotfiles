@@ -432,6 +432,7 @@ endfunction
 nmap <silent> <leader>ad <Plug>(coc-definition)
 nmap <silent> <leader>ai <Plug>(coc-implementation)
 nmap <silent> <leader>ar <Plug>(coc-references)
+nmap <silent> <leader>cr <Plug>(coc-rename)
 nnoremap <silent> K :call CocShowDocumentation()<CR>
 
 " splitjoin.vim
@@ -880,6 +881,9 @@ let g:gist_show_privates = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_detect_filetype = 1
 "}}}
+
+" coc.nvim
+let g:coc_snippet_next = '<tab>'
 
 " ALE {{{
 augroup AutoALE
@@ -1588,7 +1592,7 @@ let g:jedi#show_call_signatures = "0"
 "}}}
 
 "echodoc.vim
-let g:echodoc#enable_at_startup = 1
+let g:echodoc#enable_at_startup = 0 " disable echodoc.vim because it conflicts with coc.nvim + autocomplete
 let g:echodoc#type = "echo"
 
 " vim-go{{{
