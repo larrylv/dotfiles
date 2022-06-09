@@ -71,7 +71,6 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-rhubarb', { 'commit': '2590324d7fdaf0c6311fad4ee2a2878acaaec42d' }
 Plug 'SirVer/ultisnips'
-Plug 'scrooloose/nerdtree'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tomtom/tcomment_vim'
@@ -1105,24 +1104,6 @@ augroup rainbow_activation
   autocmd!
   autocmd FileType clojure,json,lisp,ruby,scheme,yaml RainbowParentheses
 augroup END
-
-" nerdtree
-let NERDTreeWinSize = 42
-let NERDTreeAutoCenter=1
-let NERDTreeChDirMode=0
-let g:NERDTreeMinimalUI=1
-let g:NERDTreeHijackNetrw=1
-let g:NERDTreeIgnore=['\~$']
-" nnoremap <F1> :call NERDTreeToggleInCurDir()<CR>
-function! NERDTreeToggleInCurDir()
-  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
-    exe ":NERDTreeClose"
-  elseif (bufname('%') == '' || bufname('%') =~ 'Startify')
-    exe ":NERDTreeToggle"
-  else
-    exe ":NERDTreeFind"
-  endif
-endfunction
 
 " ack.vim
 let g:ack_use_dispatch=0
