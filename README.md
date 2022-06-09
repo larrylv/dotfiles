@@ -1,35 +1,60 @@
-## Larry Lv Dot Files
+# Larry Lv Dot Files
 
-These are config files to set up a system the way I like it.
+These are the config files to set up a machine the way I like it.
 
-### Installation
-
-If you don't want to compile YouCompleteMe manually, you should uncomment the do block for line `Plug 'Valloric/YouCompleteMe' ", { 'do': './install.py --clang-completer' }` by simply removing the `"` mark.
+## Installation
 
 ```
 git clone git://github.com/larrylv/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 rake install
-vim +PlugInstall +qall
+```
+### font
+
+[Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font)
+
+### vim plugins & dependencies
+
+```
+brew install neovim
+nvim +PlugInstall +qall
+
+gem install ripper-tags
+brew install fd fzf universal-ctags
 ```
 
-If you would like to use zsh and on-my-zsh, then you should run this:
+### coc.nvim
 
 ```
-git checkout with_zsh_config
-git submodule init
-git submodule update
-rake install
+:CocInstall coc-json
+:CocInstall coc-tag
+:CocInstall coc-omni
 ```
 
-#### Install tmux plugins
+### tmux & plugins
+
+```
+brew install tmux
+```
 
 https://github.com/tmux-plugins/tpm#installation
 
-### Environment
+### other stuff
 
-It will work on Mac OS X and Linux.
+```
+brew install alacritty autojump automake bash bash-completion bat ccat cloc \
+  cmake coreutils cowsay curl diff-so-fancy diffutils fd fmt fzf gcc goenv \
+  golangci-lint grpc htop httperf httpie hugo jq mtr ncurses nodenv openjdk \
+  pre-commit pstree pyenv rbenv readline reattach-to-user-namespace ripgrep
+  ruby ruby-build scala snappy source-highlight sqlite tig tldr \
+  tmuxinator-completion trash tree tree-sitter universal-ctags unrar urlview \
+  watchman webpack ripgrep tig
 
-### Vim Plugins
+brew install --cask diffmerge
 
-https://github.com/larrylv/dotfiles/blob/master/vimrc#L27
+gem install tmuxinator
+
+# rust & proximity-sort
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install proximity-sort
+```
