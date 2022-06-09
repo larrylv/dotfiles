@@ -247,7 +247,8 @@ if has('nvim')
   nmap <BS> <C-W>h
 endif
 
-" Configurations ------------------------------------------------------
+
+" ALL THE MAPPINGS -------------------------------------------------------------
 
 " Leader Shortcuts
 nnoremap <leader><leader> <c-^>
@@ -309,6 +310,79 @@ endfunction
 
 autocmd FileType ruby call SetupMapForRipperTags()
 
+
+" fzf.vim
+function! CacheListCmd()
+  let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
+  if ref == ''
+    return $FZF_DEFAULT_COMMAND
+  endif
+
+  " trim the newline output from rev-parse
+  let head_commit = system('git rev-parse HEAD | tr -d "\n"')
+  let cache_file = '/tmp/'.head_commit.'.files'
+  if !filereadable(expand(cache_file))
+    execute 'silent !' . $FZF_DEFAULT_COMMAND . ' > '.cache_file
+  endif
+
+  let base = fnamemodify(expand('%'), ':h:.:S')
+  return base == '.' ?
+    \ printf('cat %s', cache_file) :
+    \ printf('cat %s | proximity-sort %s', cache_file, expand('%'))
+endfunction
+
+command! -bang -nargs=? -complete=dir MyFiles
+  \ call fzf#vim#files(<q-args>, {'source': CacheListCmd(),
+  \                               'options': ['--tiebreak=index', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
+
+silent! nnoremap <unique> <silent> <leader>f :MyFiles<CR>
+
+" list bookmarks
+nnoremap <leader>m :Marks<CR>
+
+" list maps
+nnoremap <leader>am :Maps<CR>
+
+" list commands
+nnoremap <leader>an :Commands<CR>
+
+" silent! nnoremap <unique> <silent> <leader>f :Files<CR>
+
+" Show search results from files and directories that would otherwise be ignored
+" by '.gitignore', '.ignore', '.fdignore', or the global ignore file.
+command! -bang -nargs=* FilesNoIgnore
+  \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
+" Show search results from files and directories that would otherwise be ignored
+" by '.gitignore' files.
+command! -bang -nargs=* FilesNoIgnoreVcs
+  \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore-vcs --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
+silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnoreVcs<CR>
+
+function! ClearFzfCache()
+  let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
+  if ref != ''
+    " trim the newline output from rev-parse
+    let head_commit = system('git rev-parse HEAD | tr -d "\n"')
+    let cache_file = '/tmp/'.head_commit.'.files'
+    if filereadable(expand(cache_file))
+      execute 'silent !rm ' . cache_file
+    endif
+  endif
+endfunction
+silent! nnoremap <unique> <silent> <leader>cf :call ClearFzfCache()<CR>
+
+nnoremap <leader>aa :Rg<Space>
+nnoremap <leader>ag :Rg <C-R><C-W><CR>
+xnoremap <leader>ag y:Rg <C-R>"<CR>
+nnoremap <leader>AG :Rg <C-R><C-A><CR>
+silent! nnoremap <unique> <silent> <leader>bb :Buffers<CR>
+silent! nnoremap <unique> <silent> <leader>bl :BLines<CR>
+nnoremap <leader>tj :Tags<CR>
+nnoremap <leader>ts :Tags<Space>
+nnoremap <silent> <leader>tg :Tags <C-R><C-W><CR>
+xnoremap <silent> <leader>tg y:Tags <C-R>"<CR>"
+
+
 " vim-projectionist && vim-rails
 " map <leader>ec :Econtroller<Space>
 " map <leader>ed :Eschema<cr>
@@ -324,6 +398,7 @@ autocmd FileType ruby call SetupMapForRipperTags()
 " map <leader>eu :Eunittest<Space>
 " map <leader>ev :Eview<Space>
 
+
 " gitgutter.vim
 map <leader>ga :GitGutterStageHunk<cr>
 map <leader>gn :GitGutterNextHunk<cr>
@@ -331,10 +406,12 @@ map <leader>gp :GitGutterPrevHunk<cr>
 map <leader>gu :GitGutterUndoHunk<cr>
 map <leader>gv :GitGutterPreviewHunk<cr>
 
+
 " open popup window for git blame
 if !has('nvim')
   nmap <silent><Leader>gm :call setbufvar(winbufnr(popup_atcursor(split(system("git log -n 1 -L " . line(".") . ",+1:" . expand("%:p")), "\n"), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
 endif
+
 
 " vim-go
 function! SetupMapForVimGo()
@@ -367,23 +444,40 @@ function! SetupMapForVimGo()
   " :GoDef but opens in a horizontal split
   nmap <leader>gs <Plug>(go-def-split)
 endfunction
-
 autocmd FileType go call SetupMapForVimGo()
 autocmd Filetype go
   \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 
-" ALE + coc.nvim
+
+" vim-fugitive
+map <leader>gb :Git blame<cr>
+" copy github / ghe link
+map <leader>gl :GBrowse!<cr>
+map <leader>gr :GBrowse!<cr>
+vmap <leader>gl :GBrowse!<cr>
+vmap <leader>gr :GBrowse!<cr>
+" open github / ghe link
+nmap <leader>go :GBrowse<cr>
+vmap <leader>go :GBrowse<cr>
+
+
+nmap gx <Plug>(openbrowser-open)
+vmap gx <Plug>(openbrowser-open)
+
+
+" ALE
 nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
 nmap <silent> <leader>ln <Plug>(ale_next_wrap)
-
 " " Bind <leader>ad to go-to-definition.
 " nmap <silent> <leader>ad <Plug>(ale_go_to_definition)
 " nmap <silent> <leader>ar <Plug>(ale_find_references)
 " " especially if you set let g:ale_hover_cursor = 0
 " nmap <silent> K <Plug>(ale_hover)
 
+
+" coc.nvim
 function! g:CocShowDocumentation()
   " supports jumping to vim documentation as well using built-ins.
   if (index(['vim','help'], &filetype) >= 0)
@@ -399,9 +493,11 @@ nmap <silent> <leader>lf <Plug>(coc-references)
 nmap <silent> <leader>lr <Plug>(coc-rename)
 nnoremap <silent> K :call CocShowDocumentation()<CR>
 
+
 " splitjoin.vim
 nmap <leader>sj :SplitjoinJoin<cr>
 nmap <leader>ss :SplitjoinSplit<cr>
+
 
 " increase window horizontal size
 map <leader>ni <C-W>>
@@ -413,18 +509,20 @@ map <leader>nd <C-W><
 map <leader>n- <C-W><
 map <leader>_ <C-W><
 map <leader>- <C-W><
-
 " increase a window to its maximum height
 map <leader>nh <C-W>_
 " increase a window to its maximum width
 map <leader>nw <C-W>\|
+
 
 " Delete all upcase marks / bookmarks
 nmap mx :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
 " Only show marks / bookmarks I care about
 nmap ms :marks abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
 
+
 nnoremap <leader>p :let @* = expand("%")<cr>:echo @%<cr>
+
 
 function! CloseAllBuffersButCurrent()
   let curr = bufnr("%")
@@ -435,22 +533,23 @@ function! CloseAllBuffersButCurrent()
 endfunction
 nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
 
-" Toggle RainbowParentheses
-" nmap <leader>rp :RainbowParentheses!!<CR>
 
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParentheses<cr>
 " map <leader>sl :set synmaxcol=200<cr>:e<cr>
 " map <leader>sh :set synmaxcol=1000<cr>:e<cr>
 
-nmap <leader>sp :call <SID>SynStack()<CR>
+
 function! <SID>SynStack()
   if !exists("*synstack")
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+nmap <leader>sp :call <SID>SynStack()<CR>
+
 
 nnoremap <leader>tt :tabe<cr>
+
 
 " vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -466,14 +565,42 @@ xmap <leader>t: <Plug>(EasyAlign) :
 vmap <leader>t: <Plug>(EasyAlign) :
 nmap <leader>t: <Plug>(EasyAlign) :
 
+
 map <leader>vr :tabe ~/.vimrc<CR>
+
+
+" test.vim
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+
+
+" vroom.vim
+" Run the current file with vroom
+map <leader>vs :VroomRunTestFile<CR>
+" Runs the nearest test in the current file
+map <leader>vn :VroomRunNearestTest<CR>
+" Prompt for a command to run map
+map <leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map <leader>vl :VroomRunLastTest<CR>
+" Inspect runner pane map
+map <leader>vi :VimuxInspectRunner<CR>
+" Close vim tmux runner opened by VimuxRunCommand
+map <leader>vc :VimuxCloseRunner<CR>
+" Interrupt any command running in the runner pane map
+map <leader>vx :VimuxInterruptRunner<CR>
+
 
 " n,w to qucikly switch vim window
 map <leader>w <C-W><C-W>
 
+
 " system yank: will copy into the system clipboard on OS X
 " vim has to be compiled with +clipboard to support this
 vmap <leader>y "*y
+
 
 " Close all hidden buffers
 function! DeleteHiddenBuffers()
@@ -488,22 +615,39 @@ function! DeleteHiddenBuffers()
   endfor
   echo "Closed ".closed." hidden buffers"
 endfunction
-
 nnoremap <leader>z :call DeleteHiddenBuffers()<CR>
+
 
 " Keep selected text selected when fixing indentation
 vnoremap < <gv
 vnoremap > >gv
 
+
 " No Ex mode
 map Q <Nop>
+
 
 " format python code
 autocmd FileType python nnoremap <leader>s= :0,$!yapf<CR>
 
+
+nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
+
+
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
+
+
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
+
+
+" defx.nvim
+nnoremap <silent><F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle -buffer-name=` tabpagenr()`<CR>
+" Move the cursor to the already-open Defx, and then switch back to the file
+nnoremap <silent><leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<CR>
+
 
 " General
 augroup general_config
@@ -533,6 +677,9 @@ augroup general_config
   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
   " }}}
 
+  " Toggle Tagbar (<F2>)
+  nnoremap <F2> :TagbarToggle<CR>
+
   " Paste toggle (<F3>)
   nnoremap <F3> :set invpaste paste?<CR>
   set pastetoggle=<F3>
@@ -549,21 +696,16 @@ augroup general_config
   " Show git diff in tab
   command! GdiffInTab tabedit %|vsplit|Gdiff
 
-
-  " }}}
   imap <c-c> <ESC>l
-
 
   " Remap increase number (Ctrl-p)
   " <c-a> is prefix for tmux
   " I used to use <c-i>, but that's useful for jumps.
   map <c-p> <c-a>
 
-
   " Quick move under insert mode (Ctrl-f, Ctrl-b)
   imap <c-f> <c-o>w
   imap <c-b> <c-o>b
-
 
   " Adjust window height
   au FileType qf call AdjustWindowHeight(3, 10)
@@ -571,14 +713,11 @@ augroup general_config
     exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
   endfunction
 
-
   " Insert the current time (InsertTime)
   command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
-
   " Change SpecialKey color for Tagbar + Golang
   highlight SpecialKey term=bold cterm=bold ctermfg=9 guifg=Cyan
-
 
   " Remember last location when open a file
   " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
@@ -645,8 +784,9 @@ augroup general_config
 augroup END
 
 
+" ALL THE PLUGINS --------------------------------------------------------------
+
 " Tagbar
-nnoremap <F2> :TagbarToggle<CR>
 let g:tagbar_sort = 1
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_show_linenumbers=1
@@ -685,7 +825,6 @@ let g:tagbar_type_elixir = {
 " disable m maps from vim-dispatch
 let g:dispatch_no_maps = 1
 
-" vim-gitgutter
 " vim-gitgutter will use Sign Column to set its color, reload it.
 call gitgutter#highlight#define_highlights()
 
@@ -707,16 +846,6 @@ call SetupCommandAlias("GBlame", "Git blame")
 call SetupCommandAlias("Gblame", "Git blame")
 call SetupCommandAlias("Gbrowse", "GBrowse")
 call SetupCommandAlias("Gbrowse!", "GBrowse!")
-
-map <leader>gb :Git blame<cr>
-" copy github / ghe link
-map <leader>gl :GBrowse!<cr>
-map <leader>gr :GBrowse!<cr>
-vmap <leader>gl :GBrowse!<cr>
-vmap <leader>gr :GBrowse!<cr>
-" open github / ghe link
-nmap <leader>go :GBrowse<cr>
-vmap <leader>go :GBrowse<cr>
 
 " vim-projectionist
 let g:projectionist_heuristics = {
@@ -793,30 +922,9 @@ let g:projectionist_heuristics = {
 " vim-ruby
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
 
-" test.vim
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>tn :TestNearest<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tv :TestVisit<CR>
-
 " vroom.vim
 let g:vroom_use_vimux=1
 let g:vroom_map_keys=0
-
-" Run the current file with vroom
-map <leader>vs :VroomRunTestFile<CR>
-" Runs the nearest test in the current file
-map <leader>vn :VroomRunNearestTest<CR>
-" Prompt for a command to run map
-map <leader>vp :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
-map <leader>vl :VroomRunLastTest<CR>
-" Inspect runner pane map
-map <leader>vi :VimuxInspectRunner<CR>
-" Close vim tmux runner opened by VimuxRunCommand
-map <leader>vc :VimuxCloseRunner<CR>
-" Interrupt any command running in the runner pane map
-map <leader>vx :VimuxInterruptRunner<CR>
 
 " when run unit test, also include current directory
 " for bettern compatibility
@@ -904,12 +1012,10 @@ let g:ale_fix_on_save = 1
 "   let g:ale_linters['ruby'] = ['sorbet-payserver-b', 'rubocop']
 " end
 
-
 " Highlight Pmenu
 highlight Pmenu ctermfg=lightgray ctermbg=black cterm=NONE
 highlight PmenuSbar ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 highlight PmenuThumb ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-
 
 " pay-server specific configs
 function! SetupConfigForPayServer()
@@ -933,76 +1039,6 @@ set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " hidden by default, ctrl-\ to toggle
 " let g:fzf_preview_window = ['right:hidden', 'ctrl-\']
-
-function! CacheListCmd()
-  let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
-  if ref == ''
-    return $FZF_DEFAULT_COMMAND
-  endif
-
-  " trim the newline output from rev-parse
-  let head_commit = system('git rev-parse HEAD | tr -d "\n"')
-  let cache_file = '/tmp/'.head_commit.'.files'
-  if !filereadable(expand(cache_file))
-    execute 'silent !' . $FZF_DEFAULT_COMMAND . ' > '.cache_file
-  endif
-
-  let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ?
-    \ printf('cat %s', cache_file) :
-    \ printf('cat %s | proximity-sort %s', cache_file, expand('%'))
-endfunction
-
-command! -bang -nargs=? -complete=dir MyFiles
-  \ call fzf#vim#files(<q-args>, {'source': CacheListCmd(),
-  \                               'options': ['--tiebreak=index', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
-
-silent! nnoremap <unique> <silent> <leader>f :MyFiles<CR>
-
-" list bookmarks
-nnoremap <leader>m :Marks<CR>
-
-" list maps
-nnoremap <leader>am :Maps<CR>
-
-" list commands
-nnoremap <leader>an :Commands<CR>
-
-" silent! nnoremap <unique> <silent> <leader>f :Files<CR>
-
-" Show search results from files and directories that would otherwise be ignored
-" by '.gitignore', '.ignore', '.fdignore', or the global ignore file.
-command! -bang -nargs=* FilesNoIgnore
-  \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
-" Show search results from files and directories that would otherwise be ignored
-" by '.gitignore' files.
-command! -bang -nargs=* FilesNoIgnoreVcs
-  \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore-vcs --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
-silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnoreVcs<CR>
-
-function! ClearFzfCache()
-  let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
-  if ref != ''
-    " trim the newline output from rev-parse
-    let head_commit = system('git rev-parse HEAD | tr -d "\n"')
-    let cache_file = '/tmp/'.head_commit.'.files'
-    if filereadable(expand(cache_file))
-      execute 'silent !rm ' . cache_file
-    endif
-  endif
-endfunction
-silent! nnoremap <unique> <silent> <leader>cf :call ClearFzfCache()<CR>
-
-nnoremap <leader>aa :Rg<Space>
-nnoremap <leader>ag :Rg <C-R><C-W><CR>
-xnoremap <leader>ag y:Rg <C-R>"<CR>
-nnoremap <leader>AG :Rg <C-R><C-A><CR>
-silent! nnoremap <unique> <silent> <leader>bb :Buffers<CR>
-silent! nnoremap <unique> <silent> <leader>bl :BLines<CR>
-nnoremap <leader>tj :Tags<CR>
-nnoremap <leader>ts :Tags<Space>
-nnoremap <silent> <leader>tg :Tags <C-R><C-W><CR>
-xnoremap <silent> <leader>tg y:Tags <C-R>"<CR>"
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -1056,7 +1092,6 @@ function! FzfCopyRubyTokenCopyToClipboard(text)
 endfunction
 
 command! -bar FZFCopyRubyToken :call FzfCopyRubyTokenFn(expand('<cword>'))
-nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
 
 " ctrlp.vim
 " silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
@@ -1083,8 +1118,6 @@ let g:ctrlp_prompt_mappings = {
     \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>', '<down>'],
     \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>', '<up>'],
     \}
-nnoremap <c-]> :CtrlPtjump<cr>
-vnoremap <c-]> :CtrlPtjumpVisual<cr>
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle|elm-stuff)$',
   \ }
@@ -1369,10 +1402,6 @@ let g:startify_bookmarks = [
 let g:startify_change_to_dir = 0
 
 " defx.nvim
-nnoremap <silent><F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle -buffer-name=` tabpagenr()`<CR>
-" Move the cursor to the already-open Defx, and then switch back to the file
-nnoremap <silent><leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<CR>
-
 autocmd FileType defx call MyDefxSettings()
 function! MyDefxSettings() abort
   setlocal nonu
@@ -1518,8 +1547,6 @@ let g:github_enterprise_urls = ['https://git.corp.stripe.com']
 
 " tyru/open-browser.vim
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-open)
-vmap gx <Plug>(openbrowser-open)
 
 " starsearch.vim
 " https://www.vim.org/scripts/script.php?script_id=4335
