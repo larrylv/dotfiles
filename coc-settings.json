@@ -13,6 +13,7 @@
   "coc.source.tag.priority": 20,
   "suggest.enablePreview": true,
   "suggest.floatEnable": true,
+  "suggest.maxCompleteItemCount": 20,
   "suggest.snippetIndicator": ""
 }
 
