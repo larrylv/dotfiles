@@ -4,8 +4,6 @@
 
 " Plugins -------------------------------------------------------------
 
-" Load plugins {{{
-
 filetype off
 
 call plug#begin('~/.vim/bundle')
@@ -108,23 +106,18 @@ call plug#end()
 
 filetype plugin indent on
 
-" }}}
-
 " Settings ------------------------------------------------------------
 
 runtime! plugin/sensible.vim
 
-" Mapleader {{{
 let mapleader=","
-" }}}
 
-" Make vim more useful {{{
+" Make vim more useful
 if !has('nvim')
   set nocompatible
 endif
-" }}}
 
-" Syntax highlighting {{{
+" Syntax highlighting
 set t_Co=256
 syntax on
 
@@ -138,9 +131,8 @@ colorscheme solarized8_flat
 " dirty patch for CursorLine
 hi! CursorLine cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=237 guibg=#3c3d3a
 hi! CursorLineNr cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=NONE guibg=NONE
-" }}}
 
-" Set some junk"{{{
+" Set some junk
 " set ambiwidth=double
 set autoindent                             " Copy indent from last line when starting new line
 set autoread                               " Reload files changed outside automatically
@@ -255,11 +247,10 @@ if has('nvim')
   " Bring back ctrl-h
   nmap <BS> <C-W>h
 endif
-"}}}
 
 " Configurations ------------------------------------------------------
 
-" Leader Shortcuts"{{{
+" Leader Shortcuts
 nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
@@ -514,13 +505,12 @@ autocmd FileType python nnoremap <leader>s= :0,$!yapf<CR>
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
-"}}}
 
-" General"{{{
+" General
 augroup general_config
   autocmd!
 
-  " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l, Ctrl-p) {{{
+  " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l, Ctrl-p)
   map <C-k> <C-W>k
   map <C-j> <C-W>j
   map <C-l> <C-W>l
@@ -532,11 +522,11 @@ augroup general_config
   map <C-w><C-\> <C-w><C-p>
   " }}}
 
-  " Clear last search (Ctrl-n, ,h) {{{
+  " Clear last search (Ctrl-n, ,h)
   map <silent> <C-n> <Esc>:nohlsearch<CR>
   " }}}
 
-  " Remap keys for auto-completion menu {{{
+  " Remap keys for auto-completion menu
   inoremap <expr><tab>  pumvisible() ? "\<C-n>" : "\<tab>"
   inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 
@@ -544,54 +534,54 @@ augroup general_config
   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
   " }}}
 
-  " Paste toggle (<F3>) {{{
+  " Paste toggle (<F3>)
   nnoremap <F3> :set invpaste paste?<CR>
   set pastetoggle=<F3>
   " }}}
 
-  " Open selected text in https://carbon.now.sh {{{
+  " Open selected text in https://carbon.now.sh
   vnoremap <F5> :CarbonNowSh<CR>
   " }}}
 
-  " Yank from cursor to end of line {{{
+  " Yank from cursor to end of line
   nnoremap Y y$
   " }}}
 
-  " Show git diff in tab"{{{
+  " Show git diff in tab
   command! GdiffInTab tabedit %|vsplit|Gdiff
-  "}}}
+
 
   " }}}
   imap <c-c> <ESC>l
-  "}}}
 
-  " Remap increase number (Ctrl-p)"{{{
+
+  " Remap increase number (Ctrl-p)
   " <c-a> is prefix for tmux
   " I used to use <c-i>, but that's useful for jumps.
   map <c-p> <c-a>
-  "}}}
 
-  " Quick move under insert mode (Ctrl-f, Ctrl-b)"{{{
+
+  " Quick move under insert mode (Ctrl-f, Ctrl-b)
   imap <c-f> <c-o>w
   imap <c-b> <c-o>b
-  "}}}
 
-  " Adjust window height"{{{
+
+  " Adjust window height
   au FileType qf call AdjustWindowHeight(3, 10)
   function! AdjustWindowHeight(minheight, maxheight)
     exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
   endfunction
-  "}}}
 
-  " Insert the current time (InsertTime)"{{{
+
+  " Insert the current time (InsertTime)
   command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
-  "}}}
+
 
   " Change SpecialKey color for Tagbar + Golang
   highlight SpecialKey term=bold cterm=bold ctermfg=9 guifg=Cyan
-  "}}}
 
-  " Remember last location when open a file"{{{
+
+  " Remember last location when open a file
   " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
   function! ResCur()
     let filetype = &ft
@@ -605,17 +595,15 @@ augroup general_config
     autocmd!
     autocmd BufWinEnter * call ResCur()
   augroup END
-  "}}}
 
   autocmd FileType ruby,eruby setlocal indentkeys=0{,0},0),0],!^F,o,O,e,=end,=else,=elsif,=when,=ensure,=rescue,==begin,==end,=private,=protected,=public
 
-  " Set local omnifunc"{{{
+  " Set local omnifunc
   autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   let g:omni_sql_no_default_maps = 1
-  "}}}
 
   " dirty patch for hiding markdown error highlighting
   autocmd FileType markdown,mkd syn match markdownError "\w\@<=\w\@="
@@ -656,9 +644,9 @@ augroup general_config
   autocmd CmdlineEnter * execute 'silent !echo -ne "' . &t_SI . '"'
   autocmd CmdlineLeave * execute 'silent !echo -ne "' . &t_EI . '"'
 augroup END
-"}}}
 
-" Tagbar"{{{
+
+" Tagbar
 nnoremap <F2> :TagbarToggle<CR>
 let g:tagbar_sort = 1
 let g:tagbar_iconchars = ['+', '-']
@@ -693,26 +681,23 @@ let g:tagbar_type_elixir = {
         \ 'r:records',
     \ ]
 \ }
-"}}}
 
-" vim-dispatch{{{
+" vim-dispatch
 " disable m maps from vim-dispatch
 let g:dispatch_no_maps = 1
-"}}}
 
-" vim-gitgutter"{{{
+" vim-gitgutter
 " vim-gitgutter will use Sign Column to set its color, reload it.
 call gitgutter#highlight#define_highlights()
 
 let g:gitgutter_max_signs = 1024
 set signcolumn=yes
-"}}}
 
 " vim-trailing-whitespace
 let g:extra_whitespace_ignored_filetypes = ['defx', 'unite']
 let g:extra_whitespace_ignored_filenames = ['defx', 'unite']
 
-" vim-fugitive"{{{
+" vim-fugitive
 fun! SetupCommandAlias(from, to)
   exec 'cnoreabbrev <expr> '.a:from
         \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
@@ -733,9 +718,8 @@ vmap <leader>gr :GBrowse!<cr>
 " open github / ghe link
 nmap <leader>go :GBrowse<cr>
 vmap <leader>go :GBrowse<cr>
-"}}}
 
-" vim-projectionist"{{{
+" vim-projectionist
 let g:projectionist_heuristics = {
       \  "lib/": {
       \    "lib/db/model/*.rb": {
@@ -805,20 +789,18 @@ let g:projectionist_heuristics = {
       \    },
       \  },
       \ }
-"}}}
 
-" vim-ruby"{{{
+
+" vim-ruby
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
-"}}}
 
-" test.vim"{{{
+" test.vim
 nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
-"}}}
 
-" vroom.vim"{{{
+" vroom.vim
 let g:vroom_use_vimux=1
 let g:vroom_map_keys=0
 
@@ -842,29 +824,25 @@ map <leader>vx :VimuxInterruptRunner<CR>
 if !exists("g:vroom_test_unit_command")
   let g:vroom_test_unit_command = 'ruby -Itest -I.'
 endif
-"}}}
 
-" bufexplorer"{{{
+" bufexplorer
 let g:bufExplorerShowTabBuffer=0    " BufExplorer: show only buffers relative to this tab
 let g:bufExplorerShowRelativePath=1 " BufExplorer: show relative paths
-"}}}
 
-" Gist.vim"{{{
+" Gist.vim
 let g:gist_post_private = 1
 let g:gist_show_privates = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_detect_filetype = 1
-"}}}
 
 " coc.nvim
 let g:coc_snippet_next = '<tab>'
 
-" ALE {{{
+" ALE
 augroup AutoALE
   autocmd!
   autocmd User ALELint call lightline#update()
 augroup END
-
 
 " call ale#linter#Define('ruby', {
 "   \   'name': 'sorbet-payserver',
@@ -926,15 +904,15 @@ let g:ale_fix_on_save = 1
 " if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe-b/pay-server'
 "   let g:ale_linters['ruby'] = ['sorbet-payserver-b', 'rubocop']
 " end
-"}}}
 
-" Highlight Pmenu"{{{
+
+" Highlight Pmenu
 highlight Pmenu ctermfg=lightgray ctermbg=black cterm=NONE
 highlight PmenuSbar ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 highlight PmenuThumb ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-"}}}
 
-" pay-server specific configs"{{{
+
+" pay-server specific configs
 function! SetupConfigForPayServer()
   let g:vroom_test_unit_command = 'pay test'
   let g:vroom_use_bundle_exec = 0
@@ -943,16 +921,14 @@ endfunction
 
 autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupConfigForPayServer()
 autocmd BufRead,BufNewFile */stripe-b/pay-server/* call SetupConfigForPayServer()
-"}}}
 
-" UltiSnips"{{{
+" UltiSnips
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsUsePythonVersion = 3
-"}}}
 
-" fzf.vim{{{
+" fzf.vim
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 " - Popup window (center of the screen)
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
@@ -1082,9 +1058,8 @@ endfunction
 
 command! -bar FZFCopyRubyToken :call FzfCopyRubyTokenFn(expand('<cword>'))
 nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
-"}}}
 
-" ctrlp.vim"{{{
+" ctrlp.vim
 " silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
 " silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<CR>
 " silent! nnoremap <unique> <silent> <leader>d :CtrlP<CR>
@@ -1122,18 +1097,16 @@ let g:ctrlp_user_command = {
   \ 'fallback': 'find %s -type f'
   \ }
 " let g:ctrlp_tjump_only_silent = 1
-"}}}
 
-" rainbow_parentheses.vim"{{{
+" rainbow_parentheses.vim
 let g:rainbow#max_level = 16
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 augroup rainbow_activation
   autocmd!
   autocmd FileType clojure,json,lisp,ruby,scheme,yaml RainbowParentheses
 augroup END
-"}}}
 
-" nerdtree"{{{
+" nerdtree
 let NERDTreeWinSize = 42
 let NERDTreeAutoCenter=1
 let NERDTreeChDirMode=0
@@ -1150,9 +1123,8 @@ function! NERDTreeToggleInCurDir()
     exe ":NERDTreeFind"
   endif
 endfunction
-"}}}
 
-" ack.vim"{{{
+" ack.vim
 let g:ack_use_dispatch=0
 let g:ackhighlight=1
 cnoreabbrev Ack Ack!
@@ -1166,17 +1138,15 @@ elseif executable("ag")
 elseif executable("ack")
   let g:ackprg="ack -H --nocolor --nogroup --column --no-smart-case"
 endif
-"}}}
 
-" vim-ragtag"{{{
+" vim-ragtag
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1  = "inc"
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags    = "li\|p"
-"}}}
 
-" Filetype detection"{{{
+" Filetype detection
 autocmd BufNewFile,BufRead Thorfile set filetype=ruby syntax=ruby
 autocmd BufNewFile,BufRead *.thor set filetype=ruby syntax=ruby
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby syntax=ruby
@@ -1192,9 +1162,8 @@ autocmd BufNewFile,BufRead *.md setlocal textwidth=80
 autocmd Filetype gitcommit setlocal textwidth=78
 autocmd Filetype gitcommit,markdown set colorcolumn=81
 autocmd FileType elixir set foldmethod=syntax
-"}}}
 
-" lightline.vim"{{{
+" lightline.vim
 let g:lightline#ale#indicator_checking = "\uf110"
 let g:lightline#ale#indicator_infos = "\uf129"
 let g:lightline#ale#indicator_warnings = "\uf071 "
@@ -1388,9 +1357,8 @@ endfunction
 
 " fix statusline after reloading vimrc
 call lightline#update()
-"}}}
 
-" delimitMate"{{{
+" delimitMate
 " remove ` and * from the quotes
 let delimitMate_quotes = "\" '"
 " remove <> from match pairs
@@ -1403,9 +1371,8 @@ function! YcmOnDeleteChar()
   endif
   return ""
 endfunction
-"}}}
 
-" startify"{{{
+" startify
 let g:startify_list_order = [
     \ ['   MRU:'],
     \ 'dir',
@@ -1419,7 +1386,6 @@ let g:startify_bookmarks = [
     \ {'t': '~/.tmux.conf'}
     \ ]
 let g:startify_change_to_dir = 0
-"}}}
 
 " defx.nvim
 nnoremap <silent><F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle -buffer-name=` tabpagenr()`<CR>
@@ -1513,17 +1479,15 @@ call defx#custom#column('filename', {
       \ 'max_width': 120,
       \ })
 
-" elm-vim"{{{
+" elm-vim
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 1
-"}}}
 
-" splitjoin.vim"{{{
+" splitjoin.vim
 let g:splitjoin_split_mapping = ''
 let g:splitjoin_join_mapping = ''
-"}}}
 
-" jedi-vim{{{
+" jedi-vim
 let g:jedi#goto_command = "<leader>xg"
 let g:jedi#goto_assignments_command = ""
 let g:jedi#goto_definitions_command = "<leader>xd"
@@ -1533,13 +1497,12 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>xr"
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#show_call_signatures = "0"
-"}}}
 
 "echodoc.vim
 let g:echodoc#enable_at_startup = 0 " disable echodoc.vim because it conflicts with coc.nvim + autocomplete
 let g:echodoc#type = "echo"
 
-" vim-go{{{
+" vim-go
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
 let g:go_gocode_autobuild = 0
@@ -1568,11 +1531,9 @@ function! s:go_guru_scope_from_git_root()
 endfunction
 
 au FileType go silent exe "GoGuruScope " . s:go_guru_scope_from_git_root()
-"}}}
 
-" vim-rhubarb{{{
+" vim-rhubarb
 let g:github_enterprise_urls = ['https://git.corp.stripe.com']
-"}}}
 
 " tyru/open-browser.vim
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
