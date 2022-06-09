@@ -10,16 +10,8 @@ filetype off
 
 call plug#begin('~/.vim/bundle')
 
-" Code Complete Engine
-if !has('nvim')
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-else
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-endif
-
 " Plug 'vim-ruby/vim-ruby'
+Plug 'Shougo/defx.nvim',                    { 'do': ':UpdateRemotePlugins' }
 Plug 'rust-lang/rust.vim',                  { 'for': 'rust' }
 Plug 'elixir-lang/vim-elixir',              { 'for': ['elixir', 'eelixir'] }
 Plug 'slashmili/alchemist.vim',             { 'for': ['elixir', 'eelixir'] }
@@ -39,14 +31,12 @@ Plug 'clojure-vim/async-clj-omni',          { 'for': 'clojure' }
 Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
 " Plug 'fatih/vim-go',                        { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
 Plug 'fatih/vim-go'
-" Plug 'mdempsky/gocode',                     { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'visualfc/gocode',                     { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
 Plug 'fisadev/vim-isort',                   { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
 Plug 'majutsushi/tagbar',                   { 'for': ['go', 'ruby', 'rust', 'python'] }
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
-" Plug 'HerringtonDarkholme/yats.vim',        { 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact'] }
 Plug 'othree/html5.vim',                    { 'for': ['html', 'eruby'] }
 Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
 Plug 'hail2u/vim-css3-syntax',              { 'for': ['css', 'sass', 'scss'] }
@@ -102,8 +92,6 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'Raimondi/delimitMate'
 Plug 'benmills/vimux'
 Plug 'jlanzarotta/bufexplorer'
-" Plug 'vim-scripts/matchit.zip'
-" Plug 'andymass/vim-matchup'
 Plug 'mhinz/vim-startify'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -331,13 +319,6 @@ endfunction
 
 autocmd FileType ruby call SetupMapForRipperTags()
 
-" Move the cursor to the already-open NERDTree, and then switch back to the file
-" nnoremap <leader>dn :NERDTreeFind<CR><C-w><C-p><CR>
-
-" vim-matchup
-" disable match highlighting
-" let g:matchup_matchparen_enabled = 0
-
 " vim-projectionist && vim-rails
 " map <leader>ec :Econtroller<Space>
 " map <leader>ed :Eschema<cr>
@@ -386,7 +367,7 @@ function! SetupMapForVimGo()
 
   nmap <leader>gc :<C-u>GoChannelPeers<CR>
 
-  " nmap <leader>gl :<C-u>GoReferrers<CR>
+  nmap <leader>gf :<C-u>GoReferrers<CR>
 
   " nmap <leader>tj :<C-u>GoDeclsDir<CR>
   " nmap <leader>ts :<C-u>GoDecls<CR>
