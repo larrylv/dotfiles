@@ -1,5 +1,5 @@
 "
-" Author:         Larry Lv <larrylv1990@gmail.com>
+" Author:         Larry Lv <larrybayarea@gmail.com>
 "
 
 " Plugins -------------------------------------------------------------
