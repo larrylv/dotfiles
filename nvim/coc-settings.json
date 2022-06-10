@@ -8,12 +8,28 @@
       "settings": {}
     }
   },
-  "diagnostic.displayByAle": true,
+  "coc": {
+    "preferences": {
+      "messageLevel": "error"
+    },
+    "source": {
+      "tag": {
+        "priority": 20
+      }
+    }
+  },
   "codeLens.enable": true,
-  "coc.source.tag.priority": 20,
-  "suggest.enablePreview": true,
-  "suggest.floatEnable": true,
-  "suggest.maxCompleteItemCount": 20,
-  "suggest.snippetIndicator": ""
+  "diagnostic.displayByAle": true,
+  "hover": {
+    "floatConfig": {
+      "border": true
+    }
+  },
+  "suggest": {
+    "enablePreview": true,
+    "floatEnable": true,
+    "maxCompleteItemCount": 20,
+    "snippetIndicator": ""
+  }
 }
 

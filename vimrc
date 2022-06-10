@@ -494,7 +494,7 @@ function! g:CocShowDocumentation()
   endif
 endfunction
 
-nnoremap <leader>ci :CocOpenLog<CR>
+nnoremap <leader>ci :CocInfo<CR>
 nnoremap <leader>cr :CocRestart<CR>
 
 nmap <silent> <leader>ld <Plug>(coc-definition)
@@ -1257,6 +1257,7 @@ let g:lightline = {
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
       \ }
+
 function! MyModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
