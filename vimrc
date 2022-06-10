@@ -498,8 +498,8 @@ nnoremap <leader>ci :CocInfo<CR>
 nnoremap <leader>cr :CocRestart<CR>
 
 nmap <silent> <leader>ld <Plug>(coc-definition)
-nmap <silent> <leader>li <Plug>(coc-implementation)
 nmap <silent> <leader>lf <Plug>(coc-references)
+nmap <silent> <leader>li <Plug>(coc-implementation)
 nmap <silent> <leader>lr <Plug>(coc-rename)
 nnoremap <silent> K :call CocShowDocumentation()<CR>
 
