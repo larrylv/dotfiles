@@ -494,6 +494,9 @@ function! g:CocShowDocumentation()
   endif
 endfunction
 
+nnoremap <leader>ci :CocOpenLog<CR>
+nnoremap <leader>cr :CocRestart<CR>
+
 nmap <silent> <leader>ld <Plug>(coc-definition)
 nmap <silent> <leader>li <Plug>(coc-implementation)
 nmap <silent> <leader>lf <Plug>(coc-references)
