@@ -100,6 +100,13 @@ Plug 'tyru/open-browser.vim'
 Plug 'rodjek/vim-puppet'
 Plug 'rhysd/git-messenger.vim'
 
+" function to source a file if it exists
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
 " Add plugins to &runtimepath
 call plug#end()
 
