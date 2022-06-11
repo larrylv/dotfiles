@@ -131,6 +131,9 @@ function! SourceIfExists(file)
   endif
 endfunction
 
+" load private overlay packages
+call SourceIfExists('~/.config/nvim/layers/private/packages.vim')
+
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -632,75 +635,58 @@ vmap <leader>go :GBrowse<cr>
 
 
 " ================================= vim-projectionist ==========================
+" heuristics for Elixir projects
 let g:projectionist_heuristics = {
-      \  "lib/": {
-      \    "lib/db/model/*.rb": {
-      \      "type": "model",
-      \      "alternate": "test/integration/lib/db/model/{}.rb",
-      \    },
-      \  },
-      \  "web/": {
-      \    "web/channels/*.ex": {
-      \      "type": "channel",
-      \      "alternate": "test/channels/{}_test.exs"
-      \    },
-      \    "web/controllers/*.ex": {
-      \      "type": "controller",
-      \      "alternate": "test/controllers/{}_test.exs"
-      \    },
-      \    "web/models/*.ex": {
-      \      "type": "model",
-      \      "alternate": "test/models/{}_test.exs"
-      \    },
-      \    "web/views/*.ex": {
-      \      "type": "view",
-      \      "alternate": "test/views/{}_test.exs"
-      \    },
-      \    "web/templates/*.html.eex": {
-      \      "type": "template",
-      \    },
-      \    "web/static/css/*": {
-      \      "type": "stylesheet",
-      \    },
-      \    "web/static/js/*": {
-      \      "type": "javascript",
-      \    },
-      \  },
-      \  "test/": {
-      \    "test/unit/lib/db/model/*.rb": {
-      \      "type": "unittest",
-      \      "alternate": "lib/db/model/{}.rb",
-      \    },
-      \    "test/integration/lib/db/model/*.rb": {
-      \      "type": "test",
-      \      "alternate": "lib/db/model/{}.rb",
-      \    },
-      \    "test/_lib/helpers/fake_data/*.rb": {
-      \      "type": "fixtures",
-      \      "alternate": "lib/db/model/{}.rb",
-      \    },
-      \    "test/channels/*_test.exs": {
-      \      "type": "test",
-      \      "alternate": "web/channels/{}.ex",
-      \      "dispatch": "mix test --color {file}"
-      \    },
-      \    "test/controllers/*_test.exs": {
-      \      "type": "test",
-      \      "alternate": "web/controllers/{}.ex",
-      \      "dispatch": "mix test --color {file}"
-      \    },
-      \    "test/models/*_test.exs": {
-      \      "type": "test",
-      \      "alternate": "web/models/{}.ex",
-      \      "dispatch": "mix test --color {file}"
-      \    },
-      \    "test/views/*_test.exs": {
-      \      "type": "test",
-      \      "alternate": "web/views/{}.ex",
-      \      "dispatch": "mix test --color {file}"
-      \    },
-      \  },
-      \ }
+		\  "web/": {
+		\    "web/channels/*.ex": {
+		\      "type": "channel",
+		\      "alternate": "test/channels/{}_test.exs"
+		\    },
+		\    "web/controllers/*.ex": {
+		\      "type": "controller",
+		\      "alternate": "test/controllers/{}_test.exs"
+		\    },
+		\    "web/models/*.ex": {
+		\      "type": "model",
+		\      "alternate": "test/models/{}_test.exs"
+		\    },
+		\    "web/views/*.ex": {
+		\      "type": "view",
+		\      "alternate": "test/views/{}_test.exs"
+		\    },
+		\    "web/templates/*.html.eex": {
+		\      "type": "template",
+		\    },
+		\    "web/static/css/*": {
+		\      "type": "stylesheet",
+		\    },
+		\    "web/static/js/*": {
+		\      "type": "javascript",
+		\    },
+		\  },
+		\  "test/": {
+		\    "test/channels/*_test.exs": {
+		\      "type": "test",
+		\      "alternate": "web/channels/{}.ex",
+		\      "dispatch": "mix test --color {file}"
+		\    },
+		\    "test/controllers/*_test.exs": {
+		\      "type": "test",
+		\      "alternate": "web/controllers/{}.ex",
+		\      "dispatch": "mix test --color {file}"
+		\    },
+		\    "test/models/*_test.exs": {
+		\      "type": "test",
+		\      "alternate": "web/models/{}.ex",
+		\      "dispatch": "mix test --color {file}"
+		\    },
+		\    "test/views/*_test.exs": {
+		\      "type": "test",
+		\      "alternate": "web/views/{}.ex",
+		\      "dispatch": "mix test --color {file}"
+		\    },
+		\  },
+		\ }
 
 
 " ================================= vroom ======================================
@@ -1525,3 +1511,11 @@ nmap <leader>t= <Plug>(EasyAlign) =
 xmap <leader>t: <Plug>(EasyAlign) :
 vmap <leader>t: <Plug>(EasyAlign) :
 nmap <leader>t: <Plug>(EasyAlign) :
+xmap <leader>t" <Plug>(EasyAlign) "
+vmap <leader>t" <Plug>(EasyAlign) "
+nmap <leader>t" <Plug>(EasyAlign) "
+
+
+" ================================= private config =============================
+" load private overlay packages
+call SourceIfExists('~/.config/nvim/layers/private/config.vim')
