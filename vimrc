@@ -10,9 +10,72 @@ filetype off
 
 call plug#begin('~/.vim/bundle')
 
-" Plug 'vim-ruby/vim-ruby'
-Plug 'Shougo/defx.nvim',                    { 'do': ':UpdateRemotePlugins' }
-Plug 'rust-lang/rust.vim',                  { 'for': 'rust' }
+" colorscheme & statusline & tabline
+Plug 'lifepillar/vim-solarized8'
+Plug 'itchyny/lightline.vim'
+Plug 'larrylv/lightline-solarized'
+Plug 'maximbaz/lightline-ale'
+
+" find & search & tjump
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ivalkeen/vim-ctrlp-tjump'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'mileszs/ack.vim'
+
+" linter & lsp & completion
+Plug 'dense-analysis/ale'
+Plug 'larrylv/coc.nvim', {'branch': 'release'} " own fork that suppress error messages
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" explorer
+Plug 'Shougo/defx.nvim',  { 'do': ':UpdateRemotePlugins' }
+
+" editing
+Plug 'majutsushi/tagbar'                " show tagbar with F2
+Plug 'tpope/vim-obsession'              " record a session with :Obsession
+Plug 'tpope/vim-projectionist'          " alternate files with :AV/:AS
+Plug 'tpope/vim-surround'               " cs`' to change `` to '', etc
+Plug 'tpope/vim-abolish'                " MixedCase (crm), camelCase (crc), snake_case (crs), UPPER_CASE (cru) and dash-case (cr-).
+Plug 'tpope/vim-repeat'                 " enable repeating supported plugin maps with `.`
+Plug 'tpope/vim-unimpaired'             " [<Space> and ]<Space> to add newlines. [q and ]q for :cprevious and :cnext
+Plug 'tpope/vim-eunuch'                 " shell commands like :Delete, :SudoWrite, etc
+Plug 'tpope/vim-speeddating'            " enhance CTRL-A and CTRL-X
+Plug 'tpope/vim-sensible'               " a universal set of defaults defined by tpope
+Plug 'tpope/vim-endwise'                " add `end` or similar keywords automatically
+Plug 'tpope/vim-rsi'                    " readline mapping for insert/command mode like <C-a> to beginning of line.
+Plug 'kshenoy/vim-signature'            " show marks in the gutter
+Plug 'AndrewRadev/splitjoin.vim'        " split/join single line/multiline
+Plug 'tomtom/tcomment_vim'              " comment with `gcc`
+Plug 'larrylv/vim-trailing-whitespace'  " show trailing whitespace
+Plug 'tyru/open-browser.vim'            " gx to open browser
+Plug 'junegunn/vim-easy-align'          " align multiple lines
+Plug 'junegunn/rainbow_parentheses.vim' " rainbow parentheses
+Plug 'kana/vim-textobj-user'            " create text objects, depended by vim-textobj-rubyblock
+Plug 'nelstrom/vim-textobj-rubyblock'   " ar selects all of a ruby block, ir selects the inner portion of a rubyblock
+Plug 'Raimondi/delimitMate'             " auto-completion for quotes, parens, brackets, etc.
+Plug 'mhinz/vim-startify'               " fancy start screen
+Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
+Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
+
+" git
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb', { 'commit': '2590324d7fdaf0c6311fad4ee2a2878acaaec42d' } " Gbrowse
+Plug 'airblade/vim-gitgutter'  " shows git diff markers in the sign column
+Plug 'rhysd/git-messenger.vim' " <leader>gm to reveal the commit messages under the cursor
+
+" test
+Plug 'vim-test/vim-test'
+Plug 'larrylv/vim-vroom'
+Plug 'benmills/vimux'
+
+" go
+Plug 'fatih/vim-go',  " { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
+Plug 'visualfc/gocode', { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+
+" elixir & erlang
 Plug 'elixir-lang/vim-elixir',              { 'for': ['elixir', 'eelixir'] }
 Plug 'slashmili/alchemist.vim',             { 'for': ['elixir', 'eelixir'] }
 Plug 'vim-erlang/vim-erlang-runtime',       { 'for': 'erlang' }
@@ -20,7 +83,14 @@ Plug 'vim-erlang/vim-erlang-compiler',      { 'for': 'erlang' }
 Plug 'vim-erlang/vim-erlang-omnicomplete',  { 'for': 'erlang' }
 Plug 'vim-erlang/vim-erlang-tags',          { 'for': 'erlang' }
 Plug 'ten0s/syntaxerl',                     { 'for': 'erlang' }
+
+" rust
+Plug 'rust-lang/rust.vim',                  { 'for': 'rust' }
+
+" scala
 Plug 'derekwyatt/vim-scala',                { 'for': 'scala' }
+
+" clojure
 Plug 'guns/vim-clojure-static',             { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace',                 { 'for': 'clojure' }
 Plug 'tpope/vim-classpath',                 { 'for': 'clojure' }
@@ -28,14 +98,13 @@ Plug 'tpope/vim-salve',                     { 'for': 'clojure' }
 Plug 'guns/vim-sexp',                       { 'for': 'clojure' }
 Plug 'vim-scripts/paredit.vim',             { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni',          { 'for': 'clojure' }
-Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
-" Plug 'fatih/vim-go',                        { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
-Plug 'fatih/vim-go'
-Plug 'visualfc/gocode',                     { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+
+" python
 Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
 Plug 'fisadev/vim-isort',                   { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
-Plug 'majutsushi/tagbar',                   { 'for': ['go', 'ruby', 'rust', 'python'] }
+
+" frontend & markdown
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
 Plug 'othree/html5.vim',                    { 'for': ['html', 'eruby'] }
 Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
@@ -44,61 +113,16 @@ Plug 'ap/vim-css-color',                    { 'for': ['css', 'sass', 'scss'] }
 Plug 'groenewege/vim-less',                 { 'for': 'less' }
 Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
+Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
 Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
-Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
-Plug 'larrylv/coc.nvim',                    {'branch': 'release'}
-Plug 'tpope/vim-dispatch'
-Plug 'lifepillar/vim-solarized8'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'kshenoy/vim-signature'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ivalkeen/vim-ctrlp-tjump'
-Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-rbenv'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-rhubarb', { 'commit': '2590324d7fdaf0c6311fad4ee2a2878acaaec42d' }
-Plug 'SirVer/ultisnips'
-Plug 'dense-analysis/ale'
-Plug 'tomtom/tcomment_vim'
-Plug 'larrylv/vim-vroom'
-Plug 'larrylv/vim-trailing-whitespace'
-Plug 'honza/vim-snippets'
-Plug 'vim-test/vim-test'
-Plug 'mileszs/ack.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'larrylv/lightline-solarized'
-Plug 'maximbaz/lightline-ale'
-Plug 'airblade/vim-gitgutter'
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'Raimondi/delimitMate'
-Plug 'benmills/vimux'
-Plug 'mhinz/vim-startify'
-Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/goyo.vim'
-Plug 'kristijanhusak/vim-carbon-now-sh'
-Plug 'tyru/open-browser.vim'
+Plug 'tpope/vim-ragtag',                    " A set of mappings for HTML, XML, etc.
+
+" elm
+Plug 'elmcast/elm-vim',                     { 'for': 'elm' }
+
+" puppet
 Plug 'rodjek/vim-puppet'
-Plug 'rhysd/git-messenger.vim'
 
 " function to source a file if it exists
 function! SourceIfExists(file)
@@ -252,7 +276,6 @@ if has('nvim')
   " Bring back ctrl-h
   nmap <BS> <C-W>h
 endif
-
 
 augroup general_config
   autocmd!
@@ -561,10 +584,6 @@ let g:tagbar_type_elixir = {
     \ ]
 \ }
 
-" ================================= dispatch ===================================
-" disable m maps from vim-dispatch
-let g:dispatch_no_maps = 1
-
 
 " ================================= gitgutter ==================================
 call gitgutter#highlight#define_highlights()
@@ -587,7 +606,7 @@ let g:extra_whitespace_ignored_filetypes = ['defx', 'unite']
 let g:extra_whitespace_ignored_filenames = ['defx', 'unite', '']
 
 
-" ================================= fugitive ===================================
+" ================================= fugitive & rhubarb =========================
 fun! SetupCommandAlias(from, to)
   exec 'cnoreabbrev <expr> '.a:from
         \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
@@ -598,6 +617,8 @@ call SetupCommandAlias("GBlame", "Git blame")
 call SetupCommandAlias("Gblame", "Git blame")
 call SetupCommandAlias("Gbrowse", "GBrowse")
 call SetupCommandAlias("Gbrowse!", "GBrowse!")
+
+let g:github_enterprise_urls = ['https://git.corp.stripe.com']
 
 map <leader>gb :Git blame<cr>
 " copy github / ghe link
@@ -1444,10 +1465,6 @@ autocmd Filetype go
   \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 
 
-" ================================= vim-rhubarb ================================
-let g:github_enterprise_urls = ['https://git.corp.stripe.com']
-
-
 " ================================= open-browser ===============================
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 
@@ -1508,19 +1525,3 @@ nmap <leader>t= <Plug>(EasyAlign) =
 xmap <leader>t: <Plug>(EasyAlign) :
 vmap <leader>t: <Plug>(EasyAlign) :
 nmap <leader>t: <Plug>(EasyAlign) :
-
-
-" ================================= vim-projectionist && vim-rails =============
-" map <leader>ec :Econtroller<Space>
-" map <leader>ed :Eschema<cr>
-" map <leader>ef :Efixtures<Space>
-" map <leader>eg :Emigration<cr>
-" map <leader>eh :Ehelper<Space>
-" map <leader>ej :Ejavascript<Space>
-" map <leader>em :Emodel<Space>
-" map <leader>en :Echannel<Space>
-" map <leader>ep :Etemplate<Space>
-" map <leader>es :Espec<Space>
-" map <leader>et :Etest<Space>
-" map <leader>eu :Eunittest<Space>
-" map <leader>ev :Eview<Space>
