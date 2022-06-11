@@ -92,9 +92,9 @@
     commitEncoding = utf8
     logOutputEncoding = utf8
 [includeIf "gitdir:~/stripe/"]
-    path = .gitconfig-work
+    path = .gitconfig.work
 [includeIf "gitdir:~/stripe-b/"]
-    path = .gitconfig-work
+    path = .gitconfig.work
 [merge]
     tool          = vimdiff
     conflictstyle = diff3
