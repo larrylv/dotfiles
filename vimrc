@@ -287,7 +287,7 @@ augroup general_config
   autocmd!
 
   " Toggle Tagbar (<F2>)
-  nnoremap <F2> :TagbarToggle<CR>
+  nnoremap <F2> :TagbarToggle<cr>
 
   " Adjust window height
   au FileType qf call AdjustWindowHeight(3, 10)
@@ -399,7 +399,7 @@ map <C-w>\ <C-w><C-p>
 map <C-w><C-\> <C-w><C-p>
 
 " Clear last search (Ctrl-n, ,h)
-map <silent> <C-n> <Esc>:nohlsearch<CR>
+map <silent> <C-n> <Esc>:nohlsearch<cr>
 
 " Remap keys for auto-completion menu
 inoremap <expr><tab>  pumvisible() ? "\<C-n>" : "\<tab>"
@@ -409,11 +409,11 @@ inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Paste toggle (<F3>)
-nnoremap <F3> :set invpaste paste?<CR>
+nnoremap <F3> :set invpaste paste?<cr>
 set pastetoggle=<F3>
 
 " Open selected text in https://carbon.now.sh
-vnoremap <F5> :CarbonNowSh<CR>
+vnoremap <F5> :CarbonNowSh<cr>
 
 " Yank from cursor to end of line
 nnoremap Y y$
@@ -452,17 +452,17 @@ endfunction
 command! BufOnly silent! execute "%bd|e#|bd#"
 nmap <leader>bo :BufOnly<cr>
 
-nnoremap <leader>bp :call FlipBindingPry()<CR>
+nnoremap <leader>bp :call FlipBindingPry()<cr>
 
 map <leader>cc :ccl <bar> lcl<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
 
 " toggle colorcolumn=81
-nnoremap <silent><leader>co :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
+nnoremap <silent><leader>co :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<cr>
 
 " strip tailing white spaces
-nnoremap <leader>dd :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <leader>dd :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<cr>
 
 " increase window horizontal size
 map <leader>ni <C-W>>
@@ -480,9 +480,9 @@ map <leader>nh <C-W>_
 map <leader>nw <C-W>\|
 
 " delete all upcase marks / bookmarks
-nmap mx :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
+nmap mx :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<cr>
 " only show marks / bookmarks I care about
-nmap ms :marks abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<CR>
+nmap ms :marks abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<cr>
 
 nnoremap <leader>p :let @* = expand("%")<cr>:echo @%<cr>
 
@@ -494,7 +494,7 @@ function! CloseAllBuffersButCurrent()
   if curr < last | silent! execute (curr+1).",".last."bd" | endif
 endfunction
 
-nmap <leader>q :call CloseAllBuffersButCurrent()<CR>
+nmap <leader>q :call CloseAllBuffersButCurrent()<cr>
 
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParentheses<cr>
 
@@ -505,11 +505,11 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-nmap <leader>sp :call <SID>SynStack()<CR>
+nmap <leader>sp :call <SID>SynStack()<cr>
 
 nnoremap <leader>tt :tabe<cr>
 
-map <leader>vr :tabe ~/.vimrc<CR>
+map <leader>vr :tabe ~/.vimrc<cr>
 
 " n,w to qucikly switch vim window
 map <leader>w <C-W><C-W>
@@ -532,7 +532,7 @@ function! DeleteHiddenBuffers()
   echo "Closed ".closed." hidden buffers"
 endfunction
 
-nnoremap <leader>z :call DeleteHiddenBuffers()<CR>
+nnoremap <leader>z :call DeleteHiddenBuffers()<cr>
 
 " keep selected text selected when fixing indentation
 vnoremap < <gv
@@ -542,7 +542,7 @@ vnoremap > >gv
 map Q <Nop>
 
 " format python code
-autocmd FileType python nnoremap <leader>s= :0,$!yapf<CR>
+autocmd FileType python nnoremap <leader>s= :0,$!yapf<cr>
 
 " search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
@@ -705,18 +705,18 @@ if !exists("g:vroom_test_unit_command")
 endif
 
 " test the current file with vroom
-map <leader>vs :VroomRunTestFile<CR>
+map <leader>vs :VroomRunTestFile<cr>
 " run the nearest test in the current file
-map <leader>vn :VroomRunNearestTest<CR>
+map <leader>vn :VroomRunNearestTest<cr>
 " run last test executed by vroom
-map <leader>vl :VroomRunLastTest<CR>
+map <leader>vl :VroomRunLastTest<cr>
 
 
 " ================================= vim-test ===================================
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>tn :TestNearest<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tv :TestVisit<CR>
+nmap <silent> <leader>tf :TestFile<cr>
+nmap <silent> <leader>tn :TestNearest<cr>
+nmap <silent> <leader>tl :TestLast<cr>
+nmap <silent> <leader>tv :TestVisit<cr>
 
 
 " ================================= coc.nvim ===================================
@@ -746,14 +746,14 @@ function! g:CocShowDocumentation()
   endif
 endfunction
 
-nnoremap <leader>ci :CocInfo<CR>
-nnoremap <leader>cr :CocRestart<CR>
+nnoremap <leader>ci :CocInfo<cr>
+nnoremap <leader>cr :CocRestart<cr>
 
 " jump to definition(s) of current symbol
 nmap <silent> <leader>ld <Plug>(coc-definition)
-nmap <silent> <leader>lv :call CocAction('jumpDefinition', 'vsplit')<CR>
-nmap <silent> <leader>ls :call CocAction('jumpDefinition', 'split')<CR>
-nmap <silent> <leader>lt :call CocAction('jumpDefinition', 'tabe')<CR>
+nmap <silent> <leader>lv :call CocAction('jumpDefinition', 'vsplit')<cr>
+nmap <silent> <leader>ls :call CocAction('jumpDefinition', 'split')<cr>
+nmap <silent> <leader>lt :call CocAction('jumpDefinition', 'tabe')<cr>
 
 " jump to references of current symbol
 nmap <silent> <leader>lf <Plug>(coc-references)
@@ -762,7 +762,7 @@ nmap <silent> <leader>li <Plug>(coc-implementation)
 " rename symbol under cursor
 nmap <silent> <leader>lr <Plug>(coc-rename)
 " show documentation of  current symbol
-nnoremap <silent> K :call CocShowDocumentation()<CR>
+nnoremap <silent> K :call CocShowDocumentation()<cr>
 
 
 " ================================= ALE ========================================
@@ -908,18 +908,18 @@ command! -bang -nargs=? -complete=dir MyFiles
   \ call fzf#vim#files(<q-args>, {'source': CacheListCmd(),
   \                               'options': ['--tiebreak=index', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
-silent! nnoremap <unique> <silent> <leader>f :MyFiles<CR>
+silent! nnoremap <unique> <silent> <leader>f :MyFiles<cr>
 
 " list bookmarks
-nnoremap <leader>m :Marks<CR>
+nnoremap <leader>m :Marks<cr>
 
 " list maps
-nnoremap <leader>am :Maps<CR>
+nnoremap <leader>am :Maps<cr>
 
 " list commands
-nnoremap <leader>an :Commands<CR>
+nnoremap <leader>an :Commands<cr>
 
-" silent! nnoremap <unique> <silent> <leader>f :Files<CR>
+" silent! nnoremap <unique> <silent> <leader>f :Files<cr>
 
 " Show search results from files and directories that would otherwise be ignored
 " by '.gitignore', '.ignore', '.fdignore', or the global ignore file.
@@ -929,7 +929,7 @@ command! -bang -nargs=* FilesNoIgnore
 " by '.gitignore' files.
 command! -bang -nargs=* FilesNoIgnoreVcs
   \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore-vcs --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
-silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnoreVcs<CR>
+silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnoreVcs<cr>
 
 function! ClearFzfCache()
   let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
@@ -943,26 +943,26 @@ function! ClearFzfCache()
   endif
 endfunction
 
-silent! nnoremap <unique> <silent> <leader>cf :call ClearFzfCache()<CR>
+silent! nnoremap <unique> <silent> <leader>cf :call ClearFzfCache()<cr>
 
 nnoremap <leader>aa :Rg<Space>
-nnoremap <leader>ag :Rg <C-R><C-W><CR>
-xnoremap <leader>ag y:Rg <C-R>"<CR>
-nnoremap <leader>AG :Rg <C-R><C-A><CR>
+nnoremap <leader>ag :Rg <C-R><C-W><cr>
+xnoremap <leader>ag y:Rg <C-R>"<cr>
+nnoremap <leader>AG :Rg <C-R><C-A><cr>
 
-silent! nnoremap <unique> <silent> <leader>bb :Buffers<CR>
-silent! nnoremap <unique> <silent> <leader>bl :BLines<CR>
+silent! nnoremap <unique> <silent> <leader>bb :Buffers<cr>
+silent! nnoremap <unique> <silent> <leader>bl :BLines<cr>
 
-nnoremap <leader>tj :Tags<CR>
+nnoremap <leader>tj :Tags<cr>
 nnoremap <leader>ts :Tags<Space>
-nnoremap <silent> <leader>tg :Tags <C-R><C-W><CR>
-xnoremap <silent> <leader>tg y:Tags <C-R>"<CR>"
+nnoremap <silent> <leader>tg :Tags <C-R><C-W><cr>
+xnoremap <silent> <leader>tg y:Tags <C-R>"<cr>"
 
 
 " ================================= ctrlp.vim ==================================
-" silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
-" silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<CR>
-" silent! nnoremap <unique> <silent> <leader>d :CtrlP<CR>
+" silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<cr>
+" silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<cr>
+" silent! nnoremap <unique> <silent> <leader>d :CtrlP<cr>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_by_filename = 0
@@ -1015,8 +1015,8 @@ let g:ack_use_dispatch=0
 let g:ackhighlight=1
 cnoreabbrev Ack Ack!
 nnoremap <leader>ac :Ack!<Space>
-nnoremap <silent> <leader>ak :Ack! <C-R><C-W><CR>
-xnoremap <silent> <leader>ak y:Ack! <C-R>"<CR>
+nnoremap <silent> <leader>ak :Ack! <C-R><C-W><cr>
+xnoremap <silent> <leader>ak y:Ack! <C-R>"<cr>
 if executable("rg")
   let g:ackprg="rg --vimgrep --color=never"
 elseif executable("ag")
@@ -1237,7 +1237,7 @@ call lightline#update()
 let delimitMate_quotes = "\" '"
 " remove <> from match pairs
 let delimitMate_matchpairs = "(:),[:],{:}"
-imap <silent> <BS> <C-R>=OnDeleteChar()<CR><Plug>delimitMateBS
+imap <silent> <BS> <C-R>=OnDeleteChar()<cr><Plug>delimitMateBS
 
 function! OnDeleteChar()
   if pumvisible()
@@ -1281,7 +1281,7 @@ function! MyDefxSettings() abort
         \ defx#is_directory() ?
         \ defx#do_action('open_tree', 'toggle') :
         \ defx#do_action('drop')
-  nnoremap <silent><buffer><expr> <CR>
+  nnoremap <silent><buffer><expr> <cr>
         \ defx#is_directory() ?
         \ defx#do_action('open_tree', 'toggle') :
         \ defx#do_action('drop')
@@ -1351,9 +1351,9 @@ call defx#custom#column('filename', {
       \ 'max_width': 120,
       \ })
 
-nnoremap <silent><F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle -buffer-name=` tabpagenr()`<CR>
+nnoremap <silent><F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle -buffer-name=` tabpagenr()`<cr>
 " Move the cursor to the already-open Defx, and then switch back to the file
-nnoremap <silent><leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<CR>
+nnoremap <silent><leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<cr>
 
 
 " ================================= elm-vim ====================================
@@ -1422,18 +1422,18 @@ function! SetupMapForVimGo()
     endif
   endfunction
   " run :GoBuild or :GoTestCompile based on the go file
-  nmap <leader>bg :<C-u>call <SID>build_go_files()<CR>
+  nmap <leader>bg :<C-u>call <SID>build_go_files()<cr>
 
   " `go run` the current package
   nmap <leader>rg <Plug>(go-run)
 
   " shows the set of possible sends/receives on the channel operand of the
   " selected send or receive operation
-  nmap <leader>gc :<C-u>GoChannelPeers<CR>
+  nmap <leader>gc :<C-u>GoChannelPeers<cr>
   " show all function and type declarations for the current directory
-  nmap <leader>gdd :<C-u>GoDeclsDir<CR> 
+  nmap <leader>gdd :<C-u>GoDeclsDir<cr> 
   " show all function and type declarations for the current file
-  nmap <leader>gdc :<C-u>GoDecls<CR>
+  nmap <leader>gdc :<C-u>GoDecls<cr>
 endfunction
 autocmd FileType go call SetupMapForVimGo()
 autocmd Filetype go
@@ -1443,38 +1443,38 @@ autocmd Filetype go
 
 " ================================= vimux ======================================
 " generate ctags in tmux
-nnoremap <leader>dc :VimuxPromptCommand<CR>ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --fields=+ialS --extras=+q .<CR>
+nnoremap <leader>dc :VimuxPromptCommand<cr>ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --fields=+ialS --extras=+q .<cr>
 
 " generate tags for ruby with ripper-tags in tmux
 function! SetupMapForRipperTags()
   " Generate ctags with ripper-tags, specifically for Ruby
-  " nnoremap <leader>dr :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
-  " nnoremap <leader>dr :VimuxPromptCommand<CR>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
+  " nnoremap <leader>dr :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<cr>
+  " nnoremap <leader>dr :VimuxPromptCommand<cr>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<cr>
   " Generate ctags with custmized but faster ripper-tags function
-  nnoremap <leader>dr :VimuxPromptCommand<CR>rtags<CR>
+  nnoremap <leader>dr :VimuxPromptCommand<cr>rtags<cr>
   " Generate ctags with ripper-tags, specifically for Ruby
-  " nnoremap <leader>dt :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
-  " nnoremap <leader>dt :VimuxPromptCommand<CR>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
+  " nnoremap <leader>dt :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<cr>
+  " nnoremap <leader>dt :VimuxPromptCommand<cr>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<cr>
   " Generate ctags with custmized but faster ripper-tags function
-  nnoremap <leader>dt :VimuxPromptCommand<CR>rtags<CR>
+  nnoremap <leader>dt :VimuxPromptCommand<cr>rtags<cr>
 endfunction
 autocmd FileType ruby call SetupMapForRipperTags()
 
 " prompt for a command to run in tmux
-map <leader>vp :VimuxPromptCommand<CR>
+map <leader>vp :VimuxPromptCommand<cr>
 " inspect runner pane
-map <leader>vi :VimuxInspectRunner<CR>
+map <leader>vi :VimuxInspectRunner<cr>
 " close vim tmux runner
-map <leader>vc :VimuxCloseRunner<CR>
+map <leader>vc :VimuxCloseRunner<cr>
 " interrupt any command running in the runner pane
-map <leader>vx :VimuxInterruptRunner<CR>
+map <leader>vx :VimuxInterruptRunner<cr>
 
 
 " ================================= vimux-golang ===============================
 " test the current package in tmux
-map <leader>vs :GolangTestCurrentPackage<CR>
+map <leader>vs :GolangTestCurrentPackage<cr>
 " run the nearest test in the current file
-map <leader>vn :GolangTestFocused<CR>
+map <leader>vn :GolangTestFocused<cr>
 
 
 " ================================= open-browser ===============================
@@ -1511,7 +1511,7 @@ function! s:VStarsearch_searchCWord()
   let @" = savedUnnamed
 endfunction
 
-nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<CR>:set hls<CR>
+nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<cr>:set hls<cr>
 
 
 " ================================= vim-markdown ===============================
