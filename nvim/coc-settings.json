@@ -15,6 +15,18 @@
   "hover.floatConfig": {
     "border": true
   },
+  "list.previewSplitRight": true,
+  "list.previewToplineStyle": "middle",
+  "list.normalMappings": {
+    "v": "action:vsplit",
+    "<C-v>": "action:vsplit",
+    "<C-d>": "action:split",
+    "<C-t>": "action:tabe",
+    "<C-j>": "normal:j",
+    "<C-n>": "normal:j",
+    "<C-k>": "normal:k",
+    "<C-p>": "normal:k"
+  },
   "suggest.enablePreview": true,
   "suggest.floatEnable": true,
   "suggest.maxCompleteItemCount": 20,

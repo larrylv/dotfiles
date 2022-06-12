@@ -68,12 +68,15 @@ Plug 'rhysd/git-messenger.vim' " <leader>gm to reveal the commit messages under 
 
 " test
 Plug 'vim-test/vim-test'
-Plug 'larrylv/vim-vroom'
-Plug 'benmills/vimux'
+Plug 'benmills/vimux' " easily interact with tmux from vim
+
+" ruby
+Plug 'larrylv/vim-vroom', { 'for': 'ruby' } " run ruby tests using vimux
 
 " go
-Plug 'fatih/vim-go',  " { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
-Plug 'visualfc/gocode', { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+Plug 'fatih/vim-go',        " { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
+Plug 'visualfc/gocode',       { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+Plug 'benmills/vimux-golang', { 'for': 'go' } " run go tests using vimux
 
 " elixir & erlang
 Plug 'elixir-lang/vim-elixir',              { 'for': ['elixir', 'eelixir'] }
@@ -686,22 +689,6 @@ let g:projectionist_heuristics = {
 " ================================= vroom ======================================
 let g:vroom_use_vimux=1
 let g:vroom_map_keys=0
-" Generate ctags
-nnoremap <leader>dc :VimuxPromptCommand<CR>ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --fields=+ialS --extras=+q .<CR>
-
-function! SetupMapForRipperTags()
-  " Generate ctags with ripper-tags, specifically for Ruby
-  " nnoremap <leader>dr :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
-  " nnoremap <leader>dr :VimuxPromptCommand<CR>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
-  " Generate ctags with custmized but faster ripper-tags function
-  nnoremap <leader>dr :VimuxPromptCommand<CR>rtags<CR>
-  " Generate ctags with ripper-tags, specifically for Ruby
-  " nnoremap <leader>dt :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
-  " nnoremap <leader>dt :VimuxPromptCommand<CR>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
-  " Generate ctags with custmized but faster ripper-tags function
-  nnoremap <leader>dt :VimuxPromptCommand<CR>rtags<CR>
-endfunction
-autocmd FileType ruby call SetupMapForRipperTags()
 
 " pay-server specific configs
 function! SetupVroomConfigForPayServer()
@@ -717,20 +704,12 @@ if !exists("g:vroom_test_unit_command")
   let g:vroom_test_unit_command = 'ruby -Itest -I.'
 endif
 
-" Run the current file with vroom
+" test the current file with vroom
 map <leader>vs :VroomRunTestFile<CR>
-" Runs the nearest test in the current file
+" run the nearest test in the current file
 map <leader>vn :VroomRunNearestTest<CR>
-" Prompt for a command to run map
-map <leader>vp :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
+" run last test executed by vroom
 map <leader>vl :VroomRunLastTest<CR>
-" Inspect runner pane map
-map <leader>vi :VimuxInspectRunner<CR>
-" Close vim tmux runner opened by VimuxRunCommand
-map <leader>vc :VimuxCloseRunner<CR>
-" Interrupt any command running in the runner pane map
-map <leader>vx :VimuxInterruptRunner<CR>
 
 
 " ================================= vim-test ===================================
@@ -751,8 +730,8 @@ let g:coc_global_extensions = [
   \ 'coc-tag',
   \ ]
 
-" add missing imports on save
-autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+" this is commented out because vim-go already does this
+" autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 autocmd FileType go nmap <leader>gtj :CocCommand go.tags.add json<cr>
 autocmd FileType go nmap <leader>gty :CocCommand go.tags.add yaml<cr>
@@ -770,10 +749,19 @@ endfunction
 nnoremap <leader>ci :CocInfo<CR>
 nnoremap <leader>cr :CocRestart<CR>
 
-nmap <silent> <leader>ld <Plug>(coc-definition)
+" jump to definition(s) of current symbol
+nmap <silent> <leader>cd <Plug>(coc-definition)
+nmap <silent> <leader>cv :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <silent> <leader>cs :call CocAction('jumpDefinition', 'split')<CR>
+nmap <silent> <leader>ct :call CocAction('jumpDefinition', 'tabe')<CR>
+
+" jump to references of current symbol
 nmap <silent> <leader>lf <Plug>(coc-references)
+" jump to implementation(s) of current symbol
 nmap <silent> <leader>li <Plug>(coc-implementation)
+" rename symbol under cursor
 nmap <silent> <leader>lr <Plug>(coc-rename)
+" show documentation of  current symbol
 nnoremap <silent> K :call CocShowDocumentation()<CR>
 
 
@@ -1424,7 +1412,6 @@ endfunction
 au FileType go silent exe "GoGuruScope " . s:go_guru_scope_from_git_root()
 
 function! SetupMapForVimGo()
-  " run :GoBuild or :GoTestCompile based on the go file
   function! s:build_go_files()
     let l:file = expand('%')
     if l:file =~# '^\f\+_test\.go$'
@@ -1433,31 +1420,60 @@ function! SetupMapForVimGo()
       call go#cmd#Build(0)
     endif
   endfunction
+  " run :GoBuild or :GoTestCompile based on the go file
+  nmap <leader>bg :<C-u>call <SID>build_go_files()<CR>
 
-  nmap <leader>vb :<C-u>call <SID>build_go_files()<CR>
+  " `go run` the current package
+  nmap <leader>rg <Plug>(go-run)
 
-  " nmap <leader>gb  <Plug>(go-build)
-  nmap <leader>gi <Plug>(go-info)
-  nmap <leader>gr <Plug>(go-run)
-  nmap <leader>gt <Plug>(go-test)
-
+  " shows the set of possible sends/receives on the channel operand of the
+  " selected send or receive operation
   nmap <leader>gc :<C-u>GoChannelPeers<CR>
-
-  nmap <leader>gf :<C-u>GoReferrers<CR>
-
-  " nmap <leader>tj :<C-u>GoDeclsDir<CR>
-  " nmap <leader>ts :<C-u>GoDecls<CR>
-
-  " :GoDef but opens in a vertical split
-  nmap <leader>gd <Plug>(go-def-vertical)
-  " :GoDef but opens in a horizontal split
-  nmap <leader>gs <Plug>(go-def-split)
+  " show all function and type declarations for the current directory
+  nmap <leader>gdd :<C-u>GoDeclsDir<CR> 
+  " show all function and type declarations for the current file
+  nmap <leader>gdc :<C-u>GoDecls<CR>
 endfunction
 autocmd FileType go call SetupMapForVimGo()
 autocmd Filetype go
   \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+
+" ================================= vimux ======================================
+" generate ctags in tmux
+nnoremap <leader>dc :VimuxPromptCommand<CR>ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --fields=+ialS --extras=+q .<CR>
+
+" generate tags for ruby with ripper-tags in tmux
+function! SetupMapForRipperTags()
+  " Generate ctags with ripper-tags, specifically for Ruby
+  " nnoremap <leader>dr :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
+  " nnoremap <leader>dr :VimuxPromptCommand<CR>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
+  " Generate ctags with custmized but faster ripper-tags function
+  nnoremap <leader>dr :VimuxPromptCommand<CR>rtags<CR>
+  " Generate ctags with ripper-tags, specifically for Ruby
+  " nnoremap <leader>dt :Dispatch ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
+  " nnoremap <leader>dt :VimuxPromptCommand<CR>ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n<CR>
+  " Generate ctags with custmized but faster ripper-tags function
+  nnoremap <leader>dt :VimuxPromptCommand<CR>rtags<CR>
+endfunction
+autocmd FileType ruby call SetupMapForRipperTags()
+
+" prompt for a command to run in tmux
+map <leader>vp :VimuxPromptCommand<CR>
+" inspect runner pane
+map <leader>vi :VimuxInspectRunner<CR>
+" close vim tmux runner
+map <leader>vc :VimuxCloseRunner<CR>
+" interrupt any command running in the runner pane
+map <leader>vx :VimuxInterruptRunner<CR>
+
+
+" ================================= vimux-golang ===============================
+" test the current package in tmux
+map <leader>vs :GolangTestCurrentPackage<CR>
+" run the nearest test in the current file
+map <leader>vn :GolangTestFocused<CR>
 
 
 " ================================= open-browser ===============================
