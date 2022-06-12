@@ -750,10 +750,10 @@ nnoremap <leader>ci :CocInfo<CR>
 nnoremap <leader>cr :CocRestart<CR>
 
 " jump to definition(s) of current symbol
-nmap <silent> <leader>cd <Plug>(coc-definition)
-nmap <silent> <leader>cv :call CocAction('jumpDefinition', 'vsplit')<CR>
-nmap <silent> <leader>cs :call CocAction('jumpDefinition', 'split')<CR>
-nmap <silent> <leader>ct :call CocAction('jumpDefinition', 'tabe')<CR>
+nmap <silent> <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>lv :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <silent> <leader>ls :call CocAction('jumpDefinition', 'split')<CR>
+nmap <silent> <leader>lt :call CocAction('jumpDefinition', 'tabe')<CR>
 
 " jump to references of current symbol
 nmap <silent> <leader>lf <Plug>(coc-references)
