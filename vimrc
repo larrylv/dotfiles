@@ -355,12 +355,6 @@ augroup general_config
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 
-  " Note: this only works for vim, but not for neovim
-  " set cursor to vertical bar when entering cmd line and
-  " revert cursor back to block when leaving cmd line
-  autocmd CmdlineEnter * execute 'silent !echo -ne "' . &t_SI . '"'
-  autocmd CmdlineLeave * execute 'silent !echo -ne "' . &t_EI . '"'
-
   highlight Pmenu ctermfg=lightgray ctermbg=black cterm=NONE
   highlight PmenuSbar ctermfg=darkcyan ctermbg=lightgray cterm=NONE
   highlight PmenuThumb ctermfg=lightgray ctermbg=darkcyan cterm=NONE
