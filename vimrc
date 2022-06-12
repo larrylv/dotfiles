@@ -749,6 +749,21 @@ nmap <silent> <leader>tv :TestVisit<CR>
 " ================================= coc.nvim ===================================
 let g:coc_snippet_next = '<tab>'
 
+" coc will install missing extensions after coc.nvim service starts.
+let g:coc_global_extensions = [
+  \ 'coc-json',
+  \ 'coc-go',
+  \ 'coc-omni',
+  \ 'coc-tag',
+  \ ]
+
+" add missing imports on save
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
+autocmd FileType go nmap <leader>gtj :CocCommand go.tags.add json<cr>
+autocmd FileType go nmap <leader>gty :CocCommand go.tags.add yaml<cr>
+autocmd FileType go nmap <leader>gtx :CocCommand go.tags.clear<cr>
+
 function! g:CocShowDocumentation()
   " supports jumping to vim documentation as well using built-ins.
   if (index(['vim','help'], &filetype) >= 0)
