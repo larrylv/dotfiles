@@ -1472,10 +1472,13 @@ map <leader>vx :VimuxInterruptRunner<cr>
 
 
 " ================================= vimux-golang ===============================
-" test the current package in tmux
-map <leader>vs :GolangTestCurrentPackage<cr>
-" run the nearest test in the current file
-map <leader>vn :GolangTestFocused<cr>
+function! SetupMapForVimuxGolang()
+  " test the current package in tmux
+  map <leader>vs :GolangTestCurrentPackage<cr>
+  " run the nearest test in the current file
+  map <leader>vn :GolangTestFocused<cr>
+endfunction
+autocmd FileType go call SetupMapForVimuxGolang()
 
 
 " ================================= open-browser ===============================
