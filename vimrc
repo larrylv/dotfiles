@@ -833,6 +833,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-d': 'split',
   \ 'ctrl-e': 'split',
@@ -977,7 +978,7 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_mruf_max = 0
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("h")': ['<c-d>', '<c-cr>', '<c-e>', '<c-x>'],
+    \ 'AcceptSelection("h")': ['<c-d>', '<c-cr>', '<c-e>', '<c-s>'],
     \ 'ToggleByFname()':      ['<c-f>'],
     \ 'PrtHistory(-1)':       [],
     \ 'PrtHistory(1)':        [],
@@ -1291,9 +1292,9 @@ function! MyDefxSettings() abort
         \ defx#do_action('move')
   nnoremap <silent><buffer><expr> p
         \ defx#do_action('paste')
-  nnoremap <silent><buffer><expr> i
-        \ defx#do_action('multi', [['drop', 'split']])
   nnoremap <silent><buffer><expr> s
+        \ defx#do_action('multi', [['drop', 'split']])
+  nnoremap <silent><buffer><expr> v
         \ defx#do_action('open', 'vsplit')
   nnoremap <silent><buffer><expr> K
         \ defx#do_action('new_directory')
