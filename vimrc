@@ -764,6 +764,12 @@ nmap <silent> <leader>lr <Plug>(coc-rename)
 " show documentation of  current symbol
 nnoremap <silent> K :call CocShowDocumentation()<cr>
 
+" redraw the status line when coc#status changes
+augroup AutoCocStatus
+  autocmd!
+  autocmd User CocStatusChange call lightline#update()
+augroup END
+
 
 " ================================= ALE ========================================
 augroup AutoALE
