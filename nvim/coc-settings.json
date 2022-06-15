@@ -1,13 +1,5 @@
 {
-  "languageserver": {
-    "flow": {
-      "command": "${workspaceFolder}/node_modules/.bin/flow",
-      "args": ["lsp"],
-      "filetypes": ["javascript", "javascriptreact", "javascript.jsx"],
-      "initializationOptions": {},
-      "settings": {}
-    }
-  },
+  "languageserver": {},
   "coc.preferences.messageLevel": "error",
   "coc.source.tag.priority": 20,
   "codeLens.enable": true,
