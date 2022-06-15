@@ -1047,7 +1047,7 @@ let g:lightline = {
       \   'left': [
       \     [ 'mode', 'paste' ],
       \     [ 'filename' ],
-      \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'cocstatus' ],
+      \     [ 'cocstatus', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
       \     [ 'ctrlpmark' ],
       \   ],
       \   'right': [
@@ -1077,7 +1077,6 @@ let g:lightline = {
       \   'inactive': [ 'tabnum', 'filename' ],
       \ },
       \ 'component_function': {
-      \   'cocstatus': 'coc#status',
       \   'fugitive': 'MyFugitive',
       \   'filename': 'MyFilename',
       \   'fileformat': 'MyFileformat',
@@ -1096,12 +1095,14 @@ let g:lightline = {
       \   'linter_warnings': 'lightline#ale#warnings',
       \   'linter_errors': 'lightline#ale#errors',
       \   'linter_ok': 'lightline#ale#ok',
+      \   'cocstatus': 'coc#status',
       \ },
       \ 'component_type': {
       \   'linter_checking': 'left',
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
       \   'linter_ok': 'left',
+      \   'cocstatus': 'left',
       \ },
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
