@@ -27,6 +27,7 @@ Plug 'mileszs/ack.vim'
 " linter & lsp & completion
 Plug 'dense-analysis/ale'
 Plug 'larrylv/coc.nvim', {'branch': 'release'} " own fork that suppress error messages
+Plug 'idbrii/vim-tagimposter'                  " populate the tagstack when using coc to jump to definitions
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -750,10 +751,10 @@ nnoremap <leader>ci :CocInfo<cr>
 nnoremap <leader>cr :CocRestart<cr>
 
 " jump to definition(s) of current symbol
-nmap <silent> <leader>ld <Plug>(coc-definition)
-nmap <silent> <leader>lv :call CocAction('jumpDefinition', 'vsplit')<cr>
-nmap <silent> <leader>ls :call CocAction('jumpDefinition', 'split')<cr>
-nmap <silent> <leader>lt :call CocAction('jumpDefinition', 'tabe')<cr>
+nmap <silent> <leader>ld :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition')<cr>
+nmap <silent> <leader>lv :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'vsplit')<cr>
+nmap <silent> <leader>ls :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'split')<cr>
+nmap <silent> <leader>lt :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'tabe')<cr>
 
 " jump to references of current symbol
 nmap <silent> <leader>lf <Plug>(coc-references)
