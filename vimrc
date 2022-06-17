@@ -550,229 +550,23 @@ nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
 
 
-" ================================= tagbar =====================================
-let g:tagbar_sort = 1
-let g:tagbar_iconchars = ['+', '-']
-let g:tagbar_show_linenumbers=1
-if executable('ripper-tags')
-  " Configure Tagbar to user ripper-tags with ruby
-  let g:tagbar_type_ruby = {
-      \ 'kinds' : [
-          \ 'm:modules',
-          \ 'c:classes',
-          \ 'f:methods',
-          \ 'F:singleton methods',
-          \ 'C:constants',
-          \ 'a:aliases'
-      \ ],
-      \ 'ctagsbin':  'ripper-tags',
-      \ 'ctagsargs': '--fields=+n -f -'
-  \ }
-endif
-let g:tagbar_type_elixir = {
-    \ 'ctagstype': 'elixir',
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'f:functions',
-        \ 'c:callbacks',
-        \ 'd:delegates',
-        \ 'e:exceptions',
-        \ 'i:implementations',
-        \ 'a:macros',
-        \ 'o:operators',
-        \ 'p:protocols',
-        \ 'r:records',
-    \ ]
-\ }
-
-
-" ================================= gitgutter ==================================
-call gitgutter#highlight#define_highlights()
-let g:gitgutter_max_signs = 1024
-set signcolumn=yes
-
-map <leader>ga :GitGutterStageHunk<cr>
-map <leader>gn :GitGutterNextHunk<cr>
-map <leader>gp :GitGutterPrevHunk<cr>
-map <leader>gu :GitGutterUndoHunk<cr>
-map <leader>gv :GitGutterPreviewHunk<cr>
-
-
-" ================================= git-messenger ==============================
-nmap <leader>gm <Plug>(git-messenger)
-
-
-" ================================= trailing-whitespace ========================
-let g:extra_whitespace_ignored_filetypes = ['defx', 'unite']
-let g:extra_whitespace_ignored_filenames = ['defx', 'unite', '']
-
-
-" ================================= fugitive & rhubarb =========================
-fun! SetupCommandAlias(from, to)
-  exec 'cnoreabbrev <expr> '.a:from
-        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
-        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
-endfun
-
-call SetupCommandAlias("GBlame", "Git blame")
-call SetupCommandAlias("Gblame", "Git blame")
-call SetupCommandAlias("Gbrowse", "GBrowse")
-call SetupCommandAlias("Gbrowse!", "GBrowse!")
-
-let g:github_enterprise_urls = ['https://git.corp.stripe.com']
-
-map <leader>gb :Git blame<cr>
-" copy github / ghe link
-map <leader>gl :GBrowse!<cr>
-map <leader>gr :GBrowse!<cr>
-vmap <leader>gl :GBrowse!<cr>
-vmap <leader>gr :GBrowse!<cr>
-" open github / ghe link
-nmap <leader>go :GBrowse<cr>
-vmap <leader>go :GBrowse<cr>
-
-
-" ================================= vim-projectionist ==========================
-" heuristics for Elixir projects
-let g:projectionist_heuristics = {
-		\  "web/": {
-		\    "web/channels/*.ex": {
-		\      "type": "channel",
-		\      "alternate": "test/channels/{}_test.exs"
-		\    },
-		\    "web/controllers/*.ex": {
-		\      "type": "controller",
-		\      "alternate": "test/controllers/{}_test.exs"
-		\    },
-		\    "web/models/*.ex": {
-		\      "type": "model",
-		\      "alternate": "test/models/{}_test.exs"
-		\    },
-		\    "web/views/*.ex": {
-		\      "type": "view",
-		\      "alternate": "test/views/{}_test.exs"
-		\    },
-		\    "web/templates/*.html.eex": {
-		\      "type": "template",
-		\    },
-		\    "web/static/css/*": {
-		\      "type": "stylesheet",
-		\    },
-		\    "web/static/js/*": {
-		\      "type": "javascript",
-		\    },
-		\  },
-		\  "test/": {
-		\    "test/channels/*_test.exs": {
-		\      "type": "test",
-		\      "alternate": "web/channels/{}.ex",
-		\      "dispatch": "mix test --color {file}"
-		\    },
-		\    "test/controllers/*_test.exs": {
-		\      "type": "test",
-		\      "alternate": "web/controllers/{}.ex",
-		\      "dispatch": "mix test --color {file}"
-		\    },
-		\    "test/models/*_test.exs": {
-		\      "type": "test",
-		\      "alternate": "web/models/{}.ex",
-		\      "dispatch": "mix test --color {file}"
-		\    },
-		\    "test/views/*_test.exs": {
-		\      "type": "test",
-		\      "alternate": "web/views/{}.ex",
-		\      "dispatch": "mix test --color {file}"
-		\    },
-		\  },
-		\ }
-
-
-" ================================= vroom ======================================
-let g:vroom_use_vimux=1
-let g:vroom_map_keys=0
-
-" pay-server specific configs
-function! SetupVroomConfigForPayServer()
-  let g:vroom_test_unit_command = 'pay test'
-  let g:vroom_use_bundle_exec = 0
-endfunction
-autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupVroomConfigForPayServer()
-autocmd BufRead,BufNewFile */stripe-b/pay-server/* call SetupVroomConfigForPayServer()
-
-" when run unit test, also include current directory
-" for bettern compatibility
-if !exists("g:vroom_test_unit_command")
-  let g:vroom_test_unit_command = 'ruby -Itest -I.'
+" ================================= ack ========================================
+let g:ack_use_dispatch=0
+let g:ackhighlight=1
+cnoreabbrev Ack Ack!
+nnoremap <leader>ac :Ack!<Space>
+nnoremap <silent> <leader>ak :Ack! <C-R><C-W><cr>
+xnoremap <silent> <leader>ak y:Ack! <C-R>"<cr>
+if executable("rg")
+  let g:ackprg="rg --vimgrep --color=never"
+elseif executable("ag")
+  let g:ackprg="ag --nocolor --nogroup --column"
+elseif executable("ack")
+  let g:ackprg="ack -H --nocolor --nogroup --column --no-smart-case"
 endif
 
-" test the current file with vroom
-map <leader>vs :VroomRunTestFile<cr>
-" run the nearest test in the current file
-map <leader>vn :VroomRunNearestTest<cr>
-" run last test executed by vroom
-map <leader>vl :VroomRunLastTest<cr>
 
-
-" ================================= vim-test ===================================
-nmap <silent> <leader>tf :TestFile<cr>
-nmap <silent> <leader>tn :TestNearest<cr>
-nmap <silent> <leader>tl :TestLast<cr>
-nmap <silent> <leader>tv :TestVisit<cr>
-
-
-" ================================= coc.nvim ===================================
-let g:coc_snippet_next = '<tab>'
-
-" coc will install missing extensions after coc.nvim service starts.
-let g:coc_global_extensions = [
-  \ 'coc-json',
-  \ 'coc-go',
-  \ 'coc-omni',
-  \ 'coc-tag',
-  \ ]
-
-" this is commented out because vim-go already does this
-" autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
-
-autocmd FileType go nmap <leader>gtj :CocCommand go.tags.add json<cr>
-autocmd FileType go nmap <leader>gty :CocCommand go.tags.add yaml<cr>
-autocmd FileType go nmap <leader>gtx :CocCommand go.tags.clear<cr>
-
-function! g:CocShowDocumentation()
-  " supports jumping to vim documentation as well using built-ins.
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocActionAsync('doHover')
-  endif
-endfunction
-
-nnoremap <leader>ci :CocInfo<cr>
-nnoremap <leader>cr :CocRestart<cr>
-
-" jump to definition(s) of current symbol
-nmap <silent> <leader>ld :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition')<cr>
-nmap <silent> <leader>lv :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'vsplit')<cr>
-nmap <silent> <leader>ls :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'split')<cr>
-nmap <silent> <leader>lt :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'tabe')<cr>
-
-" jump to references of current symbol
-nmap <silent> <leader>lf <Plug>(coc-references)
-" jump to implementation(s) of current symbol
-nmap <silent> <leader>li <Plug>(coc-implementation)
-" rename symbol under cursor
-nmap <silent> <leader>lr <Plug>(coc-rename)
-" show documentation of  current symbol
-nnoremap <silent> K :call CocShowDocumentation()<cr>
-
-" redraw the status line when coc#status changes
-augroup AutoCocStatus
-  autocmd!
-  autocmd User CocStatusChange call lightline#update()
-augroup END
-
-
-" ================================= ALE ========================================
+" ================================= ale ========================================
 augroup AutoALE
   autocmd!
   autocmd User ALELint call lightline#update()
@@ -824,14 +618,256 @@ nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
 nmap <silent> <leader>ln <Plug>(ale_next_wrap)
 
 
-" ================================= UltiSnips ==================================
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsUsePythonVersion = 3
+" ================================= coc ========================================
+let g:coc_snippet_next = '<tab>'
+
+" coc will install missing extensions after coc.nvim service starts.
+let g:coc_global_extensions = [
+  \ 'coc-json',
+  \ 'coc-go',
+  \ 'coc-omni',
+  \ 'coc-tag',
+  \ ]
+
+" this is commented out because vim-go already does this
+" autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
+autocmd FileType go nmap <leader>gtj :CocCommand go.tags.add json<cr>
+autocmd FileType go nmap <leader>gty :CocCommand go.tags.add yaml<cr>
+autocmd FileType go nmap <leader>gtx :CocCommand go.tags.clear<cr>
+
+function! g:CocShowDocumentation()
+  " supports jumping to vim documentation as well using built-ins.
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocActionAsync('doHover')
+  endif
+endfunction
+
+nnoremap <leader>ci :CocInfo<cr>
+nnoremap <leader>cr :CocRestart<cr>
+
+" jump to definition(s) of current symbol
+nmap <silent> <leader>ld :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition')<cr>
+nmap <silent> <leader>lv :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'vsplit')<cr>
+nmap <silent> <leader>ls :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'split')<cr>
+nmap <silent> <leader>lt :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'tabe')<cr>
+
+" jump to references of current symbol
+nmap <silent> <leader>lf <Plug>(coc-references)
+" jump to implementation(s) of current symbol
+nmap <silent> <leader>li <Plug>(coc-implementation)
+" rename symbol under cursor
+nmap <silent> <leader>lr <Plug>(coc-rename)
+" show documentation of  current symbol
+nnoremap <silent> K :call CocShowDocumentation()<cr>
+
+" redraw the status line when coc#status changes
+augroup AutoCocStatus
+  autocmd!
+  autocmd User CocStatusChange call lightline#update()
+augroup END
 
 
-" ================================= fzf.vim ====================================
+" ================================= ctrlp ======================================
+" silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<cr>
+" silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<cr>
+" silent! nnoremap <unique> <silent> <leader>d :CtrlP<cr>
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_by_filename = 0
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
+let g:ctrlp_map = '<C-q>'
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_history = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_extensions = [ 'ctrlp-filetpe' ]
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_mruf_max = 0
+let g:ctrlp_mruf_relative = 1
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("h")': ['<c-d>', '<c-cr>', '<c-e>', '<c-s>'],
+    \ 'ToggleByFname()':      ['<c-f>'],
+    \ 'PrtHistory(-1)':       [],
+    \ 'PrtHistory(1)':        [],
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>', '<down>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>', '<up>'],
+    \}
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle|elm-stuff)$',
+  \ }
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
+" let g:ctrlp_tjump_only_silent = 1
+
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
+
+
+" ================================= defx =======================================
+autocmd FileType defx call MyDefxSettings()
+function! MyDefxSettings() abort
+  setlocal nonu
+  setlocal norelativenumber
+
+  highlight! default link Defx_filename_root Statement
+  highlight! default link Defx_filename_root_marker Statement
+  highlight! default link Defx_icon_root_icon Statement
+  highlight! default link Defx_filename_directory Directory
+  highlight! default link Defx_icon_directory_icon Directory
+  highlight! default link Defx_icon_opened_icon Directory
+
+  " Define mappings
+  nnoremap <silent><buffer><expr> o
+        \ defx#is_directory() ?
+        \ defx#do_action('open_tree', 'toggle') :
+        \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> <cr>
+        \ defx#is_directory() ?
+        \ defx#do_action('open_tree', 'toggle') :
+        \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> c
+        \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+        \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+        \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> s
+        \ defx#do_action('multi', [['drop', 'split']])
+  nnoremap <silent><buffer><expr> v
+        \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> K
+        \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+        \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+        \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> d
+        \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> yy
+        \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> q
+        \ defx#do_action('quit')
+  " nnoremap <silent><buffer><expr> <Space>
+  "       \ defx#do_action('toggle_select') . 'j'
+  " nnoremap <silent><buffer><expr> *
+  "       \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+        \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+        \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> R
+        \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> > '10<C-W>>'
+  nnoremap <silent><buffer><expr> < '10<C-W><'
+  nnoremap <silent><buffer><expr> <leader>p
+        \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> P
+        \ defx#do_action('search', fnamemodify(defx#get_candidate().action__path, ':h'))
+endfunction
+
+call defx#custom#option('_', {
+      \ 'root_marker': '',
+      \ 'columns': 'indent:icon:filename',
+      \ 'winwidth': 50,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ })
+
+call defx#custom#column('icon', {
+      \ 'directory_icon': '▸ ',
+      \ 'file_icon': '  ',
+      \ 'opened_icon': '▾ ',
+      \ 'root_icon': '  ',
+      \ })
+
+call defx#custom#column('indent', {
+      \ 'indent': '  ',
+      \ })
+
+call defx#custom#column('filename', {
+      \ 'min_width': 80,
+      \ 'max_width': 120,
+      \ })
+
+nnoremap <silent><F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle -buffer-name=` tabpagenr()`<cr>
+" Move the cursor to the already-open Defx, and then switch back to the file
+nnoremap <silent><leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<cr>
+
+
+" ================================= delimitMate ================================
+" remove ` and * from the quotes
+let delimitMate_quotes = "\" '"
+" remove <> from match pairs
+let delimitMate_matchpairs = "(:),[:],{:}"
+imap <silent> <BS> <C-R>=OnDeleteChar()<cr><Plug>delimitMateBS
+
+function! OnDeleteChar()
+  if pumvisible()
+    return "\<C-y>"
+  endif
+  return ""
+endfunction
+
+
+" ================================= easy-align =================================
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap <leader>ta <Plug>(EasyAlign)
+" Start interactive EasyAlign in visual and select mode (e.g. gaip)
+vmap <leader>ta <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap <leader>ta <Plug>(EasyAlign)
+xmap <leader>t= <Plug>(EasyAlign) =
+vmap <leader>t= <Plug>(EasyAlign) =
+nmap <leader>t= <Plug>(EasyAlign) =
+xmap <leader>t: <Plug>(EasyAlign) :
+vmap <leader>t: <Plug>(EasyAlign) :
+nmap <leader>t: <Plug>(EasyAlign) :
+xmap <leader>t" <Plug>(EasyAlign) "
+vmap <leader>t" <Plug>(EasyAlign) "
+nmap <leader>t" <Plug>(EasyAlign) "
+
+
+" ================================= elm ========================================
+let g:elm_setup_keybindings = 0
+let g:elm_format_autosave = 1
+
+
+" ================================= fugitive & rhubarb =========================
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+
+call SetupCommandAlias("GBlame", "Git blame")
+call SetupCommandAlias("Gblame", "Git blame")
+call SetupCommandAlias("Gbrowse", "GBrowse")
+call SetupCommandAlias("Gbrowse!", "GBrowse!")
+
+let g:github_enterprise_urls = ['https://git.corp.stripe.com']
+
+map <leader>gb :Git blame<cr>
+" copy github / ghe link
+map <leader>gl :GBrowse!<cr>
+map <leader>gr :GBrowse!<cr>
+vmap <leader>gl :GBrowse!<cr>
+vmap <leader>gr :GBrowse!<cr>
+" open github / ghe link
+nmap <leader>go :GBrowse<cr>
+vmap <leader>go :GBrowse<cr>
+
+
+" ================================= fzf ========================================
 set rtp+=/usr/local/opt/fzf " fzf is installed using Homebrew
 " - Popup window (center of the screen)
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
@@ -967,82 +1003,35 @@ nnoremap <silent> <leader>tg :Tags <C-R><C-W><cr>
 xnoremap <silent> <leader>tg y:Tags <C-R>"<cr>"
 
 
-" ================================= ctrlp.vim ==================================
-" silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<cr>
-" silent! nnoremap <unique> <silent> <leader>tt :CtrlPTag<cr>
-" silent! nnoremap <unique> <silent> <leader>d :CtrlP<cr>
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_by_filename = 0
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
-let g:ctrlp_map = '<C-q>'
-let g:ctrlp_max_files = 0
-let g:ctrlp_max_history = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_extensions = [ 'ctrlp-filetpe' ]
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_mruf_max = 0
-let g:ctrlp_mruf_relative = 1
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("h")': ['<c-d>', '<c-cr>', '<c-e>', '<c-s>'],
-    \ 'ToggleByFname()':      ['<c-f>'],
-    \ 'PrtHistory(-1)':       [],
-    \ 'PrtHistory(1)':        [],
-    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>', '<down>'],
-    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>', '<up>'],
-    \}
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle|elm-stuff)$',
-  \ }
-let g:ctrlp_user_command = {
-  \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
-    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-    \ },
-  \ 'fallback': 'find %s -type f'
-  \ }
-" let g:ctrlp_tjump_only_silent = 1
+" ================================= gitgutter ==================================
+call gitgutter#highlight#define_highlights()
+let g:gitgutter_max_signs = 1024
+set signcolumn=yes
 
-nnoremap <c-]> :CtrlPtjump<cr>
-vnoremap <c-]> :CtrlPtjumpVisual<cr>
+map <leader>ga :GitGutterStageHunk<cr>
+map <leader>gn :GitGutterNextHunk<cr>
+map <leader>gp :GitGutterPrevHunk<cr>
+map <leader>gu :GitGutterUndoHunk<cr>
+map <leader>gv :GitGutterPreviewHunk<cr>
 
 
-
-" ================================= rainbow_parentheses ========================
-let g:rainbow#max_level = 16
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-augroup rainbow_activation
-  autocmd!
-  autocmd FileType clojure,json,lisp,ruby,scheme,yaml RainbowParentheses
-augroup END
+" ================================= git-messenger ==============================
+nmap <leader>gm <Plug>(git-messenger)
 
 
-" ================================= ack.vim ====================================
-let g:ack_use_dispatch=0
-let g:ackhighlight=1
-cnoreabbrev Ack Ack!
-nnoremap <leader>ac :Ack!<Space>
-nnoremap <silent> <leader>ak :Ack! <C-R><C-W><cr>
-xnoremap <silent> <leader>ak y:Ack! <C-R>"<cr>
-if executable("rg")
-  let g:ackprg="rg --vimgrep --color=never"
-elseif executable("ag")
-  let g:ackprg="ag --nocolor --nogroup --column"
-elseif executable("ack")
-  let g:ackprg="ack -H --nocolor --nogroup --column --no-smart-case"
-endif
+" ================================= jedi =======================================
+let g:jedi#goto_command = "<leader>xg"
+let g:jedi#goto_assignments_command = ""
+let g:jedi#goto_definitions_command = "<leader>xd"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = ""
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>xr"
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#show_call_signatures = "0"
 
 
-" ================================= vim-ragtag =================================
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1  = "inc"
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags    = "li\|p"
-
-
-" ================================= lightline.vim ==============================
+" ================================= lightline ==================================
 let g:lightline#ale#indicator_checking = "\uf110"
 let g:lightline#ale#indicator_infos = "\uf129"
 let g:lightline#ale#indicator_warnings = "\uf071 "
@@ -1241,19 +1230,131 @@ endfunction
 call lightline#update()
 
 
-" ================================= delimitMate ================================
-" remove ` and * from the quotes
-let delimitMate_quotes = "\" '"
-" remove <> from match pairs
-let delimitMate_matchpairs = "(:),[:],{:}"
-imap <silent> <BS> <C-R>=OnDeleteChar()<cr><Plug>delimitMateBS
+" ================================= markdown ===================================
+let g:vim_markdown_folding_disabled = 1
+" Don't auto indent for new list item
+let g:vim_markdown_new_list_item_indent = 0
 
-function! OnDeleteChar()
-  if pumvisible()
-    return "\<C-y>"
+
+" ================================= open-browser ===============================
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+
+nmap gx <Plug>(openbrowser-open)
+vmap gx <Plug>(openbrowser-open)
+
+
+" ================================= projectionist ==============================
+" heuristics for Elixir projects
+let g:projectionist_heuristics = {
+		\  "web/": {
+		\    "web/channels/*.ex": {
+		\      "type": "channel",
+		\      "alternate": "test/channels/{}_test.exs"
+		\    },
+		\    "web/controllers/*.ex": {
+		\      "type": "controller",
+		\      "alternate": "test/controllers/{}_test.exs"
+		\    },
+		\    "web/models/*.ex": {
+		\      "type": "model",
+		\      "alternate": "test/models/{}_test.exs"
+		\    },
+		\    "web/views/*.ex": {
+		\      "type": "view",
+		\      "alternate": "test/views/{}_test.exs"
+		\    },
+		\    "web/templates/*.html.eex": {
+		\      "type": "template",
+		\    },
+		\    "web/static/css/*": {
+		\      "type": "stylesheet",
+		\    },
+		\    "web/static/js/*": {
+		\      "type": "javascript",
+		\    },
+		\  },
+		\  "test/": {
+		\    "test/channels/*_test.exs": {
+		\      "type": "test",
+		\      "alternate": "web/channels/{}.ex",
+		\      "dispatch": "mix test --color {file}"
+		\    },
+		\    "test/controllers/*_test.exs": {
+		\      "type": "test",
+		\      "alternate": "web/controllers/{}.ex",
+		\      "dispatch": "mix test --color {file}"
+		\    },
+		\    "test/models/*_test.exs": {
+		\      "type": "test",
+		\      "alternate": "web/models/{}.ex",
+		\      "dispatch": "mix test --color {file}"
+		\    },
+		\    "test/views/*_test.exs": {
+		\      "type": "test",
+		\      "alternate": "web/views/{}.ex",
+		\      "dispatch": "mix test --color {file}"
+		\    },
+		\  },
+		\ }
+
+
+" ================================= ragtag =====================================
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1  = "inc"
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags    = "li\|p"
+
+
+" ================================= rainbow_parentheses ========================
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+augroup rainbow_activation
+  autocmd!
+  autocmd FileType clojure,json,lisp,ruby,scheme,yaml RainbowParentheses
+augroup END
+
+
+" ================================= rust =======================================
+let g:rustfmt_autosave = 1
+
+
+" ================================= splitjoin ==================================
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+
+nmap <leader>sj :SplitjoinJoin<cr>
+nmap <leader>ss :SplitjoinSplit<cr>
+
+
+" ================================= starsearch =================================
+" https://www.vim.org/scripts/script.php?script_id=4335
+function! s:VStarsearch_searchCWord()
+  let wordStr = expand("<cword>")
+  if strlen(wordStr) == 0
+    echohl ErrorMsg
+    echo 'E348: No string under cursor'
+    echohl NONE
+    return
   endif
-  return ""
+
+  if wordStr[0] =~ '\<'
+    let @/ = '\<' . wordStr . '\>'
+  else
+    let @/ = wordStr
+  endif
+
+  let savedUnnamed = @"
+  let savedS = @s
+  normal! "syiw
+  if wordStr != @s
+    normal! w
+  endif
+  let @s = savedS
+  let @" = savedUnnamed
 endfunction
+
+nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<cr>:set hls<cr>
 
 
 " ================================= startify ===================================
@@ -1272,122 +1373,52 @@ let g:startify_bookmarks = [
 let g:startify_change_to_dir = 0
 
 
-" ================================= defx.nvim ==================================
-autocmd FileType defx call MyDefxSettings()
-function! MyDefxSettings() abort
-  setlocal nonu
-  setlocal norelativenumber
-
-  highlight! default link Defx_filename_root Statement
-  highlight! default link Defx_filename_root_marker Statement
-  highlight! default link Defx_icon_root_icon Statement
-  highlight! default link Defx_filename_directory Directory
-  highlight! default link Defx_icon_directory_icon Directory
-  highlight! default link Defx_icon_opened_icon Directory
-
-  " Define mappings
-  nnoremap <silent><buffer><expr> o
-        \ defx#is_directory() ?
-        \ defx#do_action('open_tree', 'toggle') :
-        \ defx#do_action('drop')
-  nnoremap <silent><buffer><expr> <cr>
-        \ defx#is_directory() ?
-        \ defx#do_action('open_tree', 'toggle') :
-        \ defx#do_action('drop')
-  nnoremap <silent><buffer><expr> c
-        \ defx#do_action('copy')
-  nnoremap <silent><buffer><expr> m
-        \ defx#do_action('move')
-  nnoremap <silent><buffer><expr> p
-        \ defx#do_action('paste')
-  nnoremap <silent><buffer><expr> s
-        \ defx#do_action('multi', [['drop', 'split']])
-  nnoremap <silent><buffer><expr> v
-        \ defx#do_action('open', 'vsplit')
-  nnoremap <silent><buffer><expr> K
-        \ defx#do_action('new_directory')
-  nnoremap <silent><buffer><expr> N
-        \ defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> M
-        \ defx#do_action('new_multiple_files')
-  nnoremap <silent><buffer><expr> d
-        \ defx#do_action('remove')
-  nnoremap <silent><buffer><expr> r
-        \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> yy
-        \ defx#do_action('yank_path')
-  nnoremap <silent><buffer><expr> q
-        \ defx#do_action('quit')
-  " nnoremap <silent><buffer><expr> <Space>
-  "       \ defx#do_action('toggle_select') . 'j'
-  " nnoremap <silent><buffer><expr> *
-  "       \ defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr> j
-        \ line('.') == line('$') ? 'gg' : 'j'
-  nnoremap <silent><buffer><expr> k
-        \ line('.') == 1 ? 'G' : 'k'
-  nnoremap <silent><buffer><expr> R
-        \ defx#do_action('redraw')
-  nnoremap <silent><buffer><expr> > '10<C-W>>'
-  nnoremap <silent><buffer><expr> < '10<C-W><'
-  nnoremap <silent><buffer><expr> <leader>p
-        \ defx#do_action('print')
-  nnoremap <silent><buffer><expr> P
-        \ defx#do_action('search', fnamemodify(defx#get_candidate().action__path, ':h'))
-endfunction
-
-call defx#custom#option('_', {
-      \ 'root_marker': '',
-      \ 'columns': 'indent:icon:filename',
-      \ 'winwidth': 50,
-      \ 'split': 'vertical',
-      \ 'direction': 'topleft',
-      \ })
-
-call defx#custom#column('icon', {
-      \ 'directory_icon': '▸ ',
-      \ 'file_icon': '  ',
-      \ 'opened_icon': '▾ ',
-      \ 'root_icon': '  ',
-      \ })
-
-call defx#custom#column('indent', {
-      \ 'indent': '  ',
-      \ })
-
-call defx#custom#column('filename', {
-      \ 'min_width': 80,
-      \ 'max_width': 120,
-      \ })
-
-nnoremap <silent><F1> :Defx `getcwd()` -search_recursive=`expand('%:p')` -toggle -buffer-name=` tabpagenr()`<cr>
-" Move the cursor to the already-open Defx, and then switch back to the file
-nnoremap <silent><leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -no-focus -buffer-name=` tabpagenr()`<cr>
+" ================================= tagbar =====================================
+let g:tagbar_sort = 1
+let g:tagbar_iconchars = ['+', '-']
+let g:tagbar_show_linenumbers=1
+if executable('ripper-tags')
+  " Configure Tagbar to user ripper-tags with ruby
+  let g:tagbar_type_ruby = {
+      \ 'kinds' : [
+          \ 'm:modules',
+          \ 'c:classes',
+          \ 'f:methods',
+          \ 'F:singleton methods',
+          \ 'C:constants',
+          \ 'a:aliases'
+      \ ],
+      \ 'ctagsbin':  'ripper-tags',
+      \ 'ctagsargs': '--fields=+n -f -'
+  \ }
+endif
+let g:tagbar_type_elixir = {
+    \ 'ctagstype': 'elixir',
+    \ 'kinds' : [
+        \ 'm:modules',
+        \ 'f:functions',
+        \ 'c:callbacks',
+        \ 'd:delegates',
+        \ 'e:exceptions',
+        \ 'i:implementations',
+        \ 'a:macros',
+        \ 'o:operators',
+        \ 'p:protocols',
+        \ 'r:records',
+    \ ]
+\ }
 
 
-" ================================= elm-vim ====================================
-let g:elm_setup_keybindings = 0
-let g:elm_format_autosave = 1
+" ================================= trailing-whitespace ========================
+let g:extra_whitespace_ignored_filetypes = ['defx', 'unite']
+let g:extra_whitespace_ignored_filenames = ['defx', 'unite', '']
 
 
-" ================================= splitjoin.vim ==============================
-let g:splitjoin_split_mapping = ''
-let g:splitjoin_join_mapping = ''
-
-nmap <leader>sj :SplitjoinJoin<cr>
-nmap <leader>ss :SplitjoinSplit<cr>
-
-
-" ================================= jedi-vim ==================================
-let g:jedi#goto_command = "<leader>xg"
-let g:jedi#goto_assignments_command = ""
-let g:jedi#goto_definitions_command = "<leader>xd"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = ""
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>xr"
-let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#show_call_signatures = "0"
+" ================================= UltiSnips ==================================
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsUsePythonVersion = 3
 
 
 " ================================= vim-go =====================================
@@ -1450,6 +1481,14 @@ autocmd Filetype go
   \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 
+
+" ================================= vim-test ===================================
+nmap <silent> <leader>tf :TestFile<cr>
+nmap <silent> <leader>tn :TestNearest<cr>
+nmap <silent> <leader>tl :TestLast<cr>
+nmap <silent> <leader>tv :TestVisit<cr>
+
+
 " ================================= vimux ======================================
 " generate ctags in tmux
 nnoremap <leader>dc :VimuxPromptCommand<cr>ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --fields=+ialS --extras=+q .<cr>
@@ -1489,69 +1528,30 @@ endfunction
 autocmd FileType go call SetupMapForVimuxGolang()
 
 
-" ================================= open-browser ===============================
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
+" ================================= vroom ======================================
+let g:vroom_use_vimux=1
+let g:vroom_map_keys=0
 
-nmap gx <Plug>(openbrowser-open)
-vmap gx <Plug>(openbrowser-open)
-
-
-" ================================= starsearch =================================
-" https://www.vim.org/scripts/script.php?script_id=4335
-function! s:VStarsearch_searchCWord()
-  let wordStr = expand("<cword>")
-  if strlen(wordStr) == 0
-    echohl ErrorMsg
-    echo 'E348: No string under cursor'
-    echohl NONE
-    return
-  endif
-
-  if wordStr[0] =~ '\<'
-    let @/ = '\<' . wordStr . '\>'
-  else
-    let @/ = wordStr
-  endif
-
-  let savedUnnamed = @"
-  let savedS = @s
-  normal! "syiw
-  if wordStr != @s
-    normal! w
-  endif
-  let @s = savedS
-  let @" = savedUnnamed
+" pay-server specific configs
+function! SetupVroomConfigForPayServer()
+  let g:vroom_test_unit_command = 'pay test'
+  let g:vroom_use_bundle_exec = 0
 endfunction
+autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupVroomConfigForPayServer()
+autocmd BufRead,BufNewFile */stripe-b/pay-server/* call SetupVroomConfigForPayServer()
 
-nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<cr>:set hls<cr>
+" when run unit test, also include current directory
+" for bettern compatibility
+if !exists("g:vroom_test_unit_command")
+  let g:vroom_test_unit_command = 'ruby -Itest -I.'
+endif
 
-
-" ================================= vim-markdown ===============================
-let g:vim_markdown_folding_disabled = 1
-" Don't auto indent for new list item
-let g:vim_markdown_new_list_item_indent = 0
-
-
-" ================================= rust.vim ===================================
-let g:rustfmt_autosave = 1
-
-
-" ================================= easy-align =================================
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap <leader>ta <Plug>(EasyAlign)
-" Start interactive EasyAlign in visual and select mode (e.g. gaip)
-vmap <leader>ta <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap <leader>ta <Plug>(EasyAlign)
-xmap <leader>t= <Plug>(EasyAlign) =
-vmap <leader>t= <Plug>(EasyAlign) =
-nmap <leader>t= <Plug>(EasyAlign) =
-xmap <leader>t: <Plug>(EasyAlign) :
-vmap <leader>t: <Plug>(EasyAlign) :
-nmap <leader>t: <Plug>(EasyAlign) :
-xmap <leader>t" <Plug>(EasyAlign) "
-vmap <leader>t" <Plug>(EasyAlign) "
-nmap <leader>t" <Plug>(EasyAlign) "
+" test the current file with vroom
+map <leader>vs :VroomRunTestFile<cr>
+" run the nearest test in the current file
+map <leader>vn :VroomRunNearestTest<cr>
+" run last test executed by vroom
+map <leader>vl :VroomRunLastTest<cr>
 
 
 " ================================= private config =============================
