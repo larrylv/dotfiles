@@ -462,6 +462,16 @@ map <leader>cp :cp<cr>
 " toggle colorcolumn=81
 nnoremap <silent><leader>co :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<cr>
 
+" toggle cursorcolumn
+function! ToggleCursorColumn()
+  if &cursorcolumn
+    set nocursorcolumn
+  else
+    set cursorcolumn
+  endif
+endfunction
+nnoremap <silent><leader>cm :call ToggleCursorColumn()<cr>
+
 " strip tailing white spaces
 nnoremap <leader>dd :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<cr>
 
