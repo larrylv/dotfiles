@@ -646,6 +646,16 @@ autocmd FileType go nmap <leader>gtj :CocCommand go.tags.add json<cr>
 autocmd FileType go nmap <leader>gty :CocCommand go.tags.add yaml<cr>
 autocmd FileType go nmap <leader>gtx :CocCommand go.tags.clear<cr>
 
+function! ToggleOutline() abort
+  let winid = coc#window#find('cocViewId', 'OUTLINE')
+  if winid == -1
+    call CocActionAsync('showOutline')
+  else
+    call coc#window#close(winid)
+  endif
+endfunction
+autocmd FileType go nmap <silent><nowait><F2> :call ToggleOutline()<cr>
+
 function! g:CocShowDocumentation()
   " supports jumping to vim documentation as well using built-ins.
   if (index(['vim','help'], &filetype) >= 0)
