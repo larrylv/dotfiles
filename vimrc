@@ -637,6 +637,7 @@ let g:coc_global_extensions = [
   \ 'coc-go',
   \ 'coc-omni',
   \ 'coc-tag',
+  \ 'coc-tsserver',
   \ ]
 
 " this is commented out because vim-go already does this
@@ -1111,7 +1112,7 @@ let g:lightline = {
       \   'linter_warnings': 'lightline#ale#warnings',
       \   'linter_errors': 'lightline#ale#errors',
       \   'linter_ok': 'lightline#ale#ok',
-      \   'cocstatus': 'coc#status',
+      \   'cocstatus': 'MyCocStatus',
       \ },
       \ 'component_type': {
       \   'linter_checking': 'left',
@@ -1125,7 +1126,9 @@ let g:lightline = {
       \ }
 
 function! MyModified()
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+  " currently this function doesn't distinguish between modifiable and
+  " non-modifiable files.
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : ''
 endfunction
 
 function! MyReadonly()
@@ -1142,16 +1145,66 @@ function! GetFilename(fname)
   let fname = a:fname
   let ufname = fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ (
-        \   fname == '__Tagbar__' ? g:lightline.fname :
+        \   fname =~ 'Tagbar' ? 'Tagbar' :
+        \   fname =~ 'CocTree' ? 'CocTree' :
         \   fname =~ '__Gundo\|NERD_tree\|\[defx\]' ? 'Explorer' :
         \   fname =~ ';#FZF' ? '[FZF]' :
         \   fname =~ '!sh' ? '[FZF]' :
         \   &ft == 'vimfiler' ? vimfiler#get_status_string() :
         \   &ft == 'unite' ? unite#get_status_string() :
         \   &ft == 'vimshell' ? vimshell#get_status_string() :
-        \   ('' != fname ? fname : '[No Name]')
+        \   ('' != fname ? "\uf0f6 " . fname : '[No Name]')
         \ )
-  return "\uf0f6 ".ufname
+  return ufname
+endfunction
+
+function! CurrentLspStatus(cocstatus)
+  if len(a:cocstatus) == 0
+    return a:cocstatus
+  endif
+
+  " find the lsp for current file
+  let lsp = &ft == 'ruby' ? 'sorbet' :
+      \ (
+      \   &ft == 'go' ? 'gopls' :
+      \   &ft =~ 'typescript\|typescriptreact\|typescript.tsx\|typescript.jsx\|javascript\|javascriptreact\|javascript.jsx' ? 'tsserver' :
+      \   &ft == 'json' ? 'json' : ''
+      \ )
+
+  if len(lsp) == 0
+    return ''
+  endif
+
+  " replace json lsp with a shorter name
+  let cocstatus = substitute(a:cocstatus, 'Json language server', 'json', '')
+  let cocstatus = substitute(cocstatus, 'Initializing tsserver [^\s]*', 'tsserver:starting', '')
+  let cocstatus = substitute(cocstatus, 'TSC [^\s]*', "tsserver:running", '')
+
+  " get a list of lsp status
+  let statuslist = split(cocstatus)
+
+  " return the lsp status
+  for status in statuslist
+    if status =~ lsp
+      return status
+    endif
+  endfor
+
+  return a:cocstatus
+endfunction
+
+function! MyCocStatus()
+  let fname = GetFilename(expand('%:t'))
+  let cocstatus = coc#status()
+  return fname == 'ControlP' ? '' :
+      \ (
+      \   fname =~ 'Tagbar' ? '' :
+      \   fname =~ 'CocTree' ? '' :
+      \   fname =~ 'Explorer' ? '' :
+      \   fname =~ '\[FZF\]' ? '' :
+      \   fname =~ '\[No Name\]' ? '' :
+      \   CurrentLspStatus(cocstatus)
+      \ )
 endfunction
 
 function! MyFilename()
@@ -1203,13 +1256,17 @@ endfunction
 
 function! MyMode()
   let fname = expand('%:t')
-  return fname == '__Tagbar__' ? 'Tagbar' :
+  if winwidth(0) <= 60
+    return ''
+  endif
+
+  return fname =~ 'Tagbar' ? 'Outline' :
+        \ fname =~ 'CocTree' ? 'Outline' :
         \ fname == 'ControlP' ? 'CtrlP' :
         \ fname == '__Gundo__' ? 'Gundo' :
         \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ fname =~ '\[defx\]' ? 'Defx' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
+        \ fname =~ '\[defx\]' ? 'Defx' : lightline#mode()
 endfunction
 
 function! CtrlPMark()
