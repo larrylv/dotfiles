@@ -1190,7 +1190,8 @@ function! CurrentLspStatus(cocstatus)
     endif
   endfor
 
-  return a:cocstatus
+  " don't return anything if the file doesn't use lsp
+  return ''
 endfunction
 
 function! MyCocStatus()
