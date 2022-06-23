@@ -607,6 +607,7 @@ let g:ale_linters = {
       \  'ruby': ['rubocop'],
       \  'typescriptreact': ['eslint'],
       \  'typescript': ['eslint'],
+      \  'vim': [],
       \  'yaml': [],
       \}
 let g:ale_fixers = {
@@ -616,13 +617,12 @@ let g:ale_fixers = {
       \  'typescriptreact': ['eslint'],
       \  'typescript': ['eslint'],
       \}
+
 let g:ale_fix_on_save = 1
-" pay-server specific configs
-function! SetupAleConfigForPayServer()
-  let g:ale_ruby_rubocop_executable = 'scripts/bin/rubocop-daemon/rubocop'
-endfunction
-autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupAleConfigForPayServer()
-autocmd BufRead,BufNewFile */stripe-b/pay-server/* call SetupAleConfigForPayServer()
+" disable linting for all minified JS files
+let g:ale_pattern_options = {
+      \ '\.min.js$': {'ale_enabled': 0},
+      \}
 
 nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
 nmap <silent> <leader>ln <Plug>(ale_next_wrap)
@@ -654,7 +654,7 @@ function! ToggleOutline() abort
     call coc#window#close(winid)
   endif
 endfunction
-autocmd FileType go nmap <silent><nowait><F2> :call ToggleOutline()<cr>
+autocmd FileType go nnoremap <F2> :call ToggleOutline()<cr>
 
 function! g:CocShowDocumentation()
   " supports jumping to vim documentation as well using built-ins.
