@@ -670,10 +670,11 @@ nnoremap <leader>ci :CocInfo<cr>
 nnoremap <leader>cr :CocRestart<cr>
 
 " jump to definition(s) of current symbol
-nmap <silent> <leader>ld :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition')<cr>
-nmap <silent> <leader>lv :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'vsplit')<cr>
-nmap <silent> <leader>ls :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'split')<cr>
-nmap <silent> <leader>lt :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'tabe')<cr>
+nnoremap <silent> <c-]> :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', v:false)<cr>
+nnoremap <silent> <leader>ld :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition')<cr>
+nnoremap <silent> <leader>lv :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'vsplit')<cr>
+nnoremap <silent> <leader>ls :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'split')<cr>
+nnoremap <silent> <leader>lt :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'tabe')<cr>
 
 " jump to references of current symbol
 nmap <silent> <leader>lf <Plug>(coc-references)
@@ -728,8 +729,10 @@ let g:ctrlp_user_command = {
   \ }
 " let g:ctrlp_tjump_only_silent = 1
 
-nnoremap <c-]> :CtrlPtjump<cr>
-vnoremap <c-]> :CtrlPtjumpVisual<cr>
+" disable c-] mapping with ctrlp-tjump
+" prefer using c-] with coc and lsp
+" nnoremap <c-]> :CtrlPtjump<cr>
+" vnoremap <c-]> :CtrlPtjumpVisual<cr>
 
 
 " ================================= defx =======================================
@@ -1500,6 +1503,7 @@ let g:UltiSnipsUsePythonVersion = 3
 
 
 " ================================= vim-go =====================================
+let g:go_def_mapping_enabled = 0 " disable c-] mapping
 let g:go_doc_keywordprg_enabled = 0 " disable K mapping
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
