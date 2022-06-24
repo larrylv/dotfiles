@@ -60,6 +60,7 @@ Plug 'Raimondi/delimitMate'             " auto-completion for quotes, parens, br
 Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
 Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
+" Plug 'folke/which-key.nvim'             " displays a popup with possible keybindings of the command you started typing
 
 " git
 Plug 'tpope/vim-fugitive'
