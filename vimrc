@@ -834,14 +834,6 @@ nnoremap <silent><leader>dn :Defx `getcwd()` -search_recursive=`expand('%:p')` -
 let delimitMate_quotes = "\" '"
 " remove <> from match pairs
 let delimitMate_matchpairs = "(:),[:],{:}"
-imap <silent> <BS> <C-R>=OnDeleteChar()<cr><Plug>delimitMateBS
-
-function! OnDeleteChar()
-  if pumvisible()
-    return "\<C-y>"
-  endif
-  return ""
-endfunction
 
 
 " ================================= easy-align =================================
