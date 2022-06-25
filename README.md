@@ -20,7 +20,7 @@ brew install neovim
 nvim +PlugInstall +qall
 
 gem install ripper-tags
-brew install fd fzf universal-ctags
+brew install fd fzf universal-ctags ripgrep
 ```
 
 ### tmux & plugins
@@ -35,12 +35,11 @@ https://github.com/tmux-plugins/tpm#installation
 
 ```
 brew install alacritty autojump automake bash bash-completion bat ccat cloc \
-  cmake coreutils cowsay curl diff-so-fancy diffutils fd fmt fzf gcc goenv \
+  cmake coreutils cowsay curl diff-so-fancy diffutils fmt gcc goenv \
   golangci-lint grpc htop httperf httpie hugo jq mtr ncurses nodenv openjdk \
-  pre-commit pstree pyenv rbenv readline reattach-to-user-namespace ripgrep
+  pre-commit pstree pyenv rbenv readline reattach-to-user-namespace
   ruby ruby-build scala snappy source-highlight sqlite tig tldr \
-  tmuxinator-completion trash tree tree-sitter universal-ctags unrar urlview \
-  watchman webpack ripgrep tig
+  tmuxinator-completion trash tree tree-sitter unrar urlview watchman webpack
 
 brew install --cask diffmerge
 
