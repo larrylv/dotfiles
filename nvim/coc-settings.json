@@ -22,6 +22,7 @@
   "suggest.enablePreview": true,
   "suggest.floatEnable": true,
   "suggest.maxCompleteItemCount": 20,
+  "suggest.minTriggerInputLength": 0,
   "suggest.snippetIndicator": ""
 }
 
