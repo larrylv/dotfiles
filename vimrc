@@ -1615,14 +1615,6 @@ autocmd FileType go call SetupMapForVimuxGolang()
 let g:vroom_use_vimux=1
 let g:vroom_map_keys=0
 
-" pay-server specific configs
-function! SetupVroomConfigForPayServer()
-  let g:vroom_test_unit_command = 'pay test'
-  let g:vroom_use_bundle_exec = 0
-endfunction
-autocmd BufRead,BufNewFile */stripe/pay-server/* call SetupVroomConfigForPayServer()
-autocmd BufRead,BufNewFile */stripe-b/pay-server/* call SetupVroomConfigForPayServer()
-
 " when run unit test, also include current directory
 " for bettern compatibility
 if !exists("g:vroom_test_unit_command")
