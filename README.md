@@ -23,14 +23,6 @@ gem install ripper-tags
 brew install fd fzf universal-ctags
 ```
 
-### coc.nvim
-
-```
-:CocInstall coc-json
-:CocInstall coc-tag
-:CocInstall coc-omni
-```
-
 ### tmux & plugins
 
 ```
