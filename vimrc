@@ -633,6 +633,7 @@ nmap <silent> <leader>ln <Plug>(ale_next_wrap)
 let g:coc_snippet_next = '<tab>'
 
 inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-n> coc#refresh()
 
 " coc will install missing extensions after coc.nvim service starts.
 let g:coc_global_extensions = [
