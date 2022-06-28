@@ -60,6 +60,7 @@ Plug 'Raimondi/delimitMate'             " auto-completion for quotes, parens, br
 Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
 Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
+" Plug 'puremourning/vimspector'          " A multi-language debugging system for Vim
 " Plug 'folke/which-key.nvim'             " displays a popup with possible keybindings of the command you started typing
 
 " git
@@ -639,6 +640,7 @@ inoremap <silent><expr> <c-n> coc#refresh()
 let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-go',
+  \ 'coc-metals',
   \ 'coc-omni',
   \ 'coc-tag',
   \ 'coc-tsserver',
@@ -682,6 +684,8 @@ nnoremap <silent> <leader>lt :<C-u> TagImposterAnticipateJump <Bar> call CocActi
 
 " jump to references of current symbol
 nmap <silent> <leader>lf <Plug>(coc-references)
+" jump to declaration(s) of current symbol
+nmap <silent> <leader>lc <Plug>(coc-declaration)
 " jump to implementation(s) of current symbol
 nmap <silent> <leader>li <Plug>(coc-implementation)
 " rename symbol under cursor
@@ -1166,6 +1170,7 @@ function! CurrentLspStatus(cocstatus)
   let lsp = &ft == 'ruby' ? 'sorbet' :
       \ (
       \   &ft == 'go' ? 'gopls' :
+      \   &ft == 'scala' ? 'metals' :
       \   &ft =~ 'typescript\|typescriptreact\|typescript.tsx\|typescript.jsx\|javascript\|javascriptreact\|javascript.jsx' ? 'tsserver' :
       \   &ft == 'json' ? 'json' : ''
       \ )
@@ -1178,6 +1183,7 @@ function! CurrentLspStatus(cocstatus)
   let cocstatus = substitute(a:cocstatus, 'Json language server', 'json', '')
   let cocstatus = substitute(cocstatus, 'Initializing tsserver [^\s]*', 'tsserver:starting', '')
   let cocstatus = substitute(cocstatus, 'TSC [^\s]*', "tsserver:running", '')
+  let cocstatus = substitute(cocstatus, 'Metals', "metals:running", '')
 
   " get a list of lsp status
   let statuslist = split(cocstatus)

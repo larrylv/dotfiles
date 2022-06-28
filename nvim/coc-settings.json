@@ -19,6 +19,7 @@
     "<C-k>": "normal:k",
     "<C-p>": "normal:k"
   },
+  "metals.statusBarEnabled": true,
   "suggest.enablePreview": true,
   "suggest.floatEnable": true,
   "suggest.maxCompleteItemCount": 20,
