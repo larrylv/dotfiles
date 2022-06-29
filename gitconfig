@@ -18,7 +18,6 @@
     dc                       = diff --cached
     delete                   = !git ls-files -z --deleted | xargs -0 git rm
     done                     = "!f() { ([ `git rev-parse --abbrev-ref HEAD` == 'master' ] || git checkout master) && git branch -D @{-1}; }; f"
-    ds                       = diff --staged
     dt                       = difftool
     fa                       = fetch --all
     files-since              = "!git diff --name-only $(git merge-base HEAD $1) | xargs ls 2>/dev/null && :"
@@ -48,7 +47,7 @@
     show-prev                = !git show @^
     ss                       = stash save
     sl                       = stash list -p --color
-    sp                       = stash pop
+    sp                       = status --porcelain
     st                       = status
     standup                  = shortlog --since=yesterday
     svn-pb                   = svn rebase
