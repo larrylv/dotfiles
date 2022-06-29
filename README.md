@@ -27,6 +27,8 @@ brew install fd fzf universal-ctags ripgrep
 
 ```
 brew install tmux
+
+go install github.com/larrylv/gitmux
 ```
 
 https://github.com/tmux-plugins/tpm#installation

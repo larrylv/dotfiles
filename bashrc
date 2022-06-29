@@ -257,16 +257,15 @@ function parse_git_stash() {
   fi
 }
 
-function git_branch_name() {
-  echo -e "${echo_bold_purple}$(/usr/local/bin/git symbolic-ref HEAD 2> /dev/null | sed -e "s/refs\/heads\///")"
-}
-
 function git_prompt_info() {
   # shellcheck disable=SC2155
   local ref="$(/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null)"
   if [ -n "$ref" ]; then
+    # git dirty information is now shown on tmux status bar via gitmux
+    # echo -e " ${echo_bold_purple}\ue725 $(git_branch_name)$(parse_git_dirty)$(parse_git_stash)"
     # shellcheck disable=SC2154
-    echo -e " ${echo_bold_purple}\ue725 $(git_branch_name)$(parse_git_dirty)$(parse_git_stash)"
+    local git_branch_name="${ref/refs\/heads\/}"
+    echo -e " ${echo_bold_purple}\ue725 $git_branch_name$(parse_git_stash)"
   fi
 }
 
