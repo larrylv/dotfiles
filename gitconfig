@@ -86,6 +86,7 @@
     preloadindex = true
 [diff]
     compaction-heuristic = true
+    colorMoved = zebra
 [grep]
     linenumber = true
 [i18n]

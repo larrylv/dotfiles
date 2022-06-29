@@ -70,3 +70,6 @@ pom.xml.asc
 
 # VSCode
 *.code-workspace
+
+# scala
+.metals
