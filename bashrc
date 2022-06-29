@@ -260,10 +260,14 @@ GIT_PROMPT_STASH=" ${echo_bold_purple}#"
 GIT_PROMPT_NOSTASH=""
 
 function parse_git_dirty () {
-  if [[ $(/usr/local/bin/git status 2> /dev/null | tail -n1 | cut -c 1-17) != "nothing to commit" ]]; then
-    echo -e "$GIT_PROMPT_DIRTY"
-  else
+  git update-index -q --refresh 2> /dev/null
+  # this won't be true when there are untracked files, but using `git status`
+  # is too slow. So this is a trade off I'd rather take than waiting for 2+
+  # seconds for each git prompt.
+  if git diff-index --quiet HEAD -- 2> /dev/null; then
     echo -e "$GIT_PROMPT_CLEAN"
+  else
+    echo -e "$GIT_PROMPT_DIRTY"
   fi
 }
 
