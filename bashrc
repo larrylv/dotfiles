@@ -163,7 +163,7 @@ if ! echo "$PROMPT_COMMAND" | grep -q history; then
   export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 fi
 
-# source scripts -----------------------------------------------------------#{{{
+# source scripts -----------------------------------------------------------
 
 ## bash completion
 # bash_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion"
@@ -181,22 +181,6 @@ if [ -r "$git_completion" ]; then
 fi
 unset git_completion
 
-## vagrant completion
-# vagrant_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion.d/vagrant"
-# if [ -r "$vagrant_completion" ]; then
-#   # shellcheck disable=SC1090
-#   source "$vagrant_completion"
-# fi
-# unset vagrant_completion
-
-## tmuxinator completion
-# tmuxinator_completion="$HOME/.tmuxinator.bash"
-# if [ -r "$tmuxinator_completion" ]; then
-#   # shellcheck disable=SC1090
-#   source "$tmuxinator_completion"
-# fi
-# unset tmuxinator_completion
-
 ## autojump script
 autojump_script="$(brew --prefix 2>/dev/null)/etc/profile.d/autojump.sh"
 if [ -r "$autojump_script" ]; then
@@ -208,8 +192,6 @@ unset autojump_script
 ## colors script
 # shellcheck disable=SC1090
 # [[ -s "$HOME/.colors.bash" ]] && source "$HOME/.colors.bash"
-
-#}}}
 
 echo_normal='\033[0;00m'
 echo_black='\033[0;30m'
@@ -249,7 +231,7 @@ white='\[\e[0;37m\]'
 bold_white='\[\e[1;37m\]'
 
 
-# PS1 -------------------------------------------------------------------------#{{{
+# PS1 -------------------------------------------------------------------------
 
 # shellcheck disable=SC2154
 GIT_PROMPT_CLEAN=" ${echo_bold_green}✔"
@@ -260,14 +242,10 @@ GIT_PROMPT_STASH=" ${echo_bold_purple}#"
 GIT_PROMPT_NOSTASH=""
 
 function parse_git_dirty () {
-  git update-index -q --refresh 2> /dev/null
-  # this won't be true when there are untracked files, but using `git status`
-  # is too slow. So this is a trade off I'd rather take than waiting for 2+
-  # seconds for each git prompt.
-  if git diff-index --quiet HEAD -- 2> /dev/null; then
-    echo -e "$GIT_PROMPT_CLEAN"
-  else
+  if [[ $(git status --porcelain) != '' ]]; then
     echo -e "$GIT_PROMPT_DIRTY"
+  else
+    echo -e "$GIT_PROMPT_CLEAN"
   fi
 }
 
@@ -335,25 +313,6 @@ else
   PS1="${bold_blue}\$(dir_prompt)  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 fi
 
-#}}}
-
-# set terminal title#{{{
-
-setTerminalTitle () {
-  # echo works in bash & zsh
-  local mode=$1 ; shift
-  # shellcheck disable=SC2145
-  echo -ne "\033]$mode;$@\007"
-}
-# shellcheck disable=SC2068
-set_both_title   () { setTerminalTitle 0 $@; }
-# shellcheck disable=SC2068
-set_tab_title    () { setTerminalTitle 1 $@; }
-# shellcheck disable=SC2068
-set_window_title () { setTerminalTitle 2 $@; }
-alias s='set_tab_title'
-
-#}}}
 
 # shellcheck disable=SC1090
 [[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
@@ -367,5 +326,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # shellcheck disable=SC1090
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 export PATH="./node_modules/.bin:$PATH"
+
 [[ -d $HOME/.cargo ]] && [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
