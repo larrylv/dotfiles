@@ -641,7 +641,6 @@ inoremap <silent><expr> <c-n> coc#refresh()
 let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-go',
-  \ 'coc-metals',
   \ 'coc-omni',
   \ 'coc-tag',
   \ 'coc-tsserver',
