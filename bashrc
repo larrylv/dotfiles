@@ -189,10 +189,6 @@ if [ -r "$autojump_script" ]; then
 fi
 unset autojump_script
 
-## colors script
-# shellcheck disable=SC1090
-# [[ -s "$HOME/.colors.bash" ]] && source "$HOME/.colors.bash"
-
 echo_normal='\033[0;00m'
 echo_black='\033[0;30m'
 echo_bold_black='\033[1;30m'
