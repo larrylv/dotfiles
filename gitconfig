@@ -1,112 +1,113 @@
 # vim: set ft=gitconfig :
 
 [user]
-    name  = Larry Lv
-    email = larrylv1990@gmail.com
+  name  = Larry Lv
+  email = larrylv1990@gmail.com
 [github]
-    user  = larrylv
+  user  = larrylv
 [alias]
-    al                       = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
-    br                       = branch
-    bv                       = branch -vv --color
-    changes                  = diff --stat -r
-    c                        = !git checkout $(git branch | fzf| tr -d '[:space:]' | tr -d '*')
-    ci                       = commit
-    ca                       = commit --amend
-    cc                       = commit --amend -C HEAD
-    cleanup                  = "!git branch --no-color --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d && git remote prune origin && git prune && :"
-    co                       = checkout
-    conflicts                = diff --name-only --diff-filter=U
-    dc                       = diff --cached
-    delete                   = !git ls-files -z --deleted | xargs -0 git rm
-    done                     = "!f() { ([ `git rev-parse --abbrev-ref HEAD` == 'master' ] || git checkout master) && git branch -D @{-1}; }; f"
-    dt                       = difftool
-    fa                       = fetch --all
-    files-since              = "!git diff --name-only $(git merge-base HEAD $1) | xargs ls 2>/dev/null && :"
-    files-since-master       = "!git files-since origin/master && :"
-    fp                       = fetch -p --all
-    hide                     = update-index --assume-unchanged
-    ignored                  = !git ls-files -v | grep "^[[:lower:]]"
-    last                     = log -n 1 -p --color
-    lb                       = for-each-ref --sort='-authordate:iso8601' --format='%(if)%(HEAD)%(then)* %(else)  %(end)%(color:red)%(align:16,left)%(authordate:relative):%(color:reset)%(end)%(if)%(HEAD)%(then)%(color:green)%(align:50,left)%(refname:short)%(end)%(color:reset)%(else)%(align:50,left)%(refname:short)%(end)%(end) - %(subject)' refs/heads
-    lg                       = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    ls-ignored               = ls-files --exclude-standard --ignored --others
-    mf                       = merge --no-ff
-    minimal-diff-with        = "! git files-since $1 | xargs git diff -w $(git merge-base HEAD $1)..HEAD && :"
-    minimal-diff-with-master = "! git minimal-diff-with origin/master && :"
-    news                     = log -p HEAD@{1}..HEAD@{0}
-    next                     = !git checkout `git rev-list HEAD..master | tail -1`
-    pb                       = pull --rebase
-    pick                     = cherry-pick
-    pl                       = pull
-    prev                     = checkout @^
-    ps                       = push
-    pushall                  = push --recurse-submodules=on-demand
-    rbm                      = !sh -c 'git fetch origin && git rebase -i origin/master' -
-    rbu                      = !sh -c 'git fetch upstream && git rebase -i upstream/master' -
-    sb                       = show-branch
-    show-next                = !git show `git rev-list HEAD..master | tail -1`
-    show-prev                = !git show @^
-    ss                       = stash save
-    sl                       = stash list -p --color
-    sp                       = status --porcelain
-    st                       = status
-    standup                  = shortlog --since=yesterday
-    svn-pb                   = svn rebase
-    svn-ps                   = svn dcommit
-    svn-pull                 = svn fetch
-    svn-push                 = svn dcommit
-    today                    = shortlog --since=midnight
-    tree                     = log --graph --decorate --pretty=oneline --abbrev-commit --name-status
-    uncommit                 = !git reset --soft HEAD^ && git reset HEAD .
-    unhide                   = update-index --no-assume-unchanged
-    unstage                  = reset HEAD .
-    wdiff                    = diff --word-diff
-    who                      = shortlog -s -n --no-merges
-    change                   = codereview change
-    gofmt                    = codereview gofmt
-    mail                     = codereview mail
-    pending                  = codereview pending
-    submit                   = codereview submit
-    sync                     = codereview sync
+  al                       = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
+  br                       = branch
+  bv                       = branch -vv --color
+  changes                  = diff --stat -r
+  c                        = !git checkout $(git branch | fzf| tr -d '[:space:]' | tr -d '*')
+  ci                       = commit
+  ca                       = commit --amend
+  cc                       = commit --amend -C HEAD
+  cleanup                  = "!git branch --no-color --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d && git remote prune origin && git prune && :"
+  co                       = checkout
+  conflicts                = diff --name-only --diff-filter=U
+  dc                       = diff --cached
+  delete                   = !git ls-files -z --deleted | xargs -0 git rm
+  done                     = "!f() { ([ `git rev-parse --abbrev-ref HEAD` == 'master' ] || git checkout master) && git branch -D @{-1}; }; f"
+  dt                       = difftool
+  fa                       = fetch --all
+  files-since              = "!git diff --name-only $(git merge-base HEAD $1) | xargs ls 2>/dev/null && :"
+  files-since-master       = "!git files-since origin/master && :"
+  fp                       = fetch -p --all
+  hide                     = update-index --assume-unchanged
+  ignored                  = !git ls-files -v | grep "^[[:lower:]]"
+  last                     = log -n 1 -p --color
+  lb                       = for-each-ref --sort='-authordate:iso8601' --format='%(if)%(HEAD)%(then)* %(else)  %(end)%(color:red)%(align:16,left)%(authordate:relative):%(color:reset)%(end)%(if)%(HEAD)%(then)%(color:green)%(align:50,left)%(refname:short)%(end)%(color:reset)%(else)%(align:50,left)%(refname:short)%(end)%(end) - %(subject)' refs/heads
+  lg                       = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  ls-ignored               = ls-files --exclude-standard --ignored --others
+  mf                       = merge --no-ff
+  minimal-diff-with        = "! git files-since $1 | xargs git diff -w $(git merge-base HEAD $1)..HEAD && :"
+  minimal-diff-with-master = "! git minimal-diff-with origin/master && :"
+  news                     = log -p HEAD@{1}..HEAD@{0}
+  next                     = !git checkout `git rev-list HEAD..master | tail -1`
+  pb                       = pull --rebase
+  pick                     = cherry-pick
+  pl                       = pull
+  prev                     = checkout @^
+  ps                       = push
+  pushall                  = push --recurse-submodules=on-demand
+  rbm                      = !sh -c 'git fetch origin && git rebase -i origin/master' -
+  rbu                      = !sh -c 'git fetch upstream && git rebase -i upstream/master' -
+  sb                       = show-branch
+  show-next                = !git show `git rev-list HEAD..master | tail -1`
+  show-prev                = !git show @^
+  ss                       = stash save
+  sl                       = stash list -p --color
+  sp                       = status --porcelain
+  st                       = status
+  standup                  = shortlog --since=yesterday
+  svn-pb                   = svn rebase
+  svn-ps                   = svn dcommit
+  svn-pull                 = svn fetch
+  svn-push                 = svn dcommit
+  today                    = shortlog --since=midnight
+  tree                     = log --graph --decorate --pretty=oneline --abbrev-commit --name-status
+  uncommit                 = !git reset --soft HEAD^ && git reset HEAD .
+  unhide                   = update-index --no-assume-unchanged
+  unstage                  = reset HEAD .
+  wdiff                    = diff --word-diff
+  who                      = shortlog -s -n --no-merges
+  change                   = codereview change
+  gofmt                    = codereview gofmt
+  mail                     = codereview mail
+  pending                  = codereview pending
+  submit                   = codereview submit
+  sync                     = codereview sync
 [color]
-    ui          = auto
-    diff        = auto
-    status      = auto
-    branch      = auto
-    interactive = auto
+  ui          = auto
+  diff        = auto
+  status      = auto
+  branch      = auto
+  interactive = auto
 [commit]
-    gpgsign = true
+  gpgsign = true
 [core]
-    excludesfile = ~/.gitignore
-    pager        = less -FRX
-    editor       = vim
-    autocrlf     = input
-    safecrlf     = true
-    whitespace   = cr-at-eol
-    preloadindex = true
+  excludesfile = ~/.gitignore
+  pager        = less -FRX
+  editor       = vim
+  autocrlf     = input
+  safecrlf     = true
+  whitespace   = cr-at-eol
+  preloadindex = true
+  fsmonitor    = true
 [diff]
-    compaction-heuristic = true
-    colorMoved = zebra
+  compaction-heuristic = true
+  colorMoved = zebra
 [grep]
-    linenumber = true
+  linenumber = true
 [i18n]
-    commitEncoding = utf8
-    logOutputEncoding = utf8
+  commitEncoding = utf8
+  logOutputEncoding = utf8
 [includeIf "gitdir:~/stripe/"]
-    path = .gitconfig.work
+  path = .gitconfig.work
 [includeIf "gitdir:~/stripe-b/"]
-    path = .gitconfig.work
+  path = .gitconfig.work
 [merge]
-    tool          = vimdiff
-    conflictstyle = diff3
-    summary       = true
+  tool          = vimdiff
+  conflictstyle = diff3
+  summary       = true
 [pager]
-    diff = diff-so-fancy | less --tabs=1,5 -RFX
-    show = diff-so-fancy | less --tabs=1,5 -RFX
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
 [push]
-    default = tracking
+  default = tracking
 [pull]
-	  rebase = true
+  rebase = true
 [url "git@github.com:"]
-    insteadOf = https://github.com/
+  insteadOf = https://github.com/
