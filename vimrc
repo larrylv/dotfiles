@@ -607,6 +607,7 @@ let g:ale_linters = {
       \  'javascript.jsx': ['eslint'],
       \  'javascriptreact': ['eslint'],
       \  'ruby': ['rubocop'],
+      \  'markdown': [],
       \  'sh': [],
       \  'typescriptreact': ['eslint'],
       \  'typescript': ['eslint'],
