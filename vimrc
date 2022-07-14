@@ -635,6 +635,9 @@ nmap <silent> <leader>ln <Plug>(ale_next_wrap)
 " ================================= coc ========================================
 let g:coc_snippet_next = '<tab>'
 
+" Disable transparent cursor when CocList is activated.
+let g:coc_disable_transparent_cursor = 1
+
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent><expr> <c-n> coc#refresh()
 
