@@ -38,14 +38,13 @@ brew install autojump automake bash bash-completion bat ccat cloc \
   cmake coreutils cowsay curl diff-so-fancy diffutils fmt gcc goenv \
   golangci-lint grpc htop httperf httpie hugo jq mtr ncurses nodenv openjdk \
   openjdk@11 pre-commit pstree pyenv rbenv readline reattach-to-user-namespace \
-  ruby ruby-build scala snappy source-highlight sqlite tig tldr \
+  ruby ruby-build rust scala snappy source-highlight sqlite tig tldr \
   tmuxinator-completion trash tree tree-sitter unrar urlview watchman webpack
 
 brew install --cask alacritty diffmerge
 
 gem install tmuxinator
 
-# rust & proximity-sort
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# proximity-sort
 cargo install proximity-sort
 ```
