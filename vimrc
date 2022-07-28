@@ -772,6 +772,10 @@ function! MyDefxSettings() abort
         \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> c
         \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> C
+        \ defx#do_action('close_tree')
+  nnoremap <silent><buffer><expr> P
+        \ defx#do_action('search', fnamemodify(defx#get_candidate().action__path, ':h'))
   nnoremap <silent><buffer><expr> m
         \ defx#do_action('move')
   nnoremap <silent><buffer><expr> p
