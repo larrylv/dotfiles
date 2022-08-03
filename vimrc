@@ -60,7 +60,7 @@ Plug 'Raimondi/delimitMate'             " auto-completion for quotes, parens, br
 Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
 Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
-Plug 'mg979/vim-visual-multi'           " Multiple cursors plugin
+" Plug 'mg979/vim-visual-multi'           " Multiple cursors plugin
 " Plug 'puremourning/vimspector'          " A multi-language debugging system for Vim
 " Plug 'folke/which-key.nvim'             " displays a popup with possible keybindings of the command you started typing
 
@@ -1624,15 +1624,15 @@ autocmd FileType go call SetupMapForVimuxGolang()
 
 
 " ================================= visual-multi ===============================
-let g:VM_leader = ','
-let g:VM_maps   = {}
-
-let g:VM_maps['Find Under']         = '<C-s>'    " replace C-n
-let g:VM_maps['Find Subword Under'] = '<C-s>'    " replace visual C-n
-let g:VM_maps["Select All"]         = ',A'
-let g:VM_maps["Add Cursor Down"]    = '<C-Down>' " iTerm2: Send Escape Sequence + [1;5B
-let g:VM_maps["Add Cursor Up"]      = '<C-Up>'   " iTerm2: Send Escape Sequence + [1;5A
-let g:VM_maps['Motion ,']           = ',,'
+" let g:VM_leader = ','
+" let g:VM_maps   = {}
+"
+" let g:VM_maps['Find Under']         = '<C-s>'    " replace C-n
+" let g:VM_maps['Find Subword Under'] = '<C-s>'    " replace visual C-n
+" let g:VM_maps["Select All"]         = ',A'
+" let g:VM_maps["Add Cursor Down"]    = '<C-Down>' " iTerm2: Send Escape Sequence + [1;5B
+" let g:VM_maps["Add Cursor Up"]      = '<C-Up>'   " iTerm2: Send Escape Sequence + [1;5A
+" let g:VM_maps['Motion ,']           = ',,'
 
 
 " ================================= vroom ======================================
