@@ -453,9 +453,6 @@ function! FlipBindingPry()
   write
 endfunction
 
-command! BufOnly silent! execute "%bd!|e#|bd#"
-nmap <leader>bo :BufOnly<cr>
-
 nnoremap <leader>bp :call FlipBindingPry()<cr>
 
 map <leader>cc :ccl <bar> lcl<cr>
@@ -500,15 +497,9 @@ nmap ms :marks abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<cr>
 
 nnoremap <leader>p :let @* = expand("%")<cr>:echo @%<cr>
 
-function! CloseAllBuffersButCurrent()
-  let curr = bufnr("%")
-  let last = bufnr("$")
-
-  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
-  if curr < last | silent! execute (curr+1).",".last."bd" | endif
-endfunction
-
-nmap <leader>q :call CloseAllBuffersButCurrent()<cr>
+" clsoe all buffers except for the current one
+command! BufOnly silent! execute "%bd!|e#|bd#"
+nmap <leader>q :call BufOnly()<cr>
 
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParentheses<cr>
 
@@ -521,6 +512,10 @@ endfunc
 
 nmap <leader>sp :call <SID>SynStack()<cr>
 
+" close all other tabs
+nnoremap <leader>to :tabonly<cr>
+
+" open a buffer in a new tab
 nnoremap <leader>tt :tabe<cr>
 
 map <leader>vr :tabe ~/.vimrc<cr>
