@@ -310,7 +310,7 @@ augroup general_config
   function! ResCur()
     let filetype = &ft
     if (line("'\"") <= line("$") && filetype != 'gitcommit')
-      normal! g`"
+      silent! normal! g`"
       return 1
     endif
   endfunction
