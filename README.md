@@ -39,7 +39,7 @@ brew install autojump automake bash bash-completion bat ccat cloc \
   golangci-lint grpc htop httperf httpie hugo jq mtr ncurses nodenv openjdk \
   openjdk@11 pre-commit pstree pyenv rbenv readline reattach-to-user-namespace \
   ruby ruby-build rust scala snappy source-highlight sqlite tig tldr \
-  tmuxinator-completion trash tree tree-sitter unrar urlview watchman webpack
+  tmuxinator-completion trash tree tree-sitter urlview watchman webpack
 
 brew install --cask alacritty diffmerge
 

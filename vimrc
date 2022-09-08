@@ -643,7 +643,6 @@ let g:coc_global_extensions = [
   \ 'coc-go',
   \ 'coc-omni',
   \ 'coc-tag',
-  \ 'coc-tsserver',
   \ ]
 
 " this is commented out because vim-go already does this
