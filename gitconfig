@@ -78,14 +78,15 @@
 [commit]
   gpgsign = true
 [core]
-  excludesfile = ~/.gitignore
-  pager        = less -FRX
-  editor       = vim
-  autocrlf     = input
-  safecrlf     = true
-  whitespace   = cr-at-eol
-  preloadindex = true
-  fsmonitor    = true
+  excludesfile        = ~/.gitignore
+  pager               = less -FRX
+  editor              = vim
+  autocrlf            = input
+  safecrlf            = true
+  whitespace          = cr-at-eol
+  preloadindex        = true
+  fsmonitor           = true
+  deltabasecachelimit = 4g
 [diff]
   compaction-heuristic = true
   colorMoved = zebra
