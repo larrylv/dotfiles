@@ -1,5 +1,29 @@
 # vim:ft=sh:
 
+### BEGIN HOMEBREW FOR APPLE SILICON
+if [[ $(/usr/bin/uname -m) == "arm64" ]]; then
+  if [[ -f /opt/homebrew/bin/brew ]]; then
+    export HOMEBREW_PREFIX="/opt/homebrew";
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+    export HOMEBREW_REPOSITORY="/opt/homebrew";
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/python/bin${PATH+:$PATH}";
+    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+  fi
+else
+  if [[ -f /usr/local/bin/brew ]]; then
+    export HOMEBREW_PREFIX="/usr/local";
+    export HOMEBREW_CELLAR="/usr/local/Cellar";
+    export HOMEBREW_REPOSITORY="/opt/homebrew";
+    export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt/python/bin:$PATH"
+    export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+    export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
+  fi
+fi
+### END HOMEBREW FOR APPLE SILICON
+
+[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
+
 # alias
 alias vim='nvim'
 
@@ -7,7 +31,7 @@ alias af='git ls-files | ack --smart-case --no-column --noenv'
 alias ag='rg'
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
-[[ -f /usr/local/bin/bat ]] && alias cat='bat'
+[[ -f "$HOMEBREW_PREFIX/bin/bat" ]] && alias cat='bat'
 alias du="ncdu --color dark -rr -x"
 alias fvim="vim \$(fzf)"
 alias grep='grep --color=auto'
@@ -120,21 +144,26 @@ export CLICOLOR=1
 export EDITOR=nvim
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt/python/bin:$PATH"
 export GIT_EDITOR=nvim
 
 ## rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+## nodenv
+if which nodeenv > /dev/null; then eval "$(nodeenv init -)"; fi
+
 ## goenv
 # See https://github.com/syndbg/goenv/issues/72
 export GOENV_DISABLE_GOPATH=1
 export GOENV_ROOT="$HOME/.goenv"
+export GOROOT="$(goenv prefix)"
 export PATH="$GOENV_ROOT/bin:$PATH"
 if which goenv > /dev/null; then eval "$(goenv init -)"; fi
-export GOPATH=$HOME/code/gopath
-export GOROOT="$(goenv prefix)"
-export PATH=$GOPATH/bin:$PATH
+
+if [[ -d "$HOME/code/gopath" ]]; then
+  export GOPATH=$HOME/code/gopath
+  export PATH=$GOPATH/bin:$PATH
+fi
 
 ## pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init --path)"; fi
@@ -163,8 +192,6 @@ if ! echo "$PROMPT_COMMAND" | grep -q history; then
   export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 fi
 
-# export JAVA_HOME=/usr/local/opt/openjdk@11
-
 # source scripts -----------------------------------------------------------
 
 ## bash completion
@@ -176,7 +203,7 @@ fi
 # unset bash_completion
 
 ## git completion
-git_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion.d/git-completion.bash"
+git_completion="$HOMEBREW_PREFIX/etc/bash_completion.d/git-completion.bash"
 if [ -r "$git_completion" ]; then
   # shellcheck disable=SC1090
   source "$git_completion"
@@ -184,7 +211,7 @@ fi
 unset git_completion
 
 ## autojump script
-autojump_script="$(brew --prefix 2>/dev/null)/etc/profile.d/autojump.sh"
+autojump_script="$HOMEBREW_PREFIX/etc/profile.d/autojump.sh"
 if [ -r "$autojump_script" ]; then
   # shellcheck disable=SC1090
   source "$autojump_script"
@@ -248,7 +275,7 @@ function parse_git_dirty () {
 }
 
 function parse_git_stash() {
-  if [[ -n $(/usr/local/bin/git stash list 2> /dev/null) ]]; then
+  if [[ -n $("$HOMEBREW_PREFIX/bin/git" stash list 2> /dev/null) ]]; then
     echo -e "$GIT_PROMPT_STASH"
   else
     echo -e "$GIT_PROMPT_NOSTASH"
@@ -257,7 +284,7 @@ function parse_git_stash() {
 
 function git_prompt_info() {
   # shellcheck disable=SC2155
-  local ref="$(/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null)"
+  local ref="$($HOMEBREW_PREFIX/bin/git symbolic-ref -q HEAD 2>/dev/null)"
   if [ -n "$ref" ]; then
     # git dirty information is now shown on tmux status bar via gitmux
     # echo -e " ${echo_bold_purple}\ue725 $(git_branch_name)$(parse_git_dirty)$(parse_git_stash)"
@@ -311,12 +338,8 @@ else
 fi
 
 
-# shellcheck disable=SC1090
-[[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
-
-# Local config
-# shellcheck disable=SC1090
-[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
+[[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/completion.bash" ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.bash"
+[[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash" ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash"
 
 export NVM_DIR="$HOME/.nvm"
 # shellcheck disable=SC1090
