@@ -17,7 +17,7 @@ rake install
 
 ```
 brew install neovim
-nvim +PlugInstall +qall
+nvim +PlugInstall +UpdateRemotePlugins +qall
 
 gem install ripper-tags
 brew install fd fzf universal-ctags ripgrep
