@@ -47,4 +47,10 @@ gem install tmuxinator
 
 # proximity-sort
 cargo install proximity-sort
+
+# add $HOMEBREW_PREFIX/bin/bash to `/etc/shells`, then
+chsh -s $HOMEBREW_PREFIX/bin/bash
+
+# enable sudo without a password
+# https://jefftriplett.com/2022/enable-sudo-without-a-password-on-macos/
 ```
