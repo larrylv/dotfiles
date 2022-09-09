@@ -31,7 +31,6 @@ alias af='git ls-files | ack --smart-case --no-column --noenv'
 alias ag='rg'
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
-[[ -f "$HOMEBREW_PREFIX/bin/bat" ]] && alias cat='bat'
 alias du="ncdu --color dark -rr -x"
 alias fvim="vim \$(fzf)"
 alias grep='grep --color=auto'
@@ -56,6 +55,11 @@ alias ycommit="git add . ; date -v-1d +\"%Y-%m-%d\" | xargs git ci -m"
 LESS="-iXRF"; export LESS
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
+
+if [[ -f "$HOMEBREW_PREFIX/bin/bat" ]]; then
+  alias cat='bat'
+  export BAT_THEME='Monokai Extended'
+fi
 
 # ag() {
 #   if which rg > /dev/null; then
