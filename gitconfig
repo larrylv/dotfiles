@@ -90,6 +90,7 @@
 [diff]
   compaction-heuristic = true
   colorMoved = zebra
+  algorithm = patience
 [grep]
   linenumber = true
 [i18n]
