@@ -26,7 +26,7 @@ rake install
 
 ### font
 
-[Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font)
+* [Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font/blob/main/Monaco%20Nerd%20Font%20Complete.otf)
 
 ### vim plugins & dependencies
 

@@ -60,6 +60,7 @@ Plug 'Raimondi/delimitMate'             " auto-completion for quotes, parens, br
 Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
 Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
+Plug 'Yggdroot/indentLine'              " display the indention levels with thin vertical lines
 " Plug 'mg979/vim-visual-multi'           " Multiple cursors plugin
 " Plug 'puremourning/vimspector'          " A multi-language debugging system for Vim
 " Plug 'folke/which-key.nvim'             " displays a popup with possible keybindings of the command you started typing
@@ -461,16 +462,6 @@ map <leader>cp :cp<cr>
 
 " toggle colorcolumn=81
 nnoremap <silent><leader>co :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<cr>
-
-" toggle cursorcolumn
-function! ToggleCursorColumn()
-  if &cursorcolumn
-    set nocursorcolumn
-  else
-    set cursorcolumn
-  endif
-endfunction
-nnoremap <silent><leader>cm :call ToggleCursorColumn()<cr>
 
 " strip tailing white spaces
 nnoremap <leader>dd :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<cr>
@@ -1044,6 +1035,22 @@ map <leader>gv :GitGutterPreviewHunk<cr>
 
 " ================================= git-messenger ==============================
 nmap <leader>gm <Plug>(git-messenger)
+
+
+" ================================= indentLine =================================
+" let g:indentLine_char = '┆'
+let g:indentLine_char = "\ue621"
+
+" " toggle cursorcolumn
+" function! ToggleCursorColumn()
+"   if &cursorcolumn
+"     set nocursorcolumn
+"   else
+"     set cursorcolumn
+"   endif
+" endfunction
+" nnoremap <silent><leader>cm :call ToggleCursorColumn()<cr>
+nnoremap <leader>cm :IndentLinesToggle<cr>
 
 
 " ================================= jedi =======================================
