@@ -948,7 +948,7 @@ command! -bar FZFCopyRubyToken :call FzfCopyRubyTokenFn(expand('<cword>'))
 nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
 
 function! CacheListCmd()
-  let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
+  let ref = system('git symbolic-ref -q HEAD 2>/dev/null')
   if ref == ''
     return $FZF_DEFAULT_COMMAND
   endif
@@ -994,7 +994,7 @@ command! -bang -nargs=* FilesNoIgnoreVcs
 silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnoreVcs<cr>
 
 function! ClearFzfCache()
-  let ref = system('/usr/local/bin/git symbolic-ref -q HEAD 2>/dev/null')
+  let ref = system('git symbolic-ref -q HEAD 2>/dev/null')
   if ref != ''
     " trim the newline output from rev-parse
     let head_commit = system('git rev-parse HEAD | tr -d "\n"')
