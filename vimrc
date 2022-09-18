@@ -1038,18 +1038,9 @@ nmap <leader>gm <Plug>(git-messenger)
 
 
 " ================================= indentLine =================================
-" let g:indentLine_char = '┆'
+let g:indentLine_enabled = 0
 let g:indentLine_char = "\ue621"
 
-" " toggle cursorcolumn
-" function! ToggleCursorColumn()
-"   if &cursorcolumn
-"     set nocursorcolumn
-"   else
-"     set cursorcolumn
-"   endif
-" endfunction
-" nnoremap <silent><leader>cm :call ToggleCursorColumn()<cr>
 nnoremap <leader>cm :IndentLinesToggle<cr>
 
 
