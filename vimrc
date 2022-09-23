@@ -490,7 +490,7 @@ nnoremap <leader>p :let @* = expand("%")<cr>:echo @%<cr>
 
 " clsoe all buffers except for the current one
 command! BufOnly silent! execute "%bd!|e#|bd#"
-nmap <leader>q :call BufOnly()<cr>
+nmap <leader>q :BufOnly<cr>
 
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParentheses<cr>
 
