@@ -100,6 +100,8 @@
   path = .gitconfig.work
 [includeIf "gitdir:~/stripe-b/"]
   path = .gitconfig.work
+[includeIf "gitdir:*/stripe-internal/"]
+  path = .gitconfig.work
 [merge]
   tool          = vimdiff
   conflictstyle = diff3
