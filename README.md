@@ -57,7 +57,7 @@ https://github.com/tmux-plugins/tpm#installation
 
 ```
 brew install autojump automake bash-completion bat ccat cloc \
-  cmake coreutils cowsay curl diff-so-fancy diffutils fmt gcc goenv \
+  cmake coreutils cowsay curl diff-so-fancy diffutils fmt fpp gcc goenv \
   golangci-lint grpc htop httperf httpie hugo jq mtr ncurses nodenv openjdk \
   openjdk@11 pre-commit pstree rbenv readline reattach-to-user-namespace \
   ruby ruby-build rust scala snappy source-highlight sqlite tig tldr \
