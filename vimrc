@@ -32,7 +32,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " explorer
-Plug 'larrylv/defx.nvim',  { 'do': ':UpdateRemotePlugins' }
+Plug 'larrylv/defx.nvim',  { 'do': ':UpdateRemotePlugins' } " own fork to not open chosen file in existing bufnr
 
 " editing
 Plug 'majutsushi/tagbar'                " show tagbar with F2
