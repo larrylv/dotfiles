@@ -32,7 +32,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " explorer
-Plug 'Shougo/defx.nvim',  { 'do': ':UpdateRemotePlugins' }
+Plug 'larrylv/defx.nvim',  { 'do': ':UpdateRemotePlugins' }
 
 " editing
 Plug 'majutsushi/tagbar'                " show tagbar with F2
