@@ -481,16 +481,14 @@ map <leader>nh <C-W>_
 " increase a window to its maximum width
 map <leader>nw <C-W>\|
 
-" delete all upcase marks / bookmarks
-nmap mx :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<cr>
-" only show marks / bookmarks I care about
-nmap ms :marks abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<cr>
-
 nnoremap <leader>p :let @* = expand("%")<cr>:echo @%<cr>
 
 " clsoe all buffers except for the current one
 command! BufOnly silent! execute "%bd!|e#|bd#"
 nmap <leader>q :BufOnly<cr>
+
+" only show marks / bookmarks I care about
+nmap <leader>sm :marks abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<cr>
 
 map <leader>so :source $MYVIMRC<cr>:e<cr>:RainbowParentheses<cr>
 
@@ -513,6 +511,9 @@ map <leader>vr :tabe ~/.vimrc<cr>
 
 " n,w to qucikly switch vim window
 map <leader>w <C-W><C-W>
+
+" delete all upcase marks / bookmarks
+nmap <leader>xm :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<cr>:wviminfo!<cr>
 
 " system yank: will copy into the system clipboard on OS X
 " vim has to be compiled with +clipboard to support this
@@ -680,7 +681,7 @@ nmap <silent> <leader>lc <Plug>(coc-declaration)
 nmap <silent> <leader>li <Plug>(coc-implementation)
 " rename symbol under cursor
 nmap <silent> <leader>lr <Plug>(coc-rename)
-" show documentation of  current symbol
+" show documentation of current symbol
 nnoremap <silent> K :call CocShowDocumentation()<cr>
 
 " redraw the status line when coc#status changes
