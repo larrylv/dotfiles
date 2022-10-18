@@ -630,9 +630,14 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent><expr> <c-n> coc#refresh()
 
 " coc will install missing extensions after coc.nvim service starts.
+" let g:coc_global_extensions = [
+"   \ 'coc-json',
+"   \ 'coc-go',
+"   \ 'coc-omni',
+"   \ 'coc-tag',
+"   \ ]
 let g:coc_global_extensions = [
   \ 'coc-json',
-  \ 'coc-go',
   \ 'coc-omni',
   \ 'coc-tag',
   \ ]
