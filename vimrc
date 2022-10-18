@@ -1000,7 +1000,7 @@ command! -bang -nargs=* FilesNoIgnore
 " by '.gitignore' files.
 command! -bang -nargs=* FilesNoIgnoreVcs
   \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore-vcs --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
-silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnoreVcs<cr>
+silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnore<cr>
 
 function! ClearFzfCache()
   let ref = system('git symbolic-ref -q HEAD 2>/dev/null')
