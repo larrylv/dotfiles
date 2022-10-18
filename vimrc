@@ -26,7 +26,7 @@ Plug 'mileszs/ack.vim'
 
 " linter & lsp & completion
 Plug 'dense-analysis/ale'
-Plug 'larrylv/coc.nvim', {'commit': 'c3200a00461d50e55ecf694c180790d28fde192d'} " own fork that suppress error messages
+Plug 'larrylv/coc.nvim', {'commit': '22bd790a395d109f4dc27790cb5ee31800a970b1'} " own fork that suppress error messages
 Plug 'larrylv/vim-tagimposter'                 " populate the tagstack when using coc to jump to definitions
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
