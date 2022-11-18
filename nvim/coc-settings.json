@@ -20,6 +20,7 @@
     "<C-p>": "normal:k"
   },
   "metals.statusBarEnabled": true,
+  "notification.disabledProgressSources": ["*"],
   "suggest.enablePreview": true,
   "suggest.floatEnable": true,
   "suggest.maxCompleteItemCount": 20,
