@@ -4,6 +4,11 @@
   "coc.source.tag.priority": 20,
   "codeLens.enable": true,
   "diagnostic.displayByAle": true,
+  "go.goplsOptions": {
+    "analyses": {
+      "composites": false
+    }
+  },
   "hover.floatConfig": {
     "border": true
   },
