@@ -30,8 +30,10 @@ nmap <leader>bp :action Blaze.PartialSync<cr>
 
 nmap <leader>u :action FindUsages<cr>
 
-nmap <leader>g :action GotoDeclaration<cr>
-nmap <leader>i :action GotoImplementation<cr>
+nmap <leader>lc :action GotoDeclaration<cr>
+nmap <leader>li :action GotoImplementation<cr>
+nmap <leader>lr :action RenameElement<CR>
+vmap <leader>lr :action RenameElement<CR>
 
 nmap <leader>gn :action VcsShowNextChangeMarker<cr>
 nmap <leader>gp :action VcsShowPrevChangeMarker<cr>
@@ -42,9 +44,6 @@ vmap <leader>t :action ExpressionTypeInfo<cr>
 nnoremap <leader>vn :action RunClass<cr>
 nnoremap <leader>vs :action RunClass<cr>
 nnoremap <leader>vd :action DebugClass<cr>
-
-nmap <leader>r :action RenameElement<CR>
-vmap <leader>r :action RenameElement<CR>
 
 nmap <leader>so :action MoveEditorToOppositeTabGroup<cr>
 nmap <leader>sj :action MoveTabDown<cr>
