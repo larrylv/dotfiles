@@ -25,17 +25,14 @@ run:
 linters:
   disable-all: true
   enable:
-    - govet
     - errcheck
-    - staticcheck
-    - unused
-    - gosimple
-    - structcheck
-    - varcheck
-    - ineffassign
-    - deadcode
-    - typecheck
     - gochecknoinits
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - typecheck
+    - unused
 
 issues:
   # Excluding configuration per-path, per-linter, per-text and per-source
