@@ -611,6 +611,8 @@ let g:ale_fixers = {
       \  'typescript': ['eslint'],
       \}
 
+let g:ale_go_golangci_lint_package = 1
+
 let g:ale_fix_on_save = 1
 " disable linting for all minified JS files
 let g:ale_pattern_options = {
