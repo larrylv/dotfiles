@@ -176,7 +176,6 @@ if which pyenv > /dev/null; then eval "$(pyenv init --path)"; fi
 # if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 ## kiex
-# shellcheck disable=SC1090
 # [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
 ## binstubs
@@ -201,7 +200,6 @@ fi
 ## bash completion
 # bash_completion="$(brew --prefix 2>/dev/null)/etc/bash_completion"
 # if [ -r "$bash_completion" ]; then
-#   # shellcheck disable=SC1090
 #   source "$bash_completion"
 # fi
 # unset bash_completion
@@ -209,7 +207,6 @@ fi
 ## git completion
 git_completion="$HOMEBREW_PREFIX/etc/bash_completion.d/git-completion.bash"
 if [ -r "$git_completion" ]; then
-  # shellcheck disable=SC1090
   source "$git_completion"
 fi
 unset git_completion
@@ -217,7 +214,6 @@ unset git_completion
 ## autojump script
 autojump_script="$HOMEBREW_PREFIX/etc/profile.d/autojump.sh"
 if [ -r "$autojump_script" ]; then
-  # shellcheck disable=SC1090
   source "$autojump_script"
 fi
 unset autojump_script
@@ -262,16 +258,15 @@ bold_white='\[\e[1;37m\]'
 
 # PS1 -------------------------------------------------------------------------
 
-# shellcheck disable=SC2154
 GIT_PROMPT_CLEAN=" ${echo_bold_green}✔"
-# shellcheck disable=SC2154
 GIT_PROMPT_DIRTY=" ${echo_bold_red}✗"
-# shellcheck disable=SC2154
 GIT_PROMPT_STASH=" ${echo_bold_purple}#"
 GIT_PROMPT_NOSTASH=""
 
 function parse_git_dirty () {
-  if [[ $(git status --porcelain) != '' ]]; then
+  if [[ $PWD =~ .*pay-server.* ]]; then
+    echo ""
+  elif [[ $(git diff --stat) != '' ]]; then
     echo -e "$GIT_PROMPT_DIRTY"
   else
     echo -e "$GIT_PROMPT_CLEAN"
@@ -287,14 +282,10 @@ function parse_git_stash() {
 }
 
 function git_prompt_info() {
-  # shellcheck disable=SC2155
   local ref="$($HOMEBREW_PREFIX/bin/git symbolic-ref -q HEAD 2>/dev/null)"
   if [ -n "$ref" ]; then
-    # git dirty information is now shown on tmux status bar via gitmux
-    # echo -e " ${echo_bold_purple}\ue725 $(git_branch_name)$(parse_git_dirty)$(parse_git_stash)"
-    # shellcheck disable=SC2154
     local git_branch_name="${ref/refs\/heads\/}"
-    echo -e " ${echo_bold_purple}\ue725 $git_branch_name$(parse_git_stash)"
+    echo -e " ${echo_bold_purple}\ue725 $git_branch_name$(parse_git_dirty)$(parse_git_stash)"
   fi
 }
 
@@ -335,7 +326,6 @@ function bash_prompt() {
 }
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  # shellcheck disable=SC2154
   PS1="${bold_green}\u@\h ${bold_blue}\$(dir_prompt)  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 else
   PS1="${bold_blue}\$(dir_prompt)  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
@@ -346,9 +336,7 @@ fi
 [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash" ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash"
 
 export NVM_DIR="$HOME/.nvm"
-# shellcheck disable=SC1090
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# shellcheck disable=SC1090
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="./node_modules/.bin:$PATH"
