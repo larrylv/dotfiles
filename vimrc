@@ -638,6 +638,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-go',
   \ 'coc-omni',
+  \ 'coc-rust-analyzer',
   \ 'coc-tag',
   \ ]
 
@@ -1179,6 +1180,7 @@ function! CurrentLspStatus(cocstatus)
   let lsp = &ft == 'ruby' ? 'sorbet' :
       \ (
       \   &ft == 'go' ? 'gopls' :
+      \   &ft == 'rust' ? 'rust-analyzer' :
       \   &ft == 'scala' ? 'metals' :
       \   &ft =~ 'typescript\|typescriptreact\|typescript.tsx\|typescript.jsx\|javascript\|javascriptreact\|javascript.jsx' ? 'tsserver' :
       \   &ft == 'json' ? 'json' : ''
@@ -1193,6 +1195,7 @@ function! CurrentLspStatus(cocstatus)
   let cocstatus = substitute(cocstatus, 'Initializing tsserver [^\s]*', 'tsserver:starting', '')
   let cocstatus = substitute(cocstatus, 'TSC [^\s]*', "tsserver:running", '')
   let cocstatus = substitute(cocstatus, 'Metals', "metals:running", '')
+  let cocstatus = substitute(cocstatus, 'Rust Analyzer Language Server:running rust-analyzer', "rust-analyzer:running", '')
 
   " get a list of lsp status
   let statuslist = split(cocstatus)
