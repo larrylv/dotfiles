@@ -35,6 +35,7 @@ Plug 'honza/vim-snippets'
 Plug 'larrylv/defx.nvim',  { 'do': ':UpdateRemotePlugins' } " own fork to not open chosen file in existing bufnr
 
 " editing
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'majutsushi/tagbar'                " show tagbar with F2
 Plug 'tpope/vim-obsession'              " record a session with :Obsession
 Plug 'tpope/vim-projectionist'          " alternate files with :AV/:AS
