@@ -637,7 +637,6 @@ inoremap <silent><expr> <c-n> coc#refresh()
 " coc will install missing extensions after coc.nvim service starts.
 let g:coc_global_extensions = [
   \ 'coc-json',
-  \ 'coc-go',
   \ 'coc-omni',
   \ 'coc-rust-analyzer',
   \ 'coc-tag',
@@ -645,10 +644,6 @@ let g:coc_global_extensions = [
 
 " this is commented out because vim-go already does this
 " autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
-
-autocmd FileType go nmap <leader>gtj :CocCommand go.tags.add json<cr>
-autocmd FileType go nmap <leader>gty :CocCommand go.tags.add yaml<cr>
-autocmd FileType go nmap <leader>gtx :CocCommand go.tags.clear<cr>
 
 function! ToggleOutline() abort
   let winid = coc#window#find('cocViewId', 'OUTLINE')
@@ -1194,9 +1189,10 @@ function! CurrentLspStatus(cocstatus)
   " replace json lsp with a shorter name
   let cocstatus = substitute(a:cocstatus, 'Json language server', 'json', '')
   let cocstatus = substitute(cocstatus, 'Initializing tsserver [^\s]*', 'tsserver:starting', '')
-  let cocstatus = substitute(cocstatus, 'TSC [^\s]*', "tsserver:running", '')
-  let cocstatus = substitute(cocstatus, 'Metals', "metals:running", '')
-  let cocstatus = substitute(cocstatus, 'Rust Analyzer Language Server:running rust-analyzer', "rust-analyzer:running", '')
+  let cocstatus = substitute(cocstatus, 'TSC [^\s]*', 'tsserver:running', '')
+  let cocstatus = substitute(cocstatus, 'Metals', 'metals:running', '')
+  let cocstatus = substitute(cocstatus, 'Rust Analyzer Language Server:running rust-analyzer', 'rust-analyzer:running', '')
+  let cocstatus = substitute(cocstatus, 'golang', 'gopls', '')
 
   " get a list of lsp status
   let statuslist = split(cocstatus)
