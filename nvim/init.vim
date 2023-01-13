@@ -28,4 +28,10 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+-- go highlight customization
+vim.api.nvim_set_hl(0, "@function.go", { link = "Special" })
+vim.api.nvim_set_hl(0, "@method.go", { link = "Special" })
+vim.api.nvim_set_hl(0, "@namespace.go", { link = "Type" })
+vim.api.nvim_set_hl(0, "@variable.go", { link = "Method" })
 EOF
