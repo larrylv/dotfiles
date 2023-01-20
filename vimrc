@@ -175,6 +175,15 @@ colorscheme solarized8_flat
 hi! CursorLine cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=237 guibg=#3c3d3a
 hi! CursorLineNr cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=NONE guibg=NONE
 
+" folding
+hi! Folded cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=0 guibg=#3c3d3a
+" use treesitter for folding https://www.jmaguire.tech/posts/treesitter_folding/
+set foldlevelstart=99                      " Open all folds by default
+set foldenable                             " Enable folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldcolumn=0                           " Column to show folds
+
 " set ambiwidth=double
 set autoindent                             " Copy indent from last line when starting new line
 set autoread                               " Reload files changed outside automatically
@@ -194,22 +203,6 @@ set expandtab                              " Expand tabs to spaces
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,chinese
 set fillchars+=vert:\                      " Styling vertical split borders
-set foldcolumn=0                           " Column to show folds
-set foldenable                             " Enable folding
-" set foldlevel=0                            " Close all folds by default
-set foldlevelstart=99                      " Open all folds by default
-set foldmethod=marker                      " Syntax are used to specify folds
-set foldminlines=0                         " Allow folding single lines
-set foldnestmax=5                          " Set max fold nesting level
-set formatoptions=
-set formatoptions+=1                       " Break before 1-letter words
-set formatoptions+=2                       " Use indent from 2nd line of a paragraph
-" set formatoptions+=c                       " Format comments
-set formatoptions+=l                       " Don't break lines that are already long
-set formatoptions+=n                       " Recognize numbered lists
-" set formatoptions+=o                       " Make comment when using o or O from comment line
-set formatoptions+=q                       " Format comments with gq
-" set formatoptions+=r                       " Continue comments by default
 set history=1000                           " Increase history from 20 default to 1000
 set hlsearch                               " Highlight searches
 set incsearch                              " Highlight dynamically as pattern is typed
@@ -384,7 +377,6 @@ augroup general_config
   autocmd BufNewFile,BufRead *.md setlocal textwidth=80
   autocmd Filetype gitcommit setlocal textwidth=78
   autocmd Filetype gitcommit,markdown set colorcolumn=81
-  autocmd FileType elixir set foldmethod=syntax
 augroup END
 
 
