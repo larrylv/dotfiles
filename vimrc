@@ -114,7 +114,11 @@ Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
 Plug 'fisadev/vim-isort',                   { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
 
-" frontend & markdown
+" markdown
+Plug 'iamcco/markdown-preview.nvim',        { 'for': 'markdown', 'do': 'cd app && yarn install' }
+Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
+
+" frontend
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
 Plug 'othree/html5.vim',                    { 'for': ['html', 'eruby'] }
 Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
@@ -125,7 +129,6 @@ Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
-Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
 Plug 'tpope/vim-ragtag',                    " A set of mappings for HTML, XML, etc.
 
 " elm
@@ -1320,6 +1323,13 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 0
 " Don't map gx etc
 let g:vim_markdown_no_default_key_mappings = 1
+
+
+" ================================= markdown-preview ===========================
+" markdown-preview
+nmap <leader>pp <Plug>MarkdownPreview
+let g:mkdp_browser = 'Google Chrome'
+let g:mkdp_command_for_global = 1
 
 
 " ================================= open-browser ===============================
