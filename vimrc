@@ -36,6 +36,7 @@ Plug 'larrylv/defx.nvim',  { 'do': ':UpdateRemotePlugins' } " own fork to not op
 
 " editing
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'       " :TSPlaygroundToggle, :TSHighlightCapturesUnderCursor
 Plug 'majutsushi/tagbar'                " show tagbar with F2
 Plug 'tpope/vim-obsession'              " record a session with :Obsession
 Plug 'tpope/vim-projectionist'          " alternate files with :AV/:AS
@@ -729,8 +730,8 @@ let g:ctrlp_user_command = {
 " nnoremap <c-]> :CtrlPtjump<cr>
 " vnoremap <c-]> :CtrlPtjumpVisual<cr>
 
-nnoremap <leader>tp :CtrlPtjump<cr>
-vnoremap <leader>tp :CtrlPtjumpVisual<cr>
+" nnoremap <leader>tp :CtrlPtjump<cr>
+" vnoremap <leader>tp :CtrlPtjumpVisual<cr>
 
 
 " ================================= defx =======================================
@@ -1016,7 +1017,6 @@ silent! nnoremap <unique> <silent> <leader>bb :Buffers<cr>
 silent! nnoremap <unique> <silent> <leader>bl :BLines<cr>
 
 nnoremap <leader>tj :Tags<cr>
-nnoremap <leader>ts :Tags<Space>
 nnoremap <silent> <leader>tg :Tags <C-R><C-W><cr>
 xnoremap <silent> <leader>tg y:Tags <C-R>"<cr>"
 
@@ -1508,6 +1508,11 @@ let g:tagbar_type_elixir = {
 " ================================= trailing-whitespace ========================
 let g:extra_whitespace_ignored_filetypes = ['defx', 'unite']
 let g:extra_whitespace_ignored_filenames = ['defx', 'unite', '']
+
+
+" ================================= treesitter =================================
+nnoremap <leader>th :TSHighlightCapturesUnderCursor<cr>
+nnoremap <leader>tp :TSPlaygroundToggle<cr>
 
 
 " ================================= UltiSnips ==================================
