@@ -66,7 +66,6 @@ Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
 Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
 Plug 'Yggdroot/indentLine'              " display the indention levels with thin vertical lines
-Plug 'Einenlum/yaml-revealer'           " A vim plugin to easily navigate through Yaml files
 " Plug 'mg979/vim-visual-multi'           " Multiple cursors plugin
 " Plug 'puremourning/vimspector'          " A multi-language debugging system for Vim
 " Plug 'folke/which-key.nvim'             " displays a popup with possible keybindings of the command you started typing
