@@ -1,5 +1,5 @@
 "
-" Author:         Larry Lv <larrybayarea@gmail.com>
+" Author: Larry Lv <larrybayarea@gmail.com>
 "
 
 " ╭────────────────────────────────────────────────────────────────────╮
@@ -27,7 +27,7 @@ Plug 'mileszs/ack.vim'
 " linter & lsp & completion
 Plug 'dense-analysis/ale'
 Plug 'larrylv/coc.nvim', {'commit': '7c9ecac53f0c2e0363606d0fdce59a41910c330f'} " own fork that suppress error messages
-Plug 'larrylv/vim-tagimposter'                 " populate the tagstack when using coc to jump to definitions
+Plug 'larrylv/vim-tagimposter' " populate the tagstack when using coc to jump to definitions
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -66,9 +66,9 @@ Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
 Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
 Plug 'Yggdroot/indentLine'              " display the indention levels with thin vertical lines
-" Plug 'mg979/vim-visual-multi'           " Multiple cursors plugin
-" Plug 'puremourning/vimspector'          " A multi-language debugging system for Vim
-" Plug 'folke/which-key.nvim'             " displays a popup with possible keybindings of the command you started typing
+" Plug 'mg979/vim-visual-multi'         " Multiple cursors plugin
+" Plug 'puremourning/vimspector'        " A multi-language debugging system for Vim
+" Plug 'folke/which-key.nvim'           " displays a popup with possible keybindings of the command you started typing
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -77,8 +77,8 @@ Plug 'airblade/vim-gitgutter'  " shows git diff markers in the sign column
 Plug 'rhysd/git-messenger.vim' " <leader>gm to reveal the commit messages under the cursor
 
 " test
-Plug 'vim-test/vim-test'
-Plug 'benmills/vimux' " easily interact with tmux from vim
+Plug 'vim-test/vim-test' " TestNearest, TestFile, TestLast, TestVisit
+Plug 'benmills/vimux'    " easily interact with tmux from vim
 
 " ruby
 Plug 'larrylv/vim-vroom', { 'for': 'ruby' } " run ruby tests using vimux
