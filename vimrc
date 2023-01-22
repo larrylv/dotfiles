@@ -31,12 +31,15 @@ Plug 'larrylv/vim-tagimposter'                 " populate the tagstack when usin
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'              " :TSPlaygroundToggle, :TSHighlightCapturesUnderCursor
+Plug 'nvim-treesitter/nvim-treesitter-context' " show code context
+
 " explorer
 Plug 'larrylv/defx.nvim',  { 'do': ':UpdateRemotePlugins' } " own fork to not open chosen file in existing bufnr
 
 " editing
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'       " :TSPlaygroundToggle, :TSHighlightCapturesUnderCursor
 Plug 'majutsushi/tagbar'                " show tagbar with F2
 Plug 'tpope/vim-obsession'              " record a session with :Obsession
 Plug 'tpope/vim-projectionist'          " alternate files with :AV/:AS
