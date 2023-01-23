@@ -1058,6 +1058,14 @@ let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#show_call_signatures = "0"
 
 
+" ================================= LargeFile ==================================
+" this plugin is located at nvim/lua/after/plugin/LargeFile.vim, and provides
+" three commands on the currently loaded file:
+"   :UnLarge - disable
+"   :Large   - reenable
+"   :Large!  - force enable for small files
+
+
 " ================================= lightline ==================================
 let g:lightline#ale#indicator_checking = "\uf110"
 let g:lightline#ale#indicator_infos = "\uf129"
