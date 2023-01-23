@@ -1663,5 +1663,5 @@ map <leader>vl :VroomRunLastTest<cr>
 
 
 " ================================= private config =============================
-" load private overlay packages
+" load private overlay configs
 call SourceIfExists('~/.config/nvim/layers/private/config.vim')
