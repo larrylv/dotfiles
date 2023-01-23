@@ -1064,6 +1064,7 @@ let g:jedi#show_call_signatures = "0"
 "   :UnLarge - disable
 "   :Large   - reenable
 "   :Large!  - force enable for small files
+let g:LargeFile = 5 " in megabytes
 
 
 " ================================= lightline ==================================

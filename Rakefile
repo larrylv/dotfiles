@@ -34,10 +34,7 @@ task :install do
     end
   end
 
-  system %Q{mkdir -p $HOME/.config/nvim/lua/after/plugin}
-  Dir['nvim/lua/**/*'].each do |file|
-    next if File.directory?(file)
-
+  Dir['nvim/*'].each do |file|
     if File.identical? file, File.join(ENV['HOME'], ".config/#{file}")
       puts "identical ~/.config/#{file}"
     else
