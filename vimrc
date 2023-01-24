@@ -120,6 +120,7 @@ Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
 " markdown
 Plug 'iamcco/markdown-preview.nvim',        { 'for': 'markdown', 'do': 'cd app && yarn install' }
 Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
+Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
 
 " frontend
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
@@ -131,7 +132,6 @@ Plug 'groenewege/vim-less',                 { 'for': 'less' }
 Plug 'tpope/vim-haml',                      { 'for': 'haml' }
 Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
 Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
-Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
 Plug 'tpope/vim-ragtag',                    " A set of mappings for HTML, XML, etc.
 
 " elm
