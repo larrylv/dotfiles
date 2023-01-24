@@ -48,3 +48,9 @@ vim.api.nvim_set_hl(0, "@function.go", { link = "Method" })
 vim.api.nvim_set_hl(0, "@method.go", { link = "Special" })
 vim.api.nvim_set_hl(0, "@namespace.go", { link = "Type" })
 vim.api.nvim_set_hl(0, "@variable.go", { link = "Method" })
+
+-- java highlight customization
+vim.api.nvim_set_hl(0, "@function.java", { link = "Method" })
+vim.api.nvim_set_hl(0, "@method.java", { link = "Special" })
+vim.api.nvim_set_hl(0, "@namespace.java", { link = "Type" })
+vim.api.nvim_set_hl(0, "@variable.java", { link = "Method" })
