@@ -375,6 +375,7 @@ augroup general_config
   autocmd BufNewFile,BufRead Capfile set filetype=ruby syntax=ruby
   autocmd BufNewFile,BufRead pryrc set filetype=ruby syntax=ruby
   autocmd BufNewFile,BufRead *.god set filetype=ruby syntax=ruby
+  autocmd BufNewFile,BufRead *.rbi set filetype=ruby syntax=ruby
   autocmd BufNewFile,BufRead *.less set filetype=css
   autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
   autocmd BufNewFile,BufRead *.coffee set filetype=coffee
