@@ -733,8 +733,8 @@ let g:ctrlp_user_command = {
 " nnoremap <c-]> :CtrlPtjump<cr>
 " vnoremap <c-]> :CtrlPtjumpVisual<cr>
 
-" nnoremap <leader>tp :CtrlPtjump<cr>
-" vnoremap <leader>tp :CtrlPtjumpVisual<cr>
+nnoremap <leader>cj :CtrlPtjump<cr>
+vnoremap <leader>cj :CtrlPtjumpVisual<cr>
 
 
 " ================================= defx =======================================
