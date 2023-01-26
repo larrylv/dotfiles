@@ -1,6 +1,6 @@
 const {workspace, services} = require('coc.nvim')
 
-var EXTENSION_NS = "sorbet";
+var EXTENSION_NS = "sorbet:https";
 
 var SorbetContentProvider = (function () {
   function SorbetContentProvider(lspServices) {
@@ -11,9 +11,17 @@ var SorbetContentProvider = (function () {
     if (this.lspServices === null) {
       this.lspServices = getLspServices()
     }
-    console.log("uri: " + uri + ", token: " + token);
-    console.log("client: " + this.lspServices);
-    return Promise.resolve(this.lspServices.sendRequest("sorbet", "sorbet/readFile", { uri: uri.toString() }, token));
+    // console.log("uri: " + uri + ", token: " + token);
+    // console.log("client: " + this.lspServices);
+    return this.lspServices.sendRequest("sorbet", "sorbet/readFile", { uri: uri.toString() }, token).then(
+      (values) => {
+        return values.text;
+      },
+      (error) => {
+        console.error("sorbet/readFile error: " + error)
+        "";
+      }
+    );
   };
   return SorbetContentProvider;
 }());
