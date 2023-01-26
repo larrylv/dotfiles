@@ -369,19 +369,19 @@ augroup general_config
   highlight PmenuThumb ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
   " Filetype detection
-  autocmd BufNewFile,BufRead Thorfile set filetype=ruby syntax=ruby
-  autocmd BufNewFile,BufRead *.thor set filetype=ruby syntax=ruby
-  autocmd BufNewFile,BufRead Gemfile set filetype=ruby syntax=ruby
-  autocmd BufNewFile,BufRead Capfile set filetype=ruby syntax=ruby
-  autocmd BufNewFile,BufRead pryrc set filetype=ruby syntax=ruby
-  autocmd BufNewFile,BufRead *.god set filetype=ruby syntax=ruby
-  autocmd BufNewFile,BufRead *.rbi set filetype=ruby syntax=ruby
-  autocmd BufNewFile,BufRead *.less set filetype=css
-  autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
-  autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-  autocmd BufNewFile,BufRead *.es6 set filetype=javascript
-  autocmd BufNewFile,BufRead *.go,*.c,*.cpp,*.rust,*.elm setlocal noexpandtab ts=4 sw=4 sts=4
-  autocmd BufNewFile,BufRead *.md setlocal textwidth=80
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter Thorfile set filetype=ruby syntax=ruby
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.thor set filetype=ruby syntax=ruby
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.god set filetype=ruby syntax=ruby
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.rbi set filetype=ruby syntax=ruby
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.less set filetype=css
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.mkd set ai formatoptions=tcroqn2 comments=n:>
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.coffee set filetype=coffee
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.es6 set filetype=javascript
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.go,*.c,*.cpp,*.rust,*.elm setlocal noexpandtab ts=4 sw=4 sts=4
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.md setlocal textwidth=80
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter Gemfile set filetype=ruby syntax=ruby
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter Capfile set filetype=ruby syntax=ruby
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter pryrc set filetype=ruby syntax=ruby
   autocmd Filetype gitcommit setlocal textwidth=78
   autocmd Filetype gitcommit,markdown set colorcolumn=81
 augroup END
