@@ -1537,6 +1537,10 @@ function DisableTreesitter()
     exec 'TSBufDisable rainbow'
   endif
 
+  if exists(':TSContextDisable')
+    exec 'TSContextDisable'
+  endif
+
   set foldmethod=manual
 endfunction
 command! DisableTreesitter call DisableTreesitter()
@@ -1550,6 +1554,10 @@ function EnableTreesitter()
     exec 'TSBufEnable playground'
     exec 'TSBufEnable query_linter'
     exec 'TSBufEnable rainbow'
+  endif
+
+  if exists(':TSContextEnable')
+    exec 'TSContextEnable'
   endif
 
   set foldmethod=expr

@@ -76,6 +76,7 @@ fun! s:LargeFile(force,fname)
       au BufUnload  <buffer>  augroup LargeFileAU|exe 'au! * <buffer>'|augroup END
     augroup END
     let b:LargeFile_mode = 1
+    call DisableTreesitter()
     "   call Decho("turning  b:LargeFile_mode to ".b:LargeFile_mode)
     echomsg "***note*** handling a large file" 
   elseif exists("s:LF_eikeep")
@@ -140,6 +141,7 @@ fun! s:Unlarge()
     unlet b:LF_nmpkeep
   endif
   syn on
+  call EnableTreesitter()
   doau FileType
   augroup LargeFileAU
     au! * <buffer>
