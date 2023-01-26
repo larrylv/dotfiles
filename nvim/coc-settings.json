@@ -1,14 +1,31 @@
 {
   "languageserver": {
-      "golang": {
-        "command": "gopls",
-        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        "filetypes": ["go"],
-        "initializationOptions": {
-          "analyses": { "composites": false }
-        }
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "analyses": { "composites": false }
       }
+    },
+    "sorbet": {
+      "command": "srb",
+      "args": [
+        "tc",
+        "--typed",
+        "true",
+        "--enable-all-experimental-lsp-features",
+        "--lsp"
+      ],
+      "filetypes": ["ruby", "rbi"],
+      "additionalSchemes": ["sorbet:build", "sorbet:https"],
+      "initializationOptions": {
+        "supportsSorbetURIs": true
+      },
+      "rootPatterns": ["sorbet/config"]
+    }
   },
+  "coc.preferences.formatOnSaveFiletypes": ["ruby"],
   "coc.preferences.messageLevel": "error",
   "coc.source.tag.priority": 20,
   "codeLens.enable": true,
