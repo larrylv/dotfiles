@@ -1,6 +1,7 @@
 const {workspace, services} = require('coc.nvim')
 
-var EXTENSION_NS = "sorbet:https";
+var HTTPS_EXTENSION_NS = "sorbet:https";
+var BUILD_EXTENSION_NS = "sorbet:build";
 
 var SorbetContentProvider = (function () {
   function SorbetContentProvider(lspServices) {
@@ -34,18 +35,38 @@ async function getLspServices() {
   }
   if (sorbetLsp.client === null) {
     await new Promise(r => setTimeout(r, 5000));
+    return getLspServices();
   }
 
   await sorbetLsp.client.onReady();
-  console.log("sorbet ready");
   return services;
 }
 
 exports.activate = async context => {
-  context.subscriptions.push(
-    workspace.registerTextDocumentContentProvider(
-      EXTENSION_NS,
-      new SorbetContentProvider(await(getLspServices()))
-    )
-  );
+  var lspServices = await getLspServices()
+
+  if (lspServices != null) {
+    console.log("sorbet ready");
+
+    // manually set the autocmd with `sorbet:build/` because coc always
+    // sets up the autocmd with a `:/` suffix after the scheme, which won't work
+    // for `sorbet:build/${FILE_PATH}` files.
+    let content = `
+augroup coc_sorbet_build_autocmd
+autocmd!
+  autocmd BufReadCmd,FileReadCmd,SourceCmd ${BUILD_EXTENSION_NS}/* call coc#rpc#request('CocAutocmd', ['BufReadCmd','${BUILD_EXTENSION_NS}', expand('<afile>')])
+augroup end`;
+    workspace.nvim.exec(content, false);
+
+    context.subscriptions.push(
+      workspace.registerTextDocumentContentProvider(
+        HTTPS_EXTENSION_NS,
+        new SorbetContentProvider(lspServices)
+      ),
+      workspace.registerTextDocumentContentProvider(
+        BUILD_EXTENSION_NS,
+        new SorbetContentProvider(lspServices)
+      ),
+    );
+  }
 }
