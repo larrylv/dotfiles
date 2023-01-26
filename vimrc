@@ -1526,6 +1526,37 @@ let g:extra_whitespace_ignored_filenames = ['defx', 'unite', '']
 nnoremap <leader>th :TSHighlightCapturesUnderCursor<cr>
 nnoremap <leader>tp :TSPlaygroundToggle<cr>
 
+function DisableTreesitter()
+  if exists(':TSBufDisable')
+    exec 'TSBufDisable autotag'
+    exec 'TSBufDisable highlight'
+    exec 'TSBufDisable incremental_selection'
+    exec 'TSBufDisable indent'
+    exec 'TSBufDisable playground'
+    exec 'TSBufDisable query_linter'
+    exec 'TSBufDisable rainbow'
+  endif
+
+  set foldmethod=manual
+endfunction
+command! DisableTreesitter call DisableTreesitter()
+
+function EnableTreesitter()
+  if exists(':TSBufEnable')
+    exec 'TSBufEnable autotag'
+    exec 'TSBufEnable highlight'
+    exec 'TSBufEnable incremental_selection'
+    exec 'TSBufEnable indent'
+    exec 'TSBufEnable playground'
+    exec 'TSBufEnable query_linter'
+    exec 'TSBufEnable rainbow'
+  endif
+
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+endfunction
+command! EnableTreesitter call EnableTreesitter()
+
 
 " ================================= UltiSnips ==================================
 let g:UltiSnipsExpandTrigger="<c-l>"
