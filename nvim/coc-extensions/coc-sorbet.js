@@ -20,8 +20,12 @@ var SorbetContentProvider = (function () {
 
 async function getLspServices() {
   var sorbetLsp = services.getService("sorbet");
-  if (sorbetLsp === null || sorbetLsp.client === null) {
+
+  if (sorbetLsp === null) {
     return null;
+  }
+  if (sorbetLsp.client === null) {
+    await new Promise(r => setTimeout(r, 5000));
   }
 
   await sorbetLsp.client.onReady();
