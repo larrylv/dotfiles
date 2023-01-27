@@ -44,19 +44,19 @@
   sb                       = show-branch
   show-next                = !git show `git rev-list HEAD..master | tail -1`
   show-prev                = !git show @^
+  st                       = status
+  uncommit                 = !git reset --soft HEAD^ && git reset HEAD .
+  unhide                   = update-index --no-assume-unchanged
+  unstage                  = reset HEAD .
   # ss                       = stash save
   # sl                       = stash list -p --color
   # sp                       = status --porcelain
-  st                       = status
   # standup                  = shortlog --since=yesterday
   # svn-pb                   = svn rebase
   # svn-ps                   = svn dcommit
   # svn-pull                 = svn fetch
   # svn-push                 = svn dcommit
   # today                    = shortlog --since=midnight
-  uncommit                 = !git reset --soft HEAD^ && git reset HEAD .
-  unhide                   = update-index --no-assume-unchanged
-  unstage                  = reset HEAD .
   # wdiff                    = diff --word-diff
   who                      = shortlog -s -n --no-merges
 [color]
