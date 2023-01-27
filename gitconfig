@@ -10,30 +10,28 @@
   br                       = branch
   bv                       = branch -vv --color
   changes                  = diff --stat -r
-  c                        = !git checkout $(git branch | fzf| tr -d '[:space:]' | tr -d '*')
+  # checkout a branch without typing its name by using fzf
+  cf                        = !git checkout $(git branch | fzf| tr -d '[:space:]' | tr -d '*')
   ci                       = commit
   ca                       = commit --amend
-  cc                       = commit --amend -C HEAD
   cleanup                  = "!git branch --no-color --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d && git remote prune origin && git prune && :"
   co                       = checkout
   conflicts                = diff --name-only --diff-filter=U
-  dc                       = diff --cached
   delete                   = !git ls-files -z --deleted | xargs -0 git rm
   done                     = "!f() { ([ `git rev-parse --abbrev-ref HEAD` == 'master' ] || git checkout master) && git branch -D @{-1}; }; f"
-  dt                       = difftool
-  fa                       = fetch --all
   files-since              = "!git diff --name-only $(git merge-base HEAD $1) | xargs ls 2>/dev/null && :"
   files-since-master       = "!git files-since origin/master && :"
-  fp                       = fetch -p --all
+  follow                   = log -n 10 --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --full-history --follow -- 
   hide                     = update-index --assume-unchanged
   ignored                  = !git ls-files -v | grep "^[[:lower:]]"
   last                     = log -n 1 -p --color
+  # list all branches with their last commit
   lb                       = for-each-ref --sort='-authordate:iso8601' --format='%(if)%(HEAD)%(then)* %(else)  %(end)%(if)%(HEAD)%(then)%(color:red)%(refname:short)%(color:reset)%(else)%(color:cyan)%(refname:short)%(end)%(color:reset) - %(subject)%(color:green)%(align:16,left)(%(authordate:relative))%(color:reset)%(end)' refs/heads
-  lg                       = log -n 10 --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  # last 5 commits with changed files
+  lf                       = log --decorate --pretty=oneline --abbrev-commit --name-status --color -n 5
+  # last 10 commits without changed files
+  lg                       = log --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -n 10 
   ls-ignored               = ls-files --exclude-standard --ignored --others
-  mf                       = merge --no-ff
-  minimal-diff-with        = "! git files-since $1 | xargs git diff -w $(git merge-base HEAD $1)..HEAD && :"
-  minimal-diff-with-master = "! git minimal-diff-with origin/master && :"
   news                     = log -p HEAD@{1}..HEAD@{0}
   next                     = !git checkout `git rev-list HEAD..master | tail -1`
   pb                       = pull --rebase
@@ -41,34 +39,26 @@
   pl                       = pull
   prev                     = checkout @^
   ps                       = push
-  pushall                  = push --recurse-submodules=on-demand
   rbm                      = !sh -c 'git fetch origin && git rebase -i origin/master' -
   rbu                      = !sh -c 'git fetch upstream && git rebase -i upstream/master' -
   sb                       = show-branch
   show-next                = !git show `git rev-list HEAD..master | tail -1`
   show-prev                = !git show @^
-  ss                       = stash save
-  sl                       = stash list -p --color
-  sp                       = status --porcelain
+  # ss                       = stash save
+  # sl                       = stash list -p --color
+  # sp                       = status --porcelain
   st                       = status
-  standup                  = shortlog --since=yesterday
-  svn-pb                   = svn rebase
-  svn-ps                   = svn dcommit
-  svn-pull                 = svn fetch
-  svn-push                 = svn dcommit
-  today                    = shortlog --since=midnight
-  tree                     = log --graph --decorate --pretty=oneline --abbrev-commit --name-status
+  # standup                  = shortlog --since=yesterday
+  # svn-pb                   = svn rebase
+  # svn-ps                   = svn dcommit
+  # svn-pull                 = svn fetch
+  # svn-push                 = svn dcommit
+  # today                    = shortlog --since=midnight
   uncommit                 = !git reset --soft HEAD^ && git reset HEAD .
   unhide                   = update-index --no-assume-unchanged
   unstage                  = reset HEAD .
-  wdiff                    = diff --word-diff
+  # wdiff                    = diff --word-diff
   who                      = shortlog -s -n --no-merges
-  change                   = codereview change
-  gofmt                    = codereview gofmt
-  mail                     = codereview mail
-  pending                  = codereview pending
-  submit                   = codereview submit
-  sync                     = codereview sync
 [color]
   ui          = auto
   diff        = auto
