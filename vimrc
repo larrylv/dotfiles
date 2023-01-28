@@ -407,10 +407,6 @@ map <C-w><C-\> <C-w><C-p>
 " Clear last search (Ctrl-n, ,h)
 map <silent> <C-n> <Esc>:nohlsearch<cr>
 
-" Remap keys for auto-completion menu
-inoremap <expr><tab>  pumvisible() ? "\<C-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
-
 " Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
@@ -630,8 +626,22 @@ let g:coc_snippet_next = '<tab>'
 " Disable transparent cursor when CocList is activated.
 let g:coc_disable_transparent_cursor = 1
 
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <silent><expr> <c-n> coc#refresh()
+inoremap <silent><expr> <C-n>
+  \ coc#pum#visible() ? coc#pum#next(1) : "\<C-n>"
+inoremap <silent><expr> <C-p>
+  \ coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
+inoremap <silent><expr> <CR>
+  \ coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <silent><expr> <TAB>
+  \ coc#pum#visible() ? coc#pum#next(1) :
+  \ pumvisible() ? "\<C-n>" :
+  \ "\<tab>"
+inoremap <silent><expr> <S-TAB>
+  \ coc#pum#visible() ? coc#pum#prev(1) :
+  \ pumvisible() ? "\<C-p>" :
+  \ "\<s-tab>"
+inoremap <silent><expr> <C-space>
+  \ coc#refresh()
 
 " coc will install missing extensions after coc.nvim service starts.
 let g:coc_global_extensions = [
