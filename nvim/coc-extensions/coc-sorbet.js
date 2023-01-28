@@ -36,7 +36,7 @@ async function getLspServices() {
     return null;
   }
   if (sorbetLsp.client === null) {
-    await new Promise(r => setTimeout(r, 5000));
+    await new Promise(r => setTimeout(r, 1000));
     return getLspServices();
   }
 

@@ -25,7 +25,7 @@
       "rootPatterns": ["sorbet/config"]
     }
   },
-  "coc.preferences.formatOnSaveFiletypes": ["ruby"],
+  "coc.preferences.formatOnSave": true,
   "coc.preferences.messageLevel": "error",
   "coc.source.tag.priority": 20,
   "codeLens.enable": true,
