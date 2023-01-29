@@ -2,10 +2,19 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"],
+      "rootPatterns": [
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "go"
+      ],
       "initializationOptions": {
-        "analyses": { "composites": false }
+        "analyses": {
+          "composites": false
+        }
       }
     },
     "sorbet": {
@@ -17,16 +26,25 @@
         "--enable-all-experimental-lsp-features",
         "--lsp"
       ],
-      "filetypes": ["ruby", "rbi"],
-      "additionalSchemes": ["sorbet:build", "sorbet:https"],
+      "filetypes": [
+        "ruby",
+        "rbi"
+      ],
+      "additionalSchemes": [
+        "sorbet:build",
+        "sorbet:https"
+      ],
       "initializationOptions": {
         "supportsSorbetURIs": true
       },
-      "rootPatterns": ["sorbet/config"]
+      "rootPatterns": [
+        "sorbet/config"
+      ]
     }
   },
   "coc.preferences.formatOnSave": true,
   "coc.preferences.messageLevel": "error",
+  "coc.preferences.willSaveHandlerTimeout": 2000,
   "coc.source.tag.priority": 20,
   "codeLens.enable": true,
   "diagnostic.displayByAle": true,
@@ -46,13 +64,13 @@
     "<C-p>": "normal:k"
   },
   "metals.statusBarEnabled": true,
-  "notification.disabledProgressSources": ["*"],
+  "notification.disabledProgressSources": [
+    "*"
+  ],
   "rust-analyzer.lens.debug.enable": false,
   "rust-analyzer.lens.run.enable": false,
-  "suggest.enablePreview": true,
-  "suggest.floatEnable": true,
+  "suggest.enableFloat": true,
   "suggest.maxCompleteItemCount": 20,
   "suggest.minTriggerInputLength": 0,
   "suggest.snippetIndicator": ""
 }
-
