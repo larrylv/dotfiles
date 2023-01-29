@@ -687,6 +687,8 @@ nnoremap <silent> <leader>lt :<C-u> TagImposterAnticipateJump <Bar> call CocActi
 nmap <silent> <leader>lf <Plug>(coc-references)
 " jump to declaration(s) of current symbol
 nmap <silent> <leader>lc <Plug>(coc-declaration)
+" jump to type definition(s) of current symbol
+nmap <silent> <leader>ly <Plug>(coc-type-definition)
 " jump to implementation(s) of current symbol
 nmap <silent> <leader>li <Plug>(coc-implementation)
 " rename symbol under cursor
