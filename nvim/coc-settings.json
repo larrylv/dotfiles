@@ -70,7 +70,9 @@
   "rust-analyzer.lens.debug.enable": false,
   "rust-analyzer.lens.run.enable": false,
   "suggest.enableFloat": true,
+  "suggest.enablePreselect": false,
   "suggest.maxCompleteItemCount": 20,
   "suggest.minTriggerInputLength": 0,
+  "suggest.noselect": true,
   "suggest.snippetIndicator": ""
 }
