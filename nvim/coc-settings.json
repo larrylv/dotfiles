@@ -18,6 +18,7 @@
       }
     },
     "sorbet": {
+      "enable": false,
       "command": "srb",
       "args": [
         "tc",
