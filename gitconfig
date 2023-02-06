@@ -26,7 +26,7 @@
   ignored                  = !git ls-files -v | grep "^[[:lower:]]"
   last                     = log -n 1 -p --color
   # list all branches with their last commit
-  lb                       = for-each-ref --sort='-authordate:iso8601' --format='%(if)%(HEAD)%(then)* %(else)  %(end)%(if)%(HEAD)%(then)%(color:red)%(refname:short)%(color:reset)%(else)%(color:cyan)%(refname:short)%(end)%(color:reset) - %(subject)%(color:green)%(align:16,left)(%(authordate:relative))%(color:reset)%(end)' refs/heads
+  lb                       = for-each-ref --sort='-authordate:iso8601' --format='%(if)%(HEAD)%(then)* %(else)  %(end)%(if)%(HEAD)%(then)%(color:red)%(refname:short)%(color:reset)%(else)%(color:cyan)%(refname:short)%(end)%(color:reset) - %(subject)%(color:green) %(align:16,left)(%(authordate:relative))%(color:reset)%(end)' refs/heads
   # last 5 commits with changed files
   lf                       = log --decorate --pretty=oneline --abbrev-commit --name-status --color -n 5
   # last 10 commits without changed files
