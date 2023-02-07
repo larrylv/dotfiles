@@ -40,7 +40,7 @@ Plug 'nvim-treesitter/nvim-treesitter-context' " show code context
 Plug 'larrylv/defx.nvim',  { 'do': ':UpdateRemotePlugins' } " own fork to not open chosen file in existing bufnr
 
 " editing
-Plug 'majutsushi/tagbar'                " show tagbar with F2
+Plug 'liuchengxu/vista.vim'             " Viewer & Finder for LSP symbols and tags
 Plug 'tpope/vim-obsession'              " record a session with :Obsession
 Plug 'tpope/vim-projectionist'          " alternate files with :AV/:AS
 Plug 'tpope/vim-surround'               " cs`' to change `` to '', etc
@@ -66,6 +66,7 @@ Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
 Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
 Plug 'Yggdroot/indentLine'              " display the indention levels with thin vertical lines
+" Plug 'majutsushi/tagbar'              " show tagbar with F2
 " Plug 'mg979/vim-visual-multi'         " Multiple cursors plugin
 " Plug 'puremourning/vimspector'        " A multi-language debugging system for Vim
 " Plug 'folke/which-key.nvim'           " displays a popup with possible keybindings of the command you started typing
@@ -291,9 +292,6 @@ endif
 
 augroup general_config
   autocmd!
-
-  " Toggle Tagbar (<F2>)
-  nnoremap <F2> :TagbarToggle<cr>
 
   " Adjust window height
   au FileType qf call AdjustWindowHeight(3, 10)
@@ -663,15 +661,15 @@ let g:coc_global_extensions = [
 " this is commented out because vim-go already does this
 " autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
-function! ToggleOutline() abort
-  let winid = coc#window#find('cocViewId', 'OUTLINE')
-  if winid == -1
-    call CocActionAsync('showOutline')
-  else
-    call coc#window#close(winid)
-  endif
-endfunction
-autocmd FileType go nnoremap <F2> :call ToggleOutline()<cr>
+" function! ToggleOutline() abort
+"   let winid = coc#window#find('cocViewId', 'OUTLINE')
+"   if winid == -1
+"     call CocActionAsync('showOutline')
+"   else
+"     call coc#window#close(winid)
+"   endif
+" endfunction
+" autocmd FileType go nnoremap <F2> :call ToggleOutline()<cr>
 
 function! g:CocShowDocumentation()
   " supports jumping to vim documentation as well using built-ins.
@@ -1173,6 +1171,10 @@ function! MyReadonly()
 endfunction
 
 function! MyWinnr()
+  if winwidth(0) <= 60
+    return ''
+  endif
+
   let fname = expand('%:t')
   let nr = winnr()
   return fname == 'ControlP' ? '' : "\uf77a " . nr
@@ -1183,6 +1185,7 @@ function! GetFilename(fname)
   let ufname = fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ (
         \   fname =~ 'Tagbar' ? 'Tagbar' :
+        \   fname =~ '__vista__' ? '' :
         \   fname =~ 'CocTree' ? 'CocTree' :
         \   fname =~ '__Gundo\|NERD_tree\|\[defx\]' ? 'Explorer' :
         \   fname =~ ';#FZF' ? '[FZF]' :
@@ -1243,6 +1246,7 @@ function! MyCocStatus()
   return fname == 'ControlP' ? '' :
       \ (
       \   fname =~ 'Tagbar' ? '' :
+      \   fname =~ '__vista__' ? '' :
       \   fname =~ 'CocTree' ? '' :
       \   fname =~ 'Explorer' ? '' :
       \   fname =~ '\[FZF\]' ? '' :
@@ -1252,6 +1256,10 @@ function! MyCocStatus()
 endfunction
 
 function! MyFilename()
+  if winwidth(0) <= 60
+    return ''
+  endif
+
   let fname = expand('%:t')
   return GetFilename(fname) .
         \  ('' != MyReadonly() ? ' ' . MyReadonly() : '') .
@@ -1276,7 +1284,7 @@ endfunction
 
 function! MyFugitive()
   try
-    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD\|\[defx\]' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD\|\[defx\]\|__vista__' && &ft !~? 'vimfiler' && exists('*fugitive#head')
       let mark = '⭠ '  " edit here for cool mark
       let _ = fugitive#head()
       return strlen(_) ? mark._ : ''
@@ -1305,6 +1313,7 @@ function! MyMode()
   endif
 
   return fname =~ 'Tagbar' ? 'Outline' :
+        \ fname == '__vista__' ? 'Outline' :
         \ fname =~ 'CocTree' ? 'Outline' :
         \ fname == 'ControlP' ? 'CtrlP' :
         \ fname == '__Gundo__' ? 'Gundo' :
@@ -1337,13 +1346,6 @@ function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
 endfunction
 
 function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
-endfunction
-
-let g:tagbar_status_func = 'TagbarStatusFunc'
-
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
   return lightline#statusline(0)
 endfunction
 
@@ -1504,39 +1506,49 @@ let g:startify_change_to_dir = 0
 
 
 " ================================= tagbar =====================================
-let g:tagbar_sort = 1
-let g:tagbar_iconchars = ['+', '-']
-let g:tagbar_show_linenumbers=1
-if executable('ripper-tags')
-  " Configure Tagbar to user ripper-tags with ruby
-  let g:tagbar_type_ruby = {
-      \ 'kinds' : [
-          \ 'm:modules',
-          \ 'c:classes',
-          \ 'f:methods',
-          \ 'F:singleton methods',
-          \ 'C:constants',
-          \ 'a:aliases'
-      \ ],
-      \ 'ctagsbin':  'ripper-tags',
-      \ 'ctagsargs': '--fields=+n -f -'
-  \ }
-endif
-let g:tagbar_type_elixir = {
-    \ 'ctagstype': 'elixir',
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'f:functions',
-        \ 'c:callbacks',
-        \ 'd:delegates',
-        \ 'e:exceptions',
-        \ 'i:implementations',
-        \ 'a:macros',
-        \ 'o:operators',
-        \ 'p:protocols',
-        \ 'r:records',
-    \ ]
-\ }
+" " Toggle Tagbar (<F2>)
+" nnoremap <F2> :TagbarToggle<cr>
+" let g:tagbar_sort = 1
+" let g:tagbar_iconchars = ['+', '-']
+" let g:tagbar_show_linenumbers=1
+" if executable('ripper-tags')
+"   " Configure Tagbar to user ripper-tags with ruby
+"   let g:tagbar_type_ruby = {
+"       \ 'kinds' : [
+"           \ 'm:modules',
+"           \ 'c:classes',
+"           \ 'f:methods',
+"           \ 'F:singleton methods',
+"           \ 'C:constants',
+"           \ 'a:aliases'
+"       \ ],
+"       \ 'ctagsbin':  'ripper-tags',
+"       \ 'ctagsargs': '--fields=+n -f -'
+"   \ }
+" endif
+" let g:tagbar_type_elixir = {
+"     \ 'ctagstype': 'elixir',
+"     \ 'kinds' : [
+"         \ 'm:modules',
+"         \ 'f:functions',
+"         \ 'c:callbacks',
+"         \ 'd:delegates',
+"         \ 'e:exceptions',
+"         \ 'i:implementations',
+"         \ 'a:macros',
+"         \ 'o:operators',
+"         \ 'p:protocols',
+"         \ 'r:records',
+"     \ ]
+" \ }
+" let g:tagbar_status_func = 'TagbarStatusFunc'
+"
+" function! TagbarStatusFunc(current, sort, fname, ...) abort
+"     let g:lightline.fname = a:fname
+"   return lightline#statusline(0)
+" endfunction
+
+
 
 
 " ================================= trailing-whitespace ========================
@@ -1713,6 +1725,15 @@ autocmd FileType go call SetupMapForVimuxGolang()
 " let g:VM_maps["Add Cursor Down"]    = '<C-Down>' " iTerm2: Send Escape Sequence + [1;5B
 " let g:VM_maps["Add Cursor Up"]      = '<C-Up>'   " iTerm2: Send Escape Sequence + [1;5A
 " let g:VM_maps['Motion ,']           = ',,'
+
+
+" ================================= vista ======================================
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'coc'
+let g:vista#renderer#enable_icon = 0
+" Toggle Tagbar (<F2>)
+nnoremap <F2> :Vista!!<cr>
 
 
 " ================================= vroom ======================================
