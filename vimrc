@@ -1171,10 +1171,6 @@ function! MyReadonly()
 endfunction
 
 function! MyWinnr()
-  if winwidth(0) <= 60
-    return ''
-  endif
-
   let fname = expand('%:t')
   let nr = winnr()
   return fname == 'ControlP' ? '' : "\uf77a " . nr
