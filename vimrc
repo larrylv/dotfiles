@@ -643,12 +643,21 @@ inoremap <silent><expr> <S-TAB>
 inoremap <silent><expr> <C-space>
   \ coc#refresh()
 
-" coc will install missing extensions after coc.nvim service starts.
+function! SetupSwitchSourceHeaderForClangd()
+  " switch between source/header files
+  nnoremap <leader>ch :CocCommand clangd.switchSourceHeader<cr>
+endfunction
+autocmd FileType c,cpp,objc,objcpp call SetupSwitchSourceHeaderForClangd()
+
+" NOTE: clangd requires a `compile_commands.json` in the codebase root directory.
+" For example, here is how to generate that file for mongo codebase:
+" $ pip3 install scons==3.1.1; scons-3.1.1 compiledb
 let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-omni',
   \ 'coc-rust-analyzer',
   \ 'coc-tag',
+  \ 'coc-clangd',
   \ ]
 
 " this is commented out because vim-go already does this
@@ -1198,7 +1207,8 @@ function! CurrentLspStatus(cocstatus)
       \   &ft == 'rust' ? 'rust-analyzer' :
       \   &ft == 'scala' ? 'metals' :
       \   &ft =~ 'typescript\|typescriptreact\|typescript.tsx\|typescript.jsx\|javascript\|javascriptreact\|javascript.jsx' ? 'tsserver' :
-      \   &ft == 'json' ? 'json' : ''
+      \   &ft == 'json' ? 'json' :
+      \   &ft =~ '^c$\|cpp\|objc\|objcpp' ? 'clangd' : ''
       \ )
 
   if len(lsp) == 0

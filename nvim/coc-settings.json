@@ -43,6 +43,8 @@
       ]
     }
   },
+  "clangd.disableFileStatus": true,
+  "clangd.disableProgressNotifications": true,
   "coc.preferences.formatOnSave": true,
   "coc.preferences.messageLevel": "error",
   "coc.preferences.willSaveHandlerTimeout": 2000,
