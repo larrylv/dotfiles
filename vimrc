@@ -309,7 +309,7 @@ augroup general_config
   " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
   function! ResCur()
     let filetype = &ft
-    if (line("'\"") <= line("$") && filetype != 'gitcommit')
+    if (line("'\"") <= line("$") && filetype != 'gitcommit' && filetype != 'gitrebase')
       silent! normal! g`"
       return 1
     endif
@@ -380,8 +380,8 @@ augroup general_config
   autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter Gemfile set filetype=ruby syntax=ruby
   autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter Capfile set filetype=ruby syntax=ruby
   autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter pryrc set filetype=ruby syntax=ruby
-  autocmd Filetype gitcommit setlocal textwidth=78
-  autocmd Filetype gitcommit,markdown set colorcolumn=81
+  autocmd Filetype gitcommit,gitrebase setlocal textwidth=78
+  autocmd Filetype gitcommit,gitrebase,markdown set colorcolumn=81
 augroup END
 
 
@@ -702,6 +702,9 @@ nmap <silent> <leader>li <Plug>(coc-implementation)
 nmap <silent> <leader>lr <Plug>(coc-rename)
 " show documentation of current symbol
 nnoremap <silent> K :call CocShowDocumentation()<cr>
+
+" disable coc in git commit message
+autocmd Filetype gitcommit,gitrebase let b:coc_enabled=0
 
 " redraw the status line when coc#status changes
 augroup AutoCocStatus
