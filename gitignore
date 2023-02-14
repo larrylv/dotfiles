@@ -73,3 +73,5 @@ pom.xml.asc
 
 # scala
 .metals
+
+.cache
