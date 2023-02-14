@@ -30,7 +30,7 @@
   # last 5 commits with changed files
   lf                       = log --decorate --pretty=oneline --abbrev-commit --name-status --color -n 5
   # last 10 commits without changed files
-  lg                       = log --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -n 10 
+  lg                       = log --pretty=format:'%Cred%H%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --date=relative -n 10 
   ls-ignored               = ls-files --exclude-standard --ignored --others
   news                     = log -p HEAD@{1}..HEAD@{0}
   next                     = !git checkout `git rev-list HEAD..master | tail -1`
