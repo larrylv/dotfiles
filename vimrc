@@ -1106,7 +1106,7 @@ let g:lightline = {
       \     [ 'ctrlpmark' ],
       \   ],
       \   'right': [
-      \     [ 'percent', 'lineinfo' ],
+      \     [ 'lineinfo' ],
       \     [ 'winnr' ],
       \     [ 'filetype' ],
       \   ]
