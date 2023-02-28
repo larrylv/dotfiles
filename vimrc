@@ -703,8 +703,8 @@ nmap <silent> <leader>lr <Plug>(coc-rename)
 " show documentation of current symbol
 nnoremap <silent> K :call CocShowDocumentation()<cr>
 
-" disable coc in git commit message
-autocmd Filetype gitcommit,gitrebase let b:coc_enabled=0
+" disable coc in git commit message and gitconfig
+autocmd Filetype gitcommit,gitrebase,gitconfig let b:coc_enabled=0
 
 " redraw the status line when coc#status changes
 augroup AutoCocStatus
