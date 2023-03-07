@@ -57,6 +57,7 @@
   "list.previewSplitRight": true,
   "list.previewToplineStyle": "middle",
   "list.normalMappings": {
+    "p": "do:previewtoggle",
     "v": "action:vsplit",
     "<C-v>": "action:vsplit",
     "<C-d>": "action:split",
