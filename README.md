@@ -71,4 +71,7 @@ brew install autojump automake bash-completion bat ccat cloc \
 brew install --cask diffmerge
 
 gem install tmuxinator
+
+# fix gitgutter `too many files` error
+sudo launchctl limit maxfiles 10240 200000
 ```

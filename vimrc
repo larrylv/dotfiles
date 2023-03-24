@@ -1054,6 +1054,7 @@ xnoremap <silent> <leader>tg y:Tags <C-R>"<cr>"
 " ================================= gitgutter ==================================
 call gitgutter#highlight#define_highlights()
 let g:gitgutter_max_signs = 1024
+let g:gitgutter_git_executable = '/usr/bin/git'
 set signcolumn=yes
 
 map <leader>ga :GitGutterStageHunk<cr>
