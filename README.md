@@ -74,4 +74,6 @@ gem install tmuxinator
 
 # fix gitgutter `too many files` error
 sudo launchctl limit maxfiles 10240 200000
+# or make the change permanent
+https://apple.stackexchange.com/questions/381999/how-to-make-sudo-launchctl-limit-change-permanent
 ```
