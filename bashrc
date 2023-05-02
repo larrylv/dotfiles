@@ -7,6 +7,7 @@ if [[ $(/usr/bin/uname -m) == "arm64" ]]; then
     export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
     export HOMEBREW_REPOSITORY="/opt/homebrew";
     export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/python/bin${PATH+:$PATH}";
+    export LIBRARY_PATH="${LIBRARY_PATH}:/opt/homebrew/lib";
     export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
   fi
@@ -16,6 +17,7 @@ else
     export HOMEBREW_CELLAR="/usr/local/Cellar";
     export HOMEBREW_REPOSITORY="/opt/homebrew";
     export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt/python/bin:$PATH"
+    export LIBRARY_PATH="${LIBRARY_PATH}:/usr/local/lib";
     export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
   fi
