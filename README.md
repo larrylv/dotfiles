@@ -76,8 +76,4 @@ gem install tmuxinator
 sudo launchctl limit maxfiles 10240 200000
 # or make the change permanent
 https://apple.stackexchange.com/questions/381999/how-to-make-sudo-launchctl-limit-change-permanent
-
-# gopls v0.11.0 has an issue with coc.nvim
-# https://github.com/golang/go/issues/59635
-go install golang.org/x/tools/gopls@v0.10.1
 ```
