@@ -1636,14 +1636,6 @@ let g:go_def_mode = 'godef'
 let g:go_info_mode = 'guru'
 let g:go_referrers_mode = 'guru'
 
-function! s:go_guru_scope_from_git_root()
-  let gitroot = system("git rev-parse --show-toplevel | tr -d '\n'")
-  let pattern = escape(go#util#gopath() . "/src/", '\ /')
-  return substitute(gitroot, pattern, "", "") . "/... -vendor/"
-endfunction
-
-au FileType go silent exe "GoGuruScope " . s:go_guru_scope_from_git_root()
-
 function! SetupMapForVimGo()
   function! s:build_go_files()
     let l:file = expand('%')
