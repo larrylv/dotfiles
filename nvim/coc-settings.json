@@ -67,6 +67,7 @@
     "<C-k>": "normal:k",
     "<C-p>": "normal:k"
   },
+  "metals.superMethodLensesEnabled": false,
   "metals.statusBarEnabled": true,
   "notification.disabledProgressSources": [
     "*"
