@@ -661,6 +661,7 @@ let g:coc_global_extensions = [
   \ 'coc-rust-analyzer',
   \ 'coc-tag',
   \ 'coc-clangd',
+  \ 'coc-metals',
   \ ]
 
 " this is commented out because vim-go already does this
