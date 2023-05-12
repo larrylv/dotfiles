@@ -67,6 +67,7 @@ pom.xml.asc
 # Intellij
 .idea
 *.iml
+.ijwb
 
 # VSCode
 *.code-workspace
