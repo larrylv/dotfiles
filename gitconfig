@@ -77,6 +77,7 @@
   preloadindex        = true
   fsmonitor           = true
   deltabasecachelimit = 4g
+  sshCommand          = ssh -i ~/.ssh/id_rsa
 [diff]
   compaction-heuristic = true
   colorMoved = zebra
