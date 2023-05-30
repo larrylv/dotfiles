@@ -121,8 +121,8 @@ Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
 
 " markdown
 Plug 'iamcco/markdown-preview.nvim',        { 'for': 'markdown', 'do': 'cd app && yarn install' }
-Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
 Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
+Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
 
 " frontend
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
@@ -366,6 +366,12 @@ augroup general_config
   highlight Pmenu ctermfg=lightgray ctermbg=black cterm=NONE
   highlight PmenuSbar ctermfg=darkcyan ctermbg=lightgray cterm=NONE
   highlight PmenuThumb ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+
+  " Neovim allows customizing `syn sync minlines` with this variable. We also
+  " need to manually add `execute 'syntax sync fromstart'` to
+  " `MarkdownRefreshSyntax` in vim-markdown/ftplugin/markdown.vim since it has
+  " a weird save & restore behavior for other filetypes.
+  let g:markdown_minlines=10000
 
   " Filetype detection
   autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter Thorfile set filetype=ruby syntax=ruby
