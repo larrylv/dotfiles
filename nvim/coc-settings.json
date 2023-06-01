@@ -14,7 +14,8 @@
       "initializationOptions": {
         "analyses": {
           "composites": false
-        }
+        },
+        "subdirWatchPatterns": "auto"
       }
     },
     "sorbet": {
