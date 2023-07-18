@@ -1,5 +1,8 @@
 set editor-line-number = yes
 
+# Limit number of commits loaded by default to 1000
+set main-options = -n 1000
+
 bind status P !git push
 bind status A !git commit --amend
 set refresh-mode = auto
