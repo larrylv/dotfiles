@@ -89,9 +89,9 @@
   logOutputEncoding = utf8
 [includeIf "gitdir:~/stripe/"]
   path = .gitconfig.work
-[includeIf "gitdir:~/stripe-b/"]
-  path = .gitconfig.work
 [includeIf "gitdir:*/stripe-internal/"]
+  path = .gitconfig.work
+[includeIf "gitdir:/pay/src/"]
   path = .gitconfig.work
 [merge]
   tool          = vimdiff
