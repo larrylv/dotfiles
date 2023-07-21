@@ -1,8 +1,8 @@
 require 'rake'
 
-desc "install the dot files into user's home directory"
+desc "install the dotfiles into user's home directory"
 task :install do
-  replace_all = false
+  replace_all = ENV["REPLACE_ALL"] == "true"
   non_config_files = %w{Rakefile README.md LICENSE Session.vim}
 
   Dir['*'].each do |file|
@@ -14,6 +14,8 @@ task :install do
         puts "identical ~/.#{file}"
       elsif replace_all
         replace_file(file)
+      elsif ENV["SKIP_EXISTING"] == "true"
+        continue
       else
         print "overwrite ~/.#{file}? [ynaq]"
         case $stdin.gets.chomp

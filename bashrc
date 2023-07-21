@@ -162,7 +162,7 @@ if which nodeenv > /dev/null; then eval "$(nodeenv init -)"; fi
 # See https://github.com/syndbg/goenv/issues/72
 export GOENV_DISABLE_GOPATH=1
 export GOENV_ROOT="$HOME/.goenv"
-export GOROOT="$(goenv prefix)"
+if which goenv > /dev/null; then export GOROOT="$(goenv prefix)"; fi
 export PATH="$GOENV_ROOT/bin:$PATH"
 if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 
@@ -342,5 +342,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="./node_modules/.bin:$PATH"
+
+if [ -d $HOME/.local/bin ]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
 
 [[ -d $HOME/.cargo ]] && [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
