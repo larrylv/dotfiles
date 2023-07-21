@@ -15,7 +15,7 @@ task :install do
       elsif replace_all
         replace_file(file)
       elsif ENV["SKIP_EXISTING"] == "true"
-        continue
+        next
       else
         print "overwrite ~/.#{file}? [ynaq]"
         case $stdin.gets.chomp
