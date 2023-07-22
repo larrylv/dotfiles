@@ -3,7 +3,7 @@ require 'rake'
 desc "install the dotfiles into user's home directory"
 task :install do
   replace_all = ENV["REPLACE_ALL"] == "true"
-  non_config_files = %w{Rakefile README.md LICENSE Session.vim}
+  non_config_files = %w{Rakefile README.md LICENSE Session.vim linux_setup.sh}
 
   Dir['*'].each do |file|
     next if non_config_files.include? file
