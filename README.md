@@ -36,7 +36,7 @@ pyenv install 3.8.13
 pip3 install --user pynvim
 
 brew install neovim
-nvim +PlugInstall +UpdateRemotePlugins +qall
+nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 
 gem install ripper-tags
 brew install fd fzf universal-ctags ripgrep rust
@@ -49,6 +49,8 @@ cargo install proximity-sort
 
 ```
 brew install tmux
+
+gem install tmuxinator
 ```
 
 https://github.com/tmux-plugins/tpm#installation
@@ -69,8 +71,6 @@ brew install autojump automake bash-completion bat ccat cloc \
   tmuxinator-completion trash tree tree-sitter urlview watchman webpack
 
 brew install --cask diffmerge
-
-gem install tmuxinator
 
 # fix gitgutter `too many files` error
 sudo launchctl limit maxfiles 10240 200000
