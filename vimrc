@@ -74,7 +74,7 @@ Plug 'Yggdroot/indentLine'              " display the indention levels with thin
 
 " git
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb', { 'commit': '2590324d7fdaf0c6311fad4ee2a2878acaaec42d' } " Gbrowse
+Plug 'tpope/vim-rhubarb'       " Gbrowse
 Plug 'airblade/vim-gitgutter'  " shows git diff markers in the sign column
 Plug 'rhysd/git-messenger.vim' " <leader>gm to reveal the commit messages under the cursor
 
