@@ -26,8 +26,8 @@ Plug 'mileszs/ack.vim'
 
 " linter & lsp & completion & copilot
 Plug 'dense-analysis/ale'
-Plug 'larrylv/coc.nvim'        " my own fork that suppress error messages
-Plug 'larrylv/vim-tagimposter' " populate the tagstack when using coc to jump to definitions
+Plug 'larrylv/coc.nvim', {'branch': 'release'} " my own fork that suppress error messages
+Plug 'larrylv/vim-tagimposter'                 " populate the tagstack when using coc to jump to definitions
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'github/copilot.vim'
@@ -38,7 +38,7 @@ Plug 'nvim-treesitter/playground'              " :TSPlaygroundToggle, :TSHighlig
 Plug 'nvim-treesitter/nvim-treesitter-context' " show code context
 
 " explorer
-Plug 'larrylv/defx.nvim',  { 'do': ':UpdateRemotePlugins' } " own fork to not open chosen file in existing bufnr
+Plug 'larrylv/defx.nvim',  { 'do': ':UpdateRemotePlugins' } " my own fork to not open chosen file in the existing bufnr
 
 " editing
 Plug 'liuchengxu/vista.vim'             " Viewer & Finder for LSP symbols and tags
