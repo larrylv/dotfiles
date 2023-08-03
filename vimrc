@@ -120,7 +120,7 @@ Plug 'fisadev/vim-isort',                   { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
 
 " markdown
-Plug 'iamcco/markdown-preview.nvim',        { 'for': 'markdown', 'do': 'cd app && yarn install' }
+Plug 'iamcco/markdown-preview.nvim',        { 'for': 'markdown', 'do': 'cd app && yarn install' } " <leader>pp to preview markdown
 Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
 Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
 
