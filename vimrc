@@ -27,6 +27,7 @@ Plug 'mileszs/ack.vim'
 " linter & lsp & completion & copilot
 Plug 'dense-analysis/ale'
 Plug 'larrylv/coc.nvim', {'branch': 'release'} " my own fork that suppress error messages
+Plug 'antoinemadec/coc-fzf'                    " fzf <> coc.nvim
 Plug 'larrylv/vim-tagimposter'                 " populate the tagstack when using coc to jump to definitions
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -627,16 +628,17 @@ nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
 nmap <silent> <leader>ln <Plug>(ale_next_wrap)
 
 
+" ================================= coc-fzf ====================================
+" make CocFzf look the same as other fzf commands
+let g:coc_fzf_preview = ''
+let g:coc_fzf_opts = []
+
+
 " ================================= coc.nvim ===================================
 let g:coc_snippet_next = '<tab>'
 
 " Disable transparent cursor when CocList is activated.
 let g:coc_disable_transparent_cursor = 1
-
-" Disable auto-preview feature
-" https://github.com/neoclide/coc.nvim/blob/b28b8dc4278f0c68f14b74609d73169c88c97ec4/doc/coc.txt#L3080-L3084
-let g:coc_enable_locationlist = 0
-autocmd User CocLocationsChange CocList --normal location
 
 inoremap <silent><expr> <C-n>
   \ coc#pum#visible() ? coc#pum#next(1) : "\<C-n>"
