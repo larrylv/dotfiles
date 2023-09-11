@@ -368,10 +368,10 @@ augroup general_config
   highlight PmenuSbar ctermfg=darkcyan ctermbg=lightgray cterm=NONE
   highlight PmenuThumb ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
-  " Neovim allows customizing `syn sync minlines` with this variable. We also
-  " need to manually add `execute 'syntax sync fromstart'` to
-  " `MarkdownRefreshSyntax` in vim-markdown/ftplugin/markdown.vim since it has
-  " a weird save & restore behavior for other filetypes.
+  " Neovim allows customizing `syn sync minlines` with this variable.
+  " vim-markdown has a weird save & restore behavior for other filetypes, so
+  " sometimes `:syntax sync fromstart` has to be called to fix it -- it is also
+  " mapped to <F12>.
   let g:markdown_minlines=10000
 
   " Filetype detection
@@ -422,6 +422,10 @@ set pastetoggle=<F3>
 
 " Open selected text in https://carbon.now.sh
 vnoremap <F5> :CarbonNowSh<cr>
+
+" clean up most syntax highlighting problems (<F12>)
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 " Yank from cursor to end of line
 nnoremap Y y$
