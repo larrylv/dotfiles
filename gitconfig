@@ -82,6 +82,7 @@
   compaction-heuristic = true
   colorMoved = zebra
   algorithm = patience
+  noprefix=true
 [grep]
   linenumber = true
 [i18n]
