@@ -45,6 +45,13 @@ brew install fd fzf universal-ctags ripgrep rust
 cargo install proximity-sort
 ```
 
+### ruby stuff
+
+```
+brew install rubyfmt
+gem install bundler coderay colorize pry pry-byebug rubocop sorbet sorbet-runtime sorbet-static
+```
+
 ### tmux & plugins
 
 ```

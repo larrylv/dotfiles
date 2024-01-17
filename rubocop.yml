@@ -1,0 +1,28 @@
+########################################################
+# General
+########################################################
+
+AllCops:
+  NewCops: enable
+
+Style/AndOr:
+  Enabled: true
+  EnforcedStyle: always
+Lint/EmptyBlock:
+  Enabled: false
+Lint/EmptyClass:
+  Enabled: false
+Style/EmptyMethod:
+  Enabled: false
+Style/HashSyntax:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Style/NegatedIf:
+  Enabled: false
+Style/NegatedWhile:
+  Enabled: false
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+Style/WhileUntilModifier:
+  Enabled: false

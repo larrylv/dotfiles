@@ -1753,9 +1753,13 @@ nnoremap <F2> :Vista!!<cr>
 let g:vroom_use_vimux=1
 let g:vroom_map_keys=0
 
-" when run unit test, also include current directory
-" for bettern compatibility
 if !exists("g:vroom_test_unit_command")
+  " " with gem `m` https://github.com/qrush/m, we can run a minitest test by line
+  " " number, using format m TEST_FILE:LINE_NUMBER_OF_TEST:
+  " let g:vroom_test_unit_command = 'm'
+  " let g:vroom_use_colon_for_nearest_test = 1
+
+  " when run unit test, also include current directory for bettern compatibility
   let g:vroom_test_unit_command = 'ruby -Itest -I.'
 endif
 

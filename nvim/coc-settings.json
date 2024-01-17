@@ -26,7 +26,11 @@
         "--typed",
         "true",
         "--enable-all-experimental-lsp-features",
-        "--lsp"
+        "--enable-experimental-lsp-document-formatting-rubyfmt",
+        "--lsp",
+        "--disable-watchman",
+        "--dir",
+        "."
       ],
       "filetypes": [
         "ruby",
@@ -41,12 +45,12 @@
       },
       "rootPatterns": [
         "sorbet/config"
-      ]
+      ],
+      "settings": {}
     }
   },
   "clangd.disableFileStatus": true,
   "clangd.disableProgressNotifications": true,
-  "coc.preferences.formatOnSave": true,
   "coc.preferences.messageLevel": "error",
   "coc.preferences.willSaveHandlerTimeout": 2000,
   "coc.source.tag.priority": 20,
@@ -74,6 +78,9 @@
   "notification.disabledProgressSources": [
     "*"
   ],
+  "[ruby]": {
+    "coc.preferences.formatOnSave": true
+  },
   "rust-analyzer.lens.debug.enable": false,
   "rust-analyzer.lens.run.enable": false,
   "suggest.enableFloat": true,
