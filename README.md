@@ -65,11 +65,6 @@ https://github.com/tmux-plugins/tpm#installation
 ### other stuff
 
 ```
-# Alt stops working as Meta key with 0.11.0
-# see https://github.com/alacritty/alacritty/issues/6410
-cargo install alacritty --version 0.10.1
-cp ~/.cargo/bin/alacritty /opt/homebrew/bin/
-
 brew install autojump automake bash-completion bat ccat cloc \
   cmake coreutils cowsay curl diff-so-fancy diffutils fmt fpp gcc goenv \
   golangci-lint grpc htop httperf httpie hugo ijq jq mtr ncurses nodenv openjdk\
