@@ -1703,6 +1703,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsUsePythonVersion = 3
 
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
+
 
 " ================================= vim-go =====================================
 let g:go_def_mapping_enabled = 0 " disable c-] mapping
