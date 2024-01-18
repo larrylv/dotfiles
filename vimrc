@@ -1450,6 +1450,82 @@ let g:projectionist_heuristics = {
 		\  },
 		\ }
 
+" ================================= projectionist ==============================
+augroup ruby_code_projectionist
+  autocmd!
+  autocmd BufEnter *.rb call ConfigAlternatesRubyCode(expand("<afile>:p"))
+augroup END
+
+function! FindTestDirectory(path)
+  let l:directory = fnamemodify(a:path, ":p:h")
+  let l:relative_dir = substitute(l:directory, getcwd() . "/*", "", "")
+  let l:pieces = split(l:relative_dir, "/")
+
+  while len(l:pieces) > 0
+    let l:current_dir = join(l:pieces, "/")
+    let l:possible_test_dir = l:current_dir . "/test"
+
+    echom l:possible_test_dir
+    if isdirectory(l:possible_test_dir)
+      " found the test dir
+      return { 'root': l:current_dir, 'test_dir': l:possible_test_dir }
+    endif
+
+    call remove(l:pieces, -1)
+  endwhile
+
+  return {}
+
+endfunction
+
+function! ConfigAlternatesRubyCode(buffer_path)
+  if a:buffer_path =~ "\/code\/"
+    " if empty(get(b:, 'ruby_code_projectionist_registered_files'))
+    "   let b:ruby_code_projectionist_registered_files = {}
+    " endif
+    "
+    " if get(b:ruby_code_projectionist_registered_files, a:buffer_path)
+    "   " we already did a recursive search in this buffer, let's not do it again
+    "   return
+    " endif
+
+    let l:search = FindTestDirectory(a:buffer_path)
+
+    if l:search == {}
+      if isdirectory("test")
+        let l:projections = {}
+        let l:projections["*.rb"] =
+          \ {
+          \   'alternate': "test/{}.test.rb",
+          \ }
+
+        let l:projections["test/*.test.rb"] =
+          \ {
+          \   'alternate': "{}.rb",
+          \ }
+      else
+        return
+      endif
+    else
+      let l:projections[l:search['root'] . "/*.rb"] =
+        \ {
+        \   'alternate': l:search['test_dir'] . "/{}.test.rb",
+        \ }
+
+      let l:projections[l:search['test_dir'] . "/*.test.rb"] =
+        \ {
+        \   'alternate': l:search['root'] . "/{}.rb",
+        \ }
+    endif
+
+    call projectionist#append(getcwd(), l:projections)
+    call projectionist#activate()
+  endif
+endfunction
+
+" " reset projectionist after sourcing vimrc
+" let b:ruby_code_projectionist_registered_files = {}
+
 
 " ================================= ragtag =====================================
 let g:html_indent_inctags = "html,body,head,tbody"
