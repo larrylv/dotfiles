@@ -20,7 +20,7 @@
     },
     "sorbet": {
       "enable": true,
-      "command": "~/.rbenv/shims/bundle",
+      "command": "bundle",
       "args": [
         "exec",
         "srb",
