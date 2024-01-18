@@ -19,7 +19,7 @@
       }
     },
     "sorbet": {
-      "enable": true,
+      "enable": false,
       "command": "bundle",
       "args": [
         "exec",
@@ -28,6 +28,8 @@
         "--typed",
         "true",
         "--enable-all-experimental-lsp-features",
+        "--rubyfmt-path",
+        "/usr/local/bin/rubyfmt",
         "--lsp",
         "--disable-watchman"
       ],
