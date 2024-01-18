@@ -19,18 +19,17 @@
       }
     },
     "sorbet": {
-      "enable": false,
-      "command": "srb",
+      "enable": true,
+      "command": "~/.rbenv/shims/bundle",
       "args": [
+        "exec",
+        "srb",
         "tc",
         "--typed",
         "true",
         "--enable-all-experimental-lsp-features",
-        "--enable-experimental-lsp-document-formatting-rubyfmt",
         "--lsp",
-        "--disable-watchman",
-        "--dir",
-        "."
+        "--disable-watchman"
       ],
       "filetypes": [
         "ruby",

@@ -32,7 +32,8 @@ alias vim='nvim'
 alias af='git ls-files | ack --smart-case --no-column --noenv'
 alias ag='rg'
 alias be='bundle exec'
-alias bi='bundle install --path=vendor/bundle --binstubs=.binstubs'
+# use `bundle config set path 'vendor/bundle'` and `bundle binstubs --all`
+alias bi='bundle install'
 alias du="ncdu --color dark -rr -x"
 alias fvim="vim \$(fzf)"
 alias grep='grep --color=auto'

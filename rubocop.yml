@@ -44,5 +44,10 @@ Style/NegatedWhile:
   Enabled: false
 Style/StringLiteralsInInterpolation:
   Enabled: false
+Style/SymbolArray:
+  Enabled: false
 Style/WhileUntilModifier:
+  Enabled: false
+
+StringLiterals:
   Enabled: false
