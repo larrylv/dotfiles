@@ -8,6 +8,13 @@ AllCops:
 Layout/LineLength:
   Enabled: false
 
+Lint/EmptyBlock:
+  Enabled: false
+Lint/EmptyClass:
+  Enabled: false
+Lint/EmptyElse:
+  Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
 Metrics/BlockLength:
@@ -23,24 +30,37 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
   Enabled: false
 
+Naming/AccessorMethodName:
+  Enabled: false
+
+Style/AccessModifierDeclarations:
+  Enabled: false
 Style/AndOr:
   Enabled: true
   EnforcedStyle: always
 Style/Documentation:
   Enabled: false
-Lint/EmptyBlock:
-  Enabled: false
-Lint/EmptyClass:
+Style/DoubleNegation:
   Enabled: false
 Style/EmptyMethod:
   Enabled: false
+Style/GuardClause:
+  Enabled: false
 Style/HashSyntax:
+  Enabled: false
+Style/IfInsideElse:
   Enabled: false
 Style/IfUnlessModifier:
   Enabled: false
 Style/NegatedIf:
   Enabled: false
 Style/NegatedWhile:
+  Enabled: false
+Style/RaiseArgs:
+  Enabled: false
+Style/RedundantSelf:
+  Enabled: false
+Style/SingleLineMethods:
   Enabled: false
 Style/StringLiteralsInInterpolation:
   Enabled: false
