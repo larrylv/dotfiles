@@ -12,9 +12,6 @@ Lint/EmptyBlock:
   Enabled: false
 Lint/EmptyClass:
   Enabled: false
-Lint/EmptyElse:
-  Enabled: false
-
 Metrics/AbcSize:
   Enabled: false
 Metrics/BlockLength:
@@ -29,8 +26,12 @@ Metrics/MethodLength:
   Enabled: false
 Metrics/ModuleLength:
   Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
 
 Naming/AccessorMethodName:
+  Enabled: false
+Naming/PredicateName:
   Enabled: false
 
 Style/AccessModifierDeclarations:
@@ -41,6 +42,8 @@ Style/AndOr:
 Style/Documentation:
   Enabled: false
 Style/DoubleNegation:
+  Enabled: false
+Style/EmptyElse:
   Enabled: false
 Style/EmptyMethod:
   Enabled: false
@@ -62,12 +65,11 @@ Style/RedundantSelf:
   Enabled: false
 Style/SingleLineMethods:
   Enabled: false
+Style/StringLiterals:
+  Enabled: false
 Style/StringLiteralsInInterpolation:
   Enabled: false
 Style/SymbolArray:
   Enabled: false
 Style/WhileUntilModifier:
-  Enabled: false
-
-StringLiterals:
   Enabled: false
