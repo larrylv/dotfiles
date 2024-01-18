@@ -49,7 +49,7 @@ cargo install proximity-sort
 
 ```
 brew install rubyfmt
-gem install bundler coderay colorize pry pry-byebug rubocop sorbet sorbet-runtime sorbet-static
+gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sorbet sorbet-runtime sorbet-static
 ```
 
 ### tmux & plugins
