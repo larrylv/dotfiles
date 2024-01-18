@@ -1464,7 +1464,6 @@ function! FindTestDirectory(path)
     let l:current_dir = join(l:pieces, "/")
     let l:possible_test_dir = l:current_dir . "/test"
 
-    echom l:possible_test_dir
     if isdirectory(l:possible_test_dir)
       " found the test dir
       return { 'root': l:current_dir, 'test_dir': l:possible_test_dir }

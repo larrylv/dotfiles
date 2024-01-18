@@ -26,6 +26,8 @@ Metrics/ModuleLength:
 Style/AndOr:
   Enabled: true
   EnforcedStyle: always
+Style/Documentation:
+  Enabled: false
 Lint/EmptyBlock:
   Enabled: false
 Lint/EmptyClass:
