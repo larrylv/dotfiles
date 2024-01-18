@@ -56,6 +56,10 @@ alias vs='vim -S Session.vim'
 alias ycommit="git add . ; date -v-1d +\"%Y-%m-%d\" | xargs git ci -m"
 LESS="-iXRF"; export LESS
 
+if which trash > /dev/null; then
+  alias rm='trash'
+fi
+
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
 if [[ -f "$HOMEBREW_PREFIX/bin/bat" ]]; then
@@ -348,3 +352,6 @@ if [ -d $HOME/.local/bin ]; then
 fi
 
 [[ -d $HOME/.cargo ]] && [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+eval "$(ssh-agent -s)" > /dev/null
+ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
