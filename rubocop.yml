@@ -34,8 +34,17 @@ AllCops:
     - 'native/**/*.rbi'
   AllowSymlinksInCacheRootDirectory: true
 
-Layout/LineLength:
+Layout:
   Enabled: false
+
+Lint/SuppressedException:
+  AllowComments: true
+Lint/InheritException:
+  EnforcedStyle: standard_error
+Lint/UnderscorePrefixedVariableName:
+  AllowKeywordBlockArguments: true
+Lint/UnusedBlockArgument:
+  AllowUnusedKeywordArguments: true
 
 Metrics/AbcSize:
   Enabled: false
@@ -51,16 +60,11 @@ Metrics/MethodLength:
   Enabled: false
 Metrics/ModuleLength:
   Enabled: false
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+  Max: 10
+  MaxOptionalParameters: 10
 Metrics/PerceivedComplexity:
-  Enabled: false
-
-Minitest/AssertEmptyLiteral:
-  Enabled: false
-Minitest/AssertNil:
-  Enabled: false
-Minitest/AssertTruthy:
-  Enabled: false
-Minitest/RefuteFalse:
   Enabled: false
 
 Naming/AccessorMethodName:
@@ -74,19 +78,20 @@ Naming/RescuedExceptionsVariableName:
 Naming/VariableNumber:
   Enabled: false
 
-Performance/StartWith:
-  Enabled: false
-Performance/EndWith:
-  Enabled: false
-Performance/TimesMap:
-  Enabled: false
-
 # Putting these in context is way better.
 Style/AccessModifierDeclarations:
   EnforcedStyle: inline
+# `alias_method` has better semantics than `alias`
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
 Style/AndOr:
   Enabled: true
   EnforcedStyle: always
+# %{} is weirder than %q{}
+Style/BarePercentLiterals:
+  EnforcedStyle: percent_q
+# In Ruby the default is usually what you want. Forcing you to write out the
+# class leads to errors like rescuing Exception or RuntimeError.
 Style/BlockDelimiters:
   Enabled: false
 Style/ClassAndModuleChildren:
@@ -103,6 +108,8 @@ Style/EmptyElse:
   Enabled: false
 Style/EmptyMethod:
   Enabled: false
+Style/FormatString:
+  EnforcedStyle: sprintf
 Style/GuardClause:
   Enabled: false
 Style/HashSyntax:
@@ -111,9 +118,15 @@ Style/IfInsideElse:
   Enabled: false
 Style/IfUnlessModifier:
   Enabled: false
+Style/Lambda:
+  Enabled: false
 Style/MethodCallWithoutArgsParentheses:
   Enabled: false
 Style/MinMax:
+  Enabled: false
+Style/MultilineBlockChain:
+  Enabled: false
+Style/MultilineTernaryOperator:
   Enabled: false
 Style/MultipleComparison:
   Enabled: false
@@ -124,6 +137,20 @@ Style/NegatedWhile:
 Style/Next:
   Enabled: false
 Style/NumericPredicate:
+  Enabled: false
+# Consistently use {}
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%':  '{}'
+    '%i': '{}'
+    '%I': '{}'
+    '%q': '{}'
+    '%Q': '{}'
+    '%r': '{}'
+    '%s': '{}'
+    '%w': '{}'
+    '%W': '{}'
+    '%x': '{}'
   Enabled: false
 Style/PerlBackrefs:
   Enabled: false
@@ -136,8 +163,15 @@ Style/RedundantParentheses:
   Enabled: false
 Style/RedundantSelf:
   Enabled: false
+Style/RescueStandardError:
+  EnforcedStyle: implicit
+# If you are doing it all on one line, fine
+Style/Semicolon:
+  AllowAsExpressionSeparator: true
 Style/SingleLineMethods:
   Enabled: false
+Style/SpecialGlobalVars:
+  EnforcedStyle: use_english_names
 Style/StderrPuts:
   Enabled: false
 Style/StringLiterals:
@@ -148,8 +182,22 @@ Style/SymbolArray:
   Enabled: false
 Style/TernaryParentheses:
   Enabled: false
+# Trailing commas help with git blame when you add new parameters
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+  Enabled: false
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+  Enabled: false
 Style/TrailingUnderscoreVariable:
   Enabled: false
+Style/TrivialAccessors:
+  # Predicates are ok per https://github.com/bbatsov/rubocop/issues/2763
+  AllowPredicates: true
+  # And writers per https://github.com/bbatsov/rubocop/issues/2821
+  AllowDSLWriters: true
+  IgnoreClassMethods: true
+# `format` and `sprintf` are the same so we picked one. % leads to errors since we can't enforce the RHS to be an array.
 Style/WhileUntilModifier:
   Enabled: false
 Style/WordArray:
@@ -328,76 +376,6 @@ Style/StringChars: # new in 1.12
   Enabled: false
 Style/SwapValues: # new in 1.1
   Enabled: true
-Minitest/AssertInDelta: # new in 0.10
-  Enabled: false
-Minitest/AssertionInLifecycleHook: # new in 0.10
-  Enabled: true
-Minitest/AssertKindOf: # new in 0.10
-  Enabled: true
-Minitest/AssertOutput: # new in 0.10
-  Enabled: true
-Minitest/AssertPathExists: # new in 0.10
-  Enabled: false
-Minitest/AssertSilent: # new in 0.10
-  Enabled: true
-Minitest/AssertWithExpectedArgument: # new in 0.11
-  Enabled: true
-Minitest/LiteralAsActualArgument: # new in 0.10
-  Enabled: false
-Minitest/MultipleAssertions: # new in 0.10
-  Enabled: false
-Minitest/RefuteInDelta: # new in 0.10
-  Enabled: true
-Minitest/RefuteKindOf: # new in 0.10
-  Enabled: true
-Minitest/RefutePathExists: # new in 0.10
-  Enabled: false
-Minitest/TestMethodName: # new in 0.10
-  Enabled: false
-Minitest/UnreachableAssertion: # new in 0.14
-  Enabled: false
-Minitest/UnspecifiedException: # new in 0.10
-  Enabled: false
-Performance/AncestorsInclude: # new in 1.7
-  Enabled: true
-Performance/BigDecimalWithNumericArgument: # new in 1.7
-  Enabled: false
-Performance/BlockGivenWithExplicitBlock: # new in 1.9
-  Enabled: false
-Performance/CollectionLiteralInLoop: # new in 1.8
-  Enabled: false
-Performance/ConcurrentMonotonicTime: # new in 1.12
-  Enabled: true
-Performance/ConstantRegexp: # new in 1.9
-  Enabled: false
-# Disabled because there's no safe autocorrection.
-# See the following example:
-# [true, false, nil].compact              #=> [true, false]
-# [true, false, nil].filter_map(&:itself) #=> [true]
-Performance/MapCompact: # new in 1.11
-  Enabled: false
-Performance/MethodObjectAsBlock: # new in 1.9
-  Enabled: false
-Performance/RedundantEqualityComparisonBlock: # new in 1.10
-  Enabled: false
-Performance/RedundantSortBlock: # new in 1.7
-  Enabled: true
-Performance/RedundantSplitRegexpArgument: # new in 1.10
-  Enabled: false
-Performance/RedundantStringChars: # new in 1.7
-  Enabled: false
-Performance/ReverseFirst: # new in 1.7
-  Enabled: false
-Performance/SortReverse: # new in 1.7
-  Enabled: true
-Performance/Squeeze: # new in 1.7
-  Enabled: false
-Performance/StringIdentifierArgument: # new in 1.13
-  Enabled: false
-Performance/StringInclude: # new in 1.7
-  Enabled: false
-Performance/Sum: # new in 1.8
-  Enabled: false
 Style/KeywordParametersOrder: # new in 0.90
   Enabled: false
 Style/ClassEqualityComparison: # new in 0.93
@@ -417,46 +395,6 @@ Style/RedundantSelfAssignment: # new in 0.90
 Lint/UselessTimes: # new in 0.91
   Enabled: false
 Style/SoleNestedConditional: # Marked as enabled (from pending) after 0.89
-  Enabled: false
-Minitest/RefuteMatch: # New in rubocop-minitest 0.6
-  Enabled: false
-Minitest/AssertMatch: # New in rubocop-minitest 0.6
-  Enabled: false
-Performance/DeletePrefix: # New in rubocop-performance 1.6
-  Enabled: false
-Performance/DeleteSuffix: # New in rubocop-performance 1.6
-  Enabled: false
-Performance/Detect:
-  # This rubocop was upgraded in such a way that we would need to make
-  # many updates to pay-server to leave this turned on.
-  #
-  # In the future we should turn this back on for performance reasons and
-  # codemod the violations away
-  Enabled: false
-Performance/Count:
-  # This rubocop was upgraded in such a way that we would need to make
-  # many updates to pay-server to leave this turned on.
-  #
-  # In the future we should turn this back on for performance reasons and
-  # codemod the violations away
-  Enabled: false
-Minitest/RefuteNil:
-  Enabled: true
-Performance/RedundantBlockCall:
-  # Disabling. This is a helpful utility method but not worth the investment
-  # to incorporate into pay-server
-  Enabled: false
-Minitest/RefuteIncludes:
-  # Disabling. This is a helpful utility method but not worth the investment
-  # to incorporate into pay-server
-  Enabled: false
-Minitest/AssertIncludes:
-  # Disabling. This is a helpful utility method but not worth the investment
-  # to incorporate into pay-server
-  Enabled: false
-Minitest/AssertRespondTo:
-  # Disabling. This is a helpful utility method but not worth the investment
-  # to incorporate into pay-server
   Enabled: false
 Style/SymbolProc:
   Enabled: true
@@ -586,73 +524,113 @@ Style/SingleLineDoEndBlock: # new in 1.57
 # Open source cops which are specially customized
 ############################################################
 
-Layout:
+Minitest/AssertEmptyLiteral:
+  Enabled: false
+Minitest/AssertNil:
+  Enabled: false
+Minitest/AssertTruthy:
+  Enabled: false
+Minitest/RefuteFalse:
+  Enabled: false
+Minitest/AssertInDelta:
+  Enabled: false
+Minitest/AssertionInLifecycleHook:
+  Enabled: true
+Minitest/AssertKindOf:
+  Enabled: true
+Minitest/AssertOutput:
+  Enabled: true
+Minitest/AssertPathExists:
+  Enabled: false
+Minitest/AssertSilent:
+  Enabled: true
+Minitest/AssertWithExpectedArgument:
+  Enabled: true
+Minitest/LiteralAsActualArgument:
+  Enabled: false
+Minitest/MultipleAssertions:
+  Enabled: false
+Minitest/RefuteInDelta:
+  Enabled: true
+Minitest/RefuteKindOf:
+  Enabled: true
+Minitest/RefutePathExists:
+  Enabled: false
+Minitest/TestMethodName:
+  Enabled: false
+Minitest/UnreachableAssertion:
+  Enabled: false
+Minitest/UnspecifiedException:
+  Enabled: false
+Minitest/RefuteMatch:
+  Enabled: false
+Minitest/AssertMatch:
+  Enabled: false
+Minitest/RefuteNil:
+  Enabled: true
+Minitest/RefuteIncludes:
+  Enabled: false
+Minitest/AssertIncludes:
+  Enabled: false
+Minitest/AssertRespondTo:
   Enabled: false
 
-Lint/SuppressedException:
-  AllowComments: true
-Lint/InheritException:
-  EnforcedStyle: standard_error
-Lint/UnderscorePrefixedVariableName:
-  AllowKeywordBlockArguments: true
-Lint/UnusedBlockArgument:
-  AllowUnusedKeywordArguments: true
-Metrics/ParameterLists:
-  CountKeywordArgs: false
-  Max: 10
-  MaxOptionalParameters: 10
-
+Performance/StartWith:
+  Enabled: false
+Performance/EndWith:
+  Enabled: false
+Performance/TimesMap:
+  Enabled: false
+Performance/AncestorsInclude:
+  Enabled: true
+Performance/BigDecimalWithNumericArgument:
+  Enabled: false
+Performance/BlockGivenWithExplicitBlock:
+  Enabled: false
+Performance/CollectionLiteralInLoop:
+  Enabled: false
+Performance/ConcurrentMonotonicTime:
+  Enabled: true
+Performance/ConstantRegexp:
+  Enabled: false
+# Disabled because there's no safe autocorrection.
+# See the following example:
+# [true, false, nil].compact              #=> [true, false]
+# [true, false, nil].filter_map(&:itself) #=> [true]
+Performance/MapCompact:
+  Enabled: false
+Performance/MethodObjectAsBlock:
+  Enabled: false
+Performance/RedundantEqualityComparisonBlock:
+  Enabled: false
+Performance/RedundantSortBlock:
+  Enabled: true
+Performance/RedundantSplitRegexpArgument:
+  Enabled: false
+Performance/RedundantStringChars:
+  Enabled: false
+Performance/ReverseFirst:
+  Enabled: false
+Performance/SortReverse:
+  Enabled: true
+Performance/Squeeze:
+  Enabled: false
+Performance/StringIdentifierArgument:
+  Enabled: false
+Performance/StringInclude:
+  Enabled: false
+Performance/Sum:
+  Enabled: false
+Performance/DeletePrefix:
+  Enabled: false
+Performance/DeleteSuffix:
+  Enabled: false
+Performance/Detect:
+  Enabled: false
+Performance/Count:
+  Enabled: false
+Performance/RedundantBlockCall:
+  Enabled: false
 # If you have more than 1, you can use merge! if you want
 Performance/RedundantMerge:
   MaxKeyValuePairs: 1
-Style/MultilineTernaryOperator:
-  Enabled: false
-# Trailing commas help with git blame when you add new parameters
-Style/TrailingCommaInArrayLiteral:
-  EnforcedStyleForMultiline: consistent_comma
-  Enabled: false
-Style/TrailingCommaInHashLiteral:
-  EnforcedStyleForMultiline: consistent_comma
-  Enabled: false
-# Consistently use {}
-Style/PercentLiteralDelimiters:
-  PreferredDelimiters:
-    '%':  '{}'
-    '%i': '{}'
-    '%I': '{}'
-    '%q': '{}'
-    '%Q': '{}'
-    '%r': '{}'
-    '%s': '{}'
-    '%w': '{}'
-    '%W': '{}'
-    '%x': '{}'
-  Enabled: false
-# %{} is weirder than %q{}
-Style/BarePercentLiterals:
-  EnforcedStyle: percent_q
-# In Ruby the default is usually what you want. Forcing you to write out the
-# class leads to errors like rescuing Exception or RuntimeError.
-Style/RescueStandardError:
-  EnforcedStyle: implicit
-Style/SpecialGlobalVars:
-  EnforcedStyle: use_english_names
-# `alias_method` has better semantics than `alias`
-Style/Alias:
-  EnforcedStyle: prefer_alias_method
-Style/TrivialAccessors:
-  # Predicates are ok per https://github.com/bbatsov/rubocop/issues/2763
-  AllowPredicates: true
-  # And writers per https://github.com/bbatsov/rubocop/issues/2821
-  AllowDSLWriters: true
-  IgnoreClassMethods: true
-# `format` and `sprintf` are the same so we picked one. % leads to errors since we can't enforce the RHS to be an array.
-Style/FormatString:
-  EnforcedStyle: sprintf
-# If you are doing it all on one line, fine
-Style/Semicolon:
-  AllowAsExpressionSeparator: true
-Style/Lambda:
-  Enabled: false
-Style/MultilineBlockChain:
-  Enabled: false
