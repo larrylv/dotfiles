@@ -111,6 +111,9 @@ Style/EmptyMethod:
   Enabled: false
 Style/FormatString:
   EnforcedStyle: sprintf
+# Disabled for now
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: false
 Style/GuardClause:
   Enabled: false
 Style/HashSyntax:
