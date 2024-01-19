@@ -105,6 +105,8 @@ Style/DoubleNegation:
   Enabled: false
 Style/EmptyElse:
   Enabled: false
+Style/EmptyLinesAroundBody:
+  Enabled: false
 Style/EmptyMethod:
   Enabled: false
 Style/FormatString:
