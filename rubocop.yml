@@ -3,15 +3,40 @@
 ########################################################
 
 AllCops:
+  DisplayCopNames: true
   NewCops: enable
+  SuggestExtensions: false
+  UseCache: true
+  Include:
+    - Gemfile
+    - Gemfile-local
+    - Rakefile.rb
+    - '**/*.rb'
+  Exclude:
+    - '**/node_modules/**/*'
+    - '**/google_protobuf/**/*_pb.rb'
+    - bazel-bin/**/*
+    - bazel-genfiles/**/*
+    - bazel-out/**/*
+    - bazel-pay-server/**/*
+    - build/**/*
+    - sorbet_ruby/**/*
+    - src_transform_out/**/*
+    - tmp/**/*
+    - test/tmp/**/*
+    - vendor/**/*
+    # Rubocop editor extensions use --stdin [filename] --force-exclusion, which
+    # only looks at the "exclude" list to determine if a file is Rubocop-able.
+    # Explicitly exclude Sorbet interface files, as large ones can cause
+    # Rubocop to lock up for minutes at a time!
+    - 'sorbet/shims/**/*.rbi'
+    # Exclude hand-written shims for any native extensions.
+    - 'native/**/*.rbi'
+  AllowSymlinksInCacheRootDirectory: true
 
 Layout/LineLength:
   Enabled: false
 
-Lint/EmptyBlock:
-  Enabled: false
-Lint/EmptyClass:
-  Enabled: false
 Metrics/AbcSize:
   Enabled: false
 Metrics/BlockLength:
@@ -29,16 +54,47 @@ Metrics/ModuleLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+Minitest/AssertEmptyLiteral:
+  Enabled: false
+Minitest/AssertNil:
+  Enabled: false
+Minitest/AssertTruthy:
+  Enabled: false
+Minitest/RefuteFalse:
+  Enabled: false
+
 Naming/AccessorMethodName:
+  Enabled: false
+Naming/HeredocDelimiterNaming:
   Enabled: false
 Naming/PredicateName:
   Enabled: false
-
-Style/AccessModifierDeclarations:
+Naming/RescuedExceptionsVariableName:
   Enabled: false
+Naming/VariableNumber:
+  Enabled: false
+
+Performance/StartWith:
+  Enabled: false
+Performance/EndWith:
+  Enabled: false
+Performance/TimesMap:
+  Enabled: false
+
+# Putting these in context is way better.
+Style/AccessModifierDeclarations:
+  EnforcedStyle: inline
 Style/AndOr:
   Enabled: true
   EnforcedStyle: always
+Style/BlockDelimiters:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/CommentAnnotation:
+  Enabled: false
+Style/ConditionalAssignment:
+  Enabled: false
 Style/Documentation:
   Enabled: false
 Style/DoubleNegation:
@@ -55,15 +111,34 @@ Style/IfInsideElse:
   Enabled: false
 Style/IfUnlessModifier:
   Enabled: false
+Style/MethodCallWithoutArgsParentheses:
+  Enabled: false
+Style/MinMax:
+  Enabled: false
+Style/MultipleComparison:
+  Enabled: false
 Style/NegatedIf:
   Enabled: false
 Style/NegatedWhile:
   Enabled: false
+Style/Next:
+  Enabled: false
+Style/NumericPredicate:
+  Enabled: false
+Style/PerlBackrefs:
+  Enabled: false
+# This is much more explicit
 Style/RaiseArgs:
+  EnforcedStyle: compact
+Style/RedundantBegin:
+  Enabled: false
+Style/RedundantParentheses:
   Enabled: false
 Style/RedundantSelf:
   Enabled: false
 Style/SingleLineMethods:
+  Enabled: false
+Style/StderrPuts:
   Enabled: false
 Style/StringLiterals:
   Enabled: false
@@ -71,5 +146,513 @@ Style/StringLiteralsInInterpolation:
   Enabled: false
 Style/SymbolArray:
   Enabled: false
+Style/TernaryParentheses:
+  Enabled: false
+Style/TrailingUnderscoreVariable:
+  Enabled: false
 Style/WhileUntilModifier:
+  Enabled: false
+Style/WordArray:
+  Enabled: false
+Style/ZeroLengthPredicate:
+  Enabled: false
+
+# From the 0.89.1 update: some of these might be nice to enable
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+Lint/EmptyBlock:
+  Enabled: false
+Lint/EmptyClass:
+  Enabled: false
+Lint/PercentStringArray:
+  Enabled: false
+Lint/UnusedMethodArgument:
+  Enabled: false
+Lint/MissingSuper:
+  Enabled: false
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: false
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: false
+Lint/DuplicateElsifCondition:
+  Enabled: false
+Lint/DuplicateRescueException:
+  Enabled: false
+Lint/EmptyConditionalBody:
+  Enabled: false
+Lint/FloatComparison:
+  Enabled: false
+Lint/MixedRegexpCaptureTypes:
+  Enabled: false
+Lint/OutOfRangeRegexpRef:
+  Enabled: false
+Lint/RaiseException:
+  Enabled: false
+Lint/SelfAssignment:
+  Enabled: false
+Lint/StructNewOverride:
+  Enabled: false
+Lint/TopLevelReturnWithArgument:
+  Enabled: false
+Lint/UnreachableLoop:
+  Enabled: false
+Style/AccessorGrouping:
+  Enabled: false
+Style/ArrayCoercion:
+  Enabled: false
+Style/BisectedAttrAccessor:
+  Enabled: false
+Style/CaseLikeIf:
+  Enabled: false
+Style/ExplicitBlockArgument:
+  Enabled: false
+Style/ExponentialNotation:
+  Enabled: false
+Style/GlobalStdStream:
+  Enabled: false
+Style/HashAsLastArrayItem:
+  Enabled: false
+Style/HashLikeCase:
+  Enabled: false
+Style/OptionalBooleanParameter:
+  Enabled: false
+Style/RedundantAssignment:
+  Enabled: false
+Style/RedundantFetchBlock:
+  Enabled: false
+Style/RedundantFileExtensionInRequire:
+  Enabled: false
+Style/RedundantRegexpCharacterClass:
+  Enabled: false
+Style/RedundantRegexpEscape:
+  Enabled: false
+Style/SingleArgumentDig:
+  Enabled: false
+Style/SlicingWithRange:
+  Enabled: false
+Style/StringConcatenation:
+  Enabled: false
+Lint/UriRegexp:
+  Enabled: false
+
+# From 1.26.1 Upgrade
+Bundler/GemFilename:
+  Enabled: false
+Gemspec/RequireMFA: # new in 1.23
+  Enabled: true
+Lint/AmbiguousAssignment: # new in 1.7
+  Enabled: true
+Lint/AmbiguousOperatorPrecedence: # new in 1.21
+  Enabled: false
+Lint/AmbiguousRange: # new in 1.19
+  Enabled: false
+Lint/DeprecatedConstants: # new in 1.8
+  Enabled: true
+Lint/DuplicateBranch: # new in 1.3
+  Enabled: false
+Lint/DuplicateRegexpCharacterClassElement: # new in 1.1
+  Enabled: false
+Lint/EmptyInPattern: # new in 1.16
+  Enabled: true
+Lint/IncompatibleIoSelectWithFiberScheduler: # new in 1.21
+  Enabled: true
+Lint/LambdaWithoutLiteralBlock: # new in 1.8
+  Enabled: true
+Lint/NoReturnInBeginEndBlocks: # new in 1.2
+  Enabled: false
+Lint/NumberedParameterAssignment: # new in 1.9
+  Enabled: true
+Lint/OrAssignmentToConstant: # new in 1.9
+  Enabled: false
+Lint/RedundantDirGlobSort: # new in 1.8
+  Enabled: true
+Lint/RequireRelativeSelfPath: # new in 1.22
+  Enabled: true
+Lint/SymbolConversion: # new in 1.9
+  Enabled: false
+Lint/ToEnumArguments: # new in 1.1
+  Exclude:
+  - 'extn/sinatra.rb'
+  Enabled: true
+Lint/TripleQuotes: # new in 1.9
+  Enabled: false
+Lint/UnexpectedBlockArity: # new in 1.5
+  Enabled: false
+Lint/UnmodifiedReduceAccumulator: # new in 1.1
+  Enabled: true
+Lint/UselessRuby2Keywords: # new in 1.23
+  Enabled: false
+Security/IoMethods: # new in 1.22
+  Enabled: false
+Style/ArgumentsForwarding: # new in 1.1
+  Enabled: false
+Style/CollectionCompact: # new in 1.2
+  Enabled: false
+Style/DocumentDynamicEvalDefinition: # new in 1.1
+  Enabled: false
+Style/EndlessMethod: # new in 1.8
+  Enabled: true
+Style/FileRead: # new in 1.24
+  Enabled: false
+Style/FileWrite: # new in 1.24
+  Enabled: false
+Style/HashConversion: # new in 1.10
+  Enabled: false
+Style/IfWithBooleanLiteralBranches: # new in 1.9
+  Enabled: false
+Style/InPatternThen: # new in 1.16
+  Enabled: true
+Style/MapToHash: # new in 1.24
+  Enabled: false
+Style/MultilineInPatternThen: # new in 1.16
+  Enabled: true
+Style/NegatedIfElseCondition: # new in 1.2
+  Enabled: false
+Style/NilLambda: # new in 1.3
+  Enabled: false
+Style/NumberedParameters: # new in 1.22
+  Enabled: true
+Style/NumberedParametersLimit: # new in 1.22
+  Enabled: false
+Style/OpenStructUse: # new in 1.23
+  Enabled: true
+Style/QuotedSymbols: # new in 1.16
+  Enabled: false
+Style/RedundantArgument: # new in 1.4
+  Enabled: false
+Style/RedundantSelfAssignmentBranch: # new in 1.19
+  Enabled: false
+Style/SelectByRegexp: # new in 1.22
+  Enabled: false
+Style/StringChars: # new in 1.12
+  Enabled: false
+Style/SwapValues: # new in 1.1
+  Enabled: true
+Minitest/AssertInDelta: # new in 0.10
+  Enabled: false
+Minitest/AssertionInLifecycleHook: # new in 0.10
+  Enabled: true
+Minitest/AssertKindOf: # new in 0.10
+  Enabled: true
+Minitest/AssertOutput: # new in 0.10
+  Enabled: true
+Minitest/AssertPathExists: # new in 0.10
+  Enabled: false
+Minitest/AssertSilent: # new in 0.10
+  Enabled: true
+Minitest/AssertWithExpectedArgument: # new in 0.11
+  Enabled: true
+Minitest/LiteralAsActualArgument: # new in 0.10
+  Enabled: false
+Minitest/MultipleAssertions: # new in 0.10
+  Enabled: false
+Minitest/RefuteInDelta: # new in 0.10
+  Enabled: true
+Minitest/RefuteKindOf: # new in 0.10
+  Enabled: true
+Minitest/RefutePathExists: # new in 0.10
+  Enabled: false
+Minitest/TestMethodName: # new in 0.10
+  Enabled: false
+Minitest/UnreachableAssertion: # new in 0.14
+  Enabled: false
+Minitest/UnspecifiedException: # new in 0.10
+  Enabled: false
+Performance/AncestorsInclude: # new in 1.7
+  Enabled: true
+Performance/BigDecimalWithNumericArgument: # new in 1.7
+  Enabled: false
+Performance/BlockGivenWithExplicitBlock: # new in 1.9
+  Enabled: false
+Performance/CollectionLiteralInLoop: # new in 1.8
+  Enabled: false
+Performance/ConcurrentMonotonicTime: # new in 1.12
+  Enabled: true
+Performance/ConstantRegexp: # new in 1.9
+  Enabled: false
+# Disabled because there's no safe autocorrection.
+# See the following example:
+# [true, false, nil].compact              #=> [true, false]
+# [true, false, nil].filter_map(&:itself) #=> [true]
+Performance/MapCompact: # new in 1.11
+  Enabled: false
+Performance/MethodObjectAsBlock: # new in 1.9
+  Enabled: false
+Performance/RedundantEqualityComparisonBlock: # new in 1.10
+  Enabled: false
+Performance/RedundantSortBlock: # new in 1.7
+  Enabled: true
+Performance/RedundantSplitRegexpArgument: # new in 1.10
+  Enabled: false
+Performance/RedundantStringChars: # new in 1.7
+  Enabled: false
+Performance/ReverseFirst: # new in 1.7
+  Enabled: false
+Performance/SortReverse: # new in 1.7
+  Enabled: true
+Performance/Squeeze: # new in 1.7
+  Enabled: false
+Performance/StringIdentifierArgument: # new in 1.13
+  Enabled: false
+Performance/StringInclude: # new in 1.7
+  Enabled: false
+Performance/Sum: # new in 1.8
+  Enabled: false
+Style/KeywordParametersOrder: # new in 0.90
+  Enabled: false
+Style/ClassEqualityComparison: # new in 0.93
+  Enabled: false
+Lint/ConstantDefinitionInBlock: # new in 0.91
+  Enabled: false
+Lint/UselessMethodDefinition: # new in 0.90
+  Enabled: false
+Style/CombinableLoops: # new in 0.90
+  Enabled: false
+Lint/RedundantSafeNavigation: # new in 0.93
+  Enabled: false
+Lint/DuplicateRequire: # new in 0.90
+  Enabled: false
+Style/RedundantSelfAssignment: # new in 0.90
+  Enabled: false
+Lint/UselessTimes: # new in 0.91
+  Enabled: false
+Style/SoleNestedConditional: # Marked as enabled (from pending) after 0.89
+  Enabled: false
+Minitest/RefuteMatch: # New in rubocop-minitest 0.6
+  Enabled: false
+Minitest/AssertMatch: # New in rubocop-minitest 0.6
+  Enabled: false
+Performance/DeletePrefix: # New in rubocop-performance 1.6
+  Enabled: false
+Performance/DeleteSuffix: # New in rubocop-performance 1.6
+  Enabled: false
+Performance/Detect:
+  # This rubocop was upgraded in such a way that we would need to make
+  # many updates to pay-server to leave this turned on.
+  #
+  # In the future we should turn this back on for performance reasons and
+  # codemod the violations away
+  Enabled: false
+Performance/Count:
+  # This rubocop was upgraded in such a way that we would need to make
+  # many updates to pay-server to leave this turned on.
+  #
+  # In the future we should turn this back on for performance reasons and
+  # codemod the violations away
+  Enabled: false
+Minitest/RefuteNil:
+  Enabled: true
+Performance/RedundantBlockCall:
+  # Disabling. This is a helpful utility method but not worth the investment
+  # to incorporate into pay-server
+  Enabled: false
+Minitest/RefuteIncludes:
+  # Disabling. This is a helpful utility method but not worth the investment
+  # to incorporate into pay-server
+  Enabled: false
+Minitest/AssertIncludes:
+  # Disabling. This is a helpful utility method but not worth the investment
+  # to incorporate into pay-server
+  Enabled: false
+Minitest/AssertRespondTo:
+  # Disabling. This is a helpful utility method but not worth the investment
+  # to incorporate into pay-server
+  Enabled: false
+Style/SymbolProc:
+  Enabled: true
+Lint/ElseLayout:
+  Enabled: false
+Lint/DuplicateCaseCondition:
+  Enabled: true
+Layout/LeadingCommentSpace:
+  Enabled: true
+Style/MultilineWhenThen:
+  Enabled: false
+
+# 1.32.1 Upgrade
+Gemspec/DeprecatedAttributeAssignment: # Replaces Gemspec/DateAssignment
+  Enabled: true
+Lint/ConstantOverwrittenInRescue: # new in 1.31
+  Enabled: false # rubyfmt
+Lint/NonAtomicFileOperation: # new in 1.31
+  Enabled: false
+Lint/RefinementImportMethods: # new in 1.27
+  Enabled: true
+Security/CompoundHash: # new in 1.28
+  Enabled: false
+Style/EnvHome: # new in 1.29
+  Enabled: false
+Style/FetchEnvVar: # new in 1.28
+  Enabled: false
+Style/MapCompactWithConditionalBlock: # new in 1.30
+  Enabled: false
+Style/NestedFileDirname: # new in 1.26
+  Enabled: true
+Style/ObjectThen: # new in 1.28
+  Enabled: false
+Style/RedundantInitialize: # new in 1.27
+  Enabled: false
+Style/RedundantCondition:
+  Enabled: false
+Lint/EmptyWhen:
+  Enabled: false
+
+# 1.56.1 Upgrade
+Gemspec/DevelopmentDependencies: # new in 1.44
+  Enabled: true
+Lint/DuplicateMagicComment: # new in 1.37
+  Enabled: true
+Lint/DuplicateMatchPattern: # new in 1.50
+  Enabled: true
+Lint/MixedCaseRange: # new in 1.53
+  Enabled: true
+Lint/RedundantRegexpQuantifiers: # new in 1.53
+  Enabled: true
+Lint/RequireRangeParentheses: # new in 1.32
+  Enabled: true
+Lint/UselessRescue: # new in 1.43
+  Enabled: true
+Metrics/CollectionLiteralLength: # new in 1.47
+  Enabled: false
+Style/ArrayIntersect: # new in 1.40
+  Enabled: true
+Style/ComparableClamp: # new in 1.44
+  Enabled: false
+Style/EachForSimpleLoop:
+  Enabled: false
+Style/ConcatArrayLiterals: # new in 1.41
+  Enabled: false
+Style/DataInheritance: # new in 1.49
+  Enabled: true
+Style/DirEmpty: # new in 1.48
+  Enabled: true
+Style/EmptyHeredoc: # new in 1.32
+  Enabled: true
+Style/ExactRegexpMatch: # new in 1.51
+  Enabled: true
+Style/FileEmpty: # new in 1.48
+  Enabled: true
+Style/MagicCommentFormat: # new in 1.35
+  Enabled: true
+Style/MapToSet: # new in 1.42
+  Enabled: true
+Style/MinMaxComparison: # new in 1.42
+  Enabled: true
+Style/OperatorMethodCall: # new in 1.37
+  Enabled: false
+Style/RedundantReturn:
+  Enabled: false
+Style/RedundantArrayConstructor: # new in 1.52
+  Enabled: true
+Style/RedundantConstantBase: # new in 1.40
+  Enabled: false
+Style/RedundantCurrentDirectoryInPath: # new in 1.53
+  Enabled: false
+Style/RedundantDoubleSplatHashBraces: # new in 1.41
+  Enabled: false
+Style/RedundantEach: # new in 1.38
+  Enabled: true
+Style/RedundantFilterChain: # new in 1.52
+  Enabled: true
+Style/RedundantHeredocDelimiterQuotes: # new in 1.45
+  Enabled: true
+Style/RedundantLineContinuation: # new in 1.49
+  Enabled: true
+Style/RedundantRegexpArgument: # new in 1.53
+  Enabled: true
+Style/RedundantRegexpConstructor: # new in 1.52
+  Enabled: true
+Style/RedundantStringEscape: # new in 1.37
+  Enabled: false
+Style/ReturnNilInPredicateMethodDefinition: # new in 1.53
+  Enabled: false
+Style/YAMLFileRead: # new in 1.53
+  Enabled: true
+
+# Ruby 3.1 upgrade
+# Redunant freezes are fine.
+Style/RedundantFreeze:
+  Enabled: false
+Naming/BlockForwarding:
+  Enabled: false
+Style/HashExcept:
+  Enabled: false
+Style/SingleLineDoEndBlock: # new in 1.57
+  Enabled: true
+
+############################################################
+# Open Source Customization
+#
+# Open source cops which are specially customized
+############################################################
+
+Layout:
+  Enabled: false
+
+Lint/SuppressedException:
+  AllowComments: true
+Lint/InheritException:
+  EnforcedStyle: standard_error
+Lint/UnderscorePrefixedVariableName:
+  AllowKeywordBlockArguments: true
+Lint/UnusedBlockArgument:
+  AllowUnusedKeywordArguments: true
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+  Max: 10
+  MaxOptionalParameters: 10
+
+# If you have more than 1, you can use merge! if you want
+Performance/RedundantMerge:
+  MaxKeyValuePairs: 1
+Style/MultilineTernaryOperator:
+  Enabled: false
+# Trailing commas help with git blame when you add new parameters
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+  Enabled: false
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+  Enabled: false
+# Consistently use {}
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%':  '{}'
+    '%i': '{}'
+    '%I': '{}'
+    '%q': '{}'
+    '%Q': '{}'
+    '%r': '{}'
+    '%s': '{}'
+    '%w': '{}'
+    '%W': '{}'
+    '%x': '{}'
+  Enabled: false
+# %{} is weirder than %q{}
+Style/BarePercentLiterals:
+  EnforcedStyle: percent_q
+# In Ruby the default is usually what you want. Forcing you to write out the
+# class leads to errors like rescuing Exception or RuntimeError.
+Style/RescueStandardError:
+  EnforcedStyle: implicit
+Style/SpecialGlobalVars:
+  EnforcedStyle: use_english_names
+# `alias_method` has better semantics than `alias`
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+Style/TrivialAccessors:
+  # Predicates are ok per https://github.com/bbatsov/rubocop/issues/2763
+  AllowPredicates: true
+  # And writers per https://github.com/bbatsov/rubocop/issues/2821
+  AllowDSLWriters: true
+  IgnoreClassMethods: true
+# `format` and `sprintf` are the same so we picked one. % leads to errors since we can't enforce the RHS to be an array.
+Style/FormatString:
+  EnforcedStyle: sprintf
+# If you are doing it all on one line, fine
+Style/Semicolon:
+  AllowAsExpressionSeparator: true
+Style/Lambda:
+  Enabled: false
+Style/MultilineBlockChain:
   Enabled: false
