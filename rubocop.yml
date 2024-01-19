@@ -18,7 +18,6 @@ AllCops:
     - bazel-bin/**/*
     - bazel-genfiles/**/*
     - bazel-out/**/*
-    - bazel-pay-server/**/*
     - build/**/*
     - sorbet_ruby/**/*
     - src_transform_out/**/*
@@ -524,113 +523,113 @@ Style/SingleLineDoEndBlock: # new in 1.57
 # Open source cops which are specially customized
 ############################################################
 
-Minitest/AssertEmptyLiteral:
-  Enabled: false
-Minitest/AssertNil:
-  Enabled: false
-Minitest/AssertTruthy:
-  Enabled: false
-Minitest/RefuteFalse:
-  Enabled: false
-Minitest/AssertInDelta:
-  Enabled: false
-Minitest/AssertionInLifecycleHook:
-  Enabled: true
-Minitest/AssertKindOf:
-  Enabled: true
-Minitest/AssertOutput:
-  Enabled: true
-Minitest/AssertPathExists:
-  Enabled: false
-Minitest/AssertSilent:
-  Enabled: true
-Minitest/AssertWithExpectedArgument:
-  Enabled: true
-Minitest/LiteralAsActualArgument:
-  Enabled: false
-Minitest/MultipleAssertions:
-  Enabled: false
-Minitest/RefuteInDelta:
-  Enabled: true
-Minitest/RefuteKindOf:
-  Enabled: true
-Minitest/RefutePathExists:
-  Enabled: false
-Minitest/TestMethodName:
-  Enabled: false
-Minitest/UnreachableAssertion:
-  Enabled: false
-Minitest/UnspecifiedException:
-  Enabled: false
-Minitest/RefuteMatch:
-  Enabled: false
-Minitest/AssertMatch:
-  Enabled: false
-Minitest/RefuteNil:
-  Enabled: true
-Minitest/RefuteIncludes:
-  Enabled: false
-Minitest/AssertIncludes:
-  Enabled: false
-Minitest/AssertRespondTo:
-  Enabled: false
-
-Performance/StartWith:
-  Enabled: false
-Performance/EndWith:
-  Enabled: false
-Performance/TimesMap:
-  Enabled: false
-Performance/AncestorsInclude:
-  Enabled: true
-Performance/BigDecimalWithNumericArgument:
-  Enabled: false
-Performance/BlockGivenWithExplicitBlock:
-  Enabled: false
-Performance/CollectionLiteralInLoop:
-  Enabled: false
-Performance/ConcurrentMonotonicTime:
-  Enabled: true
-Performance/ConstantRegexp:
-  Enabled: false
-# Disabled because there's no safe autocorrection.
-# See the following example:
-# [true, false, nil].compact              #=> [true, false]
-# [true, false, nil].filter_map(&:itself) #=> [true]
-Performance/MapCompact:
-  Enabled: false
-Performance/MethodObjectAsBlock:
-  Enabled: false
-Performance/RedundantEqualityComparisonBlock:
-  Enabled: false
-Performance/RedundantSortBlock:
-  Enabled: true
-Performance/RedundantSplitRegexpArgument:
-  Enabled: false
-Performance/RedundantStringChars:
-  Enabled: false
-Performance/ReverseFirst:
-  Enabled: false
-Performance/SortReverse:
-  Enabled: true
-Performance/Squeeze:
-  Enabled: false
-Performance/StringIdentifierArgument:
-  Enabled: false
-Performance/StringInclude:
-  Enabled: false
-Performance/Sum:
-  Enabled: false
-Performance/DeletePrefix:
-  Enabled: false
-Performance/DeleteSuffix:
-  Enabled: false
-Performance/Detect:
-  Enabled: false
-Performance/Count:
-  Enabled: false
-Performance/RedundantBlockCall:
-  Enabled: false
-# If you have more than 1, you can use merge! if you want
-Performance/RedundantMerge:
-  MaxKeyValuePairs: 1
+# Minitest/AssertEmptyLiteral:
+#   Enabled: false
+# Minitest/AssertNil:
+#   Enabled: false
+# Minitest/AssertTruthy:
+#   Enabled: false
+# Minitest/RefuteFalse:
+#   Enabled: false
+# Minitest/AssertInDelta:
+#   Enabled: false
+# Minitest/AssertionInLifecycleHook:
+#   Enabled: true
+# Minitest/AssertKindOf:
+#   Enabled: true
+# Minitest/AssertOutput:
+#   Enabled: true
+# Minitest/AssertPathExists:
+#   Enabled: false
+# Minitest/AssertSilent:
+#   Enabled: true
+# Minitest/AssertWithExpectedArgument:
+#   Enabled: true
+# Minitest/LiteralAsActualArgument:
+#   Enabled: false
+# Minitest/MultipleAssertions:
+#   Enabled: false
+# Minitest/RefuteInDelta:
+#   Enabled: true
+# Minitest/RefuteKindOf:
+#   Enabled: true
+# Minitest/RefutePathExists:
+#   Enabled: false
+# Minitest/TestMethodName:
+#   Enabled: false
+# Minitest/UnreachableAssertion:
+#   Enabled: false
+# Minitest/UnspecifiedException:
+#   Enabled: false
+# Minitest/RefuteMatch:
+#   Enabled: false
+# Minitest/AssertMatch:
+#   Enabled: false
+# Minitest/RefuteNil:
+#   Enabled: true
+# Minitest/RefuteIncludes:
+#   Enabled: false
+# Minitest/AssertIncludes:
+#   Enabled: false
+# Minitest/AssertRespondTo:
+#   Enabled: false
+#
+# Performance/StartWith:
+#   Enabled: false
+# Performance/EndWith:
+#   Enabled: false
+# Performance/TimesMap:
+#   Enabled: false
+# Performance/AncestorsInclude:
+#   Enabled: true
+# Performance/BigDecimalWithNumericArgument:
+#   Enabled: false
+# Performance/BlockGivenWithExplicitBlock:
+#   Enabled: false
+# Performance/CollectionLiteralInLoop:
+#   Enabled: false
+# Performance/ConcurrentMonotonicTime:
+#   Enabled: true
+# Performance/ConstantRegexp:
+#   Enabled: false
+# # Disabled because there's no safe autocorrection.
+# # See the following example:
+# # [true, false, nil].compact              #=> [true, false]
+# # [true, false, nil].filter_map(&:itself) #=> [true]
+# Performance/MapCompact:
+#   Enabled: false
+# Performance/MethodObjectAsBlock:
+#   Enabled: false
+# Performance/RedundantEqualityComparisonBlock:
+#   Enabled: false
+# Performance/RedundantSortBlock:
+#   Enabled: true
+# Performance/RedundantSplitRegexpArgument:
+#   Enabled: false
+# Performance/RedundantStringChars:
+#   Enabled: false
+# Performance/ReverseFirst:
+#   Enabled: false
+# Performance/SortReverse:
+#   Enabled: true
+# Performance/Squeeze:
+#   Enabled: false
+# Performance/StringIdentifierArgument:
+#   Enabled: false
+# Performance/StringInclude:
+#   Enabled: false
+# Performance/Sum:
+#   Enabled: false
+# Performance/DeletePrefix:
+#   Enabled: false
+# Performance/DeleteSuffix:
+#   Enabled: false
+# Performance/Detect:
+#   Enabled: false
+# Performance/Count:
+#   Enabled: false
+# Performance/RedundantBlockCall:
+#   Enabled: false
+# # If you have more than 1, you can use merge! if you want
+# Performance/RedundantMerge:
+#   MaxKeyValuePairs: 1
