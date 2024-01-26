@@ -354,5 +354,5 @@ fi
 
 [[ -d $HOME/.cargo ]] && [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
-eval "$(ssh-agent -s)" > /dev/null
+# eval "$(ssh-agent -s)" > /dev/null
 ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
