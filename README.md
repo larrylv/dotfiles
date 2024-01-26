@@ -34,6 +34,7 @@ rake install
 brew install pyenv
 pyenv install 3.8.13
 pip3 install --user pynvim
+python3 -m pip install --user --upgrade pynvim
 
 brew install neovim
 nvim --headless +PlugInstall +UpdateRemotePlugins +qall
