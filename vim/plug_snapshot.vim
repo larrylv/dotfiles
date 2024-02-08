@@ -5,7 +5,7 @@
 
 silent! let g:plugs['ack.vim'].commit = '36e40f9ec91bdbf6f1adf408522a73a6925c3042'
 silent! let g:plugs['alchemist.vim'].commit = '3d370d163a48bdeccea4be541686cce67a52b996'
-silent! let g:plugs['ale'].commit = '9a23ec1f60ec85f6afb70870a1978141b321fb3c'
+silent! let g:plugs['ale'].commit = '6fd9f3c54f80cec8be364594246daf9ac41cbe3e'
 silent! let g:plugs['async-clj-omni'].commit = '1c683073d67f1397af4cd071b4136eb55cca47b7'
 silent! let g:plugs['coc-fzf'].commit = '96490e570daf1c10679ac0b183ebf2ca1024b079'
 silent! let g:plugs['coc.nvim'].commit = 'eb73aa077aec2eb5041325761402af6d514895d6'

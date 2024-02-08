@@ -613,7 +613,7 @@ let g:ale_linters = {
       \  'yaml': [],
       \}
 let g:ale_fixers = {
-      \  'ruby': ['rubocop'],
+      \  'ruby': ['rubyfmt'],
       \  'javascript': ['eslint'],
       \  'javascript.jsx': ['eslint'],
       \  'javascriptreact': ['eslint'],
