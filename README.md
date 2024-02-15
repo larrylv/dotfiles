@@ -49,6 +49,10 @@ cargo install proximity-sort
 ### ruby stuff
 
 ```
+brew install rbenv
+rbenv install 3.3.0
+rbenv global 3.3.0
+
 brew install rubyfmt
 gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sorbet sorbet-runtime sorbet-static
 ```
@@ -69,7 +73,7 @@ https://github.com/tmux-plugins/tpm#installation
 brew install autojump automake bash-completion bat ccat cloc \
   cmake coreutils cowsay curl diff-so-fancy diffutils fmt fpp gcc goenv \
   golangci-lint grpc htop httperf httpie hugo ijq jq mtr ncurses nodenv openjdk\
-  openjdk@11 pre-commit pstree rbenv readline reattach-to-user-namespace \
+  openjdk@11 pre-commit pstree readline reattach-to-user-namespace \
   ruby ruby-build rust scala snappy source-highlight sqlite tig tldr \
   tmuxinator-completion trash tree tree-sitter urlview watchman webpack
 
