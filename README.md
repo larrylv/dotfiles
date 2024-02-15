@@ -28,6 +28,17 @@ rake install
 
 * [Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font/blob/main/Monaco%20Nerd%20Font%20Complete.otf)
 
+### ruby stuff
+
+```
+brew install rbenv
+rbenv install 3.3.0
+rbenv global 3.3.0
+
+brew install rubyfmt
+gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sorbet sorbet-runtime sorbet-static
+```
+
 ### vim plugins & dependencies
 
 ```
@@ -44,17 +55,6 @@ brew install fd fzf universal-ctags ripgrep rust
 
 # proximity-sort
 cargo install proximity-sort
-```
-
-### ruby stuff
-
-```
-brew install rbenv
-rbenv install 3.3.0
-rbenv global 3.3.0
-
-brew install rubyfmt
-gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sorbet sorbet-runtime sorbet-static
 ```
 
 ### tmux & plugins
