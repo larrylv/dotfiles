@@ -310,9 +310,7 @@ function goenv_prompt_info() {
 
 function pyenv_prompt_info() {
   if which pyenv > /dev/null; then
-    if [ ! -f "$PWD/Gemfile" ] && [ ! -f "$PWD/mix.exs" ] && [ ! -f "$PWD/project.clj" ] ; then
-      echo -e " ${echo_bold_yellow}\uf81f $(pyenv version-name)${echo_normal}"
-    fi
+    echo -e " ${echo_bold_yellow}\uf81f $(pyenv version-name)${echo_normal}"
   fi
 }
 
@@ -333,9 +331,9 @@ function bash_prompt() {
 }
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  PS1="${bold_cyan}\$(dir_prompt)  \u@\H ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
+  PS1="${bold_cyan}\$(dir_prompt)  \u@\H ${bold_blue}\w\$(pyenv_prompt_info)\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 else
-  PS1="${bold_blue}\$(dir_prompt)  ${bold_blue}\w\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
+  PS1="${bold_blue}\$(dir_prompt)  ${bold_blue}\w\$(pyenv_prompt_info)\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 fi
 
 
