@@ -28,6 +28,14 @@ rake install
 
 * [Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font/blob/main/Monaco%20Nerd%20Font%20Complete.otf)
 
+### python stuff
+
+```
+brew install pyenv
+pyenv install 3.12.2
+pip3 install --upgrade autopep8 ruff pytest
+```
+
 ### ruby stuff
 
 ```
@@ -39,15 +47,13 @@ brew install rubyfmt
 gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sorbet sorbet-runtime sorbet-static
 ```
 
-### vim plugins & dependencies
+### vim plugins and dependencies
 
 ```
-brew install pyenv
-pyenv install 3.8.13
-pip3 install --user pynvim neovim
-python3 -m pip install --user --upgrade pynvim
+pip3 install --upgrade pynvim neovim
 
 brew install neovim
+
 nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 
 gem install ripper-tags

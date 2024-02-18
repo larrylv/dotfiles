@@ -115,11 +115,6 @@ Plug 'guns/vim-sexp',                       { 'for': 'clojure' }
 Plug 'vim-scripts/paredit.vim',             { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni',          { 'for': 'clojure' }
 
-" python
-Plug 'davidhalter/jedi-vim',                { 'for': 'python' }
-Plug 'fisadev/vim-isort',                   { 'for': 'python' }
-Plug 'Vimjas/vim-python-pep8-indent',       { 'for': 'python' }
-
 " markdown
 Plug 'iamcco/markdown-preview.nvim',        { 'for': 'markdown', 'do': 'cd app && yarn install' } " <leader>pp to preview markdown
 Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
@@ -551,9 +546,6 @@ vnoremap > >gv
 " no Ex mode
 map Q <Nop>
 
-" format python code
-autocmd FileType python nnoremap <leader>s= :0,$!yapf<cr>
-
 " search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
@@ -606,6 +598,7 @@ let g:ale_linters = {
       \  'javascriptreact': ['eslint'],
       \  'ruby': ['rubocop'],
       \  'markdown': [],
+      \  'python': ['ruff'],
       \  'sh': [],
       \  'typescriptreact': ['eslint'],
       \  'typescript': ['eslint'],
@@ -617,6 +610,7 @@ let g:ale_fixers = {
       \  'javascript': ['eslint'],
       \  'javascript.jsx': ['eslint'],
       \  'javascriptreact': ['eslint'],
+      \  'python': ['autopep8', 'ruff'],
       \  'typescriptreact': ['eslint'],
       \  'typescript': ['eslint'],
       \}
@@ -673,11 +667,12 @@ autocmd FileType c,cpp,objc,objcpp call SetupSwitchSourceHeaderForClangd()
 " For example, here is how to generate that file for mongo codebase:
 " $ pip3 install scons==3.1.1; scons-3.1.1 compiledb
 let g:coc_global_extensions = [
+  \ 'coc-clangd',
   \ 'coc-json',
   \ 'coc-omni',
+  \ 'coc-pyright',
   \ 'coc-rust-analyzer',
-  \ 'coc-tag',
-  \ 'coc-clangd'
+  \ 'coc-tag'
   \ ]
 
 " this is commented out because vim-go already does this
@@ -1090,18 +1085,6 @@ let g:indentLine_enabled = 0
 let g:indentLine_char = "\ue621"
 
 nnoremap <leader>cm :IndentLinesToggle<cr>
-
-
-" ================================= jedi =======================================
-let g:jedi#goto_command = "<leader>xg"
-let g:jedi#goto_assignments_command = ""
-let g:jedi#goto_definitions_command = "<leader>xd"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = ""
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>xr"
-let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#show_call_signatures = "0"
 
 
 " ================================= LargeFile ==================================
@@ -1761,10 +1744,16 @@ autocmd Filetype go
 
 
 " ================================= vim-test ===================================
+" make test commands execute using dispatch.vim
+let test#strategy = "vimux"
 nmap <silent> <leader>tf :TestFile<cr>
 nmap <silent> <leader>tn :TestNearest<cr>
 nmap <silent> <leader>tl :TestLast<cr>
 nmap <silent> <leader>tv :TestVisit<cr>
+
+nmap <silent> <leader>vs :TestFile<cr>
+nmap <silent> <leader>vn :TestNearest<cr>
+nmap <silent> <leader>vl :TestLast<cr>
 
 
 " ================================= vimux ======================================
@@ -1841,12 +1830,15 @@ if !exists("g:vroom_test_unit_command")
   let g:vroom_test_unit_command = 'ruby -Itest -I.'
 endif
 
-" test the current file with vroom
-map <leader>vs :VroomRunTestFile<cr>
-" run the nearest test in the current file
-map <leader>vn :VroomRunNearestTest<cr>
-" run last test executed by vroom
-map <leader>vl :VroomRunLastTest<cr>
+function! SetupMapForVroom()
+  " test the current file with vroom
+  map <leader>vs :VroomRunTestFile<cr>
+  " run the nearest test in the current file
+  map <leader>vn :VroomRunNearestTest<cr>
+  " run last test executed by vroom
+  map <leader>vl :VroomRunLastTest<cr>
+endfunction
+autocmd FileType ruby call SetupMapForVroom()
 
 
 " ================================= private config =============================
