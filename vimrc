@@ -366,7 +366,7 @@ augroup general_config
   " Neovim allows customizing `syn sync minlines` with this variable.
   " vim-markdown has a weird save & restore behavior for other filetypes, so
   " sometimes `:syntax sync fromstart` has to be called to fix it -- it is also
-  " mapped to <F12>.
+  " mapped to <F10>.
   let g:markdown_minlines=10000
 
   " Filetype detection
@@ -419,9 +419,9 @@ set pastetoggle=<F3>
 " Open selected text in https://carbon.now.sh
 vnoremap <F5> :CarbonNowSh<cr>
 
-" clean up most syntax highlighting problems (<F12>)
-noremap <F12> <Esc>:syntax sync fromstart<CR>
-inoremap <F12> <C-o>:syntax sync fromstart<CR>
+" clean up most syntax highlighting problems (<F10>)
+noremap <F10> <Esc>:syntax sync fromstart<CR>
+inoremap <F10> <C-o>:syntax sync fromstart<CR>
 
 " Yank from cursor to end of line
 nnoremap Y y$
@@ -635,6 +635,9 @@ let g:coc_fzf_opts = []
 
 
 " ================================= coc.nvim ===================================
+noremap <F12> <Esc>:CocCommand document.toggleInlayHint<CR>
+inoremap <F12> <C-o>:CocCommand document.toggleInlayHint<CR>
+
 let g:coc_snippet_next = '<tab>'
 
 " Disable transparent cursor when CocList is activated.
