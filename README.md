@@ -33,7 +33,19 @@ rake install
 ```
 brew install pyenv
 pyenv install 3.12.2
-pip3 install --upgrade autopep8 ruff pytest
+pip install --upgrade autopep8 ruff pytest
+
+pip install --upgrade pipenv
+# pipenv 101
+# * `pipenv install requests`
+# * To activate this project's virtualenv, run `pipenv shell`.
+# * Alternatively, run a command inside the virtualenv with `pipenv run`.
+
+pip install --upgrade virtualenv
+# virtualenv 101
+# * `python -m venv .venv`
+# * `. .venv/bin/activate`
+# * `pip install -r requirements.txt`
 ```
 
 ### ruby stuff
@@ -50,7 +62,7 @@ gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sor
 ### vim plugins and dependencies
 
 ```
-pip3 install --upgrade pynvim neovim
+pip install --upgrade pynvim neovim
 
 brew install neovim
 
