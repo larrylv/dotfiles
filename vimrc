@@ -188,6 +188,26 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldcolumn=0                           " Column to show folds
 
+" Opening and closing folds
+" https://vim.fandom.com/wiki/Folding#Opening_and_closing_folds
+"
+" `za` / `zc` / `zo` operate on one level of folding, at the cursor:
+" * za -- toggle a fold
+" * zc -- close a fold
+" * zo -- open a fold
+"
+" `zA` / `zC` / `zO` are similar, but operate on all folding levels (for
+" example, the cursor line may be in an open fold, which is inside another
+" open fold; typing `zC` would close all folds at the cursor).
+"
+" `zr` -- reduces folding by opening one more level of folds throughout the
+"         whole buffer
+" `zR` -- open all folds
+" `zm` -- gives more folding by closing one more level of folds throughout the
+"         whole buffer
+" `zM` -- close all folds
+
+
 " set ambiwidth=double
 set autoindent                             " Copy indent from last line when starting new line
 set autoread                               " Reload files changed outside automatically
