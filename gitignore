@@ -44,6 +44,13 @@ tmp
 .yardoc
 _yardoc
 
+# Python .gitignore
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv
+
 # Go .gitignore
 .godeps/
 
