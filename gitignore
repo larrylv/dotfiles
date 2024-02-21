@@ -51,6 +51,10 @@ __pycache__/
 *.so
 .venv
 
+# autoenv
+.env
+.env.leave
+
 # Go .gitignore
 .godeps/
 
