@@ -160,9 +160,6 @@ export GIT_EDITOR=nvim
 ## rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-## nodenv
-if which nodeenv > /dev/null; then eval "$(nodeenv init -)"; fi
-
 ## goenv
 # See https://github.com/syndbg/goenv/issues/72
 export GOENV_DISABLE_GOPATH=1
