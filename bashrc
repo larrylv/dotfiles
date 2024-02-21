@@ -160,10 +160,6 @@ export GIT_EDITOR=nvim
 ## rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-## autoenv
-[[ -f "$HOMEBREW_PREFIX/opt/autoenv/activate.sh" ]] && source "$HOMEBREW_PREFIX/opt/autoenv/activate.sh"
-export AUTOENV_ENABLE_LEAVE=true
-
 ## goenv
 # See https://github.com/syndbg/goenv/issues/72
 export GOENV_DISABLE_GOPATH=1
@@ -355,3 +351,7 @@ fi
 
 # eval "$(ssh-agent -s)" > /dev/null
 ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
+
+## autoenv
+[[ -f "$HOMEBREW_PREFIX/opt/autoenv/activate.sh" ]] && source "$HOMEBREW_PREFIX/opt/autoenv/activate.sh"
+export AUTOENV_ENABLE_LEAVE=true
