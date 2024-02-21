@@ -36,16 +36,30 @@ pyenv install 3.12.2
 pip install --upgrade autopep8 ruff pytest
 
 pip install --upgrade pipenv
-# pipenv 101
-# * `pipenv install requests`
-# * To activate this project's virtualenv, run `pipenv shell`.
-# * Alternatively, run a command inside the virtualenv with `pipenv run`.
-
 pip install --upgrade virtualenv
-# virtualenv 101
-# * `python -m venv .venv`
-# * `. .venv/bin/activate`
-# * `pip install -r requirements.txt`
+
+brew install autoenv
+
+```
+
+* pipenv 101
+  * `pipenv install requests`
+  * To activate this project's virtualenv, run `pipenv shell`.
+  * Alternatively, run a command inside the virtualenv with `pipenv run`.
+
+* virtualenv 101
+  * `python -m venv .venv`
+  * `. .venv/bin/activate`
+  * `pip install -r requirements.txt`
+
+* autoenv 101
+  * `.env` example
+```
+[[ -f .venv/bin/activate ]] && source .venv/bin/activate
+```
+  * `.env.leave` example
+```
+deactivate
 ```
 
 ### ruby stuff
