@@ -49,7 +49,7 @@ brew install autoenv
 
 * virtualenv 101
   * `python -m venv .venv`
-  * `. .venv/bin/activate`
+  * `source .venv/bin/activate`
   * `pip install -r requirements.txt`
 
 * autoenv 101
