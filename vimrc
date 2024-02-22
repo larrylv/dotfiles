@@ -658,6 +658,9 @@ let g:coc_fzf_opts = []
 noremap <F12> <Esc>:CocCommand document.toggleInlayHint<CR>
 inoremap <F12> <C-o>:CocCommand document.toggleInlayHint<CR>
 
+" disable inlay hint by default
+autocmd FileType python CocCommand document.toggleInlayHint
+
 let g:coc_snippet_next = '<tab>'
 
 " Disable transparent cursor when CocList is activated.
