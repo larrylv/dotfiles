@@ -695,7 +695,8 @@ let g:coc_global_extensions = [
   \ 'coc-omni',
   \ 'coc-pyright',
   \ 'coc-rust-analyzer',
-  \ 'coc-tag'
+  \ 'coc-tag',
+  \ 'coc-ultisnips'
   \ ]
 
 " this is commented out because vim-go already does this
