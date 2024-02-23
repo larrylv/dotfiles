@@ -81,6 +81,7 @@
   ],
   "rust-analyzer.lens.debug.enable": false,
   "rust-analyzer.lens.run.enable": false,
+  "signature.hideOnTextChange": true,
   "suggest.enableFloat": true,
   "suggest.enablePreselect": false,
   "suggest.maxCompleteItemCount": 20,
