@@ -24,10 +24,11 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'mileszs/ack.vim'
 
-" linter & lsp & completion & copilot
-Plug 'dense-analysis/ale'
+" lsp & linter & formatter & completion & copilot
 Plug 'larrylv/coc.nvim', {'branch': 'release'} " my own fork that suppress error messages
 Plug 'antoinemadec/coc-fzf'                    " fzf <> coc.nvim
+Plug 'dense-analysis/ale'                      " linting
+Plug 'stevearc/conform.nvim'                   " lightweight yet powerful formatter
 Plug 'larrylv/vim-tagimposter'                 " populate the tagstack when using coc to jump to definitions
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -625,20 +626,14 @@ let g:ale_linters = {
       \  'vim': [],
       \  'yaml': [],
       \}
-let g:ale_fixers = {
-      \  'ruby': ['rubyfmt'],
-      \  'javascript': ['eslint'],
-      \  'javascript.jsx': ['eslint'],
-      \  'javascriptreact': ['eslint'],
-      \  'python': ['autopep8', 'ruff'],
-      \  'typescriptreact': ['eslint'],
-      \  'typescript': ['eslint'],
-      \}
+
+" use conform.nvim for formatter
+let g:ale_fixers = {}
+let g:ale_fix_on_save = 0
 
 let g:ale_go_golangci_lint_package = 1
 let g:ale_go_golangci_lint_options = ''
 
-let g:ale_fix_on_save = 1
 " disable linting for all minified JS files
 let g:ale_pattern_options = {
       \ '\.min.js$': {'ale_enabled': 0},
