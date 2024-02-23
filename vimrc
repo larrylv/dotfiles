@@ -540,10 +540,6 @@ nmap <leader>xm :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<cr>:wviminfo!<cr>
 " vim has to be compiled with +clipboard to support this
 vmap <leader>y "*y
 
-" " clsoe all buffers except for the current one
-" command! BufOnly silent! execute "%bd!|e#|bd#"
-" nmap <leader>q :BufOnly<cr>
-
 " close all hidden buffers
 function! DeleteHiddenBuffers()
   let tpbl=[]
@@ -557,8 +553,14 @@ function! DeleteHiddenBuffers()
   endfor
   echo "Closed ".closed." hidden buffers"
 endfunction
+nnoremap <leader>qd :call DeleteHiddenBuffers()<cr>
 
-nnoremap <leader>q :call DeleteHiddenBuffers()<cr>
+" close all buffers except for the current one
+" command! BufOnly silent! execute "%bd!|e#|bd#"
+" nmap <leader>qo :BufOnly<cr>
+
+" close all other splits except the current one
+nnoremap <leader>qo <C-w>o<cr>
 
 " keep selected text selected when fixing indentation
 vnoremap < <gv
