@@ -1108,7 +1108,12 @@ nmap <leader>gm <Plug>(git-messenger)
 let g:indentLine_enabled = 0
 let g:indentLine_char = "\ue621"
 
+" toggle displaying the indention levels with thin vertical lines
 nnoremap <leader>cm :IndentLinesToggle<cr>
+nnoremap <leader>vv :IndentLinesToggle<cr>
+
+" display vertical lines for python files by default
+autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.py let g:indentLine_enabled = 1
 
 
 " ================================= LargeFile ==================================
