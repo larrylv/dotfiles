@@ -665,9 +665,7 @@ inoremap <silent><expr> <C-n>
 inoremap <silent><expr> <C-p>
   \ coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
 inoremap <silent><expr> <CR>
-  \ coc#pum#visible() ?
-  \ coc#pum#info()['index'] >= 0 ? coc#pum#confirm() : "\<CR>\<C-r>=coc#pum#cancel()\<CR>" :
-  \ "\<CR>"
+  \ coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 inoremap <silent><expr> <TAB>
   \ coc#pum#visible() ? coc#pum#next(1) :
   \ pumvisible() ? "\<C-n>" :
