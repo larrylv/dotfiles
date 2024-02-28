@@ -33,10 +33,11 @@ rake install
 ```
 brew install pyenv
 pyenv install 3.12.2
-pip install --upgrade autopep8 ruff pytest
+pip install --upgrade autopep8 isort ruff pytest
 
 pip install --upgrade pipenv
 pip install --upgrade virtualenv
+pip install --upgrade pdm
 
 brew install autoenv
 
