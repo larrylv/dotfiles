@@ -9,3 +9,4 @@ tmp
 vim/bundle
 Session.vim
 tags
+.venv
