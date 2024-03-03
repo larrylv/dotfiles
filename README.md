@@ -41,6 +41,7 @@ pip install --upgrade pdm
 
 brew install autoenv
 
+brew install uv
 ```
 
 * pipenv 101
