@@ -14,7 +14,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
 
     -- list of language that will be disabled
-    disable = { "markdown", "python", "ruby", "scala", "vim" },
+    disable = { "html", "markdown", "python", "ruby", "scala", "vim" },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
