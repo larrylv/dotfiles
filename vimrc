@@ -408,7 +408,7 @@ augroup general_config
   autocmd Filetype gitcommit,gitrebase,markdown set colorcolumn=81
 augroup END
 
-let g:python3_host_prog=$HOME.'/.pyenv/shims/python3'
+let g:python3_host_prog=$HOME.'/.pyenv/shims/python'
 
 " ================================= GENERAL MAPPINGS ===========================
 
