@@ -87,9 +87,19 @@ Install tmux plugins: https://github.com/tmux-plugins/tpm#installation
 
 ## configs
 
-* bash_history
 * solarized (for `iTerm` and `Terminal`)
+
+* bash_history
+```
+# make sure that the existing ~/.bash_history doesn't have anything you wanna keep
+cp $BASH_HISTORY_BACKUP ~/.bash_history
+```
+
 * tmux_resurrect.txt
+```
+cp $TMUX_RESURRECT_BACKUP ~/.tmux/resurrect/tmux_resurrect_backup.txt
+ln -s ~/.tmux/resurrect/last ~/.tmux/resurrect/tmux_resurrect_backup.txt
+```
 
 ## other stuff
 
