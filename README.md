@@ -40,7 +40,7 @@ chsh -s $HOMEBREW_PREFIX/bin/bash
 ## dotfiles
 
 ```
-git clone git://github.com/larrylv/dotfiles.git ~/code/dotfiles
+git clone git@github.com:larrylv/dotfiles.git ~/code/dotfiles
 cd ~/code/dotfiles
 rake install
 ```
