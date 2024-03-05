@@ -81,7 +81,7 @@ brew install tmux
 gem install tmuxinator
 ```
 
-https://github.com/tmux-plugins/tpm#installation
+Install tmux plugins: https://github.com/tmux-plugins/tpm#installation
 
 ### other stuff
 
@@ -119,3 +119,9 @@ git clone git@github.com:pydantic/pydantic.git ~/code/pydantic
 git clone git@github.com:tiangolo/sqlmodel.git ~/code/sqlmodel
 git clone git@github.com:encode/starlette.git ~/code/starlette
 ```
+
+### configs
+
+* bash_history
+* solarized (for `iTerm` and `Terminal`)
+* tmux_resurrect.txt
