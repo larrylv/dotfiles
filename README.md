@@ -106,6 +106,9 @@ ln -s ~/.tmux/resurrect/last ~/.tmux/resurrect/tmux_resurrect_backup.txt
 Install [Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font/blob/main/Monaco%20Nerd%20Font%20Complete.otf)
 
 ```
+mkdir -p $HOME/code/gopath
+mkdir -p ~/.local/bin
+
 # fix gitgutter `too many files` error
 sudo launchctl limit maxfiles 10240 200000
 # or make the change permanent
@@ -115,7 +118,6 @@ https://apple.stackexchange.com/questions/381999/how-to-make-sudo-launchctl-limi
 Interesting open source projects:
 ```
 # go
-mkdir -p $HOME/code/gopath
 git clone git@github.com:nadoo/glider.git ~/code/gopath/src/github.com/nadoo/glider
 git clone git@github.com:panjf2000/gnet.git ~/code/gopath/src/github.com/panjf2000/gnet
 git clone git@github.com:rqlite/rqlite.git ~/code/gopath/src/github.com/rqlite/rqlite
