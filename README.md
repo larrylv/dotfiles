@@ -74,7 +74,6 @@ nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 
 gem install ripper-tags
 
-# proximity-sort
 cargo install proximity-sort
 ```
 
