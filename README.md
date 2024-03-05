@@ -1,20 +1,37 @@
-# Larry Lv Dot Files
+# larrylv/dotfiles
 
 These are the config files to set up a machine the way I like it.
 
 ## Installation
 
-### Alacritty
+### homebrew stuff
 
 ```
-brew install alacritty
+brew install alacritty autojump automake bash bash-completion bat ccat cloc \
+  cmake coreutils cowsay curl diff-so-fancy diffutils fmt fpp gcc git goenv \
+  golangci-lint grpc grpcurl htop httperf httpie hugo ijq jq libevent \
+  libfaketime libxml2 luajit mtr ncurses nodenv openjdk openjdk@11 openssl@1.1 \
+  openssl pre-commit prettier pstree readline reattach-to-user-namespace \
+  rsync ruby ruby-build rust scala shellcheck snappy source-highlight sqlite \
+  tig tldr tmux tmuxinator-completion trash tree tree-sitter urlview watchman \
+  webpack wget yq
+
+brew install --cask diffmerge
+
+# python
+brew install pyenv autoenv uv
+
+# ruby
+brew install rbenv rubyfmt
+
+# neovim & dependencies
+brew install neovim
+brew install fd fzf universal-ctags ripgrep
 ```
 
 ### bash
 
 ```
-brew install bash
-
 # add $HOMEBREW_PREFIX/bin/bash to `/etc/shells`, then
 chsh -s $HOMEBREW_PREFIX/bin/bash
 
@@ -33,27 +50,20 @@ rake install
 ### python stuff
 
 ```
-brew install pyenv
 pyenv install 3.12.2
 pip install --upgrade autopep8 isort ruff pytest
 
 pip install --upgrade pipenv
 pip install --upgrade virtualenv
 pip install --upgrade pdm
-
-brew install autoenv
-
-brew install uv
 ```
 
 ### ruby stuff
 
 ```
-brew install rbenv
 rbenv install 3.3.0
 rbenv global 3.3.0
 
-brew install rubyfmt
 gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sorbet sorbet-runtime sorbet-static
 ```
 
@@ -62,12 +72,9 @@ gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sor
 ```
 pip install --upgrade pynvim neovim
 
-brew install neovim
-
 nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 
 gem install ripper-tags
-brew install fd fzf universal-ctags ripgrep rust
 
 # proximity-sort
 cargo install proximity-sort
@@ -76,8 +83,6 @@ cargo install proximity-sort
 ### tmux & plugins
 
 ```
-brew install tmux
-
 gem install tmuxinator
 ```
 
@@ -88,15 +93,6 @@ Install tmux plugins: https://github.com/tmux-plugins/tpm#installation
 Install [Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font/blob/main/Monaco%20Nerd%20Font%20Complete.otf)
 
 ```
-brew install autojump automake bash-completion bat ccat cloc \
-  cmake coreutils cowsay curl diff-so-fancy diffutils fmt fpp gcc goenv \
-  golangci-lint grpc htop httperf httpie hugo ijq jq mtr ncurses nodenv openjdk\
-  openjdk@11 pre-commit pstree readline reattach-to-user-namespace \
-  ruby ruby-build rust scala snappy source-highlight sqlite tig tldr \
-  tmuxinator-completion trash tree tree-sitter urlview watchman webpack
-
-brew install --cask diffmerge
-
 mkdir -p $HOME/code/gopath
 
 # fix gitgutter `too many files` error
