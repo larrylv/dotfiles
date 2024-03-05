@@ -90,7 +90,7 @@
   "suggest.noselect": true,
   "suggest.snippetIndicator": "",
   "[ruby]": {
-    "coc.preferences.formatOnSave": true
+    "coc.preferences.formatOnSave": false
   },
   "[python]": {
     "coc.preferences.formatOnSave": false
