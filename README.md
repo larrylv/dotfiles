@@ -113,6 +113,8 @@ brew install autojump automake bash-completion bat ccat cloc \
 
 brew install --cask diffmerge
 
+mkdir -p $HOME/code/gopath
+
 # fix gitgutter `too many files` error
 sudo launchctl limit maxfiles 10240 200000
 # or make the change permanent
