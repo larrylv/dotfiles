@@ -4,6 +4,12 @@ These are the config files to set up a machine the way I like it.
 
 ## Installation
 
+### Alacritty
+
+```
+brew install alacritty
+```
+
 ### bash
 
 ```
@@ -24,10 +30,6 @@ cd ~/code/dotfiles
 rake install
 ```
 
-### font
-
-* [Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font/blob/main/Monaco%20Nerd%20Font%20Complete.otf)
-
 ### python stuff
 
 ```
@@ -44,26 +46,6 @@ brew install autoenv
 brew install uv
 ```
 
-* pipenv 101
-  * `pipenv install requests`
-  * To activate this project's virtualenv, run `pipenv shell`.
-  * Alternatively, run a command inside the virtualenv with `pipenv run`.
-
-* virtualenv 101
-  * `python -m venv .venv`
-  * `source .venv/bin/activate`
-  * `pip install -r requirements.txt`
-
-* autoenv 101
-  * `.env` example
-```
-[[ -f .venv/bin/activate ]] && source .venv/bin/activate
-```
-  * `.env.leave` example
-```
-deactivate
-```
-
 ### ruby stuff
 
 ```
@@ -75,7 +57,7 @@ brew install rubyfmt
 gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sorbet sorbet-runtime sorbet-static
 ```
 
-### vim plugins and dependencies
+### neovim, along with its plugins and dependencies
 
 ```
 pip install --upgrade pynvim neovim
@@ -103,6 +85,8 @@ https://github.com/tmux-plugins/tpm#installation
 
 ### other stuff
 
+Install [Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font/blob/main/Monaco%20Nerd%20Font%20Complete.otf)
+
 ```
 brew install autojump automake bash-completion bat ccat cloc \
   cmake coreutils cowsay curl diff-so-fancy diffutils fmt fpp gcc goenv \
@@ -119,4 +103,19 @@ mkdir -p $HOME/code/gopath
 sudo launchctl limit maxfiles 10240 200000
 # or make the change permanent
 https://apple.stackexchange.com/questions/381999/how-to-make-sudo-launchctl-limit-change-permanent
+```
+
+Interesting open source projects:
+```
+# go
+git clone git@github.com:nadoo/glider.git ~/code/gopath/src/github.com/nadoo/glider
+git clone git@github.com:panjf2000/gnet.git ~/code/gopath/src/github.com/panjf2000/gnet
+git clone git@github.com:rqlite/rqlite.git ~/code/gopath/src/github.com/rqlite/rqlite
+
+# python
+git clone git@github.com:agronholm/anyio.git ~/code/anyio
+git clone git@github.com:tiangolo/fastapi.git ~/code/fastapi
+git clone git@github.com:pydantic/pydantic.git ~/code/pydantic
+git clone git@github.com:tiangolo/sqlmodel.git ~/code/sqlmodel
+git clone git@github.com:encode/starlette.git ~/code/starlette
 ```
