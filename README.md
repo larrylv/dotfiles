@@ -5,15 +5,8 @@ These are the config files to set up a machine the way I like it.
 ## homebrew stuff
 
 ```
-# python
-brew install pyenv autoenv uv
-
-# ruby
-brew install rbenv rubyfmt
-
-# neovim & dependencies
-brew install neovim
-brew install fd fzf universal-ctags ripgrep
+# python, ruby, neovim & dependencies
+brew install pyenv autoenv uv rbenv rubyfmt neovim fd fzf universal-ctags ripgrep
 
 # other packages
 brew install alacritty autojump automake bash bash-completion bat ccat cloc \
@@ -49,11 +42,9 @@ rake install
 
 ```
 pyenv install 3.12.2
-pip install --upgrade autopep8 isort ruff pytest
+pyenv global 3.12.2
 
-pip install --upgrade pipenv
-pip install --upgrade virtualenv
-pip install --upgrade pdm
+pip install --upgrade autopep8 isort ruff pytest pipenv virtualenv pdm
 ```
 
 ## ruby stuff
@@ -62,7 +53,7 @@ pip install --upgrade pdm
 rbenv install 3.3.0
 rbenv global 3.3.0
 
-gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sorbet sorbet-runtime sorbet-static
+gem install bundler coderay colorize m mocha minitest pry pry-byebug ripper-tags rubocop sorbet sorbet-runtime sorbet-static
 ```
 
 ## neovim, along with its plugins and dependencies
@@ -71,8 +62,6 @@ gem install bundler coderay colorize m mocha minitest pry pry-byebug rubocop sor
 pip install --upgrade pynvim neovim
 
 nvim --headless +PlugInstall +UpdateRemotePlugins +qall
-
-gem install ripper-tags
 
 cargo install proximity-sort
 ```
