@@ -5,17 +5,6 @@ These are the config files to set up a machine the way I like it.
 ## homebrew stuff
 
 ```
-brew install alacritty autojump automake bash bash-completion bat ccat cloc \
-  cmake coreutils cowsay curl diff-so-fancy diffutils fmt fpp gcc git goenv \
-  golangci-lint grpc grpcurl htop httperf httpie hugo ijq jq libevent \
-  libfaketime libxml2 luajit mtr ncurses nodenv openjdk openjdk@11 openssl@1.1 \
-  openssl pre-commit prettier pstree readline reattach-to-user-namespace \
-  rsync ruby ruby-build rust scala shellcheck snappy source-highlight sqlite \
-  tig tldr tmux tmuxinator-completion trash tree tree-sitter urlview watchman \
-  webpack wget yq
-
-brew install --cask diffmerge
-
 # python
 brew install pyenv autoenv uv
 
@@ -25,6 +14,17 @@ brew install rbenv rubyfmt
 # neovim & dependencies
 brew install neovim
 brew install fd fzf universal-ctags ripgrep
+
+# other packages
+brew install alacritty autojump automake bash bash-completion bat ccat cloc \
+  cmake coreutils cowsay curl diff-so-fancy diffutils fmt fpp gcc git goenv \
+  golangci-lint grpc grpcurl htop httperf httpie hugo ijq jq libevent \
+  libfaketime libxml2 luajit mtr ncurses nodenv openjdk openjdk@11 openssl@1.1 \
+  openssl pre-commit prettier pstree readline reattach-to-user-namespace \
+  rsync ruby ruby-build rust scala shellcheck snappy source-highlight sqlite \
+  tig tldr tmux tmuxinator-completion trash tree tree-sitter urlview watchman \
+  webpack wget yq
+brew install --cask diffmerge
 ```
 
 ## bash
