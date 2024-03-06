@@ -2,6 +2,14 @@
 
 These are the config files to set up a machine the way I like it.
 
+## dotfiles
+
+```
+git clone git@github.com:larrylv/dotfiles.git ~/code/dotfiles
+cd ~/code/dotfiles
+rake install
+```
+
 ## homebrew stuff
 
 ```
@@ -18,24 +26,6 @@ brew install alacritty autojump automake bash bash-completion bat ccat cloc \
   tig tldr tmux tmuxinator-completion trash tree tree-sitter urlview watchman \
   webpack wget yq
 brew install --cask diffmerge
-```
-
-## bash
-
-```
-# add $HOMEBREW_PREFIX/bin/bash to `/etc/shells`, then
-chsh -s $HOMEBREW_PREFIX/bin/bash
-
-# enable sudo without a password
-# https://jefftriplett.com/2022/enable-sudo-without-a-password-on-macos/
-```
-
-## dotfiles
-
-```
-git clone git@github.com:larrylv/dotfiles.git ~/code/dotfiles
-cd ~/code/dotfiles
-rake install
 ```
 
 ## python stuff
@@ -74,26 +64,30 @@ gem install tmuxinator
 
 Install tmux plugins: https://github.com/tmux-plugins/tpm#installation
 
-## configs
-
-* solarized (for `iTerm` and `Terminal`)
-
-* bash_history
-```
-# make sure that the existing ~/.bash_history doesn't have anything you wanna keep
-cp $BASH_HISTORY_BACKUP ~/.bash_history
-```
-
-* tmux_resurrect.txt
 ```
 cp $TMUX_RESURRECT_BACKUP ~/.tmux/resurrect/tmux_resurrect_backup.txt
 ln -s ~/.tmux/resurrect/last ~/.tmux/resurrect/tmux_resurrect_backup.txt
 ```
 
+## bash
+
+```
+# add $HOMEBREW_PREFIX/bin/bash to `/etc/shells`, then
+chsh -s $HOMEBREW_PREFIX/bin/bash
+
+# enable sudo without a password
+# https://jefftriplett.com/2022/enable-sudo-without-a-password-on-macos/
+
+# make sure that the existing ~/.bash_history doesn't have anything you wanna keep
+cp $BASH_HISTORY_BACKUP ~/.bash_history
+```
+
 ## other stuff
 
-Install [Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font/blob/main/Monaco%20Nerd%20Font%20Complete.otf)
+* Install [Monaco Nerd Font](https://github.com/larrylv/monaco-nerd-font/blob/main/Monaco%20Nerd%20Font%20Complete.otf).
+* Install `solarized` for `iTerm` and `Terminal`.
 
+random stuff:
 ```
 mkdir -p $HOME/code/gopath
 mkdir -p ~/.local/bin
