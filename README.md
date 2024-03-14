@@ -100,6 +100,9 @@ https://apple.stackexchange.com/questions/381999/how-to-make-sudo-launchctl-limi
 
 Interesting open source projects:
 ```
+# solarized
+git clone git@github.com:altercation/solarized.git ~/code/solarized
+
 # go
 git clone git@github.com:nadoo/glider.git ~/code/gopath/src/github.com/nadoo/glider
 git clone git@github.com:panjf2000/gnet.git ~/code/gopath/src/github.com/panjf2000/gnet
