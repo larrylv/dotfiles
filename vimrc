@@ -244,6 +244,7 @@ set nojoinspaces                           " Only insert single space after a '.
 set noshowmode                             " Don't show the current mode (lightline.vim takes care of us)
 set nostartofline                          " Don't reset cursor to start of line when moving around
 set notitle
+set noswapfile
 set nu                                     " Enable line numbers
 set omnifunc=syntaxcomplete#Complete       " Set omni-completion method
 set redrawtime=10000
