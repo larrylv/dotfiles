@@ -88,11 +88,7 @@
 [i18n]
   commitEncoding = utf8
   logOutputEncoding = utf8
-[includeIf "gitdir:~/stripe/"]
-  path = .gitconfig.work
-[includeIf "gitdir:*/stripe-internal/"]
-  path = .gitconfig.work
-[includeIf "gitdir:/pay/src/"]
+[include]
   path = .gitconfig.work
 [merge]
   tool          = vimdiff

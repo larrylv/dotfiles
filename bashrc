@@ -174,6 +174,7 @@ if [[ -d "$HOME/code/gopath" ]]; then
 fi
 
 ## pyenv
+export PATH="/Users/larrylv/.pyenv/bin:$PATH"
 if which pyenv > /dev/null; then eval "$(pyenv init --path)"; fi
 
 ## jEnv

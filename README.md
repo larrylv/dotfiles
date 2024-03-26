@@ -7,6 +7,7 @@ These are the config files to set up a machine the way I like it.
 ```
 git clone git@github.com:larrylv/dotfiles.git ~/code/dotfiles
 cd ~/code/dotfiles
+mkdir -p ~/.config/nvim
 rake install
 ```
 
