@@ -5,5 +5,6 @@ if [ -f /etc/profile ] && [ "$(uname)" == "Darwin" ]; then
   source /etc/profile
 fi
 
-[[ -s "$HOME/.bash_profile.local" ]] && source "$HOME/.bash_profile.local"
+export GPG_TTY=$(tty)
 [[ -s $HOME/.bashrc ]] && source $HOME/.bashrc
+[[ -s "$HOME/.bash_profile.local" ]] && source "$HOME/.bash_profile.local"
