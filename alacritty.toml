@@ -914,9 +914,6 @@ multiplier = 0
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
-program = "/usr/local/bin/bash"
-
 [window]
 decorations = "full"
 dynamic_padding = false
