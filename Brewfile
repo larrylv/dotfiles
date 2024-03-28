@@ -111,6 +111,7 @@ brew "yq"
 # lib*
 brew "libevent"
 brew "libfaketime"
+brew "libmagic"
 brew "libuv"
 brew "libxml2"
 brew "libxslt"
