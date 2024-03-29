@@ -1392,6 +1392,10 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 0
 " Don't map gx etc
 let g:vim_markdown_no_default_key_mappings = 1
+" Disable conceal regardless of `conceallevel` setting
+let g:vim_markdown_conceal = 0
+" Disabl conceal for code fences
+let g:vim_markdown_conceal_code_blocks = 0
 
 
 " ================================= markdown-preview ===========================
