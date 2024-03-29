@@ -216,7 +216,7 @@ set backspace=indent,eol,start             " Allow backspacing over everything i
 set cindent
 set complete=.,w,b,u,t,i
 set completeopt=noinsert,noselect,menuone
-" set colorcolumn=81                       " Highlight line at position 81
+set colorcolumn=""                         " Disable colorcolumn by default
 " set cursorcolumn                           " Highlight current column
 " set cursorline                             " Highlight current line
 set diffopt+=iwhite                        " Ignore whitespaces with vimdiff
