@@ -76,9 +76,6 @@
     "<C-k>": "normal:k",
     "<C-p>": "normal:k"
   },
-  "notification.disabledProgressSources": [
-    "*"
-  ],
   "pyright.inlayHints.parameterTypes": false,
   "python.analysis.gotoDefinitionInStringLiteral": true,
   "python.analysis.typeCheckingMode": "basic",
