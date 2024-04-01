@@ -1,0 +1,103 @@
+fix = true
+
+# Allow lines to be as long as 100.
+line-length = 100
+
+preview = true
+exclude = ["**/x/**", "**/*_pb2.py", "**/*_pb2_*.py", "**/*_pb2.pyi"]
+
+[lint]
+# This is a ruff configuration that only automatically fixes things that are
+# likely to be correct and unlikely to be controversial.
+select = [
+    # "F401",  # unused-import
+    # "F541",  # f-string-missing-placeholders
+    "F632",  # is-literal
+    "F901",  # raise-not-implemented
+    "E703",  # useless-semicolon
+    # "E711",  # none-comparison
+    # "E712",  # true-false-comparison
+    # "E713",  # not-in-test
+    # "E714",  # not-is-test
+    # "W291",  # trailing-whitespace
+    "W292",  # missing-newline-at-end-of-file
+    "W293",  # blank-line-with-whitespace
+    "W605",  # invalid-escape-sequence
+    # "B009",  # get-attr-with-constant
+    # "B010",  # set-attr-with-constant
+    "B013",  # redundant-tuple-in-exception-handler
+    "B014",  # duplicate-handler-exception
+    # "C400",  # unnecessary-generator-list
+    # "C401",  # unnecessary-generator-set
+    # "C402",  # unnecessary-generator-dict
+    # "C403",  # unnecessary-list-comprehension-set
+    # "C404",  # unnecessary-list-comprehension-dict
+    # "C405",  # unnecessary-literal-set
+    # "C406",  # unnecessary-literal-dict
+    # "C408",  # unnecessary-collection-call
+    # "C409",  # unnecessary-literal-within-tuple-call
+    # "C410",  # unnecessary-literal-within-list-call
+    # "C411",  # unnecessary-list-call
+    # "C413",  # unnecessary-call-around-sorted
+    # "C414",  # unnecessary-double-cast-or-process
+    # "C415",  # unnecessary-subscript-reversal
+    # "C416",  # unnecessary-comprehension
+    # "C418",  # unnecessary-literal-within-dict-call
+    # "C419",  # unnecessary-comprehension-any-all
+    # "COM819",  # prohibited-trailing-comma
+    "E", "F", "W", "B", "C4", "PIE", "NPY", "PLE",
+    # grab bag of random things
+    "DTZ003", "DTZ004",
+    "G010",
+    "PLW0120", "PLW0129", "PLW0711", "PLW2101",
+    "SIM101", "SIM110", "SIM201", "SIM202", "SIM222", "SIM223",
+    "S506",
+    "RET501", "RET502",  # RET503 is also nice, but there's currently some noise
+    "RUF006", "RUF008", "RUF013", "RUF016", "RUF017", "RUF200",
+    "COM818", "COM819",
+    "ISC001",
+    "PYI016", "PYI018", "PYI025",
+    "PERF102",
+    "UP006", "UP007",
+    "FURB148", "FURB163", "FURB181",
+    "ASYNC100", "ASYNC102",  # ASYNC101 checks for open() which is much more debatable
+    "TID251",
+    # TODO: enable the commented out checks
+    # "UP004", "UP028", "UP034",
+    # "PLR6201", "SIM210", "SIM211", "SIM401", "RUF007",
+    # "FURB132",
+    # "T100",
+    # "PT008", "PT012", "PT014",
+    # "ANN2",
+    "B905",
+]
+ignore = [
+    "C408",  # unnecessary-collection-call
+    "E2",     # leave it to black
+    "E3",     # leave it to black
+    "E402",   # people usually know what they're doing
+    "E501",   # line too long. black does a good enough job
+    "E701",   # multiple statements on one line. black does a good enough job
+    "E711",   # comparison to None is commonly used with SQLAlchemy
+    "E731",   # lambda expression assignments. these are nice sometimes
+    "E741",   # variable names like "l". this isn't a huge problem
+    "B011",   # assert false. we don't use python -O
+    "NPY002", # useful in theory, but way too many existing hits in practice
+    "PIE790", # there's nothing wrong with pass
+]
+unfixable = [
+    "F841",   # unused variable. ruff keeps the call, but mostly we want to get rid of it all
+    "F601",   # automatic fix might obscure issue
+    "F602",   # automatic fix might obscure issue
+    "B018",   # automatic fix might obscure issue
+    "SIM222", # automatic fix might obscure issue
+    "SIM223", # automatic fix might obscure issue
+]
+
+[lint.flake8-tidy-imports.banned-api]
+"pipes".msg = "pipes will be removed in 3.13, use shlex instead"
+"cgi".msg = "cgi will be removed in 3.13"
+
+[lint.per-file-ignores]
+"__init__.py" = ["F401", "F403"]
+"rcall_config.py" = ["F821"]
