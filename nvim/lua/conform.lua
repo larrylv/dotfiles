@@ -10,3 +10,7 @@ require("conform").setup({
     timeout_ms = 3000,
   },
 })
+
+require("conform").formatters.black = {
+  prepend_args = { "--line-length", "100", "--exclude", "''" },
+}
