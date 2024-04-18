@@ -28,6 +28,27 @@ require'nvim-treesitter.configs'.setup {
     disable = { 'yaml' }
   },
 
+  textobjects = {
+    select = {
+      enable = true,
+    },
+    move = {
+      enable = true,
+      set_jumps = false, -- whether to set jumps in the jumplist
+      -- Below will go to either the start or the end, whichever is closer.
+      -- Use if you want more granular movements
+      -- Make it even more gradual by adding multiple queries and regex.
+      goto_next = {
+        ["]d"] = "@conditional.outer",
+        ["]o"] = "@loop.outer",
+      },
+      goto_previous = {
+        ["[d"] = "@conditional.outer",
+        ["[o"] = "@loop.outer",
+      }
+    },
+  },
+
   playground = {
     enable = true,
     disable = {},

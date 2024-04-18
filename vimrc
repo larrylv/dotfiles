@@ -36,8 +36,9 @@ Plug 'github/copilot.vim'
 
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'              " :TSPlaygroundToggle, :TSHighlightCapturesUnderCursor
-Plug 'nvim-treesitter/nvim-treesitter-context' " show code context
+Plug 'nvim-treesitter/playground'                  " :TSPlaygroundToggle, :TSHighlightCapturesUnderCursor
+Plug 'nvim-treesitter/nvim-treesitter-context'     " show code context
+Plug 'nvim-treesitter/nvim-treesitter-textobjects' " Syntax aware text-objects, select, move, swap, and peek support.
 
 " explorer
 Plug 'larrylv/defx.nvim',  { 'do': ':UpdateRemotePlugins' } " my own fork to not open chosen file in the existing bufnr
