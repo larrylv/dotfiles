@@ -124,14 +124,14 @@ Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
 
 " frontend
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
-Plug 'othree/html5.vim',                    { 'for': ['html', 'eruby'] }
-Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
-Plug 'hail2u/vim-css3-syntax',              { 'for': ['css', 'sass', 'scss'] }
-Plug 'ap/vim-css-color',                    { 'for': ['css', 'sass', 'scss'] }
-Plug 'groenewege/vim-less',                 { 'for': 'less' }
-Plug 'tpope/vim-haml',                      { 'for': 'haml' }
-Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
-Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
+" Plug 'othree/html5.vim',                    { 'for': ['html', 'eruby'] }
+" Plug 'mustache/vim-mustache-handlebars',    { 'for': ['html.mustache', 'html.handlebars'] }
+" Plug 'hail2u/vim-css3-syntax',              { 'for': ['css', 'sass', 'scss'] }
+" Plug 'ap/vim-css-color',                    { 'for': ['css', 'sass', 'scss'] }
+" Plug 'groenewege/vim-less',                 { 'for': 'less' }
+" Plug 'tpope/vim-haml',                      { 'for': 'haml' }
+" Plug 'cakebaker/scss-syntax.vim',           { 'for': 'scss' }
+" Plug 'tudorprodan/html_annoyance.vim',      { 'for': ['html', 'eruby'] }
 Plug 'tpope/vim-ragtag',                    " A set of mappings for HTML, XML, etc.
 
 " elm
