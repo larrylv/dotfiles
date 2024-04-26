@@ -38,7 +38,7 @@ style = "Block"
 TERM = "xterm-256color"
 
 [font]
-size = 13.0
+size = 15.0
 
 [font.bold]
 family = "Monaco Nerd Font"
