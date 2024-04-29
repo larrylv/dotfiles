@@ -48,6 +48,13 @@
         "sorbet/config"
       ],
       "settings": {}
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve", "-req-concurrency", "32", "-log-file", "/tmp/terraform-ls.log"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
     }
   },
   "clangd.disableFileStatus": true,
