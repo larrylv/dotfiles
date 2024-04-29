@@ -1,7 +1,6 @@
 # 'brew tap'
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
+tap "hashicorp/tap"
 
 # tmux
 brew "tmux"
@@ -97,12 +96,12 @@ brew "shellcheck"
 brew "snappy"
 brew "source-highlight"
 brew "sqlite"
+brew "terraform-ls"
 brew "tig"
 brew "tldr"
 brew "trash"
 brew "tree"
 brew "tree-sitter"
-brew "unrar"
 brew "urlview"
 brew "vim"
 brew "watchman"
