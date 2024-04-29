@@ -51,7 +51,7 @@
     },
     "terraform": {
       "command": "terraform-ls",
-      "args": ["serve", "-req-concurrency", "32", "-log-file", "/tmp/terraform-ls.log"],
+      "args": ["serve", "-req-concurrency", "32"],
       "filetypes": ["terraform", "tf"],
       "initializationOptions": {},
       "settings": {}
