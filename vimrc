@@ -1106,7 +1106,7 @@ nmap <leader>gm <Plug>(git-messenger)
 
 
 " ================================= indentLine =================================
-let g:indentLine_enabled = 0
+let g:indentLine_enabled = 1
 let g:indentLine_char = "\ue621"
 
 " toggle displaying the indention levels with thin vertical lines
