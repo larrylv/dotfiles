@@ -69,6 +69,7 @@ Plug 'kana/vim-textobj-user'            " create text objects, depended by vim-t
 Plug 'nelstrom/vim-textobj-rubyblock'   " ar selects all of a ruby block, ir selects the inner portion of a rubyblock
 Plug 'Raimondi/delimitMate'             " auto-completion for quotes, parens, brackets, etc.
 Plug 'mhinz/vim-startify'               " fancy start screen
+Plug 'Einenlum/yaml-revealer'           " A vim plugin to easily navigate through Yaml files
 Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
 Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
 " Plug 'majutsushi/tagbar'              " show tagbar with F2
