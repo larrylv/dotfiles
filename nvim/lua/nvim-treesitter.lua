@@ -31,6 +31,20 @@ require'nvim-treesitter.configs'.setup {
   textobjects = {
     select = {
       enable = true,
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+
+        ["ad"] = "@conditional.outer",
+        ["id"] = "@conditional.inner",
+
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+
+        ["al"] = "@loop.outer",
+        ["il"] = "@loop.inner",
+      },
     },
     move = {
       enable = true,
@@ -39,12 +53,16 @@ require'nvim-treesitter.configs'.setup {
       -- Use if you want more granular movements
       -- Make it even more gradual by adding multiple queries and regex.
       goto_next = {
+        ["]c"] = "@class.outer",
         ["]d"] = "@conditional.outer",
-        ["]o"] = "@loop.outer",
+        ["]f"] = "@function.outer",
+        ["]l"] = "@loop.outer",
       },
       goto_previous = {
+        ["[c"] = "@class.outer",
         ["[d"] = "@conditional.outer",
-        ["[o"] = "@loop.outer",
+        ["[f"] = "@function.outer",
+        ["[l"] = "@loop.outer",
       }
     },
   },
