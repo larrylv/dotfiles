@@ -91,7 +91,6 @@ Plug 'benmills/vimux'    " easily interact with tmux from vim
 Plug 'larrylv/vim-vroom', { 'for': 'ruby' } " run ruby tests using vimux
 
 " go
-Plug 'fatih/vim-go',        " { 'for': ['go', 'vim'], 'do': ':GoUpdateBinaries' }
 Plug 'visualfc/gocode',       { 'for': ['go', 'vim'], 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'benmills/vimux-golang', { 'for': 'go' } " run go tests using vimux
 
@@ -1723,61 +1722,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsUsePythonVersion = 3
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
-
-
-" ================================= vim-go =====================================
-let g:go_def_mapping_enabled = 0 " disable c-] mapping
-let g:go_doc_keywordprg_enabled = 0 " disable K mapping, coc is used instead
-let g:go_fmt_command = "goimports"
-let g:go_fmt_fail_silently = 1
-let g:go_fmt_autosave = 0
-let g:go_gocode_autobuild = 0
-let g:go_gocode_propose_source = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_list_type = "quickfix"
-
-let g:go_decls_mode = 'fzf'
-let g:go_gopls_enabled = 1
-let g:go_def_mode = 'godef'
-let g:go_info_mode = 'guru'
-let g:go_referrers_mode = 'guru'
-
-function! SetupMapForVimGo()
-  function! s:build_go_files()
-    let l:file = expand('%')
-    if l:file =~# '^\f\+_test\.go$'
-      call go#test#Test(0, 1)
-    elseif l:file =~# '^\f\+\.go$'
-      call go#cmd#Build(0)
-    endif
-  endfunction
-  " run :GoBuild or :GoTestCompile based on the go file
-  nmap <leader>bg :<C-u>call <SID>build_go_files()<cr>
-
-  " `go run` the current package
-  nmap <leader>rg <Plug>(go-run)
-
-  " shows the set of possible sends/receives on the channel operand of the
-  " selected send or receive operation
-  nmap <leader>gc :<C-u>GoChannelPeers<cr>
-  " show all function and type declarations for the current directory
-  nmap <leader>gdd :<C-u>GoDeclsDir<cr>
-  " show all function and type declarations for the current file
-  nmap <leader>gdc :<C-u>GoDecls<cr>
-endfunction
-autocmd FileType go call SetupMapForVimGo()
-autocmd Filetype go
-  \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 
 
 " ================================= vim-test ===================================
