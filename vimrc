@@ -1727,9 +1727,10 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
 
 " ================================= vim-go =====================================
 let g:go_def_mapping_enabled = 0 " disable c-] mapping
-let g:go_doc_keywordprg_enabled = 0 " disable K mapping
+let g:go_doc_keywordprg_enabled = 0 " disable K mapping, coc is used instead
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
+let g:go_fmt_autosave = 0
 let g:go_gocode_autobuild = 0
 let g:go_gocode_propose_source = 1
 let g:go_highlight_build_constraints = 1

@@ -4,6 +4,8 @@ require("conform").setup({
     -- python = { "autopep8", "isort", "ruff_format" },
     python = { "black", "isort", "ruff_fix" },
     ruby = { "rubyfmt" },
+    go = { "gofmt", "goimports" },
+    terraform = { "terraform_fmt" },
   },
   format_on_save = {
     lsp_fallback = true,
