@@ -1822,6 +1822,13 @@ endfunction
 autocmd FileType ruby call SetupMapForVroom()
 
 
+" ================================= yaml-revealer ==============================
+function! SetupYamlRevealer()
+  map <leader>vy :echo GetAncestors(line('.'))<cr>
+endfunction
+autocmd FileType yaml call SetupYamlRevealer()
+
+
 " ================================= private config =============================
 " load private overlay configs
 call SourceIfExists('~/.config/nvim/layers/private/config.vim')
