@@ -270,7 +270,7 @@ GIT_PROMPT_STASH=" ${echo_bold_purple}#"
 GIT_PROMPT_NOSTASH=""
 
 function parse_git_dirty () {
-  if [[ $PWD =~ .*pay-server.* ]]; then
+  if [[ $PWD =~ .*openai.* ]]; then
     echo ""
   elif [[ $(git diff --stat) != '' ]]; then
     echo -e "$GIT_PROMPT_DIRTY"
