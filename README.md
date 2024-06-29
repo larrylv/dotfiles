@@ -22,6 +22,13 @@ brew bundle install --no-lock --verbose
 
 # install missing packages only
 brew bundle install --no-upgrade --no-lock --verbose
+
+brew uninstall neovim
+# 0.10.0 version changes the way it renders the colors, and even after
+# `set notermguicolors`, it still doesn't work as expected.
+# So, I'm sticking with 0.9.5 for now.
+brew install ~/code/dotfiles/neovim.rb
+brew pin neovim
 ```
 
 ## python stuff
