@@ -354,8 +354,8 @@ fi
 # eval "$(ssh-agent -s)" > /dev/null
 ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 
-## autoenv
-[[ -f "$HOMEBREW_PREFIX/opt/autoenv/activate.sh" ]] && source "$HOMEBREW_PREFIX/opt/autoenv/activate.sh"
-export AUTOENV_ENABLE_LEAVE=true
+# ## autoenv
+# [[ -f "$HOMEBREW_PREFIX/opt/autoenv/activate.sh" ]] && source "$HOMEBREW_PREFIX/opt/autoenv/activate.sh"
+# export AUTOENV_ENABLE_LEAVE=true
 
 # ulimit -n 4096
