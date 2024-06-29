@@ -211,11 +211,11 @@ fi
 # unset bash_completion
 
 ## git completion
-git_completion="$HOMEBREW_PREFIX/etc/bash_completion.d/git-completion.bash"
-if [ -r "$git_completion" ]; then
-  source "$git_completion"
-fi
-unset git_completion
+# git_completion="$HOMEBREW_PREFIX/etc/bash_completion.d/git-completion.bash"
+# if [ -r "$git_completion" ]; then
+#   source "$git_completion"
+# fi
+# unset git_completion
 
 ## autojump script
 autojump_script="$HOMEBREW_PREFIX/etc/profile.d/autojump.sh"
