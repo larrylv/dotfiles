@@ -358,4 +358,4 @@ ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 [[ -f "$HOMEBREW_PREFIX/opt/autoenv/activate.sh" ]] && source "$HOMEBREW_PREFIX/opt/autoenv/activate.sh"
 export AUTOENV_ENABLE_LEAVE=true
 
-ulimit -n 4096
+# ulimit -n 4096
