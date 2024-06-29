@@ -330,9 +330,9 @@ function bash_prompt() {
 }
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  PS1="${bold_cyan}\$(dir_prompt)  \u@\H ${bold_blue}\w\$(pyenv_prompt_info)\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
+  PS1="${bold_cyan}\$(dir_prompt)  \u@\H ${bold_blue}\w\$(pyenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 else
-  PS1="${bold_blue}\$(dir_prompt)  ${bold_blue}\w\$(pyenv_prompt_info)\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
+  PS1="${bold_blue}\$(dir_prompt)  ${bold_blue}\w\$(pyenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 fi
 
 
