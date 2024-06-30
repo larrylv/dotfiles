@@ -70,6 +70,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'   " ar selects all of a ruby block, ir sel
 Plug 'Raimondi/delimitMate'             " auto-completion for quotes, parens, brackets, etc.
 Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'Einenlum/yaml-revealer'           " A vim plugin to easily navigate through Yaml files
+Plug 'tyru/current-func-info.vim'       " Get current function name
 Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
 Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
 " Plug 'majutsushi/tagbar'              " show tagbar with F2
@@ -802,6 +803,22 @@ nnoremap <leader>cj :CtrlPtjump<cr>
 vnoremap <leader>cj :CtrlPtjumpVisual<cr>
 
 
+" ================================= current-func-info.vim ======================
+nnoremap <C-g>f :echo cfi#format("%s", "")<CR>
+
+function! CopyCurrentFuncInfoToClipboard()
+  let text_to_copy = cfi#format("%s", "")
+  execute 'let @+="' . text_to_copy . '"'
+  echom('Copied to clipboard: ' . string(text_to_copy))
+endfunction
+
+augroup CopyCurrentFuncMapping
+  autocmd!
+  autocmd FileType * nnoremap <silent> <leader>ry :call CopyCurrentFuncInfoToClipboard()<CR>
+  autocmd FileType ruby nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
+augroup END
+
+
 " ================================= defx =======================================
 autocmd FileType defx call MyDefxSettings()
 function! MyDefxSettings() abort
@@ -1014,11 +1031,6 @@ function! FzfCopyRubyTokenCopyToClipboard(text)
 endfunction
 
 command! -bar FZFCopyRubyToken :call FzfCopyRubyTokenFn(expand('<cword>'))
-
-augroup FZFCopyRubyTokenMapping
-  autocmd!
-  autocmd FileType ruby nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
-augroup END
 
 function! CacheListCmd()
   let ref = system('git symbolic-ref -q HEAD 2>/dev/null')
