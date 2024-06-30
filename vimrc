@@ -1014,7 +1014,11 @@ function! FzfCopyRubyTokenCopyToClipboard(text)
 endfunction
 
 command! -bar FZFCopyRubyToken :call FzfCopyRubyTokenFn(expand('<cword>'))
-nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
+
+augroup FZFCopyRubyTokenMapping
+  autocmd!
+  autocmd FileType ruby nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
+augroup END
 
 function! CacheListCmd()
   let ref = system('git symbolic-ref -q HEAD 2>/dev/null')
