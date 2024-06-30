@@ -1003,12 +1003,12 @@ endfunction
 "
 " https://stackoverflow.com/questions/736120/why-are-methods-in-ruby-documentation-preceded-by-a-hash-sign
 " https://stackoverflow.com/questions/11865845/replace-last-occurrence-in-line
-function! FzfCopyTubyTokenConvertLastPoundToDot(text)
+function! FzfCopyRubyTokenConvertLastPoundToDot(text)
   return substitute(a:text, '.*\zs#', '.', '')
 endfunction
 
 function! FzfCopyRubyTokenCopyToClipboard(text)
-  let text_to_copy = FzfCopyTubyTokenConvertLastPoundToDot(a:text)
+  let text_to_copy = FzfCopyRubyTokenConvertLastPoundToDot(a:text)
   execute 'let @+="' . text_to_copy . '"'
   echom('Copied to clipboard: ' . string(text_to_copy))
 endfunction
