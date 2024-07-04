@@ -248,6 +248,7 @@ set noshowmode                             " Don't show the current mode (lightl
 set nostartofline                          " Don't reset cursor to start of line when moving around
 set notitle
 set noswapfile
+set notermguicolors                        " fix nvim 0.10.0 color rendering
 set nu                                     " Enable line numbers
 set omnifunc=syntaxcomplete#Complete       " Set omni-completion method
 set redrawtime=10000
