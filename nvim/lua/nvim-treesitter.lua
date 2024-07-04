@@ -112,8 +112,11 @@ vim.api.nvim_set_hl(0, "@variable.python", { link = "Text" })
 -- go highlight customization
 vim.api.nvim_set_hl(0, "@function.go", { link = "Method" })
 vim.api.nvim_set_hl(0, "@method.go", { link = "Special" })
+vim.api.nvim_set_hl(0, "@module.go", { link = "Type" })
 vim.api.nvim_set_hl(0, "@namespace.go", { link = "Type" })
+vim.api.nvim_set_hl(0, "@type.builtin.go", { link = "Type" })
 vim.api.nvim_set_hl(0, "@variable.go", { link = "Method" })
+vim.api.nvim_set_hl(0, "@variable.parameter.go", { link = "Identifier" })
 
 -- java highlight customization
 vim.api.nvim_set_hl(0, "@function.java", { link = "Method" })
