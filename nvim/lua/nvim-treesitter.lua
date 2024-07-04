@@ -87,6 +87,28 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
+-- read `:h treesitter-highlight-groups` for more information
+
+-- python highlight customization
+vim.api.nvim_set_hl(0, "@attribute.python", { link = "Function" })
+vim.api.nvim_set_hl(0, "@attribute.builtin.python", { link = "Function" })
+vim.api.nvim_set_hl(0, "@constructor.python", { link = "Type" })
+vim.api.nvim_set_hl(0, "@field.python", { link = "Underlined" })
+vim.api.nvim_set_hl(0, "@function.call.python", { link = "Function" })
+vim.api.nvim_set_hl(0, "@keyword.directive.python", { link = "PreProc" })
+vim.api.nvim_set_hl(0, "@keyword.import.python", { link = "PreProc" })
+vim.api.nvim_set_hl(0, "@method.call.python", { link = "Method" })
+vim.api.nvim_set_hl(0, "@punctuation.delimiter.python", { link = "PreProc" })
+vim.api.nvim_set_hl(0, "@punctuation.bracket.python", { link = "PreProc" })
+vim.api.nvim_set_hl(0, "@punctuation.special.python", { link = "PreProc" })
+vim.api.nvim_set_hl(0, "@string.python", { link = "String" })
+vim.api.nvim_set_hl(0, "@string.regexp.python", { link = "SpecialComment" })
+vim.api.nvim_set_hl(0, "@type.builtin.python", { link = "Method" })
+vim.api.nvim_set_hl(0, "@variable.builtin.python", { link = "Type" })
+vim.api.nvim_set_hl(0, "@variable.member.python", { link = "Underlined" })
+vim.api.nvim_set_hl(0, "@variable.parameter.python", { link = "Function" })
+vim.api.nvim_set_hl(0, "@variable.python", { link = "Text" })
+
 -- go highlight customization
 vim.api.nvim_set_hl(0, "@function.go", { link = "Method" })
 vim.api.nvim_set_hl(0, "@method.go", { link = "Special" })
