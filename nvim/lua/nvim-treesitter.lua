@@ -14,7 +14,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
 
     -- list of language that will be disabled
-    disable = { "dockerfile", "html", "markdown", "ruby", "scala", "vim", "yaml" },
+    disable = { "dockerfile", "html", "markdown", "ruby", "scala", "yaml" },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -107,7 +107,7 @@ vim.api.nvim_set_hl(0, "@type.builtin.python", { link = "Method" })
 vim.api.nvim_set_hl(0, "@variable.builtin.python", { link = "Type" })
 vim.api.nvim_set_hl(0, "@variable.member.python", { link = "Underlined" })
 vim.api.nvim_set_hl(0, "@variable.parameter.python", { link = "Function" })
-vim.api.nvim_set_hl(0, "@variable.python", { link = "Text" })
+vim.api.nvim_set_hl(0, "@variable.python", { link = "Method" })
 
 -- go highlight customization
 vim.api.nvim_set_hl(0, "@function.go", { link = "Method" })
