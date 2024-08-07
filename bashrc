@@ -49,6 +49,7 @@ alias ping='prettyping --nolegend'
 alias preview="fzf --preview='bat --color always {}'"
 alias pt='pstree'
 alias rb='rbenv'
+alias rgn='rg --no-config'
 alias ssh='TERM=xterm ssh'
 alias tailf='tail -f'
 alias tf='terraform'
