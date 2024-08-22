@@ -86,6 +86,8 @@
   "pyright.inlayHints.parameterTypes": false,
   "python.analysis.gotoDefinitionInStringLiteral": true,
   "python.analysis.typeCheckingMode": "basic",
+  "rust-analyzer.cargo.allFeatures": true,
+  "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.lens.debug.enable": false,
   "rust-analyzer.lens.run.enable": false,
   "signature.hideOnTextChange": true,
