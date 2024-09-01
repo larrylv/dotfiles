@@ -41,6 +41,8 @@ require'nvim-treesitter.configs'.setup {
 
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
+        ["am"] = "@function.outer",
+        ["im"] = "@function.inner",
 
         ["al"] = "@loop.outer",
         ["il"] = "@loop.inner",
@@ -56,12 +58,14 @@ require'nvim-treesitter.configs'.setup {
         ["]c"] = "@class.outer",
         ["]d"] = "@conditional.outer",
         ["]f"] = "@function.outer",
+        ["]m"] = "@function.outer",
         ["]l"] = "@loop.outer",
       },
       goto_previous = {
         ["[c"] = "@class.outer",
         ["[d"] = "@conditional.outer",
         ["[f"] = "@function.outer",
+        ["[m"] = "@function.outer",
         ["[l"] = "@loop.outer",
       }
     },
