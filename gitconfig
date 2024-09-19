@@ -32,6 +32,7 @@
   # last 10 commits without changed files
   lg                       = log --pretty=format:'%Cred%H%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --date=relative -n 10 
   ls-ignored               = ls-files --exclude-standard --ignored --others
+  mf                       = merge --no-ff
   news                     = log -p HEAD@{1}..HEAD@{0}
   next                     = !git checkout `git rev-list HEAD..master | tail -1`
   pb                       = pull --rebase
