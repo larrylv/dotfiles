@@ -410,6 +410,7 @@ augroup general_config
   autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter Gemfile set filetype=ruby syntax=ruby
   autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter Capfile set filetype=ruby syntax=ruby
   autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter pryrc set filetype=ruby syntax=ruby
+  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter *.json set conceallevel=0
   autocmd Filetype gitcommit,gitrebase setlocal textwidth=78
   autocmd Filetype gitcommit,gitrebase setlocal colorcolumn=81
   autocmd Filetype json setlocal conceallevel=0
