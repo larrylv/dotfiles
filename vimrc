@@ -34,6 +34,14 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'github/copilot.vim'
 
+" cursor
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+Plug 'stevearc/dressing.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'MeanderingProgrammer/render-markdown.nvim', { 'for': ['Avante'] }
+
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'                  " :TSPlaygroundToggle, :TSHighlightCapturesUnderCursor
@@ -1095,7 +1103,7 @@ endfunction
 
 silent! nnoremap <unique> <silent> <leader>cf :call ClearFzfCache()<cr>
 
-nnoremap <leader>aa :Rg<Space>
+nnoremap <leader>rg :Rg<Space>
 nnoremap <leader>ag :Rg <C-R><C-W><cr>
 xnoremap <leader>ag y:Rg <C-R>"<cr>
 nnoremap <leader>AG :Rg <C-R><C-A><cr>
