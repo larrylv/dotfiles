@@ -40,6 +40,28 @@ test/tmp
 test/version_tmp
 tmp
 
+# C++ .gitignore
+compile_commands.json
+*.d
+*.slo
+*.lo
+*.o
+*.obj
+*.gch
+*.pch
+*.so
+*.dylib
+*.dll
+*.mod
+*.smod
+*.lai
+*.la
+*.a
+*.lib
+*.exe
+*.out
+*.app
+
 # YARD artifacts
 .yardoc
 _yardoc
