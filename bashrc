@@ -162,6 +162,9 @@ export GIT_EDITOR=nvim
 ## rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+# llvm
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
 ## goenv
 # See https://github.com/syndbg/goenv/issues/72
 export GOENV_DISABLE_GOPATH=1
