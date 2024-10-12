@@ -363,5 +363,3 @@ ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 # export AUTOENV_ENABLE_LEAVE=true
 
 # ulimit -n 4096
-
-eval "$(am shell)"
