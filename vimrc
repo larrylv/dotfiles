@@ -627,6 +627,7 @@ let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_set_highlights = 0
 let g:ale_sign_priority = 100
 let g:ale_linters = {
+      \  'cpp': [],
       \  'coffee': [],
       \  'eruby': [],
       \  'go': ['golangci-lint'],

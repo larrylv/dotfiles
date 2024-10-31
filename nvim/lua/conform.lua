@@ -3,6 +3,7 @@ require("conform").setup({
     -- Conform will run multiple formatters sequentially
     -- python = { "autopep8", "isort", "ruff_format" },
     python = { "black", "isort", "ruff_fix" },
+    cpp = { "clang_format" },
     -- ruby = { "rubyfmt" },
     go = { "gofmt", "goimports" },
     terraform = { "terraform_fmt" },

@@ -45,6 +45,7 @@ gem install bundler coderay colorize m mocha minitest pry pry-byebug ripper-tags
 ## neovim, along with its plugins and dependencies
 
 ```
+# ~/.pyenv/shims/pip3 --upgrade pyvim neovim
 pip install --upgrade pynvim neovim
 
 nvim --headless +PlugInstall +UpdateRemotePlugins +qall
