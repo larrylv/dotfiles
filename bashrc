@@ -10,6 +10,7 @@ if [[ $(/usr/bin/uname -m) == "arm64" ]]; then
     export LIBRARY_PATH="${LIBRARY_PATH}:/opt/homebrew/lib";
     export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+    # export DYLD_LIBRARY_PATH=/opt/homebrew/lib:$DYLD_LIBRARY_PATH
   fi
 else
   if [[ -f /usr/local/bin/brew ]]; then
@@ -68,6 +69,11 @@ export RIPGREP_CONFIG_PATH=~/.ripgreprc
 if [[ -f "$HOMEBREW_PREFIX/bin/bat" ]]; then
   alias cat='bat'
   export BAT_THEME='Monokai Extended'
+fi
+
+if [[ -f "$HOMEBREW_PREFIX/bin/btm" ]]; then
+  alias btop='btm'
+  alias bottom='btm'
 fi
 
 # ag() {
