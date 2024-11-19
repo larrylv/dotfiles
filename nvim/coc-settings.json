@@ -97,6 +97,9 @@
   "suggest.minTriggerInputLength": 0,
   "suggest.noselect": true,
   "suggest.snippetIndicator": "",
+  "[cpp]": {
+    "inlayHint.enable": false
+  },
   "[ruby]": {
     "coc.preferences.formatOnSave": false
   },
