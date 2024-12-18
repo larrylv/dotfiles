@@ -185,6 +185,9 @@ if [[ -d "$HOME/code/gopath" ]]; then
   export PATH=$GOPATH/bin:$PATH
 fi
 
+# `-mod=readonly` restricts gopls's ability to modify dependency files
+export GOFLAGS="-mod=readonly"
+
 ## pyenv
 export PATH="/Users/larrylv/.pyenv/bin:$PATH"
 if which pyenv > /dev/null; then eval "$(pyenv init --path)"; fi
