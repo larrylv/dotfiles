@@ -317,22 +317,18 @@ function rbenv_prompt_info() {
 
 function goenv_prompt_info() {
   if which goenv > /dev/null; then
-    echo -e " ${echo_bold_cyan}\ufcd1 $(goenv version-name)${echo_normal}"
+    echo -e " ${echo_bold_cyan}\ue627 $(goenv version-name)${echo_normal}"
   fi
 }
 
 function pyenv_prompt_info() {
   if which pyenv > /dev/null; then
-    echo -e " ${echo_bold_yellow}\uf81f $(pyenv version-name)${echo_normal}"
+    echo -e " ${echo_bold_yellow}\ue73c $(pyenv version-name)${echo_normal}"
   fi
 }
 
-function kiex_prompt_info() {
-  if which kiex > /dev/null; then
-    if [ -f "$PWD/mix.exs" ]; then
-      echo -e " ${echo_bold_purple}\ue62d $ELIXIR_VERSION${echo_normal}"
-    fi
-  fi
+function cpu_arch_prompt_info() {
+  echo -e " ${echo_bold_green}\ue711 $(uname -m)${echo_normal}"
 }
 
 function dir_prompt() {
@@ -344,9 +340,9 @@ function bash_prompt() {
 }
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  PS1="${bold_cyan}\$(dir_prompt)  \u@\H ${bold_blue}\w\$(pyenv_prompt_info)\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
+  PS1="${bold_cyan}\$(dir_prompt)  \u@\H ${bold_blue}\w\$(pyenv_prompt_info)\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(cpu_arch_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 else
-  PS1="${bold_blue}\$(dir_prompt)  ${bold_blue}\w\$(pyenv_prompt_info)\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
+  PS1="${bold_blue}\$(dir_prompt) ${bold_blue}\w\$(pyenv_prompt_info)\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(cpu_arch_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 fi
 
 
