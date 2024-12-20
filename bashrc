@@ -311,13 +311,15 @@ function git_prompt_info() {
 
 function rbenv_prompt_info() {
   if which rbenv > /dev/null; then
-    echo -e " ${echo_bold_red}\ue21e $(rbenv version-name)${echo_normal}"
+    # echo -e " ${echo_bold_red}\ue21e $(rbenv version-name)${echo_normal}"
+    echo -e ""
   fi
 }
 
 function goenv_prompt_info() {
   if which goenv > /dev/null; then
-    echo -e " ${echo_bold_cyan}\ue627 $(goenv version-name)${echo_normal}"
+    # echo -e " ${echo_bold_cyan}\ue627 $(goenv version-name)${echo_normal}"
+    echo -e ""
   fi
 }
 
