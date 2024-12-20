@@ -330,7 +330,7 @@ function pyenv_prompt_info() {
 }
 
 function cpu_arch_prompt_info() {
-  echo -e " ${echo_bold_green}\ue711 $(uname -m)${echo_normal}"
+  echo -e " ${echo_bold_cyan}\ue711 $(uname -m)${echo_normal}"
 }
 
 function dir_prompt() {
