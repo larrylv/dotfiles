@@ -323,7 +323,7 @@ function goenv_prompt_info() {
 
 function pyenv_prompt_info() {
   if which pyenv > /dev/null; then
-    echo -e " ${echo_bold_yellow}\ue73c $(pyenv version-name)${echo_normal}"
+    echo -e " ${echo_bold_yellow}\ue606 $(pyenv version-name)${echo_normal}"
   fi
 }
 
