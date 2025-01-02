@@ -35,12 +35,12 @@ Plug 'honza/vim-snippets'
 Plug 'github/copilot.vim'
 
 " cursor
-" Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
-" Plug 'stevearc/dressing.nvim'
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'MunifTanjim/nui.nvim'
-" Plug 'nvim-tree/nvim-web-devicons'
-" Plug 'MeanderingProgrammer/render-markdown.nvim', { 'for': ['Avante'] }
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+Plug 'stevearc/dressing.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'MeanderingProgrammer/render-markdown.nvim', { 'for': ['Avante'] }
 
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
