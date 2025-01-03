@@ -79,6 +79,7 @@ __pycache__/
 
 # Go .gitignore
 .godeps/
+vendor
 
 # Elm .gitignore
 elm-stuff

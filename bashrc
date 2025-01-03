@@ -185,8 +185,9 @@ if [[ -d "$HOME/code/gopath" ]]; then
   export PATH=$GOPATH/bin:$PATH
 fi
 
-# `-mod=readonly` restricts gopls's ability to modify dependency files
-export GOFLAGS="-mod=readonly"
+export GOPROXY=https://proxy.golang.org,direct
+
+export GOFLAGS="-mod=vendor"
 
 ## pyenv
 export PATH="/Users/larrylv/.pyenv/bin:$PATH"
