@@ -187,7 +187,8 @@ fi
 
 export GOPROXY=https://proxy.golang.org,direct
 
-export GOFLAGS="-mod=vendor"
+export GO111MODULE=on
+# export GOFLAGS="-mod=vendor"
 
 ## pyenv
 export PATH="/Users/larrylv/.pyenv/bin:$PATH"

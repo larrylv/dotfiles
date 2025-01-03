@@ -1,23 +1,5 @@
 {
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": [
-        "go.mod",
-        ".vim/",
-        ".git/",
-        ".hg/"
-      ],
-      "filetypes": [
-        "go"
-      ],
-      "initializationOptions": {
-        "analyses": {
-          "composites": false
-        },
-        "subdirWatchPatterns": "auto"
-      }
-    },
     "sorbet": {
       "enable": false,
       "command": "bundle",

@@ -709,6 +709,7 @@ autocmd FileType c,cpp,objc,objcpp call SetupSwitchSourceHeaderForClangd()
 " $ pip3 install scons==3.1.1; scons-3.1.1 compiledb
 let g:coc_global_extensions = [
   \ 'coc-clangd',
+  \ 'coc-go',
   \ 'coc-omni',
   \ 'coc-pyright',
   \ 'coc-rust-analyzer',
