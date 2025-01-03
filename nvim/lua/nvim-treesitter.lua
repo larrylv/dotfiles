@@ -56,17 +56,27 @@ require'nvim-treesitter.configs'.setup {
       -- Make it even more gradual by adding multiple queries and regex.
       goto_next = {
         ["]c"] = "@class.outer",
+        ["]C"] = "@class.inner",
         ["]d"] = "@conditional.outer",
+        ["]D"] = "@conditional.inner",
         ["]f"] = "@function.outer",
+        ["]F"] = "@function.inner",
         ["]m"] = "@function.outer",
+        ["]M"] = "@function.inner",
         ["]l"] = "@loop.outer",
+        ["]L"] = "@loop.inner",
       },
       goto_previous = {
         ["[c"] = "@class.outer",
+        ["[C"] = "@class.inner",
         ["[d"] = "@conditional.outer",
+        ["[D"] = "@conditional.inner",
         ["[f"] = "@function.outer",
+        ["[F"] = "@function.inner",
         ["[m"] = "@function.outer",
+        ["[M"] = "@function.inner",
         ["[l"] = "@loop.outer",
+        ["[L"] = "@loop.inner",
       }
     },
   },
