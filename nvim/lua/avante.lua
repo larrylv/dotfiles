@@ -3,7 +3,7 @@ require('avante').setup{
   provider = 'openai',
   openai = {
     endpoint = 'https://api.openai.com/v1',
-    model = 'o3-mini',
+    model = 'o1-mini',
   },
   hints = { enabled = false },
   windows = {
