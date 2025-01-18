@@ -203,6 +203,8 @@ if which pyenv > /dev/null; then eval "$(pyenv init --path)"; fi
 ## binstubs
 # export PATH=.binstubs:$PATH
 
+export NODE_OPTIONS="--max-old-space-size=10240"
+
 ## history
 shopt -s histappend
 export HISTSIZE=-1
