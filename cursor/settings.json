@@ -1,54 +1,17 @@
 {
-    "[python]": {
-        "diffEditor.ignoreTrimWhitespace": false,
-        "editor.defaultFormatter": "charliermarsh.ruff",
-        "editor.formatOnType": true,
-        "editor.formatOnSaveMode": "modifications",
-        "editor.wordBasedSuggestions": "currentDocument",
-        "editor.codeActionsOnSave": {
-            // "source.organizeImports": "explicit"
-        },
-    },
-    "ruff.format.args": [
-        "--line-length=100"
-    ],
-    "ruff.lint.args": [
-        "--config",
-        ".ruff_autofix_minimal.toml"
-    ],
-    "python.autoComplete.extraPaths": [
-        "/Users/larrylv/code/openai"
-    ],
-    "vim.enableNeovim": true,
-    "vim.neovimPath": "/usr/local/bin/nvim",
-    "python.languageServer": "Pylance",
-    "terminal.integrated.shellIntegration.enabled": false,
-    "terminal.integrated.altClickMovesCursor": false,
-    "terminal.integrated.allowChords": false,
-    "terminal.integrated.inheritEnv": false,
-    "security.workspace.trust.untrustedFiles": "open",
-    "vim.shell": "/usr/local/bin/bash",
-    "terminal.integrated.automationProfile.osx": {
-        "path": "/usr/local/bin/bash"
-    },
-    "cmake.options.statusBarVisibility": "compact",
     "application.shellEnvironmentResolutionTimeout": 30,
-    "editor.fontSize": 14,
-    "editor.fontFamily": "Monaco, 'Courier New', monospace",
-    "workbench.colorTheme": "Solarized Dark",
-    "workbench.preferredHighContrastLightColorTheme": "Solarized Dark",
-    "workbench.preferredDarkColorTheme": "Solarized Dark",
-    "workbench.preferredLightColorTheme": "Solarized Dark",
-    "window.systemColorTheme": "dark",
-    "window.autoDetectHighContrast": false,
-    "python.analysis.userFileIndexingLimit": 10000,
-    "python.analysis.inlayHints.functionReturnTypes": true,
-    "python.analysis.inlayHints.pytestParameters": true,
-    "python.analysis.inlayHints.variableTypes": true,
-    "python.analysis.autoImportCompletions": true,
+    "cmake.options.statusBarVisibility": "compact",
     "cmake.showOptionsMovedNotification": false,
-    "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.nodeExecutable": "/opt/homebrew/bin/node",
+    "cursor.aipreview.enabled": true,
+    "cursor.composer.cmdPFilePicker2": true,
+    "editor.fontFamily": "Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "git.openRepositoryInParentFolders": "never",
+    "gitlens.showWhatsNewAfterUpgrades": false,
+    "problems.showCurrentInStatus": true,
+    "python.analysis.autoImportCompletions": true,
     "python.analysis.exclude": [
         "**/.mypy_cache",
         "**/.git",
@@ -86,14 +49,51 @@
         "tether2/",
         "maraschino"
     ],
-    "git.openRepositoryInParentFolders": "never",
     "python.analysis.extraPaths": [
         "/Users/larrylv/code/openai"
     ],
-    "editor.formatOnSave": true,
-    "cursor.aipreview.enabled": true,
-    "cursor.composer.cmdPFilePicker2": true,
-    "gitlens.showWhatsNewAfterUpgrades": false,
-    "editor.wordWrap": "on",
-    "problems.showCurrentInStatus": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.nodeExecutable": "/opt/homebrew/bin/node",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.userFileIndexingLimit": 10000,
+    "python.autoComplete.extraPaths": [
+        "/Users/larrylv/code/openai"
+    ],
+    "python.languageServer": "Pylance",
+    "ruff.format.args": [
+        "--line-length=100"
+    ],
+    "ruff.lint.args": [
+        "--config",
+        ".ruff_autofix_minimal.toml"
+    ],
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.altClickMovesCursor": false,
+    "terminal.integrated.automationProfile.osx": {
+        "path": "/usr/local/bin/bash"
+    },
+    "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.shellIntegration.enabled": false,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.shell": "/usr/local/bin/bash",
+    "window.autoDetectHighContrast": false,
+    "window.systemColorTheme": "dark",
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.preferredDarkColorTheme": "Solarized Dark",
+    "workbench.preferredHighContrastLightColorTheme": "Solarized Dark",
+    "workbench.preferredLightColorTheme": "Solarized Dark",
+    "[python]": {
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.codeActionsOnSave": {
+            // "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSaveMode": "modifications",
+        "editor.formatOnType": true,
+        "editor.wordBasedSuggestions": "currentDocument"
+    }
 }
