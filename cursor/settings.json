@@ -3,6 +3,7 @@
         "diffEditor.ignoreTrimWhitespace": false,
         "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnType": true,
+        "editor.formatOnSaveMode": "modifications",
         "editor.wordBasedSuggestions": "currentDocument",
         "editor.codeActionsOnSave": {
             // "source.organizeImports": "explicit"
@@ -10,6 +11,10 @@
     },
     "ruff.format.args": [
         "--line-length=100"
+    ],
+    "ruff.lint.args": [
+        "--config",
+        ".ruff_autofix_minimal.toml"
     ],
     "python.autoComplete.extraPaths": [
         "/Users/larrylv/code/openai"
@@ -36,17 +41,50 @@
     "workbench.preferredLightColorTheme": "Solarized Dark",
     "window.systemColorTheme": "dark",
     "window.autoDetectHighContrast": false,
-    "python.analysis.userFileIndexingLimit": -1,
+    "python.analysis.userFileIndexingLimit": 10000,
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.analysis.inlayHints.pytestParameters": true,
     "python.analysis.inlayHints.variableTypes": true,
     "python.analysis.autoImportCompletions": true,
     "cmake.showOptionsMovedNotification": false,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.nodeExecutable": "/opt/homebrew/bin/node",
     "python.analysis.exclude": [
-        "./personal",
+        "**/.mypy_cache",
+        "**/.git",
+        "**/.pytest_cache",
+        "**/.ruff_cache",
+        "**/.vscode",
         "**/node_modules",
-        "vendor",
-        "vendor_imports"
+        "**/target",
+        "**/vendor",
+        "**/vendor_imports",
+        "**/x/",
+        "**/rcall_config*.py",
+        "harmony/harmony/deprecated/**",
+        "deprecated",
+        "feather",
+        "feather-db",
+        "personal",
+        "api/labsapi",
+        "api/billing*",
+        "api/x/",
+        "api/libs/schemas",
+        "api/bedrock*",
+        "api/libs/billing*",
+        "api/libs/swagger-dashboard",
+        "project/robotics-sim/",
+        "project/moderation_experiments",
+        "project/flywheel",
+        "project/airflow",
+        "project/harmony_experiments",
+        "project/harmony*",
+        "project/preparedness",
+        "eval-gym",
+        "project/oai-spark-jobs",
+        "alignment/",
+        "tether2/",
+        "maraschino"
     ],
     "git.openRepositoryInParentFolders": "never",
     "python.analysis.extraPaths": [
@@ -55,4 +93,7 @@
     "editor.formatOnSave": true,
     "cursor.aipreview.enabled": true,
     "cursor.composer.cmdPFilePicker2": true,
+    "gitlens.showWhatsNewAfterUpgrades": false,
+    "editor.wordWrap": "on",
+    "problems.showCurrentInStatus": true,
 }
