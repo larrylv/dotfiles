@@ -4,12 +4,32 @@
     "cmake.showOptionsMovedNotification": false,
     "cursor.aipreview.enabled": true,
     "cursor.composer.cmdPFilePicker2": true,
+    "cursor.general.gitGraphIndexing": "enabled",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 14,
     "editor.formatOnSave": true,
     "editor.wordWrap": "on",
     "git.openRepositoryInParentFolders": "never",
+    "git.pruneOnFetch": true,
+    "git.pullTags": false,
+    "gitHistory.showFileHistorySplit": false,
+    "gitlens.graph.allowMultiple": false,
+    "gitlens.graph.branchesVisibility": "current",
+    "gitlens.graph.minimap.enabled": false,
+    "gitlens.graph.scrollMarkers.enabled": false,
+    "gitlens.graph.showDetailsView": false,
+    "gitlens.graph.showUpstreamStatus": false,
+    "gitlens.graph.sidebar.enabled": false,
     "gitlens.showWhatsNewAfterUpgrades": false,
+    "gitlens.telemetry.enabled": false,
+    "gitlens.views.scm.grouped.views": {
+        "branches": false,
+        "remotes": false,
+        "stashes": false,
+        "tags": false,
+        "worktrees": false,
+        "contributors": false
+    },
     "problems.showCurrentInStatus": true,
     "python.analysis.autoImportCompletions": true,
     "python.analysis.exclude": [
@@ -22,32 +42,7 @@
         "**/target",
         "**/vendor",
         "**/vendor_imports",
-        "**/x/",
-        "**/rcall_config*.py",
-        "harmony/harmony/deprecated/**",
-        "deprecated",
-        "feather",
-        "feather-db",
-        "personal",
-        "api/labsapi",
-        "api/billing*",
-        "api/x/",
-        "api/libs/schemas",
-        "api/bedrock*",
-        "api/libs/billing*",
-        "api/libs/swagger-dashboard",
-        "project/robotics-sim/",
-        "project/moderation_experiments",
-        "project/flywheel",
-        "project/airflow",
-        "project/harmony_experiments",
-        "project/harmony*",
-        "project/preparedness",
-        "eval-gym",
-        "project/oai-spark-jobs",
-        "alignment/",
-        "tether2/",
-        "maraschino"
+        "**/x/"
     ],
     "python.analysis.extraPaths": [
         "/Users/larrylv/code/openai"
@@ -57,18 +52,15 @@
     "python.analysis.inlayHints.variableTypes": true,
     "python.analysis.nodeExecutable": "/opt/homebrew/bin/node",
     "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.userFileIndexingLimit": 10000,
+    "python.analysis.userFileIndexingLimit": 20000,
     "python.autoComplete.extraPaths": [
         "/Users/larrylv/code/openai"
     ],
     "python.languageServer": "Pylance",
-    "ruff.format.args": [
-        "--line-length=100"
-    ],
-    "ruff.lint.args": [
-        "--config",
-        ".ruff_autofix_minimal.toml"
-    ],
+    "ruff.lineLength": 100,
+    "ruff.nativeServer": true,
+    "scm.autoReveal": false,
+    "scm.countBadge": "off",
     "security.workspace.trust.untrustedFiles": "open",
     "terminal.integrated.allowChords": false,
     "terminal.integrated.altClickMovesCursor": false,
@@ -83,13 +75,14 @@
     "window.autoDetectHighContrast": false,
     "window.systemColorTheme": "dark",
     "workbench.colorTheme": "Solarized Dark",
+    "workbench.localHistory.enabled": false,
     "workbench.preferredDarkColorTheme": "Solarized Dark",
     "workbench.preferredHighContrastLightColorTheme": "Solarized Dark",
     "workbench.preferredLightColorTheme": "Solarized Dark",
     "[python]": {
         "diffEditor.ignoreTrimWhitespace": false,
         "editor.codeActionsOnSave": {
-            // "source.organizeImports": "explicit"
+            "source.organizeImports": "explicit"
         },
         "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnSaveMode": "modifications",
