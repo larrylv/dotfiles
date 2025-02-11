@@ -9,6 +9,8 @@
     "editor.fontSize": 14,
     "editor.formatOnSave": true,
     "editor.wordWrap": "on",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
     "git.openRepositoryInParentFolders": "never",
     "git.pruneOnFetch": true,
     "git.pullTags": false,
@@ -30,6 +32,7 @@
         "worktrees": false,
         "contributors": false
     },
+    "notebook.insertFinalNewline": true,
     "problems.showCurrentInStatus": true,
     "python.analysis.autoImportCompletions": true,
     "python.analysis.exclude": [
@@ -52,13 +55,22 @@
     "python.analysis.inlayHints.variableTypes": true,
     "python.analysis.nodeExecutable": "/opt/homebrew/bin/node",
     "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.userFileIndexingLimit": 20000,
+    "python.analysis.userFileIndexingLimit": 5000,
     "python.autoComplete.extraPaths": [
         "/Users/larrylv/code/openai"
     ],
     "python.languageServer": "Pylance",
+    // Python: ruff
+    // note: monorepo tooling uses isort
     "ruff.lineLength": 100,
     "ruff.nativeServer": true,
+    // "ruff.format.args": [
+    //     "--line-length=100"
+    // ],
+    // "ruff.lint.args": [
+    //     "--config",
+    //     ".ruff_autofix_minimal.toml"
+    // ],
     "scm.autoReveal": false,
     "scm.countBadge": "off",
     "security.workspace.trust.untrustedFiles": "open",
@@ -75,6 +87,7 @@
     "window.autoDetectHighContrast": false,
     "window.systemColorTheme": "dark",
     "workbench.colorTheme": "Solarized Dark",
+    "workbench.editor.enablePreview": false,
     "workbench.localHistory.enabled": false,
     "workbench.preferredDarkColorTheme": "Solarized Dark",
     "workbench.preferredHighContrastLightColorTheme": "Solarized Dark",
