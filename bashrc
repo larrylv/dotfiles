@@ -375,3 +375,8 @@ ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 # export AUTOENV_ENABLE_LEAVE=true
 
 # ulimit -n 4096
+
+# OpenAI shrc (if customising, comment out to prevent it getting readded)
+for file in "/Users/larrylv/.openai/shrc"/*; do
+    source "$file"
+done
