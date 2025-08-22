@@ -906,7 +906,7 @@ endfunction
 call defx#custom#option('_', {
       \ 'root_marker': '',
       \ 'columns': 'indent:icon:filename',
-      \ 'winwidth': 50,
+      \ 'winwidth': 35,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
       \ })
