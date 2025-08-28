@@ -96,6 +96,12 @@ elif which rg > /dev/null; then
   export FZF_DEFAULT_COMMAND="rg --hidden --glob '!.git/*' --files"
 fi
 
+if which bat > /dev/null; then
+  export FZF_CTRL_R_OPTS="--height 50% --preview 'echo {2..} | bat --color=always -pl sh' --preview-window 'wrap,down,5'"
+elif which rg > /dev/null; then
+  export FZF_CTRL_R_OPTS="--height 50% --preview"
+fi
+
 # alias rtags='ripper-tags -R --exclude=.git/ --exclude=log/ --exclude=build/ --exclude=target/ --exclude=node_modules/ --force --fields=+n'
 rtags() {
   echo 'running ripper-tags'
