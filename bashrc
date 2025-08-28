@@ -113,6 +113,9 @@ hlpb () {
 	pbpaste | highlight -O rtf --font 'Roboto Mono' --font-size 12 --syntax $1 -s 'solarized-dark' | pbcopy
 }
 
+# disable history expansion
+set +o histexpand
+
 set -o emacs
 
 # bash-sensible (https://github.com/mrzool/bash-sensible/blob/master/sensible.bash)
