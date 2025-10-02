@@ -3,3 +3,6 @@ set editor-line-number = yes
 bind status P !git push
 bind status A !git commit --amend
 set refresh-mode = auto
+
+set diff-options = --dd
+set main-options = --first-parent
