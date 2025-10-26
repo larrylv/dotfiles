@@ -6,3 +6,5 @@ set refresh-mode = auto
 
 set diff-options = --dd
 set main-options = --first-parent
+
+set main-view = line-number:no,interval=5 date:default,local=no,format="%Y-%m-%d" author:full id:yes,color=no commit-title:yes,graph=v2,refs=yes
