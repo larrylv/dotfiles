@@ -2,7 +2,8 @@ require("conform").setup({
   formatters_by_ft = {
     -- Conform will run multiple formatters sequentially
     -- python = { "autopep8", "isort", "ruff_format" },
-    python = { "black", "isort", "ruff_fix" },
+    -- python = { "black", "isort", "ruff_fix" },
+    python = { "ruff_fix", "ruff_format", "ruff_isort" },
     cpp = { "clang_format" },
     -- ruby = { "rubyfmt" },
     go = { "gofmt", "goimports" },
