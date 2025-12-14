@@ -25,7 +25,7 @@ Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'mileszs/ack.vim'
 
 " lsp & linter & formatter & completion & copilot
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'                    " fzf <> coc.nvim
 Plug 'dense-analysis/ale'                      " linting
 Plug 'stevearc/conform.nvim'                   " lightweight yet powerful formatter
