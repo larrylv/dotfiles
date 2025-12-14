@@ -1,9 +1,14 @@
 require('avante_lib').load()
 require('avante').setup{
   provider = 'openai',
-  openai = {
-    endpoint = 'https://api.openai.com/v1',
-    model = 'o1-mini',
+  providers = {
+    openai = {
+      endpoint = 'https://api.openai.com/v1',
+      model = 'gpt-5.2',
+      external_request_body = {
+        reasoning_effort = 'high',
+      }
+    }
   },
   hints = { enabled = false },
   windows = {
