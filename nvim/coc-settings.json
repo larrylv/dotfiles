@@ -65,7 +65,6 @@
     "<C-k>": "normal:k",
     "<C-p>": "normal:k"
   },
-  "pyright.inlayHints.parameterTypes": false,
   "python.analysis.gotoDefinitionInStringLiteral": true,
   "python.analysis.typeCheckingMode": "basic",
   "rust-analyzer.cargo.allFeatures": true,
@@ -79,6 +78,8 @@
   "suggest.minTriggerInputLength": 0,
   "suggest.noselect": true,
   "suggest.snippetIndicator": "",
+  "ty.disableCompletion": true,
+  "ty.disableInlayHint": true,
   "[cpp]": {
     "inlayHint.enable": false
   },

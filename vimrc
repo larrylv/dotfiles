@@ -26,6 +26,8 @@ Plug 'mileszs/ack.vim'
 
 " lsp & linter & formatter & completion & copilot
 Plug 'neoclide/coc.nvim', { 'branch': 'release'}
+" use `:CocInstall @yaegassy/coc-ty` instead, after `uv tool install ty@latest`
+" Plug 'yaegassy/coc-ty', {'do': 'yarn install --frozen-lockfile'} "
 Plug 'antoinemadec/coc-fzf'                    " fzf <> coc.nvim
 Plug 'dense-analysis/ale'                      " linting
 Plug 'stevearc/conform.nvim'                   " lightweight yet powerful formatter
@@ -713,7 +715,6 @@ let g:coc_global_extensions = [
   \ 'coc-clangd',
   \ 'coc-go',
   \ 'coc-omni',
-  \ 'coc-pyright',
   \ 'coc-rust-analyzer',
   \ 'coc-tag',
   \ 'coc-ultisnips'
