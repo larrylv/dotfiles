@@ -746,11 +746,11 @@ nnoremap <leader>ci :CocInfo<cr>
 nnoremap <leader>cr :CocRestart<cr>
 
 " jump to definition(s) of current symbol
-nnoremap <silent> <c-]> :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', v:false)<cr>
-nnoremap <silent> <leader>ld :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition')<cr>
-nnoremap <silent> <leader>lv :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'vsplit')<cr>
-nnoremap <silent> <leader>ls :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'split')<cr>
-nnoremap <silent> <leader>lt :<C-u> TagImposterAnticipateJump <Bar> call CocAction('jumpDefinition', 'tabe')<cr>
+nnoremap <silent> <c-]> :<C-u> TagImposterAnticipateJump <Bar> call CocActionAsync('jumpDefinition', v:false)<cr>
+nnoremap <silent> <leader>ld :<C-u> TagImposterAnticipateJump <Bar> call CocActionAsync('jumpDefinition')<cr>
+nnoremap <silent> <leader>lv :<C-u> TagImposterAnticipateJump <Bar> call CocActionAsync('jumpDefinition', 'vsplit')<cr>
+nnoremap <silent> <leader>ls :<C-u> TagImposterAnticipateJump <Bar> call CocActionAsync('jumpDefinition', 'split')<cr>
+nnoremap <silent> <leader>lt :<C-u> TagImposterAnticipateJump <Bar> call CocActionAsync('jumpDefinition', 'tabe')<cr>
 
 " jump to references of current symbol
 nmap <silent> <leader>lf <Plug>(coc-references)
