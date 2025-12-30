@@ -399,6 +399,8 @@ ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 # ulimit -n 4096
 
 # OpenAI shrc (if customising, comment out to prevent it getting readded)
-for file in "/Users/larrylv/.openai/shrc"/*; do
-    source "$file"
-done
+if [ -d "/Users/larrylv/.openai/shrc" ]; then
+  for file in "/Users/larrylv/.openai/shrc"/*; do
+      source "$file"
+  done
+fi

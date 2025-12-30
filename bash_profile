@@ -10,6 +10,8 @@ export GPG_TTY=$(tty)
 [[ -s "$HOME/.bash_profile.local" ]] && source "$HOME/.bash_profile.local"
 
 # OpenAI shprofile (if customising, comment out to prevent it getting readded)
-for file in "/Users/larrylv/.openai/shprofile"/*; do
-    source "$file"
-done
+if [ -d "/Users/larrylv/.openai/shprofile" ]; then
+  for file in "/Users/larrylv/.openai/shprofile"/*; do
+      source "$file"
+  done
+fi
