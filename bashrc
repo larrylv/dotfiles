@@ -318,27 +318,27 @@ function git_prompt_info() {
   local ref="$($HOMEBREW_PREFIX/bin/git symbolic-ref -q HEAD 2>/dev/null)"
   if [ -n "$ref" ]; then
     local git_branch_name="${ref/refs\/heads\/}"
-    echo -e " ${echo_bold_purple}\ue725 $git_branch_name$(parse_git_dirty)$(parse_git_stash)"
+    echo -e "${echo_bold_purple}\ue725 $git_branch_name$(parse_git_dirty)$(parse_git_stash)"
   fi
 }
 
 function rbenv_prompt_info() {
   if which rbenv > /dev/null; then
-    # echo -e " ${echo_bold_red}\ue21e $(rbenv version-name)${echo_normal}"
+    # echo -e "${echo_bold_red}\ue21e $(rbenv version-name)${echo_normal}"
     echo -e ""
   fi
 }
 
 function goenv_prompt_info() {
   if which goenv > /dev/null; then
-    # echo -e " ${echo_bold_cyan}\ue627 $(goenv version-name)${echo_normal}"
+    # echo -e "${echo_bold_cyan}\ue627 $(goenv version-name)${echo_normal}"
     echo -e ""
   fi
 }
 
 function pyenv_prompt_info() {
   if which pyenv > /dev/null; then
-    echo -e " ${echo_bold_yellow}\ue606 $(pyenv version-name)${echo_normal}"
+    echo -e "${echo_bold_yellow}\ue606 $(pyenv version-name)${echo_normal}"
   fi
 }
 
@@ -356,7 +356,29 @@ function bash_prompt() {
 
 venv_prompt_info() {
   [[ -n "${VIRTUAL_ENV-}" ]] || return 0
-  echo -e " ${echo_bold_yellow}${VIRTUAL_ENV_PROMPT:-$(basename "$VIRTUAL_ENV")}${echo_normal}"
+  local venv_prompt="${VIRTUAL_ENV_PROMPT:-$(basename "$VIRTUAL_ENV")}"
+  venv_prompt="${venv_prompt#"${venv_prompt%%[!$' \t\r\n']*}"}"
+  venv_prompt="${venv_prompt%"${venv_prompt##*[!$' \t\r\n']}"}"
+  [[ -n "$venv_prompt" ]] || return 0
+  echo -e "${echo_bold_yellow}${venv_prompt}${echo_normal}"
+}
+
+prompt__segment() {
+  local segment
+  segment="$("$@" 2>/dev/null)"
+  segment="${segment#"${segment%%[!$' \t\r\n']*}"}"
+  segment="${segment%"${segment##*[!$' \t\r\n']}"}"
+  [[ -n "$segment" ]] || return 0
+  printf ' %s' "$segment"
+}
+
+prompt_infos() {
+  prompt__segment pyenv_prompt_info
+  prompt__segment venv_prompt_info
+  prompt__segment rbenv_prompt_info
+  prompt__segment goenv_prompt_info
+  prompt__segment cpu_arch_prompt_info
+  prompt__segment git_prompt_info
 }
 
 ## direnv
@@ -368,9 +390,9 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  PS1="${bold_cyan}\$(dir_prompt)  \u@\H ${bold_blue}\w\$(pyenv_prompt_info)\$(venv_prompt_info)\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(cpu_arch_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
+  PS1="${bold_cyan}\$(dir_prompt)  \u@\H ${bold_blue}\w\$(prompt_infos)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 else
-  PS1="${bold_blue}\$(dir_prompt) ${bold_blue}\w\$(pyenv_prompt_info)\$(venv_prompt_info)\$(rbenv_prompt_info)\$(goenv_prompt_info)\$(cpu_arch_prompt_info)\$(git_prompt_info)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
+  PS1="${bold_blue}\$(dir_prompt) ${bold_blue}\w\$(prompt_infos)${reset_color}\n${bold_green}\$(bash_prompt) ${normal}"
 fi
 
 
