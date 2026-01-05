@@ -542,6 +542,9 @@ endfunc
 
 nmap <leader>sp :call <SID>SynStack()<cr>
 
+" close tabs on the right
+nnoremap <leader>tr :<C-u>while tabpagenr('$') > tabpagenr()<Bar>execute 'tabclose' tabpagenr('$')<Bar>endwhile<CR>
+
 " close all other tabs
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>tq :tabonly<cr>
