@@ -76,7 +76,7 @@
   safecrlf            = true
   whitespace          = cr-at-eol
   preloadindex        = true
-  fsmonitor           = true
+  fsmonitor           = false
   deltabasecachelimit = 4g
   sshCommand          = ssh -i ~/.ssh/id_rsa
 [diff]
