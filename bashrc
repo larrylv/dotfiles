@@ -42,7 +42,9 @@ alias bi='bundle install'
 alias du="ncdu --color dark -rr -x"
 alias fvim="vim \$(fzf)"
 alias grep='grep --color=auto'
+alias gt='git' # my common typo
 alias gtags='ctags -R --languages=-javascript --exclude=.git/ --exclude=log/ --exclude=target/ --exclude=node_modules/ --fields=+ialS --extras=+q .'
+alias it='git' # another common typo
 alias jtags='find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '''/^$/d''' | LANG=C sort >| tags'
 alias l='ls -CF'
 alias la='ls -A'
