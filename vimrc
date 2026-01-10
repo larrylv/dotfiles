@@ -833,10 +833,72 @@ function! CopyCurrentFuncInfoToClipboard()
   echom('Copied to clipboard: ' . string(text_to_copy))
 endfunction
 
+" Yank Python "module.symbol" for name under cursor using CoC definition location.
+function! YankPyFQN_Coc() abort
+  " 1) symbol name under cursor
+  let l:sym = expand('<cword>')
+  if empty(l:sym)
+    echo "No symbol under cursor"
+    return
+  endif
+
+  " 2) ask CoC for definition locations (Location[])
+  let l:locs = CocAction('definitions')
+  if empty(l:locs)
+    echo "No definition found by CoC"
+    return
+  endif
+
+  " 3) CoC can return Location or LocationLink; try common fields
+  let l:uri = get(l:locs[0], 'uri', '')
+  if empty(l:uri)
+    let l:uri = get(l:locs[0], 'targetUri', '')
+  endif
+  if empty(l:uri)
+    echo "Definition has no uri"
+    return
+  endif
+
+  " 4) uri -> file path (good enough for typical file:// URIs)
+  let l:path = l:uri
+  let l:path = substitute(l:path, '^file://', '', '')
+  let l:path = substitute(l:path, '%20', ' ', 'g')
+
+  " 5) choose a base path to strip (prefer site-packages / stdlib / coc root / cwd)
+  let l:rel = ''
+  if l:path =~# '/site-packages/'
+    let l:rel = substitute(l:path, '^.\{-}/site-packages/', '', '')
+  elseif l:path =~# '/lib/python\d\+\.\d\+/'
+    let l:rel = substitute(l:path, '^.\{-}/lib/python\d\+\.\d\+/', '', '')
+  else
+    let l:root = get(b:, 'coc_root', getcwd())
+    let l:root = substitute(l:root, '/\+$', '', '')
+    if l:path =~# '^' . escape(l:root, '\') . '/'
+      let l:rel = substitute(l:path, '^' . escape(l:root, '\') . '/', '', '')
+    else
+      let l:rel = fnamemodify(l:path, ':.')
+    endif
+  endif
+
+  " 6) rel path -> module
+  let l:mod = substitute(l:rel, '\.py$', '', '')
+  let l:mod = substitute(l:mod, '/__init__$', '', '')
+  let l:mod = substitute(l:mod, '/', '.', 'g')
+
+  " 7) final fully qualified-ish name
+  let l:fqn = (empty(l:mod) ? l:sym : (l:mod . '.' . l:sym))
+
+  let @+ = l:fqn
+  let @" = l:fqn
+  echo "Yanked: " . l:fqn
+endfunction
+
+
 augroup CopyCurrentFuncMapping
   autocmd!
   autocmd FileType * nnoremap <silent> <leader>ry :call CopyCurrentFuncInfoToClipboard()<CR>
   autocmd FileType ruby nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
+  autocmd FileType python nnoremap <silent> <leader>ry :call YankPyFQN_Coc()<CR>
 augroup END
 
 
