@@ -896,7 +896,7 @@ endfunction
 
 augroup CopyCurrentFuncMapping
   autocmd!
-  autocmd FileType * nnoremap <silent> <leader>ry :call CopyCurrentFuncInfoToClipboard()<CR>
+  " autocmd FileType * nnoremap <silent> <leader>ry :call CopyCurrentFuncInfoToClipboard()<CR>
   autocmd FileType ruby nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
   autocmd FileType python nnoremap <silent> <leader>ry :call YankPyFQN_Coc()<CR>
 augroup END
