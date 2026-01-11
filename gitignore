@@ -7,6 +7,7 @@
 *.rbc
 .binstubs
 .bundle
+.worktrees
 *.*./vendor/bundle
 vendor/bundle
 .tmux.sh
