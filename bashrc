@@ -293,8 +293,53 @@ bold_white='\[\e[1;37m\]'
 
 # PS1 -------------------------------------------------------------------------
 
-GIT_PROMPT_CLEAN=" ${echo_bold_green}✔"
-GIT_PROMPT_DIRTY=" ${echo_bold_red}✗"
+PROMPT_ICON_STYLE="${PROMPT_ICON_STYLE:-symbols}"
+
+case "$PROMPT_ICON_STYLE" in
+  symbols)
+    PROMPT_ICON_DIR="➜"
+    PROMPT_ICON_GIT_BRANCH="⎇"
+    PROMPT_ICON_PYENV="π"
+    PROMPT_ICON_CPU="⌘"
+    PROMPT_ICON_RBENV="◆"
+    PROMPT_ICON_GOENV="⚡"
+    PROMPT_ICON_GIT_CLEAN="✓"
+    PROMPT_ICON_GIT_DIRTY="✗"
+    ;;
+  emoji)
+    PROMPT_ICON_DIR="🏠"
+    PROMPT_ICON_GIT_BRANCH="🔀"
+    PROMPT_ICON_PYENV="🐍"
+    PROMPT_ICON_CPU="⚙️"
+    PROMPT_ICON_RBENV="💎"
+    PROMPT_ICON_GOENV="🐹"
+    PROMPT_ICON_GIT_CLEAN="✅"
+    PROMPT_ICON_GIT_DIRTY="❌"
+    ;;
+  ascii)
+    PROMPT_ICON_DIR="~"
+    PROMPT_ICON_GIT_BRANCH="git"
+    PROMPT_ICON_PYENV="py"
+    PROMPT_ICON_CPU="cpu"
+    PROMPT_ICON_RBENV="rb"
+    PROMPT_ICON_GOENV="go"
+    PROMPT_ICON_GIT_CLEAN="+"
+    PROMPT_ICON_GIT_DIRTY="!"
+    ;;
+  *)
+    PROMPT_ICON_DIR="~"
+    PROMPT_ICON_GIT_BRANCH="git"
+    PROMPT_ICON_PYENV="py"
+    PROMPT_ICON_CPU="cpu"
+    PROMPT_ICON_RBENV="rb"
+    PROMPT_ICON_GOENV="go"
+    PROMPT_ICON_GIT_CLEAN="+"
+    PROMPT_ICON_GIT_DIRTY="!"
+    ;;
+esac
+
+GIT_PROMPT_CLEAN=" ${echo_bold_green}${PROMPT_ICON_GIT_CLEAN}"
+GIT_PROMPT_DIRTY=" ${echo_bold_red}${PROMPT_ICON_GIT_DIRTY}"
 GIT_PROMPT_STASH=" ${echo_bold_purple}#"
 GIT_PROMPT_NOSTASH=""
 
@@ -320,36 +365,36 @@ function git_prompt_info() {
   local ref="$($HOMEBREW_PREFIX/bin/git symbolic-ref -q HEAD 2>/dev/null)"
   if [ -n "$ref" ]; then
     local git_branch_name="${ref/refs\/heads\/}"
-    echo -e "${echo_bold_purple}\ue725 $git_branch_name$(parse_git_dirty)$(parse_git_stash)"
+    echo -e "${echo_bold_purple}${PROMPT_ICON_GIT_BRANCH} $git_branch_name$(parse_git_dirty)$(parse_git_stash)"
   fi
 }
 
 function rbenv_prompt_info() {
   if which rbenv > /dev/null; then
-    # echo -e "${echo_bold_red}\ue21e $(rbenv version-name)${echo_normal}"
+    # echo -e "${echo_bold_red}${PROMPT_ICON_RBENV} $(rbenv version-name)${echo_normal}"
     echo -e ""
   fi
 }
 
 function goenv_prompt_info() {
   if which goenv > /dev/null; then
-    # echo -e "${echo_bold_cyan}\ue627 $(goenv version-name)${echo_normal}"
+    # echo -e "${echo_bold_cyan}${PROMPT_ICON_GOENV} $(goenv version-name)${echo_normal}"
     echo -e ""
   fi
 }
 
 function pyenv_prompt_info() {
   if which pyenv > /dev/null; then
-    echo -e "${echo_bold_yellow}\ue606 $(pyenv version-name)${echo_normal}"
+    echo -e "${echo_bold_yellow}${PROMPT_ICON_PYENV} $(pyenv version-name)${echo_normal}"
   fi
 }
 
 function cpu_arch_prompt_info() {
-  echo -e "${echo_bold_cyan}\ue711 $(uname -m)${echo_normal}"
+  echo -e "${echo_bold_cyan}${PROMPT_ICON_CPU} $(uname -m)${echo_normal}"
 }
 
 function dir_prompt() {
-  echo -e "\uf124"
+  echo -e "${PROMPT_ICON_DIR}"
 }
 
 function bash_prompt() {
