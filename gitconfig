@@ -69,16 +69,17 @@
 [commit]
   gpgsign = true
 [core]
-  excludesfile        = ~/.gitignore
-  pager               = less -FRX
-  editor              = vim
   autocrlf            = input
-  safecrlf            = true
-  whitespace          = cr-at-eol
-  preloadindex        = true
-  fsmonitor           = false
   deltabasecachelimit = 4g
+  editor              = vim
+  excludesfile        = ~/.gitignore
+  fsmonitor           = true
+  safecrlf            = true
   sshCommand          = ssh -i ~/.ssh/id_rsa
+  pager               = less -FRX
+  preloadindex        = true
+  untrackedCache      = true
+  whitespace          = cr-at-eol
 [diff]
   compaction-heuristic = true
   colorMoved = zebra
