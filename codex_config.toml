@@ -1,0 +1,24 @@
+preferred_auth_method = "chatgpt"
+# preferred_auth_method = "api"
+
+# model = "gpt-5.2-codex"
+model = "gpt-5.2"
+model_reasoning_effort = "xhigh"
+model_reasoning_summary = "auto"
+
+approval_policy = "never"
+
+sandbox_mode = "danger-full-access"
+# Extra settings that only apply when `sandbox = "workspace-write"`.
+[sandbox_workspace_write]
+writable_roots =  ["/Users/larrylv/.pyenv/shims"]
+network_access = true
+
+[projects."/Users/larrylv/code"]
+trust_level = "trusted"
+
+[features]
+apply_patch_freeform = true
+shell_snapshot = true
+unified_exec = true
+web_search_request = true
