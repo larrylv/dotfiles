@@ -7,7 +7,7 @@
   user  = larrylv
 [alias]
   al                       = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
-  br                       = branch
+  br                       = branch --format='%(if)%(HEAD)%(then)%(color:bold green)* %(refname:short)%(color:reset)%(else)%(if)%(worktreepath)%(then)%(color:normal)+ %(refname:short)%(color:reset)%(else)  %(refname:short)%(end)%(end)'
   bv                       = branch -vv --color
   changes                  = diff --stat -r
   # checkout a branch without typing its name by using fzf
