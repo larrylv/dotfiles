@@ -5,6 +5,8 @@ bind status A !git commit --amend
 set refresh-mode = auto
 
 set diff-options = --dd
-set main-options = --first-parent
+set main-options = --first-parent --decorate=short --decorate-refs-exclude=refs/stained/*
 
-set main-view = line-number:no,interval=5 date:default,local=no,format="%Y-%m-%d" author:full id:yes,color=no commit-title:yes,graph=v2,refs=yes
+set main-view = line-number:no,interval=5 date:default,local=no,format="%Y-%m-%d" author:full,maxwidth=32 id:yes,color=no commit-title:yes,graph=v1,refs=yes
+
+set reference-format = [head] {tracked-remote} hide:branch hide:tag hide:local-tag hide:remote hide:replace
