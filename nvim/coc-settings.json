@@ -37,6 +37,13 @@
       "filetypes": ["terraform", "tf"],
       "initializationOptions": {},
       "settings": {}
+    },
+    "ty": {
+      "command": "ty",
+      "args": ["server"],
+      "filetypes": ["python"],
+      "rootPatterns": ["package.json", "pyproject.toml", ".git"],
+      "cwd": "${workspaceFolder}"
     }
   },
   "clangd.disableFileStatus": true,
@@ -48,6 +55,7 @@
   "diagnostic.autoRefresh": true,
   "diagnostic.displayByAle": true,
   "diagnostic.level": "information",
+  "fileSystemWatch.enable": false,
   "hover.floatConfig": {
     "border": true
   },
@@ -67,6 +75,8 @@
   },
   "python.analysis.gotoDefinitionInStringLiteral": true,
   "python.analysis.typeCheckingMode": "basic",
+  "workspace.rootPatterns": [".git", "go.mod", "pyproject.toml", "package.json", "Cargo.toml"],
+  "workspace.workspaceFolderCheckCwd": true,
   "rust-analyzer.cargo.allFeatures": true,
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.lens.debug.enable": false,
