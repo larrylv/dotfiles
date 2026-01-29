@@ -2,65 +2,95 @@
 
 These rules are non-negotiable. If you violate them, your change is wrong even if it “works.”
 
+This repo values **hard invariants**, **loud failures**, and **fixing upstream causes**.
+We do not accept “best-effort” behavior that hides missing or invalid data.
+
 ---
 
-## 1) NO DEFAULT FALLBACKS. EVER.
-Any silent “best-effort” behavior that hides missing or invalid data is forbidden.
+## 1) NO DEFAULT FALLBACKS. EVER. (highest priority)
+Any silent “best-effort” behavior that substitutes or fabricates values is forbidden.
 
-Forbidden examples:
-
+### Forbidden (examples)
 - `value = d.get("key", "default")`
 - `value = d.get("key") or "default"`
-- any pattern that substitutes a value when data is missing
+- `d.setdefault("key", ...)`
+- `getattr(x, "attr", default)`
+- `os.getenv("NAME", "default")`
+- treating missing as empty: `missing -> "" / [] / {} / 0`
+- parsing that “skips what it can’t understand” and continues
 
-Do this instead:
+### Do this instead
+- Use strict access and let it fail:
+  - `value = d["key"]`
+- If the key/field can be missing, **fix the source/producer** so it is never missing.
+- If input can be invalid, **validate at the boundary** and raise a real error (do not substitute).
 
-- `value = d["key"]`
-
-If the key can be missing, fix the source so it is never missing. Do not hide the bug downstream.
+### If you think a default is legitimate
+Defaults are allowed **only** when the product/spec explicitly defines them.
+If you believe that applies: **STOP and ask Larry first.**
 
 ---
 
-## 2) DO NOT LITTER THE CODE WITH TRY/EXCEPT.
+## 2) DO NOT LITTER THE CODE WITH TRY/EXCEPT. (highest priority)
 Default policy: crash loudly. If something goes wrong, the code should crash.
 
-Forbidden patterns:
-
-- `try/except Exception:` “just in case”
+### Forbidden
+- `try/except Exception:` / broad catches
 - catching errors and continuing
 - swallowing errors, returning empty values, or logging-and-moving-on
+- “defensive” wrappers “just in case”
 
-If you truly believe an exception must be handled, you MUST ask me first.
+### Required
+- Let exceptions propagate.
+- Prefer invariant fixes + boundary validation over local exception handling.
+
+### If you think an exception must be handled
+**STOP and ask Larry first.**
+(Yes, even if you only want to “add context.”)
 
 ---
 
 ## 3) Fix root causes, not symptoms
-If something is crashing in a function, do not bandaid it in that function. Trace it to the origin and fix it where the invariant is created.
+If you find a bug, do not bandaid it in the nearest function that notices it.
+
+Trace it to where the bad input / invalid state is created (API boundary, parsing, DB read/write,
+config load, upstream caller) and fix it there.
+
+Heuristic: **producers enforce invariants; consumers assume them**.
 
 ---
 
 ## 4) Less is more
-Write the least amount of code that achieves the goal (while prioritizing readability). Avoid verbose comments that restate obvious code.
+Write the least amount of code that achieves the goal (while prioritizing readability).
+Avoid verbose comments that restate obvious code.
 
 ---
 
 ## 5) Assume the current code is wrong
-Do not optimize for preserving legacy behavior unless explicitly required. Breaking old behavior can be fine if the new behavior is correct.
+Do not optimize for preserving legacy behavior unless explicitly required.
+Breaking old behavior can be fine if the new behavior is correct.
 
 ---
 
 ## 6) Always simplify
-Refactor to reduce complexity and delete bloat. Prefer reusable, obvious pieces. Zero tolerance for unnecessary abstractions.
+Refactor to reduce complexity and delete bloat.
+Prefer reusable, obvious pieces.
+Zero tolerance for unnecessary abstractions.
 
 ---
 
-## 7) Don’t tell me to run code
-That is your job. Run tests/linters/builds yourself. Validate the change by executing the relevant paths.
+## 7) Don’t tell Larry to run code
+That is your job. Validate the change by executing the relevant paths.
+
+Before you submit:
+- run the relevant tests
+- run linters/formatters if the repo uses them
+- exercise the changed code path at least once
+
+Include what you ran + the outcome in your summary/PR description.
 
 ---
 
 # READ THIS AGAIN: RULES (1) AND (2) OVERRULE EVERYTHING
-They are more important than completing the task.
-
-If you think you need a fallback or a try/except to succeed, STOP and ask me first.
-I will almost certainly say no, but you must ask before doing it anyway.
+If you think you need a fallback or a try/except to succeed, STOP and ask Larry first.
+He will almost certainly say no, but you must ask before doing it anyway.
