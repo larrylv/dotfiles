@@ -140,6 +140,7 @@ brew "postgresql@14"
 # Security and crypto
 # ------------------------------------------------------------------------------
 brew "gnupg"
+brew "jwt-cli"
 brew "openssl@3"
 brew "pinentry"
 brew "pinentry-mac"
@@ -192,4 +193,3 @@ cask "clickhouse"
 
 # Runtimes
 cask "adoptopenjdk"
-
