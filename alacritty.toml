@@ -63,7 +63,7 @@ y = 2
 command = "open"
 mouse = { enabled = true, mods = "Command" }
 hyperlinks = true
-regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`()]+"
+regex = "(ipfs:|ipns:|magnet:|mailto:|az://|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`()]+"
 
 [[keyboard.bindings]]
 action = "Paste"
@@ -911,7 +911,7 @@ multiplier = 0
 
 [selection]
 save_to_clipboard = true
-semantic_escape_chars = ",│`|\"' ()[]{}<>"
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
 decorations = "full"
