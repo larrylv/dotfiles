@@ -89,6 +89,10 @@ Before you submit:
 
 Include what you ran + the outcome in your summary/PR description.
 
+## 8) Pushing and Pulling Changes
+
+To push / pull from github, prefer remote `github` if configured, otherwise fall back to `origin`.
+
 ---
 
 # READ THIS AGAIN: RULES (1) AND (2) OVERRULE EVERYTHING
