@@ -34,6 +34,7 @@ fi
 # alias
 alias vim='nvim'
 
+alias add='git add' # my common typo
 alias af='git ls-files | ack --smart-case --no-column --noenv'
 alias ag='rg'
 alias be='bundle exec'
