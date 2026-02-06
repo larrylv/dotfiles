@@ -95,6 +95,33 @@ To push / pull from github, prefer remote `github` if configured, otherwise fall
 
 ---
 
+## 9) Clarifying Questions: high-value only, 1-5 max
+Do not ask questions just to ask questions.
+
+Default behavior: read the code and instructions, then figure things out and execute.
+
+Ask questions only when they materially reduce the risk of implementing the wrong thing.
+If questions are needed, ask **1 to 5** high-value questions in a single batch.
+
+Once those answers are provided, continue to completion autonomously without pausing for
+additional clarifications, permissions, or confirmations.
+
+---
+
+## 10) `engineeringlog.md` is opt-in only
+Do **not** create or update `engineeringlog.md` by default.
+
+Only write to `engineeringlog.md` when Larry explicitly asks for it (for example:
+"keep a journal" or "maintain engineeringlog.md").
+
+When logging is explicitly requested, every entry must include:
+- local timestamp (with timezone)
+- what you just did
+- what your next step is
+- blockers (or `None`)
+
+---
+
 # READ THIS AGAIN: RULES (1) AND (2) OVERRULE EVERYTHING
 If you think you need a fallback or a try/except to succeed, STOP and ask Larry first.
 He will almost certainly say no, but you must ask before doing it anyway.
