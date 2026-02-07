@@ -122,6 +122,19 @@ When logging is explicitly requested, every entry must include:
 
 ---
 
+## 11) Use full relative file paths in all file mentions
+When you mention a file, use the full path relative to the repository root.
+
+### Required
+- Good: `nvim/lua/user/options.lua`
+- Good: `vim/after/ftplugin/python.vim`
+
+### Forbidden
+- Bare filename only: `options.lua`
+- Link text that only shows a bare filename
+
+---
+
 # READ THIS AGAIN: RULES (1) AND (2) OVERRULE EVERYTHING
 If you think you need a fallback or a try/except to succeed, STOP and ask Larry first.
 He will almost certainly say no, but you must ask before doing it anyway.
