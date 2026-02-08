@@ -18,7 +18,7 @@
   co                       = checkout
   conflicts                = diff --name-only --diff-filter=U
   delete                   = !git ls-files -z --deleted | xargs -0 git rm
-  done                     = "!f() { ([ `git rev-parse --abbrev-ref HEAD` == 'master' ] || git checkout master) && git branch -D @{-1}; }; f"
+  done                     = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD) || return $?; target_branch=master; git_dir=$(git rev-parse --git-dir) || return $?; case \"$git_dir\" in */.git/worktrees/*) worktree_name=$(basename \"$(dirname \"$(git rev-parse --show-toplevel)\")\") || return $?; resolved=0; for candidate in \"$worktree_name\" \"$worktree_name-branch\"; do if git show-ref --verify --quiet \"refs/heads/$candidate\"; then target_branch=$candidate; resolved=1; break; fi; done; if [ $resolved -ne 1 ] && [ \"$worktree_name\" = \"main\" ] && git show-ref --verify --quiet refs/heads/master; then target_branch=master; resolved=1; fi; if [ $resolved -ne 1 ]; then echo \"git done: unable to resolve worktree branch for '$worktree_name'\" >&2; return 1; fi;; esac; if [ \"$current_branch\" != \"$target_branch\" ]; then git checkout \"$target_branch\" || return $?; git branch -D \"$current_branch\"; else git branch -D @{-1}; fi; }; f"
   files-since              = "!git diff --name-only $(git merge-base HEAD $1) | xargs ls 2>/dev/null && :"
   files-since-master       = "!git files-since origin/master && :"
   follow                   = log -n 10 --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --full-history --follow -- 
