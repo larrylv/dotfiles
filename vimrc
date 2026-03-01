@@ -744,6 +744,8 @@ function! g:CocShowDocumentation()
   endif
 endfunction
 
+hi CocInlayHint cterm=underline gui=underline
+
 nnoremap <leader>ci :CocInfo<cr>
 nnoremap <leader>cr :CocRestart<cr>
 

@@ -60,6 +60,8 @@
     "border": true
   },
   "inlayHint.enable": true,
+  "inlayHint.display": false,
+  // "inlayHint.enableParameter": false,
   "list.previewSplitRight": true,
   "list.previewToplineStyle": "middle",
   "list.normalMappings": {
