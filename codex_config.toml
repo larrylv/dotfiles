@@ -1,7 +1,7 @@
 preferred_auth_method = "chatgpt"
 # preferred_auth_method = "api"
 
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 model_reasoning_effort = "xhigh"
 model_reasoning_summary = "auto"
 
