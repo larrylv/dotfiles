@@ -553,8 +553,8 @@ nnoremap <leader>tt :tabe<cr>
 
 map <leader>vr :tabe ~/.vimrc<cr>
 
-" n,w to qucikly switch vim window
-map <leader>w <C-W><C-W>
+" " n,w to qucikly switch vim window
+" map <leader>w <C-W><C-W>
 
 " delete all upcase marks / bookmarks
 nmap <leader>xm :delmarks ABCDEFGHIJKLMNOPQRSTUVWXYZ<cr>:wviminfo!<cr>
@@ -583,6 +583,7 @@ nnoremap <leader>qd :call DeleteHiddenBuffers()<cr>
 " nmap <leader>qo :BufOnly<cr>
 
 " close all other splits except the current one
+nnoremap <leader>wo <C-w>o<cr>
 nnoremap <leader>qo <C-w>o<cr>
 
 " keep selected text selected when fixing indentation
