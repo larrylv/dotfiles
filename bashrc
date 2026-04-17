@@ -203,8 +203,9 @@ export GO111MODULE=on
 # export GOFLAGS="-mod=vendor"
 
 ## pyenv
-export PATH="/Users/larrylv/.pyenv/bin:$PATH"
-if which pyenv > /dev/null; then eval "$(pyenv init --path)"; fi
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv > /dev/null; then eval "$(pyenv init --path --no-rehash bash)"; fi
 
 ## jEnv
 # if which jenv > /dev/null; then eval "$(jenv init -)"; fi

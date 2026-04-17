@@ -1,7 +1,7 @@
 preferred_auth_method = "chatgpt"
 # preferred_auth_method = "api"
 
-model = "gpt-5.4"
+model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
 model_reasoning_summary = "auto"
 
@@ -17,8 +17,54 @@ network_access = true
 [projects."/Users/larrylv/code"]
 trust_level = "trusted"
 
+[projects."/Users/larrylv/code/openai"]
+trust_level = "trusted"
+
+[projects."/Users/larrylv"]
+trust_level = "trusted"
+
+[projects."/Users/larrylv/code/dotfiles"]
+trust_level = "trusted"
+
 [features]
 apply_patch_freeform = true
+apps = true
+memories = true
+multi_agent = true
+responses_websockets_v2 = true
 shell_snapshot = true
+sqlite = true
 unified_exec = true
+remote_control = true
+prevent_idle_sleep = true
 # web_search = "cached"
+
+[model_providers.byok]
+base_url = "https://api.openai.com/v1"
+env_key = "OPENAI_API_KEY"
+name = "byok"
+wire_api = "responses"
+supports_websockets = true
+
+[profiles.byok]
+model_provider = "byok"
+
+[plugins."google-calendar@openai-curated"]
+enabled = true
+
+[plugins."slack@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."linear@openai-curated"]
+enabled = true
+
+[plugins."browser-use@openai-bundled"]
+enabled = true
+
+[marketplaces.openai-bundled]
+last_updated = "2026-04-17T17:25:20Z"
+source_type = "local"
+source = "/Users/larrylv/.codex/.tmp/bundled-marketplaces/openai-bundled"
