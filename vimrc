@@ -424,8 +424,7 @@ augroup general_config
   autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter pryrc set filetype=ruby syntax=ruby
   autocmd Filetype gitcommit,gitrebase setlocal textwidth=78
   autocmd Filetype gitcommit,gitrebase setlocal colorcolumn=81
-  autocmd Filetype json setlocal conceallevel=0
-  autocmd BufNewFile,BufRead,BufEnter,TabEnter,WinEnter,VimEnter,GUIEnter * if &filetype ==# 'json' | setlocal conceallevel=0 | endif
+  autocmd FileType json setlocal conceallevel=0
 augroup END
 
 let g:python3_host_prog=$HOME.'/.pyenv/shims/python'
@@ -1210,6 +1209,7 @@ nmap <leader>gm <Plug>(git-messenger)
 " ================================= indentLine =================================
 let g:indentLine_enabled = 1
 let g:indentLine_char = "\ue621"
+let g:indentLine_fileTypeExclude = ['leaderf', 'json']
 
 " toggle displaying the indention levels with thin vertical lines
 nnoremap <leader>cm :IndentLinesToggle<cr>
