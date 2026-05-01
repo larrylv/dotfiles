@@ -50,7 +50,20 @@ Default policy: crash loudly. If something goes wrong, the code should crash.
 
 ---
 
-## 3) Fix root causes, not symptoms
+## 3) DO NOT MODIFY `.envrc` WITHOUT LARRY'S EXPLICIT PERMISSION. (highest priority)
+`.envrc` controls the local environment. Never create, edit, overwrite, reformat, delete, rename,
+move, regenerate, or "clean up" `.envrc` unless Larry explicitly asks for that exact file to be
+changed.
+
+### Required
+- Treat `.envrc` as read-only by default.
+- If a task seems to require changing `.envrc`, **STOP and ask Larry first.**
+- Fix the upstream config, script, docs, or caller instead of patching `.envrc` unless Larry gives
+  explicit permission.
+
+---
+
+## 4) Fix root causes, not symptoms
 If you find a bug, do not bandaid it in the nearest function that notices it.
 
 Trace it to where the bad input / invalid state is created (API boundary, parsing, DB read/write,
@@ -60,26 +73,26 @@ Heuristic: **producers enforce invariants; consumers assume them**.
 
 ---
 
-## 4) Less is more
+## 5) Less is more
 Write the least amount of code that achieves the goal (while prioritizing readability).
 Avoid verbose comments that restate obvious code.
 
 ---
 
-## 5) Assume the current code is wrong
+## 6) Assume the current code is wrong
 Do not optimize for preserving legacy behavior unless explicitly required.
 Breaking old behavior can be fine if the new behavior is correct.
 
 ---
 
-## 6) Always simplify
+## 7) Always simplify
 Refactor to reduce complexity and delete bloat.
 Prefer reusable, obvious pieces.
 Zero tolerance for unnecessary abstractions.
 
 ---
 
-## 7) Don’t tell Larry to run code
+## 8) Don’t tell Larry to run code
 That is your job. Validate the change by executing the relevant paths.
 
 Before you submit:
@@ -89,13 +102,13 @@ Before you submit:
 
 Include what you ran + the outcome in your summary/PR description.
 
-## 8) Pushing and Pulling Changes
+## 9) Pushing and Pulling Changes
 
 To push / pull from github, prefer remote `github` if configured, otherwise fall back to `origin`.
 
 ---
 
-## 9) Clarifying Questions: high-value only, 1-5 max
+## 10) Clarifying Questions: high-value only, 1-5 max
 Do not ask questions just to ask questions.
 
 Default behavior: read the code and instructions, then figure things out and execute.
@@ -108,7 +121,7 @@ additional clarifications, permissions, or confirmations.
 
 ---
 
-## 10) `engineeringlog.md` is opt-in only
+## 11) `engineeringlog.md` is opt-in only
 Do **not** create or update `engineeringlog.md` by default.
 
 Only write to `engineeringlog.md` when Larry explicitly asks for it (for example:
@@ -122,7 +135,7 @@ When logging is explicitly requested, every entry must include:
 
 ---
 
-## 11) Use full relative file paths in all file mentions
+## 12) Use full relative file paths in all file mentions
 When you mention a file, use the full path relative to the repository root.
 
 ### Required
@@ -135,6 +148,7 @@ When you mention a file, use the full path relative to the repository root.
 
 ---
 
-# READ THIS AGAIN: RULES (1) AND (2) OVERRULE EVERYTHING
-If you think you need a fallback or a try/except to succeed, STOP and ask Larry first.
+# READ THIS AGAIN: RULES (1), (2), AND (3) OVERRULE EVERYTHING
+If you think you need a fallback, a try/except, or a `.envrc` edit to succeed, STOP and ask Larry
+first.
 He will almost certainly say no, but you must ask before doing it anyway.
