@@ -30,7 +30,7 @@ brew bundle install --no-upgrade --no-lock --verbose
 pyenv install 3.12.2
 pyenv global 3.12.2
 
-pip install --upgrade autopep8 isort ruff pytest pipenv virtualenv pdm pre-commit
+pip install --upgrade autopep8 isort ruff pytest pipenv virtualenv pdm pre-commit pyp
 ```
 
 ## ruby stuff
