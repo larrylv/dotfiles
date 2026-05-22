@@ -65,6 +65,24 @@ alias tcommit="git add . ; date +\"%Y-%m-%d\" | xargs git ci -m"
 alias tigs='tig status'
 alias vs='vim -S Session.vim'
 alias ycommit="git add . ; date -v-1d +\"%Y-%m-%d\" | xargs git ci -m"
+
+gsm() {
+  [[ $# -gt 0 ]] || { echo 'usage: gsm FILE_NAME [...]' >&2; return 2; }
+
+  local file
+  local type
+  for file in "$@"; do
+    type=$(git cat-file -t "origin/master:$file") || return $?
+    [[ $type == blob ]] || { echo "gsm: origin/master:$file is not a file" >&2; return 1; }
+  done
+
+  for file in "$@"; do
+    git show "origin/master:$file" >| "$file" || return $?
+  done
+  git add -- "$@"
+}
+alias gso='gsm'
+
 LESS="-iXRF"; export LESS
 
 if which trash > /dev/null; then
