@@ -1,5 +1,5 @@
 # Top-level Homebrew packages (formulae installed-on-request + installed casks)
-# Generated on 2026-01-26.
+# Generated on 2026-05-21.
 
 # ------------------------------------------------------------------------------
 # Shell, environment, and terminal workflow
@@ -11,6 +11,7 @@ brew "bash-completion"
 brew "direnv"
 brew "fpp"
 brew "fzf"
+brew "neovim"
 brew "reattach-to-user-namespace"
 brew "tmux"
 brew "tmuxinator-completion"
@@ -151,6 +152,7 @@ brew "pinentry-mac"
 brew "abseil"
 brew "fmt"
 brew "harfbuzz"
+brew "icu4c@78"
 brew "libevent"
 brew "libfaketime"
 brew "libmagic"
@@ -187,6 +189,9 @@ cask "mitmproxy"
 
 # Diff / merge tools
 cask "diffmerge"
+
+# Infrastructure tools
+cask "warrensbox/tap/tfswitch"
 
 # Databases
 cask "clickhouse"

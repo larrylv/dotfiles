@@ -35,15 +35,6 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'github/copilot.vim'
 
-" cursor
-Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
-Plug 'stevearc/dressing.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'MunifTanjim/nui.nvim'
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'MeanderingProgrammer/render-markdown.nvim'
-Plug 'folke/snacks.nvim'
-
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'                  " :TSPlaygroundToggle, :TSHighlightCapturesUnderCursor
@@ -83,6 +74,7 @@ Plug 'Einenlum/yaml-revealer'           " A vim plugin to easily navigate throug
 Plug 'tyru/current-func-info.vim'       " Get current function name
 Plug 'powerman/vim-plugin-AnsiEsc'      " ansi escape sequences concealed, but highlighted as specified
 Plug 'kristijanhusak/vim-carbon-now-sh' " open selected text in https://carbon.now.sh
+Plug 'nvim-tree/nvim-web-devicons'      " an icon provider
 " Plug 'majutsushi/tagbar'              " show tagbar with F2
 " Plug 'mg979/vim-visual-multi'         " Multiple cursors plugin
 " Plug 'puremourning/vimspector'        " A multi-language debugging system for Vim
@@ -130,9 +122,10 @@ Plug 'vim-scripts/paredit.vim',             { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni',          { 'for': 'clojure' }
 
 " markdown
-Plug 'iamcco/markdown-preview.nvim',        { 'for': 'markdown', 'do': 'cd app && yarn install' } " <leader>pp to preview markdown
-Plug 'godlygeek/tabular',                   { 'for': 'markdown' }
-Plug 'preservim/vim-markdown',              { 'for': 'markdown' }
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+Plug 'iamcco/markdown-preview.nvim',             { 'for': 'markdown', 'do': 'cd app && yarn install' } " <leader>pp to preview markdown
+Plug 'godlygeek/tabular',                        { 'for': 'markdown' }
+Plug 'preservim/vim-markdown',                   { 'for': 'markdown' }
 
 " frontend
 Plug 'pangloss/vim-javascript',             { 'for': 'javascript' }
