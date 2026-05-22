@@ -30,7 +30,7 @@ brew bundle install --no-upgrade --no-lock --verbose
 pyenv install 3.12.2
 pyenv global 3.12.2
 
-pip install --upgrade autopep8 isort ruff pytest pipenv virtualenv pdm
+pip install --upgrade autopep8 isort ruff pytest pipenv virtualenv pdm pre-commit
 ```
 
 ## ruby stuff
@@ -93,22 +93,4 @@ mkdir -p ~/.local/bin
 sudo launchctl limit maxfiles 10240 200000
 # or make the change permanent
 https://apple.stackexchange.com/questions/381999/how-to-make-sudo-launchctl-limit-change-permanent
-```
-
-Interesting open source projects:
-```
-# solarized
-git clone git@github.com:altercation/solarized.git ~/code/solarized
-
-# go
-git clone git@github.com:nadoo/glider.git ~/code/gopath/src/github.com/nadoo/glider
-git clone git@github.com:panjf2000/gnet.git ~/code/gopath/src/github.com/panjf2000/gnet
-git clone git@github.com:rqlite/rqlite.git ~/code/gopath/src/github.com/rqlite/rqlite
-
-# python
-git clone git@github.com:agronholm/anyio.git ~/code/anyio
-git clone git@github.com:tiangolo/fastapi.git ~/code/fastapi
-git clone git@github.com:pydantic/pydantic.git ~/code/pydantic
-git clone git@github.com:tiangolo/sqlmodel.git ~/code/sqlmodel
-git clone git@github.com:encode/starlette.git ~/code/starlette
 ```
