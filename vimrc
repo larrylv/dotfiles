@@ -37,7 +37,7 @@ Plug 'github/copilot.vim'
 
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'                  " :TSPlaygroundToggle, :TSHighlightCapturesUnderCursor
+" Plug 'nvim-treesitter/playground'                  " :TSPlaygroundToggle, :TSHighlightCapturesUnderCursor
 Plug 'nvim-treesitter/nvim-treesitter-context'     " show code context
 Plug 'nvim-treesitter/nvim-treesitter-textobjects' " Syntax aware text-objects, select, move, swap, and peek support.
 
@@ -182,6 +182,11 @@ let g:solarized_termtrans = 1
 let g:solarized_extra_hi_groups = 0
 set background=dark
 colorscheme solarized8_flat
+if has('nvim-0.11')
+  " Custom statusline highlights inherit these attributes in Neovim 0.11+.
+  hi! StatusLine cterm=NONE gui=NONE
+  hi! StatusLineNC cterm=NONE gui=NONE
+endif
 " dirty patch for CursorLine
 hi! CursorLine cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=237 guibg=#3c3d3a
 hi! CursorLineNr cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=NONE guibg=NONE
@@ -445,9 +450,9 @@ map <silent> <C-n> <Esc>:nohlsearch<cr>
 " Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" Paste toggle (<F3>)
-nnoremap <F3> :set invpaste paste?<cr>
-set pastetoggle=<F3>
+" " Paste toggle (<F3>)
+" nnoremap <F3> :set invpaste paste?<cr>
+" set pastetoggle=<F3>
 
 " Open selected text in https://carbon.now.sh
 vnoremap <F5> :CarbonNowSh<cr>

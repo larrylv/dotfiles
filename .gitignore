@@ -9,3 +9,4 @@ spacemacs.elc
 vim/autoload/plug.vim.old
 gitconfig-work
 .metals
+nvim.log

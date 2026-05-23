@@ -1,3 +1,5 @@
+[terminal]
+shell = { program = "/opt/homebrew/bin/bash", args = ["--login"] }
 
 [bell]
 animation = "EaseOutExpo"

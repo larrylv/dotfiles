@@ -104,6 +104,7 @@ brew "openjdk@11"
 brew "pyenv"
 brew "rbenv"
 brew "ruby-build"
+brew "rust"
 brew "rust-analyzer"
 brew "rustup"
 brew "uv"
@@ -170,13 +171,13 @@ brew "snappy"
 # ------------------------------------------------------------------------------
 # Misc (apps/tools)
 # ------------------------------------------------------------------------------
-brew "codex"
 brew "cowsay"
 brew "bottom"
 brew "hugo"
 brew "portaudio"
 brew "prettyping"
 brew "slides"
+brew "tree-sitter-cli"
 
 # ------------------------------------------------------------------------------
 # Casks (GUI apps)
@@ -195,6 +196,3 @@ cask "warrensbox/tap/tfswitch"
 
 # Databases
 cask "clickhouse"
-
-# Runtimes
-cask "adoptopenjdk"

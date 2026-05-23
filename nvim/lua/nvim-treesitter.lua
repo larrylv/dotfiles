@@ -1,109 +1,148 @@
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { "c", "elixir", "go", "java", "javascript", "kotlin", "lua", "python", "ruby", "rust", "typescript", "yaml" },
+local ts = require("nvim-treesitter")
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
-
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-
-    -- list of language that will be disabled
-    disable = { "dockerfile", "html", "markdown", "ruby", "scala", "yaml" },
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-
-  indent = {
-    enable = true,
-    disable = { 'yaml' }
-  },
-
-  textobjects = {
-    select = {
-      enable = true,
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-
-        ["ad"] = "@conditional.outer",
-        ["id"] = "@conditional.inner",
-
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["am"] = "@function.outer",
-        ["im"] = "@function.inner",
-
-        ["al"] = "@loop.outer",
-        ["il"] = "@loop.inner",
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = false, -- whether to set jumps in the jumplist
-      -- Below will go to either the start or the end, whichever is closer.
-      -- Use if you want more granular movements
-      -- Make it even more gradual by adding multiple queries and regex.
-      goto_next = {
-        ["]c"] = "@class.outer",
-        ["]C"] = "@class.inner",
-        ["]d"] = "@conditional.outer",
-        ["]D"] = "@conditional.inner",
-        ["]f"] = "@function.outer",
-        ["]F"] = "@function.inner",
-        ["]m"] = "@function.outer",
-        ["]M"] = "@function.inner",
-        ["]l"] = "@loop.outer",
-        ["]L"] = "@loop.inner",
-      },
-      goto_previous = {
-        ["[c"] = "@class.outer",
-        ["[C"] = "@class.inner",
-        ["[d"] = "@conditional.outer",
-        ["[D"] = "@conditional.inner",
-        ["[f"] = "@function.outer",
-        ["[F"] = "@function.inner",
-        ["[m"] = "@function.outer",
-        ["[M"] = "@function.inner",
-        ["[l"] = "@loop.outer",
-        ["[L"] = "@loop.inner",
-      }
-    },
-  },
-
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- whether the query persists across vim sessions
-    keybindings = {
-      toggle_query_editor = 'o',
-      toggle_hl_groups = 'i',
-      toggle_injected_languages = 't',
-      toggle_anonymous_nodes = 'a',
-      toggle_language_display = 'I',
-      focus_language = 'f',
-      unfocus_language = 'F',
-      update = 'R',
-      goto_node = '<cr>',
-      show_help = '?',
-    },
-  }
+local parsers = {
+  "c",
+  "elixir",
+  "go",
+  "java",
+  "javascript",
+  "kotlin",
+  "lua",
+  "python",
+  "ruby",
+  "rust",
+  "typescript",
+  "yaml",
 }
 
--- read `:h treesitter-highlight-groups` for more information
+ts.setup({
+  install_dir = vim.fn.stdpath("data") .. "/site",
+})
 
--- python highlight customization
+-- Replaces ensure_installed. Installation is asynchronous and is a no-op
+-- for parsers that are already installed.
+ts.install(parsers)
+
+-- Replaces highlight.enable / highlight.disable.
+local highlight_disabled = {
+  dockerfile = true,
+  html = true,
+  markdown = true,
+  ruby = true,
+  scala = true,
+  yaml = true,
+}
+
+-- Neovim ftplugins can start bundled Tree-sitter highlighting independently.
+-- For example, Neovim 0.12 enables it for Markdown before this setup runs.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = vim.tbl_keys(highlight_disabled),
+  callback = function(args)
+    vim.treesitter.stop(args.buf)
+  end,
+})
+
+-- Replaces indent.enable / indent.disable.
+local indent_disabled = {
+  yaml = true,
+}
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = parsers,
+  callback = function(args)
+    local filetype = vim.bo[args.buf].filetype
+
+    if not highlight_disabled[filetype] then
+      -- Ignore the error during the first startup while parsers are still
+      -- being installed asynchronously. Reopening the buffer will attach it.
+      pcall(vim.treesitter.start, args.buf)
+    end
+
+    if not indent_disabled[filetype] then
+      vim.bo[args.buf].indentexpr =
+      "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
+})
+
+-- nvim-treesitter-textobjects must also be on its main branch.
+require("nvim-treesitter-textobjects").setup({
+  select = {
+    lookahead = false,
+    include_surrounding_whitespace = false,
+  },
+  move = {
+    set_jumps = false,
+  },
+})
+
+local ts_select = require("nvim-treesitter-textobjects.select")
+local ts_move = require("nvim-treesitter-textobjects.move")
+
+local select_mappings = {
+  ac = "@class.outer",
+  ic = "@class.inner",
+
+  ad = "@conditional.outer",
+  id = "@conditional.inner",
+
+  af = "@function.outer",
+  ["if"] = "@function.inner",
+  am = "@function.outer",
+  im = "@function.inner",
+
+  al = "@loop.outer",
+  il = "@loop.inner",
+}
+
+for lhs, capture in pairs(select_mappings) do
+  local query = capture
+  vim.keymap.set({ "x", "o" }, lhs, function()
+    ts_select.select_textobject(query, "textobjects")
+  end)
+end
+
+local goto_next_mappings = {
+  ["]c"] = "@class.outer",
+  ["]C"] = "@class.inner",
+  ["]d"] = "@conditional.outer",
+  ["]D"] = "@conditional.inner",
+  ["]f"] = "@function.outer",
+  ["]F"] = "@function.inner",
+  ["]m"] = "@function.outer",
+  ["]M"] = "@function.inner",
+  ["]l"] = "@loop.outer",
+  ["]L"] = "@loop.inner",
+}
+
+for lhs, capture in pairs(goto_next_mappings) do
+  local query = capture
+  vim.keymap.set({ "n", "x", "o" }, lhs, function()
+    ts_move.goto_next(query, "textobjects")
+  end)
+end
+
+local goto_previous_mappings = {
+  ["[c"] = "@class.outer",
+  ["[C"] = "@class.inner",
+  ["[d"] = "@conditional.outer",
+  ["[D"] = "@conditional.inner",
+  ["[f"] = "@function.outer",
+  ["[F"] = "@function.inner",
+  ["[m"] = "@function.outer",
+  ["[M"] = "@function.inner",
+  ["[l"] = "@loop.outer",
+  ["[L"] = "@loop.inner",
+}
+
+for lhs, capture in pairs(goto_previous_mappings) do
+  local query = capture
+  vim.keymap.set({ "n", "x", "o" }, lhs, function()
+    ts_move.goto_previous(query, "textobjects")
+  end)
+end
+
+-- Python highlight customization
 vim.api.nvim_set_hl(0, "@attribute.python", { link = "Function" })
 vim.api.nvim_set_hl(0, "@attribute.builtin.python", { link = "Function" })
 vim.api.nvim_set_hl(0, "@constructor.python", { link = "Type" })
@@ -123,7 +162,7 @@ vim.api.nvim_set_hl(0, "@variable.member.python", { link = "Underlined" })
 vim.api.nvim_set_hl(0, "@variable.parameter.python", { link = "Function" })
 vim.api.nvim_set_hl(0, "@variable.python", { link = "Method" })
 
--- go highlight customization
+-- Go highlight customization
 vim.api.nvim_set_hl(0, "@function.go", { link = "Method" })
 vim.api.nvim_set_hl(0, "@method.go", { link = "Special" })
 vim.api.nvim_set_hl(0, "@module.go", { link = "Type" })
@@ -132,7 +171,7 @@ vim.api.nvim_set_hl(0, "@type.builtin.go", { link = "Type" })
 vim.api.nvim_set_hl(0, "@variable.go", { link = "Method" })
 vim.api.nvim_set_hl(0, "@variable.parameter.go", { link = "Identifier" })
 
--- java highlight customization
+-- Java highlight customization
 vim.api.nvim_set_hl(0, "@function.java", { link = "Method" })
 vim.api.nvim_set_hl(0, "@method.java", { link = "Special" })
 vim.api.nvim_set_hl(0, "@namespace.java", { link = "Type" })

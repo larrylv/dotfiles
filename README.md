@@ -27,8 +27,8 @@ brew bundle install --no-upgrade --no-lock --verbose
 ## python stuff
 
 ```
-pyenv install 3.12.2
-pyenv global 3.12.2
+pyenv install 3.12.9
+pyenv global 3.12.9
 
 pip install --upgrade autopep8 isort ruff pytest pipenv virtualenv pdm pre-commit pyp
 ```
@@ -50,7 +50,7 @@ pip install --upgrade pynvim neovim
 
 nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 
-cargo install proximity-sort
+cargo install proximity-sort autojump
 ```
 
 ## tmux & plugins
