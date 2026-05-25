@@ -86,6 +86,9 @@ cp $BASH_HISTORY_BACKUP ~/.bash_history
 
 random stuff:
 ```
+# make held letter keys repeat
+defaults write -g ApplePressAndHoldEnabled -bool false
+
 mkdir -p $HOME/code/gopath
 mkdir -p ~/.local/bin
 
