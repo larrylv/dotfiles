@@ -63,6 +63,7 @@ brew "tig"
 # Code quality (linters, formatters, pre-commit)
 # ------------------------------------------------------------------------------
 brew "clang-format"
+brew "goimports"
 brew "golangci-lint"
 brew "pre-commit"
 brew "prettier"

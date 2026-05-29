@@ -38,7 +38,6 @@ silent! let g:plugs['paredit.vim'].commit = '791c3a0cc3155f424fba9409a9520eec241
 silent! let g:plugs['playground'].commit = 'ba48c6a62a280eefb7c85725b0915e021a1a0749'
 silent! let g:plugs['plenary.nvim'].commit = 'b9fd5226c2f76c951fc8ed5923d85e4de065e509'
 silent! let g:plugs['rainbow_parentheses.vim'].commit = '27e7cd73fec9d1162169180399ff8ea9fa28b003'
-silent! let g:plugs['render-markdown.nvim'].commit = '26097a4eb95b391d0308c1b77cce89b28bbc9916'
 silent! let g:plugs['rust.vim'].commit = '889b9a7515db477f4cb6808bef1769e53493c578'
 silent! let g:plugs['splitjoin.vim'].commit = '9ce4fb4f0538cff02a57a393057b7ab371324483'
 silent! let g:plugs['syntaxerl'].commit = 'b7d50eca703ba327b1cdab8162c480a30eb587b9'
@@ -94,5 +93,4 @@ silent! let g:plugs['vista.vim'].commit = '1e90efad6e32c4f7d16b1ca8f49bf63d06938
 silent! let g:plugs['yaml-revealer'].commit = '6c52cbe596b6cb527deb888f18a1df17224923ab'
 
 PlugUpdate!
-
 

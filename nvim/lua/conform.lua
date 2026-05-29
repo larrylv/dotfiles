@@ -3,7 +3,7 @@ require("conform").setup({
     -- Conform will run multiple formatters sequentially
     -- python = { "autopep8", "isort", "ruff_format" },
     -- python = { "black", "isort", "ruff_fix" },
-    python = { "ruff_fix", "ruff_format", "ruff_isort" },
+    python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
     cpp = { "clang_format" },
     -- ruby = { "rubyfmt" },
     go = { "gofmt", "goimports" },

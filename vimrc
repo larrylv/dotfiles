@@ -122,7 +122,6 @@ Plug 'vim-scripts/paredit.vim',             { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni',          { 'for': 'clojure' }
 
 " markdown
-Plug 'MeanderingProgrammer/render-markdown.nvim'
 Plug 'iamcco/markdown-preview.nvim',             { 'for': 'markdown', 'do': 'cd app && yarn install' } " <leader>pp to preview markdown
 Plug 'godlygeek/tabular',                        { 'for': 'markdown' }
 Plug 'preservim/vim-markdown',                   { 'for': 'markdown' }
@@ -315,8 +314,6 @@ endif
 if has('nvim')
   " Get cmd+c work
   set mouse=
-  " Switch cursor shape when using NeoVim
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 ""
   " Bring back ctrl-h
   nmap <BS> <C-W>h
 endif
@@ -426,6 +423,9 @@ augroup general_config
 augroup END
 
 let g:python3_host_prog=$HOME.'/.pyenv/shims/python'
+let g:loaded_node_provider=0
+let g:loaded_perl_provider=0
+let g:loaded_ruby_provider=0
 
 " ================================= GENERAL MAPPINGS ===========================
 
