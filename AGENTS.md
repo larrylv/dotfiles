@@ -8,6 +8,8 @@ We do not accept “best-effort” behavior that hides missing or invalid data.
 ---
 
 ## 0) DO NOT CHANGE .envrc file. EVER.
+* do not manually change `.envrc` file
+* do not invoke monorepo_worktree_setup.sh EVER as that one changes `.envrc` file!
 
 ## 1) NO DEFAULT FALLBACKS. EVER. (highest priority)
 Any silent “best-effort” behavior that substitutes or fabricates values is forbidden.
