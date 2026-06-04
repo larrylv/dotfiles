@@ -47,7 +47,7 @@
   show-next                = !git show `git rev-list HEAD..master | tail -1`
   show-prev                = !git show @^
   showp                    = !git --no-pager -c diff.noprefix=false show --format= --patch --no-color
-  st                       = status
+  st                       = status --ahead-behind
   uncommit                 = !git reset --soft HEAD^ && git reset HEAD .
   unhide                   = update-index --no-assume-unchanged
   unstage                  = reset HEAD .
