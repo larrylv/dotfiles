@@ -440,6 +440,9 @@ map <C-l> <C-W>l
 map <C-h> <C-W>h
 map <C-\> <C-W>p
 
+" Maximize the current window and restore the command line to one row.
+nnoremap <silent> <C-W>_ :<C-U>set cmdheight=1<CR><C-W>_
+
 " Go to previous (last accessed) window.
 map <C-w>\ <C-w><C-p>
 map <C-w><C-\> <C-w><C-p>
