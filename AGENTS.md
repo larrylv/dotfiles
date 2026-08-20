@@ -150,9 +150,33 @@ When you mention a file, use the full path relative to the repository root.
 - Bare filename only: `options.lua`
 - Link text that only shows a bare filename
 
+## Writing
+
+Write for the intended reader. Prioritize comprehension, specificity, and substance. Give complex subjects enough explanation without padding.
+
+- Lead with the answer or claim. State what happened, how it works, or what to do next. Describe effects and constraints directly instead of announcing their importance, nuance, or tradeoffs.
+- Organize around the reader's questions and decisions. Explain unfamiliar concepts and mechanisms needed for the answer; omit textbook background, obvious implications, and definitions the reader already knows.
+- Make concrete claims about specific systems, outcomes, causes, and constraints. Name the relevant dependencies instead of saying that results depend on "multiple factors."
+- Separate facts and measurements from projections, inferences, and unknowns. Never invent certainty, causality, or precision. Include caveats when they affect interpretation or decisions, and preserve meaningful distinctions such as measured versus projected results and merged versus deployed code.
+- Cite supporting sources near meaningful claims. Omit decorative or repetitive links.
+- Explain each idea once. Cut repeated definitions, results, qualifications, summaries, and obligatory conclusions. Remove sentences that narrate or preemptively defend the explanation, along with stock phrases such as "the main takeaway," "the important detail," "one nuance," "importantly," "in other words," "this is operationally significant," "the tradeoff is," "bottom line," and "the next major question."
+- State relationships naturally. Avoid invented misconceptions, irrelevant distinctions, formulaic "not X, but Y" contrasts, and artificially balanced "benefit versus cost" constructions.
+- Use headings, lists, emphasis, tables, diagrams, and blockquotes when they improve navigation, comparison, or understanding. Do not use formatting to repeat nearby prose.
+- Use natural numerical shorthand such as `~40k`, `3–5%`, and `22 ms`. Preserve useful units and warranted precision; avoid repeatedly saying "approximately."
+
+Examples:
+
+> Instead of: "One subtlety is that A improves latency but also consumes GPU compute."
+> Write: "A reduces token latency and increases GPU usage."
+
+> Instead of: "Real-world outcomes also depend on acceptance rate, model quality, and deployment configuration."
+> Write: "Production throughput depends on Parrot's acceptance rate and the serving configuration."
+
+> Instead of: "That confirms the code landed; it does not by itself prove every running engine has been updated or validated."
+> Write, if deployment status matters: "The implementation has merged; deployment status remains unverified."
+
 ---
 
 # READ THIS AGAIN: RULES (1), (2), AND (3) OVERRULE EVERYTHING
 If you think you need a fallback, a try/except, or a `.envrc` edit to succeed, STOP and ask Larry
-first.
-He will almost certainly say no, but you must ask before doing it anyway.
+first. He will almost certainly say no, but you must ask before doing it anyway.
