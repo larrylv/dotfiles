@@ -1,15 +1,43 @@
 # AGENTS.md — MUST-READ INSTRUCTIONS FOR ALL AGENTS
 
-These rules are non-negotiable. If you violate them, your change is wrong even if it “works.”
+These rules are non-negotiable. If you violate them, your change is wrong even if it "works".
 
 This repo values **hard invariants**, **loud failures**, and **fixing upstream causes**.
-We do not accept “best-effort” behavior that hides missing or invalid data.
+We do not accept "best-effort" behavior that hides missing or invalid data.
 
 ---
 
-## 0) DO NOT CHANGE .envrc file. EVER.
-* do not manually change `.envrc` file
-* do not invoke monorepo_worktree_setup.sh EVER as that one changes `.envrc` file!
+## Subagents
+
+Proactively look for independent work to delegate, whether you are the root agent or a subagent. Delegate without waiting for a separate request when it reduces completion time or materially improves depth or quality. Respect Larry's task-specific limits. Handle small or tightly coupled work directly, and treat the concurrency limit as a ceiling, not a target.
+
+- Give each agent a bounded assignment with an objective, relevant context, expected output, validation requirements, and clear ownership. Subagents may write code within their assigned scope. Allow only one writer per file at a time, including the root agent.
+- Split research, implementation, validation, or monitoring by independent deliverable, question, or source. Delegate recursively only when there is a concrete benefit.
+- Keep broad problem framing, ambiguous decisions, integration, final synthesis, and user communication with the root agent. Continue useful, non-overlapping work while subagents run. Review and validate their contributions before accepting them.
+- Use a limited or isolated context fork when a self-contained assignment is sufficient; preserve full history when the work requires it.
+- Inherit the parent model and reasoning effort unless Larry or applicable instructions explicitly request an override. Select only models and options exposed by the available tools.
+- Subagents must send useful findings and blockers to the root agent promptly. Immediately after any write operation, use `send_message` to report what changed, including affected files or external state. Finish with the result, supporting evidence, validation performed, and unresolved issues.
+- Reuse agents with useful context via `followup_task`. Close finished agents that have no useful follow-up work when the available tools support closing them.
+
+---
+
+## Deliberating on system, architecture, or performance related work
+
+When working with the user on tasks that involve investigating on distributed systems, existing infrastructure, especially around correctness, performance, and migrations, structure your communication to be linear and present it to the user in a way that they can track your thought process and augment their own understanding of the systems. If you are working on a goal that requires such deliberation, actively confirm your thought process with the user and seek their input on the right way to move forward, even if it means stalling on the goal in order to do so. The priority on such problems must be correctness and alignment with the user over the singular focus on achieving the goal at all costs.
+
+Do not stall on the goal or prevent progress on decisions that are obvious, or if your work with the user indicates that they have an understanding of the problem already and that they consider the decisions straightforward. Similarly, if the decision itself is straightforward and does not have performance, scaling, or correctness consequences, do not stall yourself just to seek confirmation. Use judgement based on memory, where available.
+
+When writing code on initiatives in this area, do not add code for or write tests for theoretical edge cases and possible constraints that you have seen unless such constraints are already observed and are evidence-backed. This is not to say that you should not be thorough about correctness and performance considerations: this is where collaboration with the user to test things actively comes in. Defensive code and unit tests alone cannot cover al these areas, and in many cases, it can make the code harder to understand and as a result, CI more flaky and less performant. Where actual benchmarking and correctness data is needed, prefer getting that data from real world systems, and only offer alternatives to the user if they indicate such data is unavailable to them.
+
+---
+
+## 0) `.envrc` is manually maintained
+
+- Larry maintains `.envrc` manually. Do not modify it.
+- Delete `.envrc` only as part of an authorized deletion of its containing repository.
+- Never run `monorepo_worktree_setup.sh`; it modifies `.envrc`.
+
+---
 
 ## 1) NO DEFAULT FALLBACKS. EVER. (highest priority)
 Any silent “best-effort” behavior that substitutes or fabricates values is forbidden.
@@ -35,39 +63,7 @@ If you believe that applies: **STOP and ask Larry first.**
 
 ---
 
-## 2) DO NOT LITTER THE CODE WITH TRY/EXCEPT. (highest priority)
-Default policy: crash loudly. If something goes wrong, the code should crash.
-
-### Forbidden
-- `try/except Exception:` / broad catches
-- catching errors and continuing
-- swallowing errors, returning empty values, or logging-and-moving-on
-- “defensive” wrappers “just in case”
-
-### Required
-- Let exceptions propagate.
-- Prefer invariant fixes + boundary validation over local exception handling.
-
-### If you think an exception must be handled
-**STOP and ask Larry first.**
-(Yes, even if you only want to “add context.”)
-
----
-
-## 3) DO NOT MODIFY `.envrc` WITHOUT LARRY'S EXPLICIT PERMISSION. (highest priority)
-`.envrc` controls the local environment. Never create, edit, overwrite, reformat, delete, rename,
-move, regenerate, or "clean up" `.envrc` unless Larry explicitly asks for that exact file to be
-changed.
-
-### Required
-- Treat `.envrc` as read-only by default.
-- If a task seems to require changing `.envrc`, **STOP and ask Larry first.**
-- Fix the upstream config, script, docs, or caller instead of patching `.envrc` unless Larry gives
-  explicit permission.
-
----
-
-## 4) Fix root causes, not symptoms
+## 2) Fix root causes, not symptoms
 If you find a bug, do not bandaid it in the nearest function that notices it.
 
 Trace it to where the bad input / invalid state is created (API boundary, parsing, DB read/write,
@@ -77,42 +73,37 @@ Heuristic: **producers enforce invariants; consumers assume them**.
 
 ---
 
-## 5) Less is more
+## 3) Less is more
 Write the least amount of code that achieves the goal (while prioritizing readability).
 Avoid verbose comments that restate obvious code.
 
 ---
 
-## 6) Assume the current code is wrong
+## 4) Assume the current code is wrong
 Do not optimize for preserving legacy behavior unless explicitly required.
 Breaking old behavior can be fine if the new behavior is correct.
 
 ---
 
-## 7) Always simplify
+## 5) Always simplify
 Refactor to reduce complexity and delete bloat.
 Prefer reusable, obvious pieces.
 Zero tolerance for unnecessary abstractions.
 
 ---
 
-## 8) Don’t tell Larry to run code
+## 6) Don’t tell Larry to run code
 That is your job. Validate the change by executing the relevant paths.
 
-Before you submit:
-- run the relevant tests
-- run linters/formatters if the repo uses them
-- exercise the changed code path at least once
+---
 
-Include what you ran + the outcome in your summary/PR description.
-
-## 9) Pushing and Pulling Changes
+## 7) Pushing and Pulling Changes
 
 To push / pull from github, prefer remote `github` if configured, otherwise fall back to `origin`.
 
 ---
 
-## 10) Clarifying Questions: high-value only, 1-5 max
+## 8) Clarifying Questions: high-value only, 1-5 max
 Do not ask questions just to ask questions.
 
 Default behavior: read the code and instructions, then figure things out and execute.
@@ -125,7 +116,7 @@ additional clarifications, permissions, or confirmations.
 
 ---
 
-## 11) `engineeringlog.md` is opt-in only
+## 9) `engineeringlog.md` is opt-in only
 Do **not** create or update `engineeringlog.md` by default.
 
 Only write to `engineeringlog.md` when Larry explicitly asks for it (for example:
@@ -139,7 +130,7 @@ When logging is explicitly requested, every entry must include:
 
 ---
 
-## 12) Use full relative file paths in all file mentions
+## 10) Use full relative file paths in all file mentions
 When you mention a file, use the full path relative to the repository root.
 
 ### Required
@@ -150,33 +141,3 @@ When you mention a file, use the full path relative to the repository root.
 - Bare filename only: `options.lua`
 - Link text that only shows a bare filename
 
-## Writing
-
-Write for the intended reader. Prioritize comprehension, specificity, and substance. Give complex subjects enough explanation without padding.
-
-- Lead with the answer or claim. State what happened, how it works, or what to do next. Describe effects and constraints directly instead of announcing their importance, nuance, or tradeoffs.
-- Organize around the reader's questions and decisions. Explain unfamiliar concepts and mechanisms needed for the answer; omit textbook background, obvious implications, and definitions the reader already knows.
-- Make concrete claims about specific systems, outcomes, causes, and constraints. Name the relevant dependencies instead of saying that results depend on "multiple factors."
-- Separate facts and measurements from projections, inferences, and unknowns. Never invent certainty, causality, or precision. Include caveats when they affect interpretation or decisions, and preserve meaningful distinctions such as measured versus projected results and merged versus deployed code.
-- Cite supporting sources near meaningful claims. Omit decorative or repetitive links.
-- Explain each idea once. Cut repeated definitions, results, qualifications, summaries, and obligatory conclusions. Remove sentences that narrate or preemptively defend the explanation, along with stock phrases such as "the main takeaway," "the important detail," "one nuance," "importantly," "in other words," "this is operationally significant," "the tradeoff is," "bottom line," and "the next major question."
-- State relationships naturally. Avoid invented misconceptions, irrelevant distinctions, formulaic "not X, but Y" contrasts, and artificially balanced "benefit versus cost" constructions.
-- Use headings, lists, emphasis, tables, diagrams, and blockquotes when they improve navigation, comparison, or understanding. Do not use formatting to repeat nearby prose.
-- Use natural numerical shorthand such as `~40k`, `3–5%`, and `22 ms`. Preserve useful units and warranted precision; avoid repeatedly saying "approximately."
-
-Examples:
-
-> Instead of: "One subtlety is that A improves latency but also consumes GPU compute."
-> Write: "A reduces token latency and increases GPU usage."
-
-> Instead of: "Real-world outcomes also depend on acceptance rate, model quality, and deployment configuration."
-> Write: "Production throughput depends on Parrot's acceptance rate and the serving configuration."
-
-> Instead of: "That confirms the code landed; it does not by itself prove every running engine has been updated or validated."
-> Write, if deployment status matters: "The implementation has merged; deployment status remains unverified."
-
----
-
-# READ THIS AGAIN: RULES (1), (2), AND (3) OVERRULE EVERYTHING
-If you think you need a fallback, a try/except, or a `.envrc` edit to succeed, STOP and ask Larry
-first. He will almost certainly say no, but you must ask before doing it anyway.

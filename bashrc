@@ -213,6 +213,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export GOENV_DISABLE_GOPATH=1
 export GOENV_ROOT="$HOME/.goenv"
 if which goenv > /dev/null; then export GOROOT="$(goenv prefix)"; fi
+# unset GOROOT
 export PATH="$GOENV_ROOT/bin:$PATH"
 if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 
