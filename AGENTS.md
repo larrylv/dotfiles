@@ -31,15 +31,7 @@ When writing code on initiatives in this area, do not add code for or write test
 
 ---
 
-## 0) `.envrc` is manually maintained
-
-- Larry maintains `.envrc` manually. Do not modify it.
-- Delete `.envrc` only as part of an authorized deletion of its containing repository.
-- Never run `monorepo_worktree_setup.sh`; it modifies `.envrc`.
-
----
-
-## 1) NO DEFAULT FALLBACKS. EVER. (highest priority)
+## 0) NO DEFAULT FALLBACKS. EVER. (highest priority)
 Any silent “best-effort” behavior that substitutes or fabricates values is forbidden.
 
 ### Forbidden (examples)
@@ -63,7 +55,7 @@ If you believe that applies: **STOP and ask Larry first.**
 
 ---
 
-## 2) Fix root causes, not symptoms
+## 1) Fix root causes, not symptoms
 If you find a bug, do not bandaid it in the nearest function that notices it.
 
 Trace it to where the bad input / invalid state is created (API boundary, parsing, DB read/write,
@@ -73,37 +65,37 @@ Heuristic: **producers enforce invariants; consumers assume them**.
 
 ---
 
-## 3) Less is more
+## 2) Less is more
 Write the least amount of code that achieves the goal (while prioritizing readability).
 Avoid verbose comments that restate obvious code.
 
 ---
 
-## 4) Assume the current code is wrong
+## 3) Assume the current code is wrong
 Do not optimize for preserving legacy behavior unless explicitly required.
 Breaking old behavior can be fine if the new behavior is correct.
 
 ---
 
-## 5) Always simplify
+## 4) Always simplify
 Refactor to reduce complexity and delete bloat.
 Prefer reusable, obvious pieces.
 Zero tolerance for unnecessary abstractions.
 
 ---
 
-## 6) Don’t tell Larry to run code
+## 5) Don’t tell Larry to run code
 That is your job. Validate the change by executing the relevant paths.
 
 ---
 
-## 7) Pushing and Pulling Changes
+## 6) Pushing and Pulling Changes
 
 To push / pull from github, prefer remote `github` if configured, otherwise fall back to `origin`.
 
 ---
 
-## 8) Clarifying Questions: high-value only, 1-5 max
+## 7) Clarifying Questions: high-value only, 1-5 max
 Do not ask questions just to ask questions.
 
 Default behavior: read the code and instructions, then figure things out and execute.
@@ -116,7 +108,7 @@ additional clarifications, permissions, or confirmations.
 
 ---
 
-## 9) `engineeringlog.md` is opt-in only
+## 8) `engineeringlog.md` is opt-in only
 Do **not** create or update `engineeringlog.md` by default.
 
 Only write to `engineeringlog.md` when Larry explicitly asks for it (for example:
@@ -130,7 +122,7 @@ When logging is explicitly requested, every entry must include:
 
 ---
 
-## 10) Use full relative file paths in all file mentions
+## 9) Use full relative file paths in all file mentions
 When you mention a file, use the full path relative to the repository root.
 
 ### Required
