@@ -1,5 +1,9 @@
 # vim:ft=sh:
 
+if [[ $OSTYPE == linux* && $- != *i* ]]; then
+  return 0
+fi
+
 ### BEGIN HOMEBREW FOR APPLE SILICON
 if [[ $(/usr/bin/uname -m) == "arm64" ]]; then
   if [[ -f /opt/homebrew/bin/brew ]]; then
@@ -117,7 +121,9 @@ elif which rg > /dev/null; then
   export FZF_DEFAULT_COMMAND="rg --hidden --glob '!.git/*' --files"
 fi
 
-if which bat > /dev/null; then
+if [[ $OSTYPE == linux* ]]; then
+  export FZF_CTRL_R_OPTS="--height 50% --preview 'printf \"%s\n\" {2..} | batcat --color=always --paging=never -pl sh' --preview-window 'wrap,down,5'"
+elif which bat > /dev/null; then
   export FZF_CTRL_R_OPTS="--height 50% --preview 'echo {2..} | bat --color=always -pl sh' --preview-window 'wrap,down,5'"
 elif which rg > /dev/null; then
   export FZF_CTRL_R_OPTS="--height 50% --preview"
@@ -274,11 +280,15 @@ fi
 # unset git_completion
 
 ## autojump script
-autojump_script="$HOMEBREW_PREFIX/etc/profile.d/autojump.sh"
-if [ -r "$autojump_script" ]; then
-  source "$autojump_script"
+if [[ $OSTYPE == linux* ]]; then
+  source /usr/share/autojump/autojump.bash || return
+else
+  autojump_script="$HOMEBREW_PREFIX/etc/profile.d/autojump.sh"
+  if [ -r "$autojump_script" ]; then
+    source "$autojump_script"
+  fi
+  unset autojump_script
 fi
-unset autojump_script
 
 echo_normal='\033[0;00m'
 echo_black='\033[0;30m'
@@ -470,20 +480,57 @@ else
 fi
 
 
-# [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/completion.bash" ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.bash"
-[[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash" ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash"
-
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 #
 # export PATH="./node_modules/.bin:$PATH"
 
-if [ -d $HOME/.local/bin ]; then
+if [[ -d "$HOME/.local/bin" && ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
 [[ -d $HOME/.cargo ]] && [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+if [[ $OSTYPE == linux* ]]; then
+  export VISUAL="$EDITOR"
+  alias ls='ls --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+
+  lesspipe_setup=$(SHELL=/bin/sh /usr/bin/lesspipe) || return
+  eval "$lesspipe_setup" || return
+  unset lesspipe_setup
+
+  dircolors_args=(-b)
+  if [[ -r ~/.dircolors ]]; then
+    dircolors_args+=(~/.dircolors)
+  fi
+  dircolors_setup=$(/usr/bin/dircolors "${dircolors_args[@]}") || return
+  eval "$dircolors_setup" || return
+  unset dircolors_args dircolors_setup
+
+  if [[ -t 0 ]]; then
+    stty -ixon || return
+  fi
+  if [[ ! -v debian_chroot && -r /etc/debian_chroot ]]; then
+    debian_chroot=$(< /etc/debian_chroot)
+  fi
+  PS1='${debian_chroot:+($debian_chroot)}'"$PS1"
+  case $TERM in
+    xterm*|rxvt*) PS1='\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]'"$PS1" ;;
+  esac
+
+  fzf_setup=$(fzf --bash) || return
+  eval "$fzf_setup" || return
+  unset fzf_setup
+
+  if [[ -f ~/.bash_aliases ]]; then
+    source ~/.bash_aliases || return
+  fi
+elif [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash" ]]; then
+  source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash"
+fi
 
 # eval "$(ssh-agent -s)" > /dev/null
 ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
