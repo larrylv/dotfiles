@@ -835,7 +835,7 @@ nnoremap <C-g>f :echo cfi#format("%s", "")<CR>
 
 function! CopyCurrentFuncInfoToClipboard()
   let text_to_copy = cfi#format("%s", "")
-  execute 'let @+="' . text_to_copy . '"'
+  let @+ = text_to_copy
   echom('Copied to clipboard: ' . string(text_to_copy))
 endfunction
 
@@ -903,8 +903,8 @@ endfunction
 augroup CopyCurrentFuncMapping
   autocmd!
   " autocmd FileType * nnoremap <silent> <leader>ry :call CopyCurrentFuncInfoToClipboard()<CR>
-  autocmd FileType ruby nnoremap <silent> <leader>ry :FZFCopyRubyToken<Return>
-  autocmd FileType python nnoremap <silent> <leader>ry :call YankPyFQN_Coc()<CR>
+  autocmd FileType ruby nnoremap <silent><buffer> <leader>ry :FZFCopyRubyToken<Return>
+  autocmd FileType python nnoremap <silent><buffer> <leader>ry :call YankPyFQN_Coc()<CR>
 augroup END
 
 
@@ -1086,8 +1086,6 @@ function! FzfCopyRubyTokenFn(token)
   elseif len(source_lines) == 1
     call FzfCopyRubyTokenCopyToClipboard(source_lines[0])
   else
-    " A list of length one is passed to the sink function. This happily
-    " matches the arglist for funcrefs.
     call fzf#run({
     \   'source': source_lines,
     \   'sink':   function('FzfCopyRubyTokenCopyToClipboard'),
@@ -1097,11 +1095,17 @@ function! FzfCopyRubyTokenFn(token)
   endif
 endfunction
 
-function! FzfCopyRubyTokenSourceLines(token)
-  " In literal strings (':h literal-string'), two quotes stand for one quote.
-  let raw_output = system('ripper-tags --tag-file=- --format=json ' . expand('%') . ' | jq --raw-output ''.[] | select(.name == "' . a:token . '") | .full_name''')
-  let matches = split(raw_output)
-  return matches
+function! FzfCopyRubyTokenSourceLines(token) abort
+  let l:path = expand('%:p')
+  if !filereadable(l:path)
+    throw 'Ruby tag lookup needs a readable file: ' . l:path
+  endif
+  let l:output = system('ripper-tags --tag-file=- --format=json -- ' . shellescape(l:path))
+  if v:shell_error
+    throw 'ripper-tags failed: ' . trim(l:output)
+  endif
+  let l:matches = filter(json_decode(l:output), {_, tag -> tag.name ==# a:token})
+  return map(l:matches, {_, tag -> tag.full_name})
 endfunction
 
 " Make tokens REPL friendly. In the highly unlikely case there are multiple
@@ -1115,11 +1119,14 @@ endfunction
 
 function! FzfCopyRubyTokenCopyToClipboard(text)
   let text_to_copy = FzfCopyRubyTokenConvertLastPoundToDot(a:text)
-  execute 'let @+="' . text_to_copy . '"'
+  let @+ = text_to_copy
   echom('Copied to clipboard: ' . string(text_to_copy))
 endfunction
 
-command! -bar FZFCopyRubyToken :call FzfCopyRubyTokenFn(expand('<cword>'))
+" Match Ruby method suffixes without consuming adjacent comparison operators.
+command! -bar FZFCopyRubyToken
+      \ call FzfCopyRubyTokenFn(matchstr(getline('.'),
+      \ '\k*\%' . col('.') . 'c\k*\%(?\|!\%([=~]\)\@!\|=\%([=~>]\)\@!\)\?'))
 
 function! s:FileCachePath(command) abort
   let context = systemlist('LC_ALL=C git rev-parse --is-inside-work-tree --verify --quiet HEAD 2>&1')
