@@ -381,9 +381,13 @@ GIT_PROMPT_STASH=" ${echo_bold_purple}#"
 GIT_PROMPT_NOSTASH=""
 
 function parse_git_dirty () {
-  if [[ $PWD =~ .*openai.* ]]; then
-    echo ""
-  elif [[ $(git diff --stat) != '' ]]; then
+  [[ $PWD =~ .*openai.* ]] && return 0
+
+  local git_common_dir
+  git_common_dir=$(git rev-parse --path-format=absolute --git-common-dir) || return
+  [[ $git_common_dir == "$HOME/code/openai/.git" ]] && return 0
+
+  if [[ $(git diff --stat) != '' ]]; then
     echo -e "$GIT_PROMPT_DIRTY"
   else
     echo -e "$GIT_PROMPT_CLEAN"
