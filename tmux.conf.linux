@@ -1,0 +1,6 @@
+if-shell -F '#{==:#{OPENAI_DEV_ENV},research-devbox}' {
+    set -g @devbox-status-label '#[fg=cyan,bold]DEVBOX#[default] '
+    set -ag status-left '#{E:@devbox-status-label}'
+    set -ag status-right '#{E:@devbox-status-label}'
+    set -g status-left-length 41
+}
