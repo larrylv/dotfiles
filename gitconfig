@@ -82,7 +82,6 @@
   preloadindex        = true
   untrackedCache      = true
   whitespace          = cr-at-eol
-	hooksPath = /Library/Application Support/OpenAI/Tools/PushPatrol/git-hooks
 [diff]
   compaction-heuristic = true
   colorMoved = zebra
@@ -95,6 +94,7 @@
   logOutputEncoding = utf8
 [include]
   path = .gitconfig.work
+  path = /Users/larrylv/code/dotfiles/gitconfig.macos
 [merge]
   tool          = vimdiff
   conflictstyle = diff3
@@ -110,13 +110,11 @@
 #   insteadOf = https://github.com/
 [safe]
 	directory = *
-[lfs]
-	hooksPath = /Library/Application Support/OpenAI/Tools/PushPatrol/git-hooks/lfs
 [credential "https://github.com"]
 	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [index]
 	threads = true

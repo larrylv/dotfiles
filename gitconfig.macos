@@ -1,0 +1,4 @@
+[core]
+	hooksPath = /Library/Application Support/OpenAI/Tools/PushPatrol/git-hooks
+[lfs]
+	hooksPath = /Library/Application Support/OpenAI/Tools/PushPatrol/git-hooks/lfs
