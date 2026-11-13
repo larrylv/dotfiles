@@ -180,6 +180,10 @@ let g:solarized_visibility = "high"
 let g:solarized_termtrans = 1
 let g:solarized_extra_hi_groups = 0
 set background=dark
+augroup solarized_comments
+  autocmd!
+  autocmd ColorScheme solarized8_flat highlight Comment term=NONE cterm=NONE gui=NONE
+augroup END
 colorscheme solarized8_flat
 if has('nvim-0.11')
   " Custom statusline highlights inherit these attributes in Neovim 0.11+.
@@ -196,7 +200,7 @@ hi! Folded cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=0 guibg=#3c3d3a
 set foldlevelstart=99                      " Open all folds by default
 set foldenable                             " Enable folding
 set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+set foldexpr=v:lua.vim.treesitter.foldexpr()
 set foldcolumn=0                           " Column to show folds
 
 " Opening and closing folds
@@ -1117,30 +1121,67 @@ endfunction
 
 command! -bar FZFCopyRubyToken :call FzfCopyRubyTokenFn(expand('<cword>'))
 
-function! CacheListCmd()
-  let ref = system('git symbolic-ref -q HEAD 2>/dev/null')
-  if ref == ''
-    return $FZF_DEFAULT_COMMAND
+function! s:FileCachePath(command) abort
+  let context = systemlist('LC_ALL=C git rev-parse --is-inside-work-tree --verify --quiet HEAD 2>&1')
+  let status = v:shell_error
+  if status == 1 && context ==# ['true']
+    return ''
   endif
-
-  " trim the newline output from rev-parse
-  let head_commit = system('git rev-parse HEAD | tr -d "\n"')
-  let cache_file = '/tmp/'.head_commit.'.files'
-  if !filereadable(expand(cache_file))
-    execute 'silent !' . $FZF_DEFAULT_COMMAND . ' > '.cache_file
+  if status == 128 && join(context, "\n") =~# '^fatal: not a git repository'
+    return ''
   endif
-
-  let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ?
-    \ printf('cat %s', cache_file) :
-    \ printf('cat %s | proximity-sort %s', cache_file, expand('%'))
+  if status != 0
+    throw 'MyFiles: could not resolve Git HEAD: ' . join(context, "\n")
+  endif
+  let [inside_worktree, head] = context
+  if inside_worktree ==# 'false'
+    return ''
+  endif
+  return expand('~/.cache/dotfiles/fzf-files/') . sha256(string([getcwd(), head, a:command]))
 endfunction
 
-command! -bang -nargs=? -complete=dir MyFiles
-  \ call fzf#vim#files(<q-args>, {'source': CacheListCmd(),
-  \                               'options': ['--tiebreak=index', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
+function! s:FileListSource(command) abort
+  let cache = s:FileCachePath(a:command)
+  if empty(cache)
+    return a:command
+  endif
+  if !filereadable(cache)
+    call mkdir(fnamemodify(cache, ':h'), 'p', 0700)
+    let pending = cache . '.' . getpid()
+    let output = system('(' . a:command . ') > ' . shellescape(pending))
+    if v:shell_error != 0
+      call delete(pending)
+      throw 'MyFiles: file finder failed: ' . trim(output)
+    endif
+    if rename(pending, cache) != 0
+      call delete(pending)
+      throw 'MyFiles: could not save file list to ' . cache
+    endif
+  endif
+  return 'cat -- ' . shellescape(cache)
+endfunction
 
-silent! nnoremap <unique> <silent> <leader>f :MyFiles<cr>
+function! s:PickFiles(dir, fullscreen) abort
+  let spec = fzf#vim#with_preview({'options': ['--tiebreak=index']})
+  if empty(a:dir) && !empty($FZF_DEFAULT_COMMAND)
+    let spec.source = s:FileListSource($FZF_DEFAULT_COMMAND)
+    let file = expand('%:.')
+    if fnamemodify(file, ':h') !=# '.'
+      let spec.source = '(' . spec.source . ') | proximity-sort -- ' . shellescape(file)
+    endif
+  endif
+  call fzf#vim#files(a:dir, spec, a:fullscreen)
+endfunction
+
+function! s:ClearFileCache() abort
+  let cache = s:FileCachePath($FZF_DEFAULT_COMMAND)
+  if !empty(cache) && filereadable(cache) && delete(cache) != 0
+    throw 'MyFiles: could not clear file list at ' . cache
+  endif
+endfunction
+
+command! -bang -nargs=? -complete=dir MyFiles call <SID>PickFiles(<q-args>, <bang>0)
+nnoremap <silent> <leader>f :MyFiles<CR>
 
 " list bookmarks
 nnoremap <leader>m :Marks<cr>
@@ -1163,19 +1204,7 @@ command! -bang -nargs=* FilesNoIgnoreVcs
   \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore-vcs --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
 silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnore<cr>
 
-function! ClearFzfCache()
-  let ref = system('git symbolic-ref -q HEAD 2>/dev/null')
-  if ref != ''
-    " trim the newline output from rev-parse
-    let head_commit = system('git rev-parse HEAD | tr -d "\n"')
-    let cache_file = '/tmp/'.head_commit.'.files'
-    if filereadable(expand(cache_file))
-      execute 'silent !rm ' . cache_file
-    endif
-  endif
-endfunction
-
-silent! nnoremap <unique> <silent> <leader>cf :call ClearFzfCache()<cr>
+nnoremap <silent> <leader>cf :call <SID>ClearFileCache()<CR>
 
 nnoremap <leader>rg :Rg<Space>
 nnoremap <leader>ag :Rg <C-R><C-W><cr>
@@ -1812,7 +1841,7 @@ function EnableTreesitter()
   endif
 
   set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
+  set foldexpr=v:lua.vim.treesitter.foldexpr()
 endfunction
 command! EnableTreesitter call EnableTreesitter()
 
